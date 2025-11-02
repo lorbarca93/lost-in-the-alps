@@ -76,9 +76,10 @@ class BoudyInfoScraper(BaseScraper):
                     }
                     
                     # Extract coordinates (GeoJSON is [lon, lat])
+                    # IMPORTANT: GeoJSON coordinates are [longitude, latitude]
                     if len(coords) >= 2:
-                        hut_data['longitude'] = float(coords[0])
-                        hut_data['latitude'] = float(coords[1])
+                        hut_data['latitude'] = float(coords[1])   # Second value is latitude
+                        hut_data['longitude'] = float(coords[0])  # First value is longitude
                     
                     # Parse icon to get type and status
                     # Icon format: "2_4_1" means type_subtype_status
