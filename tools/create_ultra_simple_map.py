@@ -40,10 +40,6 @@ def create_simple_map():
         lon = float(hut[2])
         source = hut[7]
         
-        # Fix boudy.info coordinate swap
-        if source == 'boudy.info':
-            lat, lon = lon, lat
-        
         altitude = clean_string(hut[3]) if hut[3] else "N/A"
         country = clean_string(hut[4]) if hut[4] else "N/A"
         hut_type = clean_string(hut[5]) if hut[5] else "N/A"
