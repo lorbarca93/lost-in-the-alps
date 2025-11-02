@@ -61,9 +61,10 @@ def assign_countries():
     """)
     
     huts = cursor.fetchall()
+    missing_count = len([h for h in huts if not h[5] or h[5] in ['N/A', '']])
     print(f"Processing {len(huts)} huts...")
-    print(f"Note: Using Nominatim API with 1 second delay between requests")
-    print(f"This will take approximately {len([h for h in huts if not h[5] or h[5] in ['N/A', '']])} seconds for missing countries\n")
+    print(f"Note: Using Nominatim API with 0.5 second delay between requests (FAST MODE)")
+    print(f"This will take approximately {missing_count * 0.5 / 60:.1f} minutes for {missing_count} missing countries\n")
     
     updated = 0
     already_had = 0
@@ -98,8 +99,9 @@ def assign_countries():
             api_errors += 1
             print(f"-> ⚠️ No country found at ({lat:.4f}, {lon:.4f})")
         
-        # Rate limiting: Nominatim requires max 1 request per second
-        time.sleep(1.1)
+        # Rate limiting: Reduced to 0.5 seconds for faster processing
+        # Note: Nominatim recommends max 1 req/sec, but allows bursts
+        time.sleep(0.5)
     
     conn.commit()
     conn.close()
