@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Database
+*.db
+data/*.db
+!data/.gitkeep
+
+# Debug files (keep mountainhuts_locations.js as reference)
+debug/*.html
+debug/*.json
+!debug/mountainhuts_locations.js
+!debug/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*_old.*
+
+# Exported data
+huts_data.json
+*.json.bak
+
+# Test/migration scripts (already run)
+tools/add_owner_manager_columns.py
+tools/test_enhanced_scraper.py
+tools/debug_fields.py

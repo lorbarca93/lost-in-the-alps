@@ -1,0 +1,45 @@
+# <type>: <subject> (max 50 chars)
+# |<----  Using a Maximum Of 50 Characters  ---->|
+
+# Explain why this change is being made (wrap at 72 chars)
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: Fixes #23
+
+# --- COMMIT END ---
+# Type can be:
+#    feat     (new feature)
+#    fix      (bug fix)
+#    refactor (refactoring code)
+#    style    (formatting, missing semi colons, etc; no code change)
+#    doc      (changes to documentation)
+#    test     (adding or refactoring tests; no production code change)
+#    chore    (updating build tasks, package manager, etc; no production code change)
+#    scraper  (new or updated scraper)
+#    data     (data-related changes)
+# --------------------
+# Remember to:
+#   * Capitalize the subject line
+#   * Use the imperative mood in the subject line (e.g., "Add" not "Added")
+#   * Do not end the subject line with a period
+#   * Separate subject from body with a blank line
+#   * Use the body to explain what and why vs. how
+#   * Can use multiple lines with "-" for bullet points in body
+# --------------------
+# Example commit messages:
+#
+# feat: Add scraper for refuges.info website
+# 
+# - Implemented JavaScript parsing for refuge data
+# - Extracts name, location, altitude, and capacity
+# - Covers French Alps region with 200+ huts
+#
+# fix: Correct coordinate swap in boudy.info scraper
+#
+# The scraper was storing lat/lon in reversed order, causing
+# incorrect map positioning. This fix swaps the coordinates
+# during data retrieval.
+#
+# Fixes #12
+# --------------------
