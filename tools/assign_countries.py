@@ -71,10 +71,6 @@ def assign_countries():
     api_errors = 0
     
     for i, (hut_id, name, lat, lon, source, current_country) in enumerate(huts, 1):
-        # Fix boudy.info coordinate swap
-        if source == 'boudy.info':
-            lat, lon = lon, lat
-        
         # Skip if already has a valid country
         if current_country and current_country not in ['N/A', '', None]:
             already_had += 1
