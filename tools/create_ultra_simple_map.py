@@ -92,28 +92,208 @@ def create_simple_map():
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        body {{ margin: 0; padding: 0; font-family: Arial, sans-serif; }}
-        #map {{ height: 100vh; width: 100%; }}
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+        body {{ 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }}
+        #map {{ 
+            height: 100vh; 
+            width: 100%;
+            position: relative;
+        }}
+        
+        /* Filter Panel with Glass Morphism */
         .filter-panel {{
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             z-index: 1000;
-            max-width: 250px;
-            max-height: 80vh;
+            max-width: 280px;
+            max-height: 85vh;
             overflow-y: auto;
+            transition: all 0.3s ease;
         }}
-        .filter-panel h3 {{ margin: 0 0 10px 0; font-size: 16px; }}
-        .filter-panel label {{ display: block; padding: 3px 0; cursor: pointer; font-size: 13px; }}
-        .filter-panel input[type="checkbox"] {{ margin-right: 5px; }}
-        .stats {{ margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 12px; }}
-        .legend {{ margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 12px; }}
-        .legend-item {{ margin: 3px 0; }}
-        .legend-color {{ display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }}
+        
+        .filter-panel:hover {{
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+        }}
+        
+        .filter-panel h3 {{ 
+            margin: 0 0 15px 0; 
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3a8a;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+        }}
+        
+        .filter-panel label {{ 
+            display: flex;
+            align-items: center;
+            padding: 8px 4px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+            color: #374151;
+        }}
+        
+        .filter-panel label:hover {{
+            background: rgba(59, 130, 246, 0.1);
+        }}
+        
+        .filter-panel input[type="checkbox"] {{ 
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #3b82f6;
+        }}
+        
+        .stats {{ 
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e5e7eb;
+            font-size: 13px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: #1e3a8a;
+        }}
+        
+        .legend {{ 
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e5e7eb;
+            font-size: 13px;
+        }}
+        
+        .legend h4 {{
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+        }}
+        
+        .legend-item {{ 
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #4b5563;
+        }}
+        
+        .legend-color {{ 
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }}
+        
+        /* Custom Leaflet Popup Styling */
+        .leaflet-popup-content-wrapper {{
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }}
+        
+        .leaflet-popup-content {{
+            margin: 16px 20px;
+            font-size: 14px;
+            line-height: 1.8;
+            min-width: 200px;
+        }}
+        
+        .leaflet-popup-content div {{
+            margin: 4px 0;
+        }}
+        
+        .leaflet-popup-content b {{
+            color: #1e3a8a;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 6px;
+        }}
+        
+        .leaflet-popup-content a {{
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }}
+        
+        .leaflet-popup-content a:hover {{
+            color: #2563eb;
+            text-decoration: underline;
+        }}
+        
+        .leaflet-popup-tip {{
+            background: white;
+        }}
+        
+        /* Scrollbar Styling */
+        .filter-panel::-webkit-scrollbar {{
+            width: 8px;
+        }}
+        
+        .filter-panel::-webkit-scrollbar-track {{
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }}
+        
+        .filter-panel::-webkit-scrollbar-thumb {{
+            background: #3b82f6;
+            border-radius: 4px;
+        }}
+        
+        .filter-panel::-webkit-scrollbar-thumb:hover {{
+            background: #2563eb;
+        }}
+        
+        /* Toggle Button for Mobile */
+        .toggle-panel {{
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1001;
+            background: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }}
+        
+        .toggle-panel:hover {{
+            transform: scale(1.05);
+        }}
+        
+        @media (max-width: 768px) {{
+            .filter-panel {{
+                max-width: 90%;
+                right: 5%;
+            }}
+        }}
     </style>
 </head>
 <body>
@@ -126,20 +306,48 @@ def create_simple_map():
             <div id="stats-display"></div>
         </div>
         <div class="legend">
-            <div class="legend-item"><span class="legend-color" style="background: blue;"></span> boudy.info</div>
-            <div class="legend-item"><span class="legend-color" style="background: red;"></span> mountain-huts.net</div>
-            <div class="legend-item"><span class="legend-color" style="background: green;"></span> mountainhuts.info</div>
+            <h4>📍 Data Sources</h4>
+            <div class="legend-item"><span class="legend-color" style="background: blue;"></span> Boudy.info</div>
+            <div class="legend-item"><span class="legend-color" style="background: red;"></span> Mountain-huts.net</div>
+            <div class="legend-item"><span class="legend-color" style="background: green;"></span> Mountainhuts.info</div>
         </div>
     </div>
     <script>
-        // Initialize map
-        var map = L.map('map').setView([47.0, 13.0], 6);
+        // Initialize map centered on Alps
+        var map = L.map('map', {{
+            center: [47.0, 13.0],
+            zoom: 6,
+            zoomControl: true,
+            attributionControl: true
+        }});
         
-        // Add tiles
-        L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-            maxZoom: 18,
-            attribution: '&copy; OpenStreetMap'
-        }}).addTo(map);
+        // Add beautiful terrain tiles
+        var terrainLayer = L.tileLayer('https://{{s}}.tile.opentopomap.org/{{z}}/{{x}}/{{y}}.png', {{
+            maxZoom: 17,
+            attribution: 'Map data: &copy; OpenStreetMap contributors, SRTM | Map style: &copy; OpenTopoMap'
+        }});
+        
+        var standardLayer = L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }});
+        
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{{z}}/{{y}}/{{x}}', {{
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        }});
+        
+        // Add terrain layer by default
+        terrainLayer.addTo(map);
+        
+        // Add layer control
+        var baseMaps = {{
+            "🏔️ Terrain": terrainLayer,
+            "🗺️ Standard": standardLayer,
+            "🛰️ Satellite": satelliteLayer
+        }};
+        
+        L.control.layers(baseMaps).addTo(map);
         
         // Huts data
         var huts = {huts_json};
@@ -174,48 +382,80 @@ def create_simple_map():
         
         // Add markers
         huts.forEach(function(hut) {{
-            var popup = '<b>' + hut.name + '</b><br>' +
-                'Altitude: ' + hut.altitude + ' m<br>' +
-                'Country: ' + hut.country + '<br>' +
-                'Type: ' + hut.type + '<br>';
+            // Build popup content safely
+            var popupParts = [];
+            popupParts.push('<div style="max-width: 250px;">');
+            popupParts.push('<b>' + hut.name + '</b>');
+            
+            if (hut.altitude && hut.altitude !== 'N/A') {{
+                popupParts.push('<div>🏔️ Altitude: ' + hut.altitude + ' m</div>');
+            }}
+            
+            if (hut.country && hut.country !== 'N/A') {{
+                popupParts.push('<div>🌍 Country: ' + hut.country + '</div>');
+            }}
+            
+            if (hut.type && hut.type !== 'N/A') {{
+                popupParts.push('<div>🏠 Type: ' + hut.type + '</div>');
+            }}
             
             if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
-                popup += 'Owner: ' + hut.owner + '<br>';
+                popupParts.push('<div>👤 Owner: ' + hut.owner + '</div>');
             }}
             
             if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
-                popup += 'Manager: ' + hut.manager + '<br>';
+                popupParts.push('<div>👔 Manager: ' + hut.manager + '</div>');
             }}
             
             if (hut.phone && hut.phone !== 'N/A' && hut.phone !== '') {{
-                popup += 'Phone: ' + hut.phone + '<br>';
+                popupParts.push('<div>📞 Phone: ' + hut.phone + '</div>');
             }}
             
             if (hut.email && hut.email !== 'N/A' && hut.email !== '') {{
-                popup += 'Email: ' + hut.email + '<br>';
+                popupParts.push('<div>📧 Email: ' + hut.email + '</div>');
             }}
             
             if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
-                popup += 'Website: <a href="http://' + hut.website + '" target="_blank">' + hut.website + '</a><br>';
+                popupParts.push('<div>🌐 <a href="http://' + hut.website + '" target="_blank" rel="noopener">Website</a></div>');
             }}
             
             if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
-                popup += 'Open: ' + hut.opening + '<br>';
+                popupParts.push('<div>🕐 Opening: ' + hut.opening + '</div>');
             }}
             
-            if (hut.description && hut.description !== 'N/A' && hut.description !== '') {{
-                popup += '<small>' + hut.description + '</small><br>';
+            if (hut.description && hut.description !== 'N/A' && hut.description !== '' && hut.description.length < 200) {{
+                popupParts.push('<div style="margin-top: 8px; font-size: 0.9em; color: #666;">' + hut.description + '</div>');
             }}
             
-            popup += '<small>Source: ' + hut.source + '</small>';
+            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">Source: ' + hut.source + '</div>');
+            popupParts.push('</div>');
+            
+            var popup = popupParts.join('');
             
             var marker = L.circleMarker([hut.lat, hut.lon], {{
-                radius: 5,
+                radius: 6,
                 fillColor: hut.color,
                 color: '#fff',
-                weight: 1,
+                weight: 2,
                 opacity: 1,
-                fillOpacity: 0.8
+                fillOpacity: 0.85
+            }});
+            
+            // Add hover effects
+            marker.on('mouseover', function(e) {{
+                this.setStyle({{
+                    radius: 9,
+                    weight: 3,
+                    fillOpacity: 1
+                }});
+            }});
+            
+            marker.on('mouseout', function(e) {{
+                this.setStyle({{
+                    radius: 6,
+                    weight: 2,
+                    fillOpacity: 0.85
+                }});
             }});
             
             marker.bindPopup(popup);
