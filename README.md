@@ -64,7 +64,9 @@ lostinthealps/
 │   ├── check_samples.py           # View sample records
 │   ├── check_mountainhuts_stats.py # Detailed mountainhuts.info statistics
 │   ├── export_to_json.py          # Export database to JSON
-│   └── query_database.py          # Interactive SQL query tool
+│   ├── query_database.py          # Interactive SQL query tool
+│   ├── maintenance/               # Diagnostics + legacy one-off utilities
+│   └── migrations/                # Schema migration helpers
 │
 ├── docs/                           # Documentation
 │   ├── DATA_ENRICHMENT_SUMMARY.md # Data enhancement details
@@ -213,7 +215,7 @@ Key fields in the `mountain_huts` table:
 - **Details**: description, amenities, capacity, opening_hours
 - **Metadata**: scraped_at, updated_at
 
-## � Version Control with Git
+## 🧭 Version Control with Git
 
 ### Quick Setup
 

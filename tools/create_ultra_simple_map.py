@@ -59,9 +59,9 @@ def create_simple_map():
         access = clean_string(hut[19]) if hut[19] else ""
         posted_by = clean_string(hut[20]) if hut[20] else ""
         
-        # Color by source
+        # Color by source – use a vivid blue that shows up well on the dark background
         if source == 'boudy.info':
-            color = 'blue'
+            color = '#3b82f6'  # vivid blue that stays readable on dark background
         elif source == 'mountain-huts.net':
             color = 'red'
         elif source == 'mountainhuts.info':
@@ -113,110 +113,270 @@ def create_simple_map():
             padding: 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f5f5;
-        }}
-        #map {{ 
-            height: 100vh; 
-            width: 100%;
-            position: relative;
+            display: flex;
+            overflow: hidden;
         }}
         
-        /* Filter Panel with Glass Morphism */
-        .filter-panel {{
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            z-index: 1000;
-            max-width: 280px;
-            max-height: 85vh;
+        /* Left Sidebar */
+        .sidebar {{
+            width: 350px;
+            height: 100vh;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
             overflow-y: auto;
-            transition: all 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
         }}
         
-        .filter-panel:hover {{
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+        .sidebar-header {{
+            padding: 30px 25px 20px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
         }}
         
-        .filter-panel h3 {{ 
-            margin: 0 0 15px 0; 
-            font-size: 18px;
+        .sidebar-header h1 {{
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }}
+        
+        .sidebar-header p {{
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }}
+        
+        .sidebar-content {{
+            padding: 25px;
+            flex: 1;
+        }}
+        
+        .filter-section {{
+            margin-bottom: 30px;
+        }}
+        
+        .filter-section h3 {{
+            font-size: 16px;
+            margin: 0 0 15px 0;
             font-weight: 600;
-            color: #1e3a8a;
-            border-bottom: 2px solid #3b82f6;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
             padding-bottom: 8px;
         }}
         
-        .filter-panel label {{ 
+        .filter-group {{
+            margin-bottom: 20px;
+        }}
+        
+        .filter-group label {{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }}
+        
+        .filter-group input[type="text"],
+        .filter-group input[type="number"],
+        .filter-group select {{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+        }}
+        
+        .filter-group input[type="text"]::placeholder {{
+            color: rgba(255,255,255,0.6);
+        }}
+        
+        .filter-group input[type="text"]:focus,
+        .filter-group input[type="number"]:focus,
+        .filter-group select:focus {{
+            outline: none;
+            background: rgba(255,255,255,0.25);
+        }}
+        
+        .checkbox-list {{
+            max-height: 250px;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }}
+        
+        .checkbox-list label {{
             display: flex;
             align-items: center;
-            padding: 8px 4px;
+            padding: 6px 8px;
             cursor: pointer;
-            font-size: 14px;
             border-radius: 6px;
             transition: background 0.2s ease;
-            color: #374151;
+            font-size: 13px;
         }}
         
-        .filter-panel label:hover {{
-            background: rgba(59, 130, 246, 0.1);
+        .checkbox-list label:hover {{
+            background: rgba(255,255,255,0.1);
         }}
         
-        .filter-panel input[type="checkbox"] {{ 
+        .checkbox-list input[type="checkbox"] {{
             margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }}
+        
+        .action-buttons {{
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }}
+        
+        .btn {{
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }}
+        
+        .btn-primary {{
+            background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+            color: white;
+            border: none;
+        }}
+        
+        .btn-primary:hover {{
+            background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }}
+        
+        .btn-secondary {{
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }}
+        
+        .btn-secondary:hover {{
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }}
+        
+        /* Altitude Slider */
+        .slider-container {{
+            margin-top: 10px;
+        }}
+        
+        .slider-values {{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+            opacity: 0.9;
+        }}
+        
+        input[type="range"] {{
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+            margin: 10px 0;
+        }}
+        
+        input[type="range"]::-webkit-slider-thumb {{
+            -webkit-appearance: none;
+            appearance: none;
             width: 18px;
             height: 18px;
+            border-radius: 50%;
+            background: #06b6d4;
             cursor: pointer;
-            accent-color: #3b82f6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
         }}
         
-        .stats {{ 
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid #e5e7eb;
-            font-size: 13px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 12px;
+        input[type="range"]::-webkit-slider-thumb:hover {{
+            background: #0ea5e9;
+            transform: scale(1.2);
+        }}
+        
+        input[type="range"]::-moz-range-thumb {{
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #06b6d4;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }}
+        
+        input[type="range"]::-moz-range-thumb:hover {{
+            background: #0ea5e9;
+            transform: scale(1.2);
+        }}
+        
+        #map {{ 
+            flex: 1;
+            height: 100vh;
+            position: relative;
+        }}
+        
+        .stats-display {{
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
             border-radius: 8px;
-            font-weight: 500;
-            color: #1e3a8a;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
         }}
         
-        .legend {{ 
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid #e5e7eb;
-            font-size: 13px;
+        .stats-display .number {{
+            font-size: 32px;
+            display: block;
+            margin-bottom: 5px;
+        }}
+        
+        .legend {{
+            margin-top: 20px;
         }}
         
         .legend h4 {{
-            margin: 0 0 10px 0;
             font-size: 14px;
+            margin: 0 0 12px 0;
             font-weight: 600;
-            color: #374151;
+            opacity: 0.9;
         }}
         
-        .legend-item {{ 
-            margin: 8px 0;
+        .legend-item {{
             display: flex;
             align-items: center;
-            font-weight: 500;
-            color: #4b5563;
+            margin: 8px 0;
+            font-size: 13px;
         }}
         
-        .legend-color {{ 
-            display: inline-block;
-            width: 16px;
-            height: 16px;
+        .legend-color {{
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             margin-right: 10px;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
         }}
         
         /* Custom Leaflet Popup Styling */
@@ -264,22 +424,26 @@ def create_simple_map():
         }}
         
         /* Scrollbar Styling */
-        .filter-panel::-webkit-scrollbar {{
+        .sidebar::-webkit-scrollbar,
+        .checkbox-list::-webkit-scrollbar {{
             width: 8px;
         }}
         
-        .filter-panel::-webkit-scrollbar-track {{
-            background: rgba(0,0,0,0.05);
+        .sidebar::-webkit-scrollbar-track,
+        .checkbox-list::-webkit-scrollbar-track {{
+            background: rgba(0,0,0,0.2);
             border-radius: 4px;
         }}
         
-        .filter-panel::-webkit-scrollbar-thumb {{
-            background: #3b82f6;
+        .sidebar::-webkit-scrollbar-thumb,
+        .checkbox-list::-webkit-scrollbar-thumb {{
+            background: rgba(255,255,255,0.3);
             border-radius: 4px;
         }}
         
-        .filter-panel::-webkit-scrollbar-thumb:hover {{
-            background: #2563eb;
+        .sidebar::-webkit-scrollbar-thumb:hover,
+        .checkbox-list::-webkit-scrollbar-thumb:hover {{
+            background: rgba(255,255,255,0.5);
         }}
         
         /* Toggle Button for Mobile */
@@ -303,30 +467,110 @@ def create_simple_map():
             transform: scale(1.05);
         }}
         
+        @media (max-width: 1024px) {{
+            .sidebar {{
+                width: 300px;
+            }}
+        }}
+        
         @media (max-width: 768px) {{
-            .filter-panel {{
-                max-width: 90%;
-                right: 5%;
+            body {{
+                flex-direction: column;
+            }}
+            .sidebar {{
+                width: 100%;
+                height: auto;
+                max-height: 40vh;
+            }}
+            #map {{
+                height: 60vh;
             }}
         }}
     </style>
 </head>
 <body>
-    <div id="map"></div>
-    <div class="filter-panel">
-        <h3>Filter by Country</h3>
-        <label><input type="checkbox" id="filter-all" checked> All Countries</label>
-        <div id="country-filters"></div>
-        <div class="stats">
-            <div id="stats-display"></div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>🏔️ Mountain Huts Explorer</h1>
+            <p>Discover and explore mountain huts across the Alps and beyond. Filter by location, capacity, and more.</p>
         </div>
-        <div class="legend">
-            <h4>📍 Data Sources</h4>
-            <div class="legend-item"><span class="legend-color" style="background: blue;"></span> Boudy.info</div>
-            <div class="legend-item"><span class="legend-color" style="background: red;"></span> Mountain-huts.net</div>
-            <div class="legend-item"><span class="legend-color" style="background: green;"></span> Mountainhuts.info</div>
+        <div class="sidebar-content">
+            <!-- Search Filter -->
+            <div class="filter-section">
+                <h3>🔍 Search</h3>
+                <div class="filter-group">
+                    <label for="search-input">Hut Name</label>
+                    <input type="text" id="search-input" placeholder="Search by name...">
+                </div>
+            </div>
+            
+            <!-- Country Filter -->
+            <div class="filter-section">
+                <h3>🌍 Countries</h3>
+                <div class="filter-group">
+                    <label><input type="checkbox" id="filter-all" checked> All Countries</label>
+                </div>
+                <div class="checkbox-list" id="country-filters"></div>
+            </div>
+            
+            <!-- Altitude Filter -->
+            <div class="filter-section">
+                <h3>⛰️ Altitude</h3>
+                <div class="filter-group">
+                    <label>Minimum Altitude (m)</label>
+                    <div class="slider-container">
+                        <div class="slider-values">
+                            <span>0 m</span>
+                            <span id="min-altitude-value">0 m</span>
+                        </div>
+                        <input type="range" id="min-altitude" min="0" max="4000" value="0" step="100">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Maximum Altitude (m)</label>
+                    <div class="slider-container">
+                        <div class="slider-values">
+                            <span id="max-altitude-value">4000 m</span>
+                            <span>4000 m</span>
+                        </div>
+                        <input type="range" id="max-altitude" min="0" max="4000" value="4000" step="100">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Capacity Filter -->
+            <div class="filter-section">
+                <h3>🛏️ Capacity</h3>
+                <div class="filter-group">
+                    <label for="min-capacity">Minimum Beds</label>
+                    <input type="number" id="min-capacity" placeholder="1">
+                </div>
+            </div>
+            
+            <!-- Data Source Filter -->
+            <div class="filter-section">
+                <h3>📍 Data Sources</h3>
+                <div class="filter-group">
+                    <label><input type="checkbox" class="source-filter" value="boudy.info" checked> <span class="legend-color" style="background: #3b82f6;"></span> Boudy.info</label>
+                    <label><input type="checkbox" class="source-filter" value="mountain-huts.net" checked> <span class="legend-color" style="background: red;"></span> Mountain-huts.net</label>
+                    <label><input type="checkbox" class="source-filter" value="mountainhuts.info" checked> <span class="legend-color" style="background: green;"></span> Mountainhuts.info</label>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="reset-filters">🔄 Reset All</button>
+                <button class="btn btn-primary" id="export-kmz">📥 Export to KMZ</button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-display">
+                <span class="number" id="visible-count">0</span>
+                <div>huts visible</div>
+            </div>
         </div>
     </div>
+    <div id="map"></div>
     <script>
         // Initialize map centered on Alps
         var map = L.map('map', {{
@@ -391,6 +635,68 @@ def create_simple_map():
             label.appendChild(document.createTextNode(' ' + country + ' (' + countries[country] + ')'));
             filterDiv.appendChild(label);
         }});
+        
+        // Function to generate KML content
+        function generateKML(visibleHuts) {{
+            var kml = '<?xml version="1.0" encoding="UTF-8"?>\\n';
+            kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\\n';
+            kml += '<Document>\\n';
+            kml += '<name>Mountain Huts</name>\\n';
+            kml += '<description>Exported mountain huts from Lost in the Alps</description>\\n';
+            
+            // Add styles for different sources
+            kml += '<Style id="boudy"><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon></IconStyle></Style>\\n';
+            kml += '<Style id="mountain-huts"><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>\\n';
+            kml += '<Style id="mountainhuts"><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>\\n';
+            
+            visibleHuts.forEach(function(hut) {{
+                var styleId = hut.source.replace('.', '-').replace(' ', '-');
+                kml += '<Placemark>\\n';
+                kml += '<name>' + hut.name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</name>\\n';
+                kml += '<styleUrl>#' + styleId + '</styleUrl>\\n';
+                kml += '<description><![CDATA[';
+                if (hut.altitude && hut.altitude !== 'N/A') kml += '<b>Altitude:</b> ' + hut.altitude + ' m<br/>';
+                if (hut.country && hut.country !== 'N/A') kml += '<b>Country:</b> ' + hut.country + '<br/>';
+                if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') kml += '<b>Capacity:</b> ' + hut.capacity + '<br/>';
+                if (hut.website && hut.website !== 'N/A' && hut.website !== '') kml += '<b>Website:</b> <a href="http://' + hut.website + '">' + hut.website + '</a><br/>';
+                kml += '<b>Source:</b> ' + hut.source;
+                kml += ']]></description>\\n';
+                kml += '<Point><coordinates>' + hut.lon + ',' + hut.lat + ',0</coordinates></Point>\\n';
+                kml += '</Placemark>\\n';
+            }});
+            
+            kml += '</Document>\\n';
+            kml += '</kml>';
+            return kml;
+        }}
+        
+        // Export to KMZ function
+        function exportToKMZ() {{
+            var visibleHuts = [];
+            markers.forEach(function(marker) {{
+                if (map.hasLayer(marker)) {{
+                    visibleHuts.push(marker.hutData);
+                }}
+            }});
+            
+            if (visibleHuts.length === 0) {{
+                alert('No huts to export! Please adjust your filters.');
+                return;
+            }}
+            
+            var kml = generateKML(visibleHuts);
+            var blob = new Blob([kml], {{ type: 'application/vnd.google-earth.kml+xml' }});
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'mountain_huts_' + visibleHuts.length + '.kml';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Exported ' + visibleHuts.length + ' huts to KML file!\\n\\nNote: KML format is used (KMZ is KML + ZIP). You can convert to KMZ using Google Earth.');
+        }}
         
         // Store markers
         var markers = [];
@@ -516,23 +822,72 @@ def create_simple_map():
         // Update stats
         function updateStats() {{
             var visible = markers.filter(function(m) {{ return map.hasLayer(m); }}).length;
-            document.getElementById('stats-display').innerHTML = 
-                '<b>Showing: ' + visible + ' of ' + huts.length + ' huts</b>';
+            document.getElementById('visible-count').textContent = visible;
         }}
         
-        // Apply filter
-        function applyFilter() {{
+        // Apply all filters
+        function applyAllFilters() {{
+            var searchText = document.getElementById('search-input').value.toLowerCase();
+            var minAltitude = parseInt(document.getElementById('min-altitude').value) || 0;
+            var maxAltitude = parseInt(document.getElementById('max-altitude').value) || 999999;
+            var minCapacity = parseInt(document.getElementById('min-capacity').value) || 0;
+            
+            // Get checked countries
             var checkedCountries = [];
-            var checkboxes = document.querySelectorAll('.country-filter');
-            checkboxes.forEach(function(cb) {{
+            var countryCheckboxes = document.querySelectorAll('.country-filter');
+            countryCheckboxes.forEach(function(cb) {{
                 if (cb.checked) {{
                     checkedCountries.push(cb.dataset.country);
                 }}
             }});
             
+            // Get checked sources
+            var checkedSources = [];
+            var sourceCheckboxes = document.querySelectorAll('.source-filter');
+            sourceCheckboxes.forEach(function(cb) {{
+                if (cb.checked) {{
+                    checkedSources.push(cb.value);
+                }}
+            }});
+            
+            // Filter markers
             markers.forEach(function(marker) {{
-                var country = marker.hutData.country;
-                if (country === 'N/A' || checkedCountries.length === 0 || checkedCountries.indexOf(country) !== -1) {{
+                var hut = marker.hutData;
+                var show = true;
+                
+                // Search filter
+                if (searchText && hut.name.toLowerCase().indexOf(searchText) === -1) {{
+                    show = false;
+                }}
+                
+                // Country filter
+                if (checkedCountries.length > 0) {{
+                    if (hut.country === 'N/A' || checkedCountries.indexOf(hut.country) === -1) {{
+                        show = false;
+                    }}
+                }}
+                
+                // Source filter
+                if (checkedSources.length > 0 && checkedSources.indexOf(hut.source) === -1) {{
+                    show = false;
+                }}
+                
+                // Altitude filter
+                var altitude = parseInt(hut.altitude);
+                if (!isNaN(altitude)) {{
+                    if (altitude < minAltitude || altitude > maxAltitude) {{
+                        show = false;
+                    }}
+                }}
+                
+                // Capacity filter
+                var capacity = parseInt(hut.capacity);
+                if (!isNaN(capacity) && capacity < minCapacity) {{
+                    show = false;
+                }}
+                
+                // Apply visibility
+                if (show) {{
                     if (!map.hasLayer(marker)) marker.addTo(map);
                 }} else {{
                     if (map.hasLayer(marker)) map.removeLayer(marker);
@@ -542,26 +897,85 @@ def create_simple_map():
             updateStats();
         }}
         
+        // Reset all filters
+        function resetAllFilters() {{
+            document.getElementById('search-input').value = '';
+            document.getElementById('min-altitude').value = 0;
+            document.getElementById('max-altitude').value = 4000;
+            document.getElementById('min-altitude-value').textContent = '0 m';
+            document.getElementById('max-altitude-value').textContent = '4000 m';
+            document.getElementById('min-capacity').value = '';
+            document.getElementById('filter-all').checked = true;
+            
+            document.querySelectorAll('.country-filter').forEach(function(cb) {{
+                cb.checked = true;
+            }});
+            
+            document.querySelectorAll('.source-filter').forEach(function(cb) {{
+                cb.checked = true;
+            }});
+            
+            applyAllFilters();
+        }}
+        
+        // Event Listeners
+        
         // All Countries checkbox
         document.getElementById('filter-all').addEventListener('change', function() {{
             var checkboxes = document.querySelectorAll('.country-filter');
             checkboxes.forEach(function(cb) {{
                 cb.checked = this.checked;
             }}, this);
-            applyFilter();
+            applyAllFilters();
         }});
         
-        // Individual checkboxes
+        // Individual country checkboxes
         document.querySelectorAll('.country-filter').forEach(function(cb) {{
             cb.addEventListener('change', function() {{
                 var allChecked = Array.from(document.querySelectorAll('.country-filter')).every(function(c) {{
                     return c.checked;
                 }});
                 document.getElementById('filter-all').checked = allChecked;
-                applyFilter();
+                applyAllFilters();
             }});
         }});
         
+        // Source filter checkboxes
+        document.querySelectorAll('.source-filter').forEach(function(cb) {{
+            cb.addEventListener('change', applyAllFilters);
+        }});
+        
+        // Altitude sliders
+        document.getElementById('min-altitude').addEventListener('input', function() {{
+            document.getElementById('min-altitude-value').textContent = this.value + ' m';
+            applyAllFilters();
+        }});
+        
+        document.getElementById('max-altitude').addEventListener('input', function() {{
+            document.getElementById('max-altitude-value').textContent = this.value + ' m';
+            applyAllFilters();
+        }});
+        
+        // Capacity filter
+        document.getElementById('min-capacity').addEventListener('input', function() {{
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(applyAllFilters, 300);
+        }});
+        
+        // Reset filters button
+        document.getElementById('reset-filters').addEventListener('click', resetAllFilters);
+        
+        // Export KMZ button
+        document.getElementById('export-kmz').addEventListener('click', exportToKMZ);
+        
+        // Search input with debounce
+        var searchTimeout;
+        document.getElementById('search-input').addEventListener('input', function() {{
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(applyAllFilters, 500);
+        }});
+        
+        // Initial stats
         updateStats();
         console.log('Map ready with ' + markers.length + ' markers!');
     </script>

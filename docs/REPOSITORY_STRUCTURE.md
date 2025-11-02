@@ -24,7 +24,9 @@ lostinthealps/
 │   ├── check_stats.py         # Overall database statistics
 │   ├── create_ultra_simple_map.py   # Generate interactive HTML map
 │   ├── export_to_json.py      # Export database to JSON format
-│   └── query_database.py      # Interactive database query tool
+│   ├── query_database.py      # Interactive database query tool
+│   ├── maintenance/           # Diagnostics, tests, and one-off fix scripts
+│   └── migrations/            # Schema migration helpers
 ├── .gitignore                  # Git ignore rules
 ├── database.py                 # Database interface layer
 ├── mountain_huts_map.html      # Interactive map (generated, 1.27 MB)
@@ -112,5 +114,5 @@ python tools/assign_countries.py --force
 ## Cleanup Policy
 
 - **Keep:** Working scrapers, useful tools, documentation, generated map
-- **Remove:** One-time migration scripts, test files, old debug HTML
+- **Archive:** One-time migration and fix scripts now live under `tools/migrations/` and `tools/maintenance/`
 - **Gitignore:** .venv, **pycache**, \*.db (except in data/), debug files
