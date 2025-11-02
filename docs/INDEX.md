@@ -2,51 +2,121 @@
 
 Welcome to the Lost in the Alps documentation!
 
-## 📚 Documentation Files
+## 📚 Essential Documentation
 
-### Getting Started
+### Getting Started (Start Here!)
 
-- **[README.md](README.md)** - Project overview (in root folder)
-- **[QUICK_START.md](QUICK_START.md)** - Step-by-step getting started guide
+- **[../README.md](../README.md)** - Main project README with quick start guide
+  - Overview and current statistics
+  - Quick start commands
+  - Data sources overview
+  - Database schema
+  - Git setup guide
 
-### System Documentation
+### Core Documentation
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System design and architecture details
-- **[DATABASE_SUMMARY.md](DATABASE_SUMMARY.md)** - Complete database overview and statistics
-- **[MULTI_SCRAPER_README.md](MULTI_SCRAPER_README.md)** - Multi-scraper system documentation
+- **[SCRAPERS.md](SCRAPERS.md)** - Comprehensive scraper documentation
+  - How each scraper works
+  - Data formats and limitations
+  - Adding new scrapers
+  - Best practices
+
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System design and architecture
+  - Component overview
+  - Design patterns
+  - Extension points
+
+- **[DATABASE_SUMMARY.md](DATABASE_SUMMARY.md)** - Database schema and statistics
+  - Table structures
+  - Field descriptions
+  - Current statistics
+
+### Git & Version Control
+
+- **[GIT_SETUP_GUIDE.md](GIT_SETUP_GUIDE.md)** - Complete Git setup instructions
+- **[GIT_QUICK_REFERENCE.md](GIT_QUICK_REFERENCE.md)** - Common Git commands
 
 ### Project History
 
-- **[REFACTORING_SUCCESS.md](REFACTORING_SUCCESS.md)** - Refactoring documentation
-- **[SUCCESS_SUMMARY.md](SUCCESS_SUMMARY.md)** - Initial implementation summary
+- **[CHANGELOG.md](../CHANGELOG.md)** - Complete change history and releases
+- **[DATA_ENRICHMENT_SUMMARY.md](DATA_ENRICHMENT_SUMMARY.md)** - Data enhancement details
+- **[REFUGES_INFO_INTEGRATION.md](REFUGES_INFO_INTEGRATION.md)** - refuges.info integration docs
+- **[WEBSITE_ENHANCEMENT_SUMMARY.md](WEBSITE_ENHANCEMENT_SUMMARY.md)** - Map website improvements
 
-## 🎯 Quick Links
+## 🎯 Quick Navigation
 
-### For Users
+### I Want To...
 
-- **How do I get started?** → See `QUICK_START.md`
-- **What data is available?** → See `DATABASE_SUMMARY.md`
-- **How do I query the database?** → Run `python tools/query_database.py`
+#### Use the System
+- **Get started quickly** → See main [README.md](../README.md) Quick Start section
+- **View statistics** → Run `python tools/check_stats.py`
+- **Query the database** → Run `python tools/query_database.py`
+- **Generate the map** → Run `python tools/create_ultra_simple_map.py`
 
-### For Developers
+#### Develop
+- **Add a new scraper** → See [SCRAPERS.md](SCRAPERS.md) "Adding a New Scraper" section
+- **Understand the architecture** → See [ARCHITECTURE.md](ARCHITECTURE.md)
+- **Modify the database** → See [DATABASE_SUMMARY.md](DATABASE_SUMMARY.md)
+- **Use Git** → See [GIT_SETUP_GUIDE.md](GIT_SETUP_GUIDE.md)
 
-- **How is the system architected?** → See `ARCHITECTURE.md`
-- **How do I add a new scraper?** → See `MULTI_SCRAPER_README.md`
-- **Where are the scrapers?** → In the `scrapers/` folder
-- **Where is the core code?** → `database.py` and `scrapers/base_scraper.py`
+#### Understand the Data
+- **Data sources** → See main [README.md](../README.md) "Data Sources" section
+- **Database schema** → See [DATABASE_SUMMARY.md](DATABASE_SUMMARY.md)
+- **Scraper details** → See [SCRAPERS.md](SCRAPERS.md)
 
-## 📁 Project Structure Overview
+## 📁 Project Structure
 
 ```
 lostinthealps/
-├── scrapers/          # All scraper modules
-├── tools/             # Utility scripts
-├── data/              # Database files
-├── docs/              # Documentation (you are here)
-├── debug/             # Debug files and tools
-├── database.py        # Core database layer
-└── run_all_scrapers.py # Main entry point
+├── scrapers/                      # Scraper modules
+│   ├── base_scraper.py           # Abstract base class
+│   ├── scraper_boudy_info.py     # Boudy.info (889 huts)
+│   ├── scraper_mountain_huts_net.py # Mountain-huts.net (660 huts)
+│   ├── scraper_mountainhuts_info.py # Mountainhuts.info (1,343 huts)
+│   ├── scraper_refuges_info_pages.py # Refuges.info (54 huts)
+│   └── scraper_template.py       # Template for new scrapers
+│
+├── tools/                         # Utility scripts
+│   ├── create_ultra_simple_map.py # Generate interactive map
+│   ├── check_stats.py            # View statistics
+│   ├── query_database.py         # Query tool
+│   ├── assign_countries.py       # Geocoding
+│   └── migrations/               # Database migrations
+│
+├── data/                          # Database storage
+│   └── mountain_huts.db          # SQLite database (2,946 huts)
+│
+├── docs/                          # Documentation (you are here)
+│   ├── INDEX.md                  # This file
+│   ├── SCRAPERS.md               # Scraper documentation
+│   ├── ARCHITECTURE.md           # System architecture
+│   ├── DATABASE_SUMMARY.md       # Database docs
+│   └── GIT_SETUP_GUIDE.md        # Git guide
+│
+├── database.py                    # Database abstraction layer
+├── logger_config.py              # Logging configuration
+├── run_all_scrapers.py           # Master scraper runner
+├── mountain_huts_map.html        # Generated interactive map
+├── requirements.txt              # Python dependencies
+├── CHANGELOG.md                  # Change history
+└── README.md                     # Main README (START HERE)
 ```
+
+## 📝 Documentation Updates
+
+Last updated: 2024 (after refuges.info integration, security fixes, hut_type migration)
+
+### Recent Changes
+- ✅ Added SCRAPERS.md with comprehensive scraper documentation
+- ✅ Created CHANGELOG.md for change tracking
+- ✅ Updated README with latest statistics (2,946 huts, 4 sources)
+- ✅ Consolidated duplicate documentation
+
+### Deprecated Files
+The following files are kept for historical reference but are superseded by newer docs:
+- `QUICK_START.md` → See main README.md instead
+- `MULTI_SCRAPER_README.md` → See SCRAPERS.md instead
+- `README.md` (in docs/) → Outdated, see main README.md
 
 ## 🔧 Common Tasks
 

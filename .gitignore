@@ -34,6 +34,7 @@ desktop.ini
 
 # Logs
 *.log
+logs/
 
 # Flask
 flask_session/
@@ -48,6 +49,12 @@ instance/
 # Exported data
 huts_data.json
 *.json.bak
+
+# Generated files (large, can be regenerated)
+mountain_huts_map.html
+
+# Exploration scripts (moved to debug/)
+explore_*.py
 
 # Test/migration scripts (already run)
 tools/add_owner_manager_columns.py

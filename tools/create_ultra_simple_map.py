@@ -22,7 +22,7 @@ def create_simple_map():
     
     # Get all huts with coordinates
     cursor = conn.execute("""
-        SELECT name, latitude, longitude, altitude, country, type_description, website, source,
+        SELECT name, latitude, longitude, altitude, country, hut_type, website, source,
                owner, manager, phone, email, opening_hours, description,
                capacity, capacity_max, comments, water_source, best_time_to_visit, access, posted_by
         FROM mountain_huts
@@ -681,17 +681,25 @@ def create_simple_map():
             kml += '<Style id="mountain-huts"><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>\\n';
             kml += '<Style id="mountainhuts"><IconStyle><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle></Style>\\n';
             
+            // Helper function to escape XML entities
+            function escapeXml(text) {{
+                return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+            }}
+            
             visibleHuts.forEach(function(hut) {{
                 var styleId = hut.source.replace('.', '-').replace(' ', '-');
                 kml += '<Placemark>\\n';
-                kml += '<name>' + hut.name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</name>\\n';
+                kml += '<name>' + escapeXml(hut.name) + '</name>\\n';
                 kml += '<styleUrl>#' + styleId + '</styleUrl>\\n';
                 kml += '<description><![CDATA[';
-                if (hut.altitude && hut.altitude !== 'N/A') kml += '<b>Altitude:</b> ' + hut.altitude + ' m<br/>';
-                if (hut.country && hut.country !== 'N/A') kml += '<b>Country:</b> ' + hut.country + '<br/>';
-                if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') kml += '<b>Capacity:</b> ' + hut.capacity + '<br/>';
-                if (hut.website && hut.website !== 'N/A' && hut.website !== '') kml += '<b>Website:</b> <a href="http://' + hut.website + '">' + hut.website + '</a><br/>';
-                kml += '<b>Source:</b> ' + hut.source;
+                if (hut.altitude && hut.altitude !== 'N/A') kml += '<b>Altitude:</b> ' + escapeXml(String(hut.altitude)) + ' m<br/>';
+                if (hut.country && hut.country !== 'N/A') kml += '<b>Country:</b> ' + escapeXml(hut.country) + '<br/>';
+                if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') kml += '<b>Capacity:</b> ' + escapeXml(String(hut.capacity)) + '<br/>';
+                if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
+                    var kmlWebUrl = hut.website.startsWith('http') ? hut.website : 'http://' + hut.website;
+                    kml += '<b>Website:</b> <a href="' + escapeXml(kmlWebUrl) + '">' + escapeXml(hut.website) + '</a><br/>';
+                }}
+                kml += '<b>Source:</b> ' + escapeXml(hut.source);
                 kml += ']]></description>\\n';
                 kml += '<Point><coordinates>' + hut.lon + ',' + hut.lat + ',0</coordinates></Point>\\n';
                 kml += '</Placemark>\\n';
@@ -745,88 +753,96 @@ def create_simple_map():
         
         map.addLayer(markerCluster);
         
+        // HTML escape function to prevent XSS
+        function escapeHtml(text) {{
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }}
+        
         // Add markers
         huts.forEach(function(hut) {{
             // Build popup content safely
             var popupParts = [];
             popupParts.push('<div style="max-width: 250px;">');
-            popupParts.push('<b>' + hut.name + '</b>');
+            popupParts.push('<b>' + escapeHtml(hut.name) + '</b>');
             
             if (hut.altitude && hut.altitude !== 'N/A') {{
-                popupParts.push('<div>🏔️ Altitude: ' + hut.altitude + ' m</div>');
+                popupParts.push('<div>🏔️ Altitude: ' + escapeHtml(String(hut.altitude)) + ' m</div>');
             }}
             
             if (hut.country && hut.country !== 'N/A') {{
-                popupParts.push('<div>🌍 Country: ' + hut.country + '</div>');
+                popupParts.push('<div>🌍 Country: ' + escapeHtml(hut.country) + '</div>');
             }}
             
             if (hut.type && hut.type !== 'N/A') {{
-                popupParts.push('<div>🏠 Type: ' + hut.type + '</div>');
+                popupParts.push('<div>🏠 Type: ' + escapeHtml(hut.type) + '</div>');
             }}
             
             // Capacity information
             if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {{
-                var capacityText = '🛏️ Capacity: ' + hut.capacity;
+                var capacityText = '🛏️ Capacity: ' + escapeHtml(String(hut.capacity));
                 if (hut.capacity_max && hut.capacity_max !== 'N/A' && hut.capacity_max !== '') {{
-                    capacityText += ' (max: ' + hut.capacity_max + ')';
+                    capacityText += ' (max: ' + escapeHtml(String(hut.capacity_max)) + ')';
                 }}
                 popupParts.push('<div>' + capacityText + '</div>');
             }}
             
             // Water source
             if (hut.water_source && hut.water_source !== 'N/A' && hut.water_source !== '') {{
-                popupParts.push('<div>💧 Water: ' + hut.water_source + '</div>');
+                popupParts.push('<div>💧 Water: ' + escapeHtml(hut.water_source) + '</div>');
             }}
             
             // Best time to visit
             if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {{
-                popupParts.push('<div>📅 Best time: ' + hut.best_time + '</div>');
+                popupParts.push('<div>📅 Best time: ' + escapeHtml(hut.best_time) + '</div>');
             }}
             
             // Access
             if (hut.access && hut.access !== 'N/A' && hut.access !== '') {{
-                popupParts.push('<div>🥾 Access: ' + hut.access + '</div>');
+                popupParts.push('<div>🥾 Access: ' + escapeHtml(hut.access) + '</div>');
             }}
             
             if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
-                popupParts.push('<div>👤 Owner: ' + hut.owner + '</div>');
+                popupParts.push('<div>👤 Owner: ' + escapeHtml(hut.owner) + '</div>');
             }}
             
             if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
-                popupParts.push('<div>👔 Manager: ' + hut.manager + '</div>');
+                popupParts.push('<div>👔 Manager: ' + escapeHtml(hut.manager) + '</div>');
             }}
             
             if (hut.phone && hut.phone !== 'N/A' && hut.phone !== '') {{
-                popupParts.push('<div>📞 Phone: ' + hut.phone + '</div>');
+                popupParts.push('<div>📞 Phone: ' + escapeHtml(hut.phone) + '</div>');
             }}
             
             if (hut.email && hut.email !== 'N/A' && hut.email !== '') {{
-                popupParts.push('<div>📧 Email: ' + hut.email + '</div>');
+                popupParts.push('<div>📧 Email: ' + escapeHtml(hut.email) + '</div>');
             }}
             
             if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
-                popupParts.push('<div>🌐 <a href="http://' + hut.website + '" target="_blank" rel="noopener">Website</a></div>');
+                var websiteUrl = hut.website.startsWith('http') ? hut.website : 'http://' + hut.website;
+                popupParts.push('<div>🌐 <a href="' + websiteUrl + '" target="_blank" rel="noopener">Website</a></div>');
             }}
             
             if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
-                popupParts.push('<div>🕐 Opening: ' + hut.opening + '</div>');
+                popupParts.push('<div>🕐 Opening: ' + escapeHtml(hut.opening) + '</div>');
             }}
             
             // Comments
             if (hut.comments && hut.comments !== 'N/A' && hut.comments !== '' && hut.comments.length < 250) {{
-                popupParts.push('<div style="margin-top: 8px; padding: 8px; background: #f0f9ff; border-left: 3px solid #3b82f6; font-size: 0.9em; color: #1e3a8a;">💬 ' + hut.comments + '</div>');
+                popupParts.push('<div style="margin-top: 8px; padding: 8px; background: #f0f9ff; border-left: 3px solid #3b82f6; font-size: 0.9em; color: #1e3a8a;">💬 ' + escapeHtml(hut.comments) + '</div>');
             }}
             
             if (hut.description && hut.description !== 'N/A' && hut.description !== '' && hut.description.length < 200) {{
-                popupParts.push('<div style="margin-top: 8px; font-size: 0.9em; color: #666;">' + hut.description + '</div>');
+                popupParts.push('<div style="margin-top: 8px; font-size: 0.9em; color: #666;">' + escapeHtml(hut.description) + '</div>');
             }}
             
             // Posted by
             if (hut.posted_by && hut.posted_by !== 'N/A' && hut.posted_by !== '') {{
-                popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">✍️ Posted by: ' + hut.posted_by + '</div>');
+                popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">✍️ Posted by: ' + escapeHtml(hut.posted_by) + '</div>');
             }}
             
-            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">📍 Source: ' + hut.source + '</div>');
+            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">📍 Source: ' + escapeHtml(hut.source) + '</div>');
             popupParts.push('</div>');
             
             var popup = popupParts.join('');
@@ -931,12 +947,22 @@ def create_simple_map():
                 }}
                 
                 // Apply visibility
+                // Store the desired visibility state on the marker
+                marker._shouldShow = show;
+                
                 if (show) {{
-                    if (!markerCluster.hasLayer(marker)) markerCluster.addLayer(marker);
+                    if (!markerCluster.hasLayer(marker)) {{
+                        markerCluster.addLayer(marker);
+                    }}
                 }} else {{
-                    if (markerCluster.hasLayer(marker)) markerCluster.removeLayer(marker);
+                    if (markerCluster.hasLayer(marker)) {{
+                        markerCluster.removeLayer(marker);
+                    }}
                 }}
             }});
+            
+            // Refresh the cluster to ensure proper display
+            markerCluster.refreshClusters();
             
             updateStats();
         }}

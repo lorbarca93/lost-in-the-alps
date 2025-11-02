@@ -4,17 +4,17 @@ This module handles all database operations and can be used by multiple scrapers
 """
 
 import sqlite3
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple, Any
 from datetime import datetime
 
 
 class MountainHutsDatabase:
     """Centralized database handler for mountain huts from multiple sources"""
     
-    def __init__(self, db_path: str = "data/mountain_huts.db"):
+    def __init__(self, db_path: str = "data/mountain_huts.db") -> None:
         self.db_path = db_path
     
-    def init_database(self):
+    def init_database(self) -> None:
         """Initialize the SQLite database with required tables"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -80,7 +80,7 @@ class MountainHutsDatabase:
         conn.close()
         print(f"Database initialized at {self.db_path}")
     
-    def register_source(self, name: str, url: str, description: str = ""):
+    def register_source(self, name: str, url: str, description: str = "") -> None:
         """Register a scraper source"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -93,7 +93,7 @@ class MountainHutsDatabase:
         conn.commit()
         conn.close()
     
-    def update_source_stats(self, source_name: str):
+    def update_source_stats(self, source_name: str) -> None:
         """Update statistics for a source after scraping"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -132,7 +132,7 @@ class MountainHutsDatabase:
                 # Update existing hut
                 cursor.execute("""
                     UPDATE mountain_huts 
-                    SET name = ?, type = ?, type_description = ?, 
+                    SET name = ?, hut_type = ?, 
                         status = ?, status_description = ?,
                         latitude = ?, longitude = ?, altitude = ?,
                         description = ?, url = ?, country = ?, region = ?,
@@ -145,8 +145,7 @@ class MountainHutsDatabase:
                     WHERE source = ? AND source_id = ?
                 """, (
                     hut.get('name', 'Unknown'),
-                    hut.get('type'),
-                    hut.get('type_description'),
+                    hut.get('type'),  # This will now map to hut_type
                     hut.get('status'),
                     hut.get('status_description'),
                     hut.get('latitude'),
@@ -180,18 +179,17 @@ class MountainHutsDatabase:
                 # Insert new hut
                 cursor.execute("""
                     INSERT INTO mountain_huts 
-                    (source, source_id, name, type, type_description, status, status_description,
+                    (source, source_id, name, hut_type, status, status_description,
                      latitude, longitude, altitude, description, url, country, region,
                      amenities, capacity, phone, email, website, opening_hours, image_url,
                      owner, manager, capacity_max, comments, water_source, 
                      best_time_to_visit, access, posted_by, posted_date, scraped_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     source,
                     hut.get('source_id'),
                     hut.get('name', 'Unknown'),
-                    hut.get('type'),
-                    hut.get('type_description'),
+                    hut.get('type'),  # This will now map to hut_type
                     hut.get('status'),
                     hut.get('status_description'),
                     hut.get('latitude'),
@@ -235,7 +233,7 @@ class MountainHutsDatabase:
         Save multiple huts in a batch
         Returns number of huts saved
         """
-        saved_count = 0
+        saved_count: int = 0
         for hut in huts:
             if self.save_hut(hut, source):
                 saved_count += 1
@@ -245,7 +243,7 @@ class MountainHutsDatabase:
         
         return saved_count
     
-    def get_statistics(self) -> Dict:
+    def get_statistics(self) -> Dict[str, Any]:
         """Get database statistics including sources"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -280,15 +278,15 @@ class MountainHutsDatabase:
             for row in cursor.fetchall()
         ]
         
-        # Count by type
+        # Count by hut type
         cursor.execute("""
-            SELECT type, type_description, COUNT(*) as count 
+            SELECT hut_type, COUNT(*) as count 
             FROM mountain_huts 
-            WHERE type IS NOT NULL
-            GROUP BY type, type_description
+            GROUP BY hut_type
+            ORDER BY count DESC
         """)
         stats['by_type'] = [
-            {'type': row[0], 'description': row[1], 'count': row[2]}
+            {'type': row[0] or 'Unknown', 'count': row[1]}
             for row in cursor.fetchall()
         ]
         

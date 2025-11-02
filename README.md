@@ -4,8 +4,8 @@ A modular scraper system to collect comprehensive mountain hut data from multipl
 
 ## 📊 Current Status
 
-- **Total Huts**: 2,892
-- **Data Sources**: 3 active (boudy.info, mountain-huts.net, mountainhuts.info)
+- **Total Huts**: 2,946
+- **Data Sources**: 4 active (boudy.info, mountain-huts.net, mountainhuts.info, refuges.info)
 - **Countries Covered**: 19+ (Austria, Italy, Slovenia, Croatia, Bulgaria, Poland, Romania, Slovakia, Greece, Bosnia, Serbia, North Macedonia, Montenegro, Germany, Czech Republic, Switzerland, France, Hungary, Liechtenstein)
 - **Enriched Data**: 471 with owner info, 539 with manager info, 663 with phone, 620 with email
 
@@ -47,14 +47,14 @@ python tools/query_database.py
 ```
 lostinthealps/
 ├── data/                           # Database storage
-│   └── mountain_huts.db           # SQLite database (2,892 huts)
+│   └── mountain_huts.db           # SQLite database (2,946 huts)
 │
 ├── scrapers/                       # Web scraping modules
 │   ├── base_scraper.py            # Abstract base class
 │   ├── scraper_boudy_info.py      # Boudy.info scraper (889 huts, Alps)
 │   ├── scraper_mountain_huts_net.py # Mountain-huts.net scraper (660 huts, Balkans)
 │   ├── scraper_mountainhuts_info.py # Mountainhuts.info scraper (1,343 huts, Europe-wide)
-│   ├── scraper_refuges_info.py    # Template for future implementation
+│   ├── scraper_refuges_info_pages.py # Refuges.info page scraper (54 huts, Alps)
 │   └── scraper_template.py        # Template for new scrapers
 │
 ├── tools/                          # Utility scripts
@@ -205,14 +205,27 @@ See the `docs/` folder for detailed documentation:
   - Capacity information
   - Last update dates
 
+### 4. refuges.info
+
+- **Coverage**: Alps region (France, Italy, Switzerland, Austria)
+- **Huts**: 54
+- **Method**: API-based ID discovery + individual page scraping
+- **Data**: **Comprehensive refuge data including:**
+  - Detailed descriptions and remarks
+  - Water availability and access information
+  - Capacity and shelter type
+  - Opening hours and contact info
+  - Altitude and precise coordinates
+
 ## 📊 Database Schema
 
 Key fields in the `mountain_huts` table:
 
 - **Identity**: id, source, source_id, name
 - **Location**: latitude, longitude, altitude, country, region
+- **Type**: hut_type (Mountain hut, Bivouac, Unmanned cabin, Shelter, Unknown)
 - **Contact**: phone, email, website, owner, manager
-- **Details**: description, amenities, capacity, opening_hours
+- **Details**: description, amenities, capacity, opening_hours, water_source, access_info
 - **Metadata**: scraped_at, updated_at
 
 ## 🧭 Version Control with Git

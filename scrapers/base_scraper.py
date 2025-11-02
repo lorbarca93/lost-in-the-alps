@@ -5,7 +5,15 @@ Base scraper class that all website scrapers should inherit from
 from abc import ABC, abstractmethod
 from typing import List, Dict, Optional
 import requests
+import logging
+import sys
+import os
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from database import MountainHutsDatabase
+from logger_config import setup_logger
 
 
 class BaseScraper(ABC):
@@ -17,6 +25,8 @@ class BaseScraper(ABC):
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         })
+        # Set up logger for this scraper
+        self.logger = setup_logger(self.__class__.__name__)
     
     @property
     @abstractmethod
@@ -46,30 +56,34 @@ class BaseScraper(ABC):
     
     def run(self):
         """Main execution workflow"""
-        print(f"Starting {self.source_name} scraper...")
-        print("=" * 60)
+        self.logger.info(f"Starting {self.source_name} scraper...")
+        self.logger.info("=" * 60)
         
         # Initialize database and register source
         self.db.init_database()
         self.db.register_source(self.source_name, self.source_url, self.source_description)
         
         # Run the scraper
-        huts = self.scrape()
-        
-        if not huts:
-            print(f"No huts found from {self.source_name}")
+        try:
+            huts = self.scrape()
+        except Exception as e:
+            self.logger.error(f"Error during scraping: {e}", exc_info=True)
             return
         
-        print(f"\nTotal huts scraped: {len(huts)}")
+        if not huts:
+            self.logger.warning(f"No huts found from {self.source_name}")
+            return
+        
+        self.logger.info(f"Total huts scraped: {len(huts)}")
         
         # Save to database
-        print("Saving to database...")
+        self.logger.info("Saving to database...")
         saved_count = self.db.save_huts_batch(huts, self.source_name)
         
-        print("\n" + "=" * 60)
-        print(f"Scraping completed!")
-        print(f"Saved {saved_count} huts to database")
-        print(f"Source: {self.source_name}")
+        self.logger.info("=" * 60)
+        self.logger.info(f"Scraping completed!")
+        self.logger.info(f"Saved {saved_count} huts to database")
+        self.logger.info(f"Source: {self.source_name}")
     
     def normalize_hut_data(self, hut: Dict) -> Dict:
         """
