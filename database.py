@@ -185,7 +185,7 @@ class MountainHutsDatabase:
                      amenities, capacity, phone, email, website, opening_hours, image_url,
                      owner, manager, capacity_max, comments, water_source, 
                      best_time_to_visit, access, posted_by, posted_date, scraped_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     source,
                     hut.get('source_id'),

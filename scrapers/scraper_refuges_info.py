@@ -1,139 +1,267 @@
 """
-Example scraper for refuges.info
-This is a DEMO showing how to create a new scraper
-(refuges.info would need actual API investigation to implement properly)
+Scraper for refuges.info - Mountain huts across Europe
+
+This scraper uses the refuges.info API to retrieve comprehensive data about
+mountain huts, cabins, and shelters. The site has 8,266+ points with rich data.
+
+Data source: https://www.refuges.info/
+API documentation: https://www.refuges.info/api/doc/
+License: CC By-Sa 2.0
+
+Author: Mountain Huts Europe
 """
 
-from base_scraper import BaseScraper
-from typing import List, Dict
-from bs4 import BeautifulSoup
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import requests
+import json
 import time
+from database import MountainHutsDatabase
 
-
-class RefugesInfoScraper(BaseScraper):
-    """
-    Example scraper for refuges.info
-    NOTE: This is a demonstration template - actual implementation 
-    would require analyzing the website's structure
-    """
-    
-    @property
-    def source_name(self) -> str:
-        return "refuges.info"
-    
-    @property
-    def source_url(self) -> str:
-        return "https://www.refuges.info"
-    
-    @property
-    def source_description(self) -> str:
-        return "Collaborative database of mountain refuges and shelters in the Alps and Pyrenees"
-    
-    def scrape(self) -> List[Dict]:
+class RefugesInfoScraper:
+    def __init__(self):
+        self.base_url = "https://www.refuges.info/api"
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'MountainHutsEurope/1.0 (Educational project)'
+        })
+        self.db = MountainHutsDatabase()
+        
+    def get_all_points(self):
         """
-        Main scraping logic
-        
-        IMPLEMENTATION STEPS (to be done):
-        1. Analyze the website structure
-        2. Find API endpoints or parseable HTML
-        3. Extract hut listings
-        4. Parse individual hut pages
-        5. Convert to standard format
+        Fetch all points from refuges.info API using bbox=world
+        Focus on cabane, refuge, and gite types
         """
+        print("🔄 Fetching all mountain huts from refuges.info API...")
         
-        print("NOTE: This is a DEMO scraper")
-        print("To implement properly, you need to:")
-        print("  1. Visit refuges.info and analyze the structure")
-        print("  2. Find the data source (API, HTML, etc.)")
-        print("  3. Implement the parsing logic below")
-        print()
+        url = f"{self.base_url}/bbox"
+        params = {
+            'bbox': 'world',  # Get all points worldwide
+            'type_points': 'cabane,refuge,gite',  # Only huts, refuges, and gites
+            'nb_points': 'all',  # Get all points
+            'format': 'geojson',
+            'detail': 'complet'  # Get complete information
+        }
         
-        # DEMO: Return empty list
-        # In real implementation, this would scrape actual data
-        huts = []
-        
-        # EXAMPLE IMPLEMENTATION PATTERN:
-        """
         try:
-            # Option 1: If they have an API
-            response = self.session.get(f"{self.source_url}/api/refuges")
+            print(f"📡 Requesting: {url}")
+            print(f"   Parameters: {params}")
+            
+            response = self.session.get(url, params=params, timeout=60)
+            response.raise_for_status()
+            
             data = response.json()
             
-            for item in data['refuges']:
-                hut = {
-                    'source_id': str(item['id']),
-                    'name': item['nom'],
-                    'latitude': item['coord']['lat'],
-                    'longitude': item['coord']['lon'],
-                    'altitude': item.get('altitude'),
-                    'country': item.get('pays'),
-                    'capacity': item.get('places'),
-                    'url': f"{self.source_url}/refuge/{item['id']}"
-                }
-                normalized = self.normalize_hut_data(hut)
-                huts.append(normalized)
-        
+            if 'features' in data:
+                print(f"✅ Retrieved {len(data['features'])} points from API")
+                return data['features']
+            else:
+                print(f"❌ Unexpected response format")
+                return []
+                
         except Exception as e:
-            print(f"Error scraping: {e}")
-        
-        # Option 2: If parsing HTML
-        try:
-            response = self.session.get(f"{self.source_url}/refuges")
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            refuge_elements = soup.find_all('div', class_='refuge-item')
-            
-            for element in refuge_elements:
-                hut = self.parse_refuge_element(element)
-                if hut:
-                    normalized = self.normalize_hut_data(hut)
-                    huts.append(normalized)
-                    
-            time.sleep(0.5)  # Be polite
-        
-        except Exception as e:
-            print(f"Error scraping: {e}")
-        """
-        
-        return huts
+            print(f"❌ Error fetching data: {e}")
+            return []
     
-    def parse_refuge_element(self, element) -> Dict:
+    def parse_point(self, feature):
         """
-        Parse a single refuge HTML element
-        
-        EXAMPLE IMPLEMENTATION:
-        """
+        Parse a GeoJSON feature from refuges.info API
+        Extract all available information
         """
         try:
-            name = element.find('h3', class_='refuge-name').text.strip()
-            link = element.find('a')['href']
+            properties = feature.get('properties', {})
+            geometry = feature.get('geometry', {})
+            coordinates = geometry.get('coordinates', [])
             
-            # Extract coordinates if available
-            coords_text = element.find('span', class_='coords').text
-            lat, lon = coords_text.split(',')
+            if len(coordinates) < 2:
+                return None
+            
+            # Basic information
+            name = properties.get('nom', '').strip()
+            if not name:
+                return None
+            
+            # Coordinates (refuges.info uses [lon, lat] format)
+            longitude = coordinates[0]
+            latitude = coordinates[1]
+            altitude = coordinates[2] if len(coordinates) > 2 else None
+            
+            # Type mapping
+            type_map = {
+                'cabane': 'Cabane non gardée',
+                'refuge': 'Refuge gardé',
+                'gite': 'Gîte d\'étape'
+            }
+            hut_type = type_map.get(properties.get('type', {}).get('valeur', ''), None)
+            
+            # Capacity information
+            capacity = None
+            if properties.get('places'):
+                try:
+                    places = properties['places'].get('valeur')
+                    if places and places != 'NULL':
+                        capacity = int(places)
+                except:
+                    pass
+            
+            # Contact and booking information
+            phone = None
+            if properties.get('telephone'):
+                phone = properties['telephone'].get('valeur', '').strip()
+            
+            website = None
+            if properties.get('site_web'):
+                website = properties['site_web'].get('valeur', '').strip()
+            
+            # Additional details
+            matelas = properties.get('matelas', {}).get('valeur') == '1' if properties.get('matelas') else None
+            couvertures = properties.get('couvertures', {}).get('valeur') == '1' if properties.get('couvertures') else None
+            poele = properties.get('poele', {}).get('valeur') == '1' if properties.get('poele') else None
+            cheminee = properties.get('cheminee', {}).get('valeur') == '1' if properties.get('cheminee') else None
+            bois = properties.get('bois_sur_place', {}).get('valeur') == '1' if properties.get('bois_sur_place') else None
+            eau = properties.get('eau_a_proximite', {}).get('valeur') == '1' if properties.get('eau_a_proximite') else None
+            
+            # Build facilities description
+            facilities = []
+            if matelas:
+                facilities.append("matelas")
+            if couvertures:
+                facilities.append("couvertures")
+            if poele:
+                facilities.append("poêle")
+            if cheminee:
+                facilities.append("cheminée")
+            if bois:
+                facilities.append("bois sur place")
+            if eau:
+                facilities.append("eau à proximité")
+            
+            facilities_str = ", ".join(facilities) if facilities else None
+            
+            # Description/comments
+            description = None
+            if properties.get('description'):
+                desc_text = properties['description'].get('valeur', '').strip()
+                if desc_text and desc_text != 'NULL':
+                    description = desc_text
+            
+            # Access information
+            access = None
+            if properties.get('acces'):
+                access_text = properties['acces'].get('valeur', '').strip()
+                if access_text and access_text != 'NULL':
+                    access = access_text
+            
+            # Combine description and access
+            comments = []
+            if description:
+                comments.append(f"Description: {description}")
+            if access:
+                comments.append(f"Accès: {access}")
+            if facilities_str:
+                comments.append(f"Équipements: {facilities_str}")
+            
+            comments_str = " | ".join(comments) if comments else None
+            
+            # URL to the point on refuges.info
+            point_id = properties.get('id')
+            url = f"https://www.refuges.info/point/{point_id}/" if point_id else None
             
             return {
-                'source_id': link.split('/')[-1],
                 'name': name,
-                'latitude': float(lat),
-                'longitude': float(lon),
-                'url': self.source_url + link
+                'latitude': latitude,
+                'longitude': longitude,
+                'altitude': altitude,
+                'capacity': capacity,
+                'type': hut_type,
+                'phone': phone,
+                'website': website,
+                'comments': comments_str,
+                'url': url,
+                'source': 'refuges.info'
             }
+            
         except Exception as e:
-            print(f"Error parsing element: {e}")
+            print(f"⚠️  Error parsing point: {e}")
             return None
+    
+    def scrape(self):
         """
-        return None
+        Main scraping function
+        """
+        print("=" * 70)
+        print("🏔️  REFUGES.INFO SCRAPER")
+        print("=" * 70)
+        print()
+        
+        # Get all points
+        features = self.get_all_points()
+        
+        if not features:
+            print("❌ No data retrieved. Exiting.")
+            return
+        
+        print(f"\n📊 Processing {len(features)} points...")
+        print()
+        
+        # Parse and insert into database
+        inserted = 0
+        skipped = 0
+        errors = 0
+        
+        for i, feature in enumerate(features, 1):
+            try:
+                # Parse the point
+                hut_data = self.parse_point(feature)
+                
+                if not hut_data:
+                    skipped += 1
+                    continue
+                
+                # Save to database
+                success = self.db.save_hut(hut_data, 'refuges.info')
+                
+                if success:
+                    inserted += 1
+                    if inserted % 100 == 0:
+                        print(f"✅ Processed {inserted} huts...")
+                else:
+                    skipped += 1
+                
+                # Rate limiting - be respectful
+                if i % 100 == 0:
+                    time.sleep(0.5)
+                    
+            except Exception as e:
+                errors += 1
+                print(f"❌ Error processing point {i}: {e}")
+                continue
+        
+        print()
+        print("=" * 70)
+        print("📊 SCRAPING SUMMARY")
+        print("=" * 70)
+        print(f"✅ Successfully inserted: {inserted} huts")
+        print(f"⏭️  Skipped (duplicates/invalid): {skipped}")
+        print(f"❌ Errors: {errors}")
+        print(f"📝 Total processed: {len(features)}")
+        print()
+        
+        # Show database statistics
+        print("=" * 70)
+        print("📊 DATABASE STATISTICS")
+        print("=" * 70)
+        self.db.get_statistics()
+        print()
+        
+        print("✅ Scraping complete!")
+        print()
 
-
-# STEPS TO ACTIVATE THIS SCRAPER:
-# 
-# 1. Visit https://www.refuges.info and analyze the structure
-# 2. Implement the scrape() method with actual logic
-# 3. Test with: python scraper_refuges_info.py
-# 4. Run with all scrapers: python run_all_scrapers.py
-
-
-if __name__ == "__main__":
+def main():
     scraper = RefugesInfoScraper()
-    scraper.run()
+    scraper.scrape()
+
+if __name__ == '__main__':
+    main()
