@@ -5,178 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Discover 2,892+ mountain huts across Europe. Interactive map with advanced filtering and favorites system."
+      content="Discover 2,892+ mountain huts across Europe. Interactive map with advanced filtering."
     />
-    <title>Mountain Huts Europe - Your Guide to European Mountain Refuges</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Mountain Huts Europe - Interactive Map</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        overflow: hidden;
+      }
+
+      .navbar {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 50%,
+          #334155 100%
+        );
+        color: white;
+        padding: 15px 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .logo {
+        font-size: 28px;
+      }
+
+      .map-container {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #64748b;
+        font-size: 18px;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="container">
-        <div class="nav-brand">
-          <span class="logo">🏔️</span>
-          <span class="brand-name">Mountain Huts Europe</span>
-        </div>
-        <div class="nav-links">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="map.html" class="nav-link">Interactive Map</a>
-        </div>
+      <div class="nav-brand">
+        <span class="logo">🏔️</span>
+        <span class="brand-name">Mountain Huts Europe</span>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 class="hero-title">Discover Mountain Huts Across the Alps</h1>
-        <p class="hero-subtitle">
-          Your ultimate guide to exploring thousands of mountain refuges,
-          cabins, and alpine shelters. Plan your next alpine adventure with
-          confidence.
-        </p>
-        <a href="map.html" class="btn-primary"
-          >🗺️ Explore the Interactive Map</a
-        >
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon">🏠</div>
-            <div class="stat-number">2,892+</div>
-            <div class="stat-label">Mountain Huts</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">🗺️</div>
-            <div class="stat-number">8</div>
-            <div class="stat-label">Countries</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">📍</div>
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Geolocated</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">🔄</div>
-            <div class="stat-number">Live</div>
-            <div class="stat-label">Updated Data</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-      <div class="container">
-        <h2 class="section-title">Why Mountain Huts Europe?</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>Comprehensive Coverage</h3>
-            <p>
-              Data from multiple trusted sources including mountainhuts.info,
-              refuges.info, and boudy.info
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Fast & Responsive</h3>
-            <p>
-              Lightning-fast loading times and mobile-optimized design for
-              planning on the go
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🗺️</div>
-            <h3>Interactive Map</h3>
-            <p>
-              Explore huts visually with our interactive map featuring detailed
-              information and locations
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3>Rich Data</h3>
-            <p>
-              Detailed information including coordinates, elevations, contact
-              details, and amenities
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <h3>Easy Discovery</h3>
-            <p>
-              Find the perfect mountain hut for your next alpine adventure with
-              powerful search tools
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3>Multi-Country</h3>
-            <p>
-              Coverage across Austria, Switzerland, France, Italy, Germany,
-              Slovenia, and more
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-      <div class="container">
-        <h2 class="cta-title">Ready to Start Exploring?</h2>
-        <p class="cta-text">
-          Browse our interactive map and discover your next mountain adventure
-        </p>
-        <a href="map.html" class="btn-primary btn-large"
-          >View Interactive Map</a
-        >
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h4>Mountain Huts Europe</h4>
-            <p>
-              A comprehensive database of mountain huts across Europe
-            </p>
-          </div>
-          <div class="footer-section">
-            <h4>Data Sources</h4>
-            <ul>
-              <li>mountainhuts.info</li>
-              <li>refuges.info</li>
-              <li>boudy.info</li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h4>Project</h4>
-            <ul>
-              <li><a href="map.html">Interactive Map</a></li>
-              <li>Open Source</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Mountain Huts Europe. Your guide to mountain refuges across Europe.</p>
-        </div>
-      </div>
-    </footer>
-
-    <script src="js/main.js"></script>
+    <!-- Map Container -->
+    <div class="map-container">
+      <div class="loading">Loading interactive map...</div>
+      <iframe
+        src="../mountain_huts_map.html"
+        title="Mountain Huts Europe - Interactive Map"
+      ></iframe>
+    </div>
   </body>
 </html>
