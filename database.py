@@ -139,6 +139,8 @@ class MountainHutsDatabase:
                         amenities = ?, capacity = ?, phone = ?, email = ?,
                         website = ?, opening_hours = ?, image_url = ?,
                         owner = ?, manager = ?,
+                        capacity_max = ?, comments = ?, water_source = ?,
+                        best_time_to_visit = ?, access = ?, posted_by = ?, posted_date = ?,
                         updated_at = ?
                     WHERE source = ? AND source_id = ?
                 """, (
@@ -163,6 +165,13 @@ class MountainHutsDatabase:
                     hut.get('image_url', ''),
                     hut.get('owner', ''),
                     hut.get('manager', ''),
+                    hut.get('capacity_max'),
+                    hut.get('comments', ''),
+                    hut.get('water_source', ''),
+                    hut.get('best_time_to_visit', ''),
+                    hut.get('access', ''),
+                    hut.get('posted_by', ''),
+                    hut.get('posted_date', ''),
                     datetime.now(),
                     source,
                     hut.get('source_id')
@@ -174,8 +183,9 @@ class MountainHutsDatabase:
                     (source, source_id, name, type, type_description, status, status_description,
                      latitude, longitude, altitude, description, url, country, region,
                      amenities, capacity, phone, email, website, opening_hours, image_url,
-                     owner, manager, scraped_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                     owner, manager, capacity_max, comments, water_source, 
+                     best_time_to_visit, access, posted_by, posted_date, scraped_at, updated_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     source,
                     hut.get('source_id'),
@@ -200,6 +210,13 @@ class MountainHutsDatabase:
                     hut.get('image_url', ''),
                     hut.get('owner', ''),
                     hut.get('manager', ''),
+                    hut.get('capacity_max'),
+                    hut.get('comments', ''),
+                    hut.get('water_source', ''),
+                    hut.get('best_time_to_visit', ''),
+                    hut.get('access', ''),
+                    hut.get('posted_by', ''),
+                    hut.get('posted_date', ''),
                     datetime.now(),
                     datetime.now()
                 ))

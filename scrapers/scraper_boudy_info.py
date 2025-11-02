@@ -200,11 +200,11 @@ class BoudyInfoScraper(BaseScraper):
                         'icon': props.get('icon', '')
                     }
                     
-                    # Extract coordinates (GeoJSON is [lon, lat])
-                    # IMPORTANT: GeoJSON coordinates are [longitude, latitude]
+                    # Extract coordinates
+                    # NOTE: boudy.info uses [latitude, longitude] format (NOT standard GeoJSON!)
                     if len(coords) >= 2:
-                        hut_data['latitude'] = float(coords[1])   # Second value is latitude
-                        hut_data['longitude'] = float(coords[0])  # First value is longitude
+                        hut_data['latitude'] = float(coords[0])   # First value is latitude
+                        hut_data['longitude'] = float(coords[1])  # Second value is longitude
                     
                     # Parse icon to get type and status
                     # Icon format: "2_4_1" means type_subtype_status

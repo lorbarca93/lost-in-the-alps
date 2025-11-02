@@ -23,7 +23,8 @@ def create_simple_map():
     # Get all huts with coordinates
     cursor = conn.execute("""
         SELECT name, latitude, longitude, altitude, country, type_description, website, source,
-               owner, manager, phone, email, opening_hours, description
+               owner, manager, phone, email, opening_hours, description,
+               capacity, capacity_max, comments, water_source, best_time_to_visit, access, posted_by
         FROM mountain_huts
         WHERE latitude IS NOT NULL AND longitude IS NOT NULL
         ORDER BY name
@@ -50,6 +51,13 @@ def create_simple_map():
         email = clean_string(hut[11]) if hut[11] else ""
         opening_hours = clean_string(hut[12]) if hut[12] else ""
         description = clean_string(hut[13]) if hut[13] else ""
+        capacity = clean_string(hut[14]) if hut[14] else ""
+        capacity_max = clean_string(hut[15]) if hut[15] else ""
+        comments = clean_string(hut[16]) if hut[16] else ""
+        water_source = clean_string(hut[17]) if hut[17] else ""
+        best_time = clean_string(hut[18]) if hut[18] else ""
+        access = clean_string(hut[19]) if hut[19] else ""
+        posted_by = clean_string(hut[20]) if hut[20] else ""
         
         # Color by source
         if source == 'boudy.info':
@@ -76,7 +84,14 @@ def create_simple_map():
             'phone': phone,
             'email': email,
             'opening': opening_hours,
-            'description': description
+            'description': description,
+            'capacity': capacity,
+            'capacity_max': capacity_max,
+            'comments': comments,
+            'water_source': water_source,
+            'best_time': best_time,
+            'access': access,
+            'posted_by': posted_by
         })
     
     # Convert to JSON
@@ -399,6 +414,30 @@ def create_simple_map():
                 popupParts.push('<div>🏠 Type: ' + hut.type + '</div>');
             }}
             
+            // Capacity information
+            if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {{
+                var capacityText = '🛏️ Capacity: ' + hut.capacity;
+                if (hut.capacity_max && hut.capacity_max !== 'N/A' && hut.capacity_max !== '') {{
+                    capacityText += ' (max: ' + hut.capacity_max + ')';
+                }}
+                popupParts.push('<div>' + capacityText + '</div>');
+            }}
+            
+            // Water source
+            if (hut.water_source && hut.water_source !== 'N/A' && hut.water_source !== '') {{
+                popupParts.push('<div>💧 Water: ' + hut.water_source + '</div>');
+            }}
+            
+            // Best time to visit
+            if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {{
+                popupParts.push('<div>📅 Best time: ' + hut.best_time + '</div>');
+            }}
+            
+            // Access
+            if (hut.access && hut.access !== 'N/A' && hut.access !== '') {{
+                popupParts.push('<div>🥾 Access: ' + hut.access + '</div>');
+            }}
+            
             if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
                 popupParts.push('<div>👤 Owner: ' + hut.owner + '</div>');
             }}
@@ -423,11 +462,21 @@ def create_simple_map():
                 popupParts.push('<div>🕐 Opening: ' + hut.opening + '</div>');
             }}
             
+            // Comments
+            if (hut.comments && hut.comments !== 'N/A' && hut.comments !== '' && hut.comments.length < 250) {{
+                popupParts.push('<div style="margin-top: 8px; padding: 8px; background: #f0f9ff; border-left: 3px solid #3b82f6; font-size: 0.9em; color: #1e3a8a;">💬 ' + hut.comments + '</div>');
+            }}
+            
             if (hut.description && hut.description !== 'N/A' && hut.description !== '' && hut.description.length < 200) {{
                 popupParts.push('<div style="margin-top: 8px; font-size: 0.9em; color: #666;">' + hut.description + '</div>');
             }}
             
-            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">Source: ' + hut.source + '</div>');
+            // Posted by
+            if (hut.posted_by && hut.posted_by !== 'N/A' && hut.posted_by !== '') {{
+                popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">✍️ Posted by: ' + hut.posted_by + '</div>');
+            }}
+            
+            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">📍 Source: ' + hut.source + '</div>');
             popupParts.push('</div>');
             
             var popup = popupParts.join('');
