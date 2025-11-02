@@ -18,7 +18,61 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 import json
 import time
+import re
 from database import MountainHutsDatabase
+
+# French to English translations for common terms
+TRANSLATIONS = {
+    # Types
+    'cabane': 'Unmanned cabin',
+    'refuge': 'Staffed refuge',
+    'gîte': 'Guesthouse',
+    'bivouac': 'Bivouac',
+    
+    # Equipment/Facilities
+    'matelas': 'mattresses',
+    'couvertures': 'blankets',
+    'poêle': 'stove',
+    'cheminée': 'fireplace',
+    'bois sur place': 'wood on site',
+    'eau à proximité': 'water nearby',
+    
+    # Common phrases
+    'Équipements': 'Equipment',
+    'Accès': 'Access',
+    'Description': 'Description',
+    'places': 'beds',
+    'gardé': 'staffed',
+    'non gardé': 'unstaffed',
+    
+    # Access terms
+    'à pied': 'on foot',
+    'en voiture': 'by car',
+    'téléphérique': 'cable car',
+    'sentier': 'trail',
+    'chemin': 'path',
+    'route': 'road',
+    'parking': 'parking',
+    'heures': 'hours',
+    'minutes': 'minutes',
+    'dénivelé': 'elevation gain',
+    'difficulté': 'difficulty',
+    'facile': 'easy',
+    'moyen': 'moderate',
+    'difficile': 'difficult'
+}
+
+def translate_text(text):
+    """Translate French text to English using simple dictionary replacement"""
+    if not text:
+        return text
+    
+    translated = text
+    for fr, en in TRANSLATIONS.items():
+        # Use word boundaries to avoid partial matches
+        translated = re.sub(r'\b' + re.escape(fr) + r'\b', en, translated, flags=re.IGNORECASE)
+    
+    return translated
 
 class RefugesInfoScraper:
     def __init__(self):
@@ -68,7 +122,7 @@ class RefugesInfoScraper:
     def parse_point(self, feature):
         """
         Parse a GeoJSON feature from refuges.info API
-        Extract all available information
+        Extract all available information and translate to English
         """
         try:
             properties = feature.get('properties', {})
@@ -88,13 +142,23 @@ class RefugesInfoScraper:
             latitude = coordinates[1]
             altitude = coordinates[2] if len(coordinates) > 2 else None
             
-            # Type mapping
+            # Type mapping with English translations
             type_map = {
-                'cabane': 'Cabane non gardée',
-                'refuge': 'Refuge gardé',
-                'gite': 'Gîte d\'étape'
+                'cabane': 'Unmanned cabin',
+                'refuge': 'Staffed refuge',
+                'gite': 'Guesthouse',
+                'bivouac': 'Bivouac shelter'
             }
             hut_type = type_map.get(properties.get('type', {}).get('valeur', ''), None)
+            
+            # Owner/Manager information
+            owner = None
+            if properties.get('createur'):
+                creator_nom = properties['createur'].get('nom')
+                if creator_nom:
+                    creator = str(creator_nom).strip()
+                    if creator and creator != 'NULL':
+                        owner = creator
             
             # Capacity information
             capacity = None
@@ -123,45 +187,54 @@ class RefugesInfoScraper:
             bois = properties.get('bois_sur_place', {}).get('valeur') == '1' if properties.get('bois_sur_place') else None
             eau = properties.get('eau_a_proximite', {}).get('valeur') == '1' if properties.get('eau_a_proximite') else None
             
-            # Build facilities description
+            # Build facilities description (translated to English)
             facilities = []
             if matelas:
-                facilities.append("matelas")
+                facilities.append("mattresses available")
             if couvertures:
-                facilities.append("couvertures")
+                facilities.append("blankets provided")
             if poele:
-                facilities.append("poêle")
+                facilities.append("stove available")
             if cheminee:
-                facilities.append("cheminée")
+                facilities.append("fireplace")
             if bois:
-                facilities.append("bois sur place")
+                facilities.append("wood on site")
             if eau:
-                facilities.append("eau à proximité")
+                facilities.append("water nearby")
             
             facilities_str = ", ".join(facilities) if facilities else None
             
-            # Description/comments
+            # Description/comments (translate to English)
             description = None
             if properties.get('description'):
                 desc_text = properties['description'].get('valeur', '').strip()
                 if desc_text and desc_text != 'NULL':
-                    description = desc_text
+                    description = translate_text(desc_text)
             
-            # Access information
-            access = None
+            # Access information (translate to English)
+            access_info = None
             if properties.get('acces'):
                 access_text = properties['acces'].get('valeur', '').strip()
                 if access_text and access_text != 'NULL':
-                    access = access_text
+                    access_info = translate_text(access_text)
             
-            # Combine description and access
+            # Remarques (additional remarks/comments)
+            remarks = None
+            if properties.get('remarques'):
+                remarks_text = properties['remarques'].get('valeur', '').strip()
+                if remarks_text and remarks_text != 'NULL':
+                    remarks = translate_text(remarks_text)
+            
+            # Combine all information into comments field
             comments = []
             if description:
                 comments.append(f"Description: {description}")
-            if access:
-                comments.append(f"Accès: {access}")
+            if access_info:
+                comments.append(f"Access: {access_info}")
             if facilities_str:
-                comments.append(f"Équipements: {facilities_str}")
+                comments.append(f"Equipment: {facilities_str}")
+            if remarks:
+                comments.append(f"Remarks: {remarks}")
             
             comments_str = " | ".join(comments) if comments else None
             
@@ -169,19 +242,26 @@ class RefugesInfoScraper:
             point_id = properties.get('id')
             url = f"https://www.refuges.info/point/{point_id}/" if point_id else None
             
-            return {
+            # Create comprehensive hut data
+            hut_data = {
+                'source_id': str(point_id) if point_id else None,
                 'name': name,
                 'latitude': latitude,
                 'longitude': longitude,
                 'altitude': altitude,
                 'capacity': capacity,
-                'type': hut_type,
-                'phone': phone,
-                'website': website,
+                'type_description': hut_type,
+                'phone': phone if phone and phone != 'NULL' else None,
+                'website': website if website and website != 'NULL' else None,
+                'owner': owner if owner and owner != 'NULL' else None,
                 'comments': comments_str,
-                'url': url,
-                'source': 'refuges.info'
+                'description': description[:500] if description else None,  # Limit description length
+                'access': access_info[:500] if access_info else None,  # Store translated access separately
+                'amenities': facilities_str,
+                'url': url
             }
+            
+            return hut_data
             
         except Exception as e:
             print(f"⚠️  Error parsing point: {e}")

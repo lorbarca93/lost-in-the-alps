@@ -66,6 +66,8 @@ def create_simple_map():
             color = 'red'
         elif source == 'mountainhuts.info':
             color = 'green'
+        elif source == 'refuges.info':
+            color = 'orange'
         else:
             color = 'gray'
         
@@ -105,7 +107,10 @@ def create_simple_map():
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ 
@@ -446,6 +451,32 @@ def create_simple_map():
             background: rgba(255,255,255,0.5);
         }}
         
+        /* Marker Cluster Styling */
+        .marker-cluster-small {{
+            background-color: rgba(6, 182, 212, 0.6);
+        }}
+        .marker-cluster-small div {{
+            background-color: rgba(6, 182, 212, 0.8);
+            color: white;
+            font-weight: bold;
+        }}
+        .marker-cluster-medium {{
+            background-color: rgba(251, 146, 60, 0.6);
+        }}
+        .marker-cluster-medium div {{
+            background-color: rgba(251, 146, 60, 0.8);
+            color: white;
+            font-weight: bold;
+        }}
+        .marker-cluster-large {{
+            background-color: rgba(239, 68, 68, 0.6);
+        }}
+        .marker-cluster-large div {{
+            background-color: rgba(239, 68, 68, 0.8);
+            color: white;
+            font-weight: bold;
+        }}
+        
         /* Toggle Button for Mobile */
         .toggle-panel {{
             display: none;
@@ -554,6 +585,7 @@ def create_simple_map():
                     <label><input type="checkbox" class="source-filter" value="boudy.info" checked> <span class="legend-color" style="background: #3b82f6;"></span> Boudy.info</label>
                     <label><input type="checkbox" class="source-filter" value="mountain-huts.net" checked> <span class="legend-color" style="background: red;"></span> Mountain-huts.net</label>
                     <label><input type="checkbox" class="source-filter" value="mountainhuts.info" checked> <span class="legend-color" style="background: green;"></span> Mountainhuts.info</label>
+                    <label><input type="checkbox" class="source-filter" value="refuges.info" checked> <span class="legend-color" style="background: orange;"></span> Refuges.info</label>
                 </div>
             </div>
             
@@ -674,7 +706,7 @@ def create_simple_map():
         function exportToKMZ() {{
             var visibleHuts = [];
             markers.forEach(function(marker) {{
-                if (map.hasLayer(marker)) {{
+                if (markerCluster.hasLayer(marker)) {{
                     visibleHuts.push(marker.hutData);
                 }}
             }});
@@ -698,8 +730,20 @@ def create_simple_map():
             alert('Exported ' + visibleHuts.length + ' huts to KML file!\\n\\nNote: KML format is used (KMZ is KML + ZIP). You can convert to KMZ using Google Earth.');
         }}
         
-        // Store markers
+        // Store markers and create marker cluster group
         var markers = [];
+        var markerCluster = L.markerClusterGroup({{
+            maxClusterRadius: 50,
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            disableClusteringAtZoom: 13,
+            chunkedLoading: true,
+            chunkInterval: 50,
+            chunkDelay: 50
+        }});
+        
+        map.addLayer(markerCluster);
         
         // Add markers
         huts.forEach(function(hut) {{
@@ -815,13 +859,13 @@ def create_simple_map():
             
             marker.bindPopup(popup);
             marker.hutData = hut;
-            marker.addTo(map);
+            markerCluster.addLayer(marker);
             markers.push(marker);
         }});
         
         // Update stats
         function updateStats() {{
-            var visible = markers.filter(function(m) {{ return map.hasLayer(m); }}).length;
+            var visible = markers.filter(function(m) {{ return markerCluster.hasLayer(m); }}).length;
             document.getElementById('visible-count').textContent = visible;
         }}
         
@@ -888,9 +932,9 @@ def create_simple_map():
                 
                 // Apply visibility
                 if (show) {{
-                    if (!map.hasLayer(marker)) marker.addTo(map);
+                    if (!markerCluster.hasLayer(marker)) markerCluster.addLayer(marker);
                 }} else {{
-                    if (map.hasLayer(marker)) map.removeLayer(marker);
+                    if (markerCluster.hasLayer(marker)) markerCluster.removeLayer(marker);
                 }}
             }});
             
