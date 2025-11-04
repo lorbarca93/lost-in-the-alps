@@ -900,9 +900,16 @@
                     show = false;
                 }
                 
-                // Country filter - only filter if country is known
-                if (checkedCountries.length > 0 && hut.country !== 'N/A') {
-                    if (checkedCountries.indexOf(hut.country) === -1) {
+                // Country filter - show hut only if its country is checked
+                // Or if the hut has no country and at least one country is checked
+                if (checkedCountries.length > 0) {
+                    // Only show if hut's country is in the checked list
+                    if (hut.country && hut.country !== 'N/A' && hut.country !== '') {
+                        if (checkedCountries.indexOf(hut.country) === -1) {
+                            show = false;
+                        }
+                    } else {
+                        // Hut has no country - don't show it when filtering by country
                         show = false;
                     }
                 }

@@ -153,7 +153,8 @@ def assign_countries_fast(force=False, fix_incorrect=True):
     print("[*] Looking up countries (this will be fast)...")
     
     # Single batch call - much faster than individual lookups!
-    results = rg.search(coords)
+    # Use mode=2 for single-threaded to avoid Windows multiprocessing issues
+    results = rg.search(coords, mode=2)
     
     print("[OK] Lookups complete! Updating database...\n")
     
