@@ -900,28 +900,38 @@
                     show = false;
                 }
                 
-                // Country filter - show hut only if its country is checked
-                // Or if the hut has no country and at least one country is checked
-                if (checkedCountries.length > 0) {
-                    // Only show if hut's country is in the checked list
+                // Country filter
+                // Only apply if some (but not all) countries are selected
+                var allCountriesChecked = document.getElementById('filter-all').checked;
+                if (!allCountriesChecked && checkedCountries.length > 0) {
+                    // Filtering is active
                     if (hut.country && hut.country !== 'N/A' && hut.country !== '') {
+                        // Hut has a country - check if it's in the selected list
                         if (checkedCountries.indexOf(hut.country) === -1) {
                             show = false;
                         }
-                    } else {
-                        // Hut has no country - don't show it when filtering by country
-                        show = false;
                     }
+                    // Huts without country data: always show them (can't be filtered by country)
                 }
                 
                 // Hut type filter
-                if (checkedTypes.length > 0 && checkedTypes.indexOf(hut.type) === -1) {
-                    show = false;
+                if (checkedTypes.length > 0) {
+                    if (hut.type && hut.type !== 'N/A' && hut.type !== '') {
+                        if (checkedTypes.indexOf(hut.type) === -1) {
+                            show = false;
+                        }
+                    }
+                    // Huts without type: keep visible (can't be filtered by type)
                 }
                 
                 // Source filter
-                if (checkedSources.length > 0 && checkedSources.indexOf(hut.source) === -1) {
-                    show = false;
+                if (checkedSources.length > 0) {
+                    if (hut.source && hut.source !== 'N/A' && hut.source !== '') {
+                        if (checkedSources.indexOf(hut.source) === -1) {
+                            show = false;
+                        }
+                    }
+                    // Huts without source: keep visible
                 }
                 
                 // Altitude filter
