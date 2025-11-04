@@ -324,20 +324,8 @@ class RefugesInfoPageScraper:
         if location_p:
             location_text = location_p.get_text()
             
-            # Extract country
-            country_match = re.search(r'Localisation administrative:.*?([A-Z][a-zà-ÿ]+)', location_text)
-            if country_match:
-                country_name = country_match.group(1).strip()
-                # Translate some common countries
-                country_translations = {
-                    'Italia': 'Italy',
-                    'France': 'France',
-                    'Schweiz': 'Switzerland',
-                    'Österreich': 'Austria',
-                    'Deutschland': 'Germany',
-                    'España': 'Spain'
-                }
-                hut['country'] = country_translations.get(country_name, country_name)
+            # Country will be assigned by geolocation script based on coordinates
+            # (Removed direct extraction to ensure consistency across all sources)
         
         # Convert amenities list to string
         if 'amenities' in hut and hut['amenities']:

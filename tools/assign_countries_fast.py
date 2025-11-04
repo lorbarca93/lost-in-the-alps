@@ -33,7 +33,8 @@ def get_country_from_coords_fast(lat, lon):
     """
     try:
         # reverse_geocoder returns a list, we take the first result
-        result = rg.search((lat, lon), mode=1)[0]  # mode=1 for single result
+        # Use mode=2 (single-threaded) to avoid Windows multiprocessing issues
+        result = rg.search((lat, lon), mode=2)[0]
         
         # Get country code and convert to full name
         country_code = result.get('cc', '')  # ISO 3166-1 alpha-2 code
@@ -162,7 +163,7 @@ def assign_countries_fast(force=False, fix_incorrect=True):
     already_had = 0
     not_found = 0
     
-    # Map country codes
+    # Map country codes to full names (COMPREHENSIVE - must match the map above)
     country_map = {
         'AT': 'Austria',
         'IT': 'Italy',
@@ -189,7 +190,27 @@ def assign_countries_fast(force=False, fix_incorrect=True):
         'AD': 'Andorra',
         'SM': 'San Marino',
         'VA': 'Vatican City',
-        'MC': 'Monaco'
+        'MC': 'Monaco',
+        'BE': 'Belgium',
+        'RE': 'Réunion',
+        'IS': 'Iceland',
+        'NC': 'New Caledonia',
+        'TF': 'French Southern Territories',
+        'MA': 'Morocco',
+        'NO': 'Norway',
+        'GP': 'Guadeloupe',
+        'MQ': 'Martinique',
+        'AR': 'Argentina',
+        'CO': 'Colombia',
+        'JP': 'Japan',
+        'CR': 'Costa Rica',
+        'EE': 'Estonia',
+        'GB': 'United Kingdom',
+        'GE': 'Georgia',
+        'LV': 'Latvia',
+        'US': 'United States',
+        'UA': 'Ukraine',
+        'TR': 'Turkey'
     }
     
     for i, (hut_data, result) in enumerate(zip(huts, results), 1):

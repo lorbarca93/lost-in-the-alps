@@ -223,7 +223,7 @@ class MountainHutsNetScraper(BaseScraper):
                 'longitude': lon,
                 'altitude': elevation,
                 'hut_type': hut_type,
-                'country': country,
+                'country': None,  # Will be assigned by geolocation script based on coordinates
                 'website': website if website else None,
                 'phone': phone if phone else None,
                 'email': email if email else None,

@@ -188,7 +188,7 @@ class MountainhutsInfoScraper(BaseScraper):
                     'latitude': lat,
                     'longitude': lon,
                     'altitude': altitude,
-                    'country': country,
+                    'country': None,  # Will be assigned by geolocation script based on coordinates
                     'hut_type': 'Mountain hut',
                     'website': website if website and website not in ['-', ''] else '',
                     'phone': phone if phone and phone not in ['-', ''] else '',
