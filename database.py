@@ -19,31 +19,39 @@ class MountainHutsDatabase:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # Create main huts table with source field
+        # Create main huts table with clean schema
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS mountain_huts (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 source TEXT NOT NULL,
                 source_id TEXT,
                 name TEXT NOT NULL,
-                type INTEGER,
-                type_description TEXT,
+                hut_type TEXT,
                 status INTEGER,
                 status_description TEXT,
                 latitude REAL,
                 longitude REAL,
                 altitude INTEGER,
-                description TEXT,
-                url TEXT,
                 country TEXT,
                 region TEXT,
+                description TEXT,
                 amenities TEXT,
                 capacity INTEGER,
+                capacity_max INTEGER,
                 phone TEXT,
                 email TEXT,
                 website TEXT,
+                url TEXT,
                 opening_hours TEXT,
+                owner TEXT,
+                manager TEXT,
+                water_source TEXT,
+                access TEXT,
+                best_time_to_visit TEXT,
+                comments TEXT,
                 image_url TEXT,
+                posted_by TEXT,
+                posted_date TEXT,
                 scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(source, source_id)
@@ -62,7 +70,7 @@ class MountainHutsDatabase:
             )
         """)
         
-        # Create index for faster lookups
+        # Create indexes for faster lookups
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_name ON mountain_huts(name)
         """)
@@ -74,6 +82,9 @@ class MountainHutsDatabase:
         """)
         cursor.execute("""
             CREATE INDEX IF NOT EXISTS idx_country ON mountain_huts(country)
+        """)
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_hut_type ON mountain_huts(hut_type)
         """)
         
         conn.commit()
@@ -145,7 +156,7 @@ class MountainHutsDatabase:
                     WHERE source = ? AND source_id = ?
                 """, (
                     hut.get('name', 'Unknown'),
-                    hut.get('type'),  # This will now map to hut_type
+                    hut.get('hut_type') or hut.get('type'),
                     hut.get('status'),
                     hut.get('status_description'),
                     hut.get('latitude'),
@@ -189,7 +200,7 @@ class MountainHutsDatabase:
                     source,
                     hut.get('source_id'),
                     hut.get('name', 'Unknown'),
-                    hut.get('type'),  # This will now map to hut_type
+                    hut.get('hut_type') or hut.get('type'),
                     hut.get('status'),
                     hut.get('status_description'),
                     hut.get('latitude'),

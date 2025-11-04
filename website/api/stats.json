@@ -1,0 +1,130 @@
+{
+  "total_huts": 2990,
+  "by_country": [
+    {
+      "country": "Austria",
+      "count": 364
+    },
+    {
+      "country": "Italy",
+      "count": 282
+    },
+    {
+      "country": "Slovenia",
+      "count": 282
+    },
+    {
+      "country": "Croatia",
+      "count": 179
+    },
+    {
+      "country": "Bulgaria",
+      "count": 150
+    },
+    {
+      "country": "Poland",
+      "count": 148
+    },
+    {
+      "country": "Romania",
+      "count": 120
+    },
+    {
+      "country": "Slovakia",
+      "count": 86
+    },
+    {
+      "country": "Greece",
+      "count": 78
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "count": 55
+    },
+    {
+      "country": "Serbia",
+      "count": 47
+    },
+    {
+      "country": "Czech Republic",
+      "count": 42
+    },
+    {
+      "country": "Hungary",
+      "count": 42
+    },
+    {
+      "country": "France",
+      "count": 34
+    },
+    {
+      "country": "Montenegro",
+      "count": 27
+    },
+    {
+      "country": "North Macedonia",
+      "count": 25
+    },
+    {
+      "country": "Germany",
+      "count": 22
+    },
+    {
+      "country": "Switzerland",
+      "count": 16
+    },
+    {
+      "country": "Liechtenstein",
+      "count": 4
+    }
+  ],
+  "countries_count": 19,
+  "by_source": [
+    {
+      "source": "mountainhuts.info",
+      "count": 1343
+    },
+    {
+      "source": "boudy.info",
+      "count": 889
+    },
+    {
+      "source": "mountain-huts.net",
+      "count": 660
+    },
+    {
+      "source": "refuges.info",
+      "count": 98
+    }
+  ],
+  "sources_count": 4,
+  "with_contact_info": 1372,
+  "with_details_percent": 45,
+  "by_type": [
+    {
+      "type": "Mountain hut",
+      "count": 1557
+    },
+    {
+      "type": "2",
+      "count": 807
+    },
+    {
+      "type": "Unmanned cabin",
+      "count": 98
+    },
+    {
+      "type": "1",
+      "count": 64
+    },
+    {
+      "type": "Bivouac",
+      "count": 18
+    }
+  ],
+  "altitude": {
+    "average": 1269,
+    "min": 1,
+    "max": 3835
+  }
+}

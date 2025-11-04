@@ -174,8 +174,12 @@ class MountainhutsInfoScraper(BaseScraper):
                     print(f"Warning: Invalid coordinates for {name}")
                     continue
                 
-                # Create source_id
+                # Create source_id and individual page URL
                 source_id = f"{lat}_{lon}"
+                
+                # Build individual hut page URL
+                # Mountainhuts.info uses a detail page format with coordinates
+                individual_url = f"http://www.mountainhuts.info/map?lat={lat}&lon={lon}&zoom=15"
                 
                 # Build hut dictionary
                 hut = {
@@ -185,7 +189,7 @@ class MountainhutsInfoScraper(BaseScraper):
                     'longitude': lon,
                     'altitude': altitude,
                     'country': country,
-                    'type_description': 'Mountain Hut',
+                    'hut_type': 'Mountain hut',
                     'website': website if website and website not in ['-', ''] else '',
                     'phone': phone if phone and phone not in ['-', ''] else '',
                     'email': email if email and email not in ['-', ''] else '',
@@ -195,7 +199,7 @@ class MountainhutsInfoScraper(BaseScraper):
                     'capacity': None,
                     'description': capacity_str,
                     'amenities': amenities_str,
-                    'url': self.source_url,
+                    'url': individual_url,
                 }
                 
                 # Add last update to description
@@ -309,7 +313,10 @@ def main():
     if huts:
         print("\n=== Sample huts ===")
         for hut in huts[:5]:
-            print(f"{hut['name']} ({hut['country']}) - {hut['altitude']}m at {hut['latitude']}, {hut['longitude']}")
+            try:
+                print(f"{hut['name']} ({hut['country']}) - {hut['altitude']}m at {hut['latitude']}, {hut['longitude']}")
+            except:
+                print(f"Hut at {hut['latitude']}, {hut['longitude']}")
         
         # Count by country
         countries = {}

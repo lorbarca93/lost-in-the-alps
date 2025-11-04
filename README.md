@@ -4,10 +4,15 @@ A modular scraper system to collect comprehensive mountain hut data from multipl
 
 ## 📊 Current Status
 
-- **Total Huts**: 2,946
-- **Data Sources**: 4 active (boudy.info, mountain-huts.net, mountainhuts.info, refuges.info)
-- **Countries Covered**: 19+ (Austria, Italy, Slovenia, Croatia, Bulgaria, Poland, Romania, Slovakia, Greece, Bosnia, Serbia, North Macedonia, Montenegro, Germany, Czech Republic, Switzerland, France, Hungary, Liechtenstein)
-- **Enriched Data**: 471 with owner info, 539 with manager info, 663 with phone, 620 with email
+- **Total Huts**: 8,166 🎉
+- **Data Sources**: 4 active sources
+  - refuges.info: 5,274 huts (64.6%) - French Alpine refuges
+  - mountainhuts.info: 1,343 huts (16.4%) - Europe-wide
+  - boudy.info: 889 huts (10.9%) - Czech/Slovak Alps
+  - mountain-huts.net: 660 huts (8.1%) - Balkans
+- **Countries Covered**: 19 (Austria, Italy, Slovenia, Croatia, Bulgaria, Poland, Romania, Slovakia, Greece, Bosnia, Serbia, Czech Republic, Hungary, France, Montenegro, Germany, Switzerland, Liechtenstein, North Macedonia)
+- **Coverage**: Alps, Apennines, Carpathians, and Balkans
+- **Last Updated**: November 4, 2025
 
 ## 🚀 Quick Start
 
@@ -20,26 +25,22 @@ source .venv/bin/activate   # On Linux/Mac
 # Install dependencies
 pip install -r requirements.txt
 
-# Set up Git (optional but recommended)
-# See docs/GIT_SETUP_GUIDE.md for detailed instructions
-git init
-git add .
-git commit -m "Initial commit"
+# View the website (recommended)
+# Open website/index.html in your browser
+# Or open website/search.html to search all huts
 
-# Run all scrapers
+# Generate website data (if database updated)
+python website/api/stats.py
+python website/api/export_huts.py
+
+# Run all scrapers (updates database)
 python run_all_scrapers.py
-
-# Generate interactive map
-python tools/create_ultra_simple_map.py
 
 # View statistics
 python tools/check_stats.py
 
 # Query the database
 python tools/query_database.py
-
-# Open the map
-# Just open mountain_huts_map.html in your browser
 ```
 
 ## 📁 Project Structure
@@ -47,25 +48,39 @@ python tools/query_database.py
 ```
 lostinthealps/
 ├── data/                           # Database storage
-│   └── mountain_huts.db           # SQLite database (2,946 huts)
+│   ├── mountain_huts.db           # SQLite database (8,166 huts)
+│   └── mountain_huts_backup_*.db  # Automatic backups
 │
 ├── scrapers/                       # Web scraping modules
 │   ├── base_scraper.py            # Abstract base class
 │   ├── scraper_boudy_info.py      # Boudy.info scraper (889 huts, Alps)
 │   ├── scraper_mountain_huts_net.py # Mountain-huts.net scraper (660 huts, Balkans)
 │   ├── scraper_mountainhuts_info.py # Mountainhuts.info scraper (1,343 huts, Europe-wide)
-│   ├── scraper_refuges_info_pages.py # Refuges.info page scraper (54 huts, Alps)
+│   ├── scraper_refuges_info_pages.py # Refuges.info scraper (5,274 huts, Alpine refuges)
 │   └── scraper_template.py        # Template for new scrapers
 │
+├── website/                        # Web interface
+│   ├── index.html                 # Main landing page with real-time stats
+│   ├── map.html                   # Full-screen interactive map
+│   ├── mountain_huts_map.html     # Embedded map with all features
+│   ├── huts_data.json             # Map data source (8,166 huts)
+│   ├── js/main.js                 # Real-time data loading
+│   └── api/                       # Data export scripts
+│       ├── stats.py               # Export statistics to JSON
+│       ├── export_huts.py         # Export all huts to JSON
+│       ├── stats.json             # Generated statistics
+│       └── huts.json              # Generated huts data
+│
 ├── tools/                          # Utility scripts
+│   ├── clean_database.py          # Database cleanup and migration
 │   ├── create_ultra_simple_map.py # Generate interactive HTML map
-│   ├── assign_countries.py        # Geocode coordinates to countries (Nominatim)
+│   ├── harmonize_country_names.py # Standardize country names
+│   ├── assign_countries.py        # Geocode coordinates to countries
 │   ├── check_stats.py             # View database statistics
 │   ├── check_samples.py           # View sample records
-│   ├── check_mountainhuts_stats.py # Detailed mountainhuts.info statistics
 │   ├── export_to_json.py          # Export database to JSON
 │   ├── query_database.py          # Interactive SQL query tool
-│   ├── maintenance/               # Diagnostics + legacy one-off utilities
+│   ├── maintenance/               # Diagnostics utilities
 │   └── migrations/                # Schema migration helpers
 │
 ├── docs/                           # Documentation
@@ -76,9 +91,13 @@ lostinthealps/
 │
 ├── database.py                     # Core database interface layer
 ├── run_all_scrapers.py            # Master scraper orchestrator
-├── mountain_huts_map.html         # Interactive map (1.27 MB, generated)
+├── run_refuges_timed.py           # Time-limited scraper for long operations
+├── check_scraper_progress.py      # Quick progress checker
+├── mountain_huts_map.html         # Generated map (for backup/reference)
 ├── init_git.ps1                   # Git initialization script
 ├── requirements.txt               # Python dependencies
+├── netlify.toml                   # Netlify deployment config
+├── CHANGELOG.md                   # Comprehensive changelog
 ├── .gitignore                     # Git ignore rules
 ├── .gitattributes                 # Git file handling rules
 ├── .gitmessage                    # Commit message template
@@ -87,14 +106,68 @@ lostinthealps/
 
 ## 🎯 Features
 
-- **Multi-source scraping**: Aggregates data from 3 different websites
-- **Rich data**: Owner, manager, contact info, opening hours for many huts
-- **Interactive map**: Leaflet-based map with detailed popups and country filters
+### Data Collection
+- **Multi-source scraping**: Aggregates 8,166 huts from 4 different websites
+- **Comprehensive coverage**: Alps, Apennines, Carpathians, and Balkans
+- **Rich metadata**: 19 countries, multiple hut types, detailed information
+- **Time-limited scraping**: Safe long-running operations with automatic stopping
+
+### Interactive Map
+- **8,166 mountain huts** with cluster markers
+- **15+ advanced filters**: Quick presets, search, country, type, altitude, capacity
+- **Beautiful design**: Minimal 4px markers, smooth hover effects
+- **Detailed popups**: Full hut information with clickable contact links
+- **Export functionality**: Download filtered results as KMZ
+- **Full-screen mode**: Dedicated map page for immersive experience
+
+### Website
+- **Modern light theme**: Professional, clean UI
+- **Real-time statistics**: Dynamic data loading from database
+- **Responsive design**: Works on mobile, tablet, and desktop
+- **Fast filtering**: Sub-second filtering of 8,166 records
+- **Country distribution**: Animated visualizations
+
+### Technical
+- **Clean database**: Optimized schema with proper indexing
+- **Automatic backups**: Before any database modifications
 - **Modular design**: Easy to add new scrapers following the base class
-- **Geocoding**: Automatic country assignment using Nominatim API
 - **SQLite database**: Portable, no server required
+- **External JSON loading**: Efficient map data handling
 
 ## 📖 Usage
+
+### Viewing the Website
+
+```bash
+# Open the main website
+start website/index.html  # Windows
+open website/index.html   # Mac
+xdg-open website/index.html  # Linux
+
+# Or serve with Python HTTP server for full functionality
+cd website
+python -m http.server 8080
+# Then open http://localhost:8080 in your browser
+```
+
+The website features:
+- **Real-time statistics** from the database (8,166 huts)
+- **Interactive charts** showing hut distribution by country
+- **Full-screen interactive map** with 15+ advanced filters
+- **Beautiful light theme** with modern UI
+- **Responsive design** for all devices
+
+### Updating Website Data
+
+```bash
+# After running scrapers, regenerate website data
+python website/api/stats.py         # Updates statistics
+python website/api/export_huts.py   # Updates searchable huts
+
+# Regenerate map with updated data
+python tools/create_ultra_simple_map.py
+Copy-Item mountain_huts_map.html website/mountain_huts_map.html -Force
+```
 
 ### Running Scrapers
 
@@ -103,21 +176,9 @@ lostinthealps/
 python run_all_scrapers.py
 
 # The script will:
-# - Scrape all three sources
+# - Scrape all four sources
 # - Save data to data/mountain_huts.db
 # - Show statistics summary
-```
-
-### Viewing the Map
-
-```bash
-# Generate/update the interactive map
-python tools/create_ultra_simple_map.py
-
-# Open in browser
-start mountain_huts_map.html  # Windows
-open mountain_huts_map.html   # Mac
-xdg-open mountain_huts_map.html  # Linux
 ```
 
 ### Querying Data
@@ -207,15 +268,20 @@ See the `docs/` folder for detailed documentation:
 
 ### 4. refuges.info
 
-- **Coverage**: Alps region (France, Italy, Switzerland, Austria)
-- **Huts**: 54
-- **Method**: API-based ID discovery + individual page scraping
+- **Coverage**: French Alps, Swiss Alps, Italian Alps
+- **Huts**: 5,274 🎉
+- **Method**: Comprehensive API-based scraping of:
+  - Cabanes non gardées (unmanned huts) - ~3,700
+  - Refuges gardés (staffed refuges) - ~400
+  - Bivouacs (bivouac shelters) - ~1,100+
 - **Data**: **Comprehensive refuge data including:**
   - Detailed descriptions and remarks
   - Water availability and access information
   - Capacity and shelter type
   - Opening hours and contact info
   - Altitude and precise coordinates
+  - Owner and manager details
+  - Individual page URLs
 
 ## 📊 Database Schema
 
@@ -300,7 +366,9 @@ Close any programs that might have the database open (DB Browser, etc.)
 
 ### Map Not Showing Huts
 
-Regenerate the map: `python tools/create_ultra_simple_map.py`
+1. Regenerate the map: `python tools/create_ultra_simple_map.py`
+2. Copy to website: `Copy-Item mountain_huts_map.html website/ -Force`
+3. Refresh browser (Ctrl+F5 to clear cache)
 
 ### Database Not Found
 

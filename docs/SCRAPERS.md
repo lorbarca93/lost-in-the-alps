@@ -34,7 +34,7 @@ All scrapers inherit from `BaseScraper` which provides:
 **File**: `scrapers/scraper_boudy_info.py`  
 **Class**: `BoudyInfoScraper`  
 **Coverage**: Alps region (France, Italy, Switzerland, Austria, Germany, Slovenia)  
-**Total Huts**: 889 (30.2% of database)
+**Total Huts**: 889 (10.9% of database)
 
 #### Method
 
@@ -77,7 +77,7 @@ All scrapers inherit from `BaseScraper` which provides:
 **File**: `scrapers/scraper_mountain_huts_net.py`  
 **Class**: `MountainHutsNetScraper`  
 **Coverage**: Balkans (Slovenia, Croatia, Bulgaria, Greece, Bosnia, Serbia, North Macedonia, Montenegro)  
-**Total Huts**: 660 (22.4% of database)
+**Total Huts**: 660 (8.1% of database)
 
 #### Method
 
@@ -118,7 +118,7 @@ All scrapers inherit from `BaseScraper` which provides:
 **File**: `scrapers/scraper_mountainhuts_info.py`  
 **Class**: `MountainhustsInfoScraper`  
 **Coverage**: Europe-wide (19 countries)  
-**Total Huts**: 1,343 (45.6% of database)
+**Total Huts**: 1,343 (16.4% of database)
 
 #### Method
 
@@ -171,18 +171,27 @@ All scrapers inherit from `BaseScraper` which provides:
 ### 4. Refuges.info Scraper
 
 **File**: `scrapers/scraper_refuges_info_pages.py`  
-**Class**: `RefugesInfoPagesScraper`  
-**Coverage**: Alps region (France, Italy, Switzerland, Austria)  
-**Total Huts**: 54 (1.8% of database)
+**Class**: `RefugesInfoPageScraper`  
+**Coverage**: French Alps, Swiss Alps, Italian Alps  
+**Total Huts**: 5,274 (64.6% of database) 🎉
 
 #### Method
 
-- **Type**: Hybrid API + Page Scraping
+- **Type**: Comprehensive API + Page Scraping
 - **Technique**:
-  1. Uses API to get refuge IDs and basic info
+  1. Uses API to get ALL refuge IDs by type (cabane, refuge, bivouac)
   2. Scrapes individual refuge pages for detailed data
-- **API**: `https://www.refuges.info/api/bbox`
-- **Pages**: Individual refuge detail pages
+  3. Supports time-limited scraping for large datasets
+- **API**: `https://www.refuges.info/api/bbox` and `https://www.refuges.info/api/point`
+- **Types Scraped**:
+  - Cabanes non gardées (unmanned huts): ~3,700
+  - Refuges gardés (staffed refuges): ~400
+  - Bivouacs (bivouac shelters): ~1,100+
+- **Scraping Options**:
+  - `--all`: Scrape all 8,000+ refuges (3-4 hours)
+  - `--sample`: Scrape 200 random refuges
+  - Default: 100 random refuges
+  - Time-limited: Use `run_refuges_timed.py` for controlled duration
 
 #### Data Extracted
 
@@ -193,12 +202,21 @@ All scrapers inherit from `BaseScraper` which provides:
 - **Facilities**: water availability, shelter type
 - **French-to-English**: Automatic translation of common terms
 
-#### Known Limitations
+#### Features
 
-- Limited coverage (only 50 random refuges scraped by default)
-- Dependent on page structure consistency
-- French content may need translation
-- Slower due to individual page requests
+- **Comprehensive coverage**: Scrapes all 8,000+ available refuges
+- **Time-limited mode**: Safe scraping with automatic stopping
+- **Translation**: French terms automatically translated to English
+- **Rate limiting**: Polite 1-second delay between requests
+- **Progress tracking**: Regular database commits (every 50 huts)
+- **Graceful interruption**: Can resume scraping later
+
+#### Notes
+
+- Full scraping takes 3-4 hours for all 8,000+ refuges
+- Use `run_refuges_timed.py` for controlled duration (e.g., 90 minutes)
+- Progress is saved regularly, safe to interrupt
+- Excludes caves (grottes) and water points (not mountain huts)
 
 #### Example Output
 

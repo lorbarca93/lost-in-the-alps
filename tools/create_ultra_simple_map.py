@@ -6,13 +6,14 @@ from pathlib import Path
 import json
 
 def clean_string(s):
-    """Remove any problematic characters"""
+    """Remove any problematic characters - keep it simple, JSON will handle escaping"""
     if not s:
         return "N/A"
-    # Replace quotes and backslashes
-    s = str(s).replace('\\', '').replace('"', '').replace("'", '')
-    # Remove any other problematic characters
-    s = s.replace('\n', ' ').replace('\r', ' ')
+    # Convert to string and normalize whitespace
+    s = str(s)
+    s = s.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+    # Remove any control characters except spaces
+    s = ''.join(char for char in s if ord(char) >= 32 or char == ' ')
     return s.strip() or "N/A"
 
 def create_simple_map():
@@ -24,7 +25,7 @@ def create_simple_map():
     cursor = conn.execute("""
         SELECT name, latitude, longitude, altitude, country, hut_type, website, source,
                owner, manager, phone, email, opening_hours, description,
-               capacity, capacity_max, comments, water_source, best_time_to_visit, access, posted_by
+               capacity, capacity_max, comments, water_source, best_time_to_visit, access, posted_by, url
         FROM mountain_huts
         WHERE latitude IS NOT NULL AND longitude IS NOT NULL
         ORDER BY name
@@ -59,17 +60,20 @@ def create_simple_map():
         access = clean_string(hut[19]) if hut[19] else ""
         posted_by = clean_string(hut[20]) if hut[20] else ""
         
-        # Color by source – use a vivid blue that shows up well on the dark background
+        # Minimal color scheme - simple and clean
         if source == 'boudy.info':
-            color = '#3b82f6'  # vivid blue that stays readable on dark background
+            color = '#2563eb'  # clean blue
         elif source == 'mountain-huts.net':
-            color = 'red'
+            color = '#dc2626'  # clean red
         elif source == 'mountainhuts.info':
-            color = 'green'
+            color = '#16a34a'  # clean green
         elif source == 'refuges.info':
-            color = 'orange'
+            color = '#ea580c'  # clean orange
         else:
-            color = 'gray'
+            color = '#64748b'  # clean gray
+        
+        # Get URL (last field - index 21)
+        url = clean_string(hut[21]) if len(hut) > 21 and hut[21] else ""
         
         huts_data.append({
             'name': name,
@@ -93,13 +97,18 @@ def create_simple_map():
             'water_source': water_source,
             'best_time': best_time,
             'access': access,
-            'posted_by': posted_by
+            'posted_by': posted_by,
+            'url': url
         })
     
-    # Convert to JSON
-    huts_json = json.dumps(huts_data, indent=2)
+    # Write JSON to separate file to avoid embedding issues
+    json_path = Path(__file__).parent.parent / "website" / "huts_data.json"
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(huts_data, f, indent=2, ensure_ascii=True)
     
-    # Create HTML
+    print(f"Created JSON data file at {json_path}")
+    
+    # Create HTML that loads data via fetch
     html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -526,45 +535,54 @@ def create_simple_map():
             <p>Discover and explore mountain huts across the Alps and beyond. Filter by location, capacity, and more.</p>
         </div>
         <div class="sidebar-content">
+            <!-- Quick Presets -->
+            <div class="filter-section">
+                <h3>⚡ Quick Filters</h3>
+                <div class="filter-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <button class="btn btn-secondary" onclick="applyPreset('high-altitude')" style="font-size: 12px; padding: 8px;">🏔️ High Alt</button>
+                    <button class="btn btn-secondary" onclick="applyPreset('large-capacity')" style="font-size: 12px; padding: 8px;">🏨 Large</button>
+                    <button class="btn btn-secondary" onclick="applyPreset('with-contact')" style="font-size: 12px; padding: 8px;">📞 Contact</button>
+                    <button class="btn btn-secondary" onclick="applyPreset('open-now')" style="font-size: 12px; padding: 8px;">🟢 Open</button>
+                </div>
+            </div>
+            
             <!-- Search Filter -->
             <div class="filter-section">
                 <h3>🔍 Search</h3>
                 <div class="filter-group">
-                    <label for="search-input">Hut Name</label>
-                    <input type="text" id="search-input" placeholder="Search by name...">
+                    <input type="text" id="search-input" placeholder="Search by name..." style="width: 100%;">
                 </div>
             </div>
             
             <!-- Country Filter -->
             <div class="filter-section">
-                <h3>🌍 Countries</h3>
+                <h3>🌍 Countries <span id="country-count" style="opacity: 0.6; font-size: 12px;"></span></h3>
                 <div class="filter-group">
-                    <label><input type="checkbox" id="filter-all" checked> All Countries</label>
+                    <label><input type="checkbox" id="filter-all" checked> <strong>All Countries</strong></label>
                 </div>
                 <div class="checkbox-list" id="country-filters"></div>
+            </div>
+            
+            <!-- Hut Type Filter -->
+            <div class="filter-section">
+                <h3>🏠 Hut Type</h3>
+                <div class="filter-group">
+                    <label><input type="checkbox" class="type-filter" value="Mountain hut" checked> Mountain Hut</label>
+                    <label><input type="checkbox" class="type-filter" value="Bivouac" checked> Bivouac</label>
+                    <label><input type="checkbox" class="type-filter" value="Unmanned cabin" checked> Unmanned Cabin</label>
+                    <label><input type="checkbox" class="type-filter" value="Shelter" checked> Shelter</label>
+                    <label><input type="checkbox" class="type-filter" value="Unknown" checked> Unknown</label>
+                </div>
             </div>
             
             <!-- Altitude Filter -->
             <div class="filter-section">
                 <h3>⛰️ Altitude</h3>
                 <div class="filter-group">
-                    <label>Minimum Altitude (m)</label>
+                    <label>Range: <span id="altitude-range">0 - 4000 m</span></label>
                     <div class="slider-container">
-                        <div class="slider-values">
-                            <span>0 m</span>
-                            <span id="min-altitude-value">0 m</span>
-                        </div>
-                        <input type="range" id="min-altitude" min="0" max="4000" value="0" step="100">
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <label>Maximum Altitude (m)</label>
-                    <div class="slider-container">
-                        <div class="slider-values">
-                            <span id="max-altitude-value">4000 m</span>
-                            <span>4000 m</span>
-                        </div>
-                        <input type="range" id="max-altitude" min="0" max="4000" value="4000" step="100">
+                        <input type="range" id="min-altitude" min="0" max="4000" value="0" step="50">
+                        <input type="range" id="max-altitude" min="0" max="4000" value="4000" step="50">
                     </div>
                 </div>
             </div>
@@ -574,7 +592,32 @@ def create_simple_map():
                 <h3>🛏️ Capacity</h3>
                 <div class="filter-group">
                     <label for="min-capacity">Minimum Beds</label>
-                    <input type="number" id="min-capacity" placeholder="1">
+                    <input type="number" id="min-capacity" placeholder="Any" min="0" style="width: 100%;">
+                </div>
+                <div class="filter-group">
+                    <label for="max-capacity">Maximum Beds</label>
+                    <input type="number" id="max-capacity" placeholder="Any" min="0" style="width: 100%;">
+                </div>
+            </div>
+            
+            <!-- Contact/Amenities Filter -->
+            <div class="filter-section">
+                <h3>📞 Contact & Info</h3>
+                <div class="filter-group">
+                    <label><input type="checkbox" id="filter-has-phone"> Has Phone Number</label>
+                    <label><input type="checkbox" id="filter-has-email"> Has Email</label>
+                    <label><input type="checkbox" id="filter-has-website"> Has Website</label>
+                    <label><input type="checkbox" id="filter-has-hours"> Has Opening Hours</label>
+                </div>
+            </div>
+            
+            <!-- Advanced Filters -->
+            <div class="filter-section">
+                <h3>⚙️ Advanced</h3>
+                <div class="filter-group">
+                    <label><input type="checkbox" id="filter-has-manager"> Has Manager Info</label>
+                    <label><input type="checkbox" id="filter-has-owner"> Has Owner Info</label>
+                    <label><input type="checkbox" id="filter-has-description"> Has Description</label>
                 </div>
             </div>
             
@@ -582,17 +625,23 @@ def create_simple_map():
             <div class="filter-section">
                 <h3>📍 Data Sources</h3>
                 <div class="filter-group">
-                    <label><input type="checkbox" class="source-filter" value="boudy.info" checked> <span class="legend-color" style="background: #3b82f6;"></span> Boudy.info</label>
-                    <label><input type="checkbox" class="source-filter" value="mountain-huts.net" checked> <span class="legend-color" style="background: red;"></span> Mountain-huts.net</label>
-                    <label><input type="checkbox" class="source-filter" value="mountainhuts.info" checked> <span class="legend-color" style="background: green;"></span> Mountainhuts.info</label>
-                    <label><input type="checkbox" class="source-filter" value="refuges.info" checked> <span class="legend-color" style="background: orange;"></span> Refuges.info</label>
+                    <label><input type="checkbox" class="source-filter" value="mountainhuts.info" checked> <span class="legend-color" style="background: #16a34a;"></span> Mountainhuts.info</label>
+                    <label><input type="checkbox" class="source-filter" value="boudy.info" checked> <span class="legend-color" style="background: #2563eb;"></span> Boudy.info</label>
+                    <label><input type="checkbox" class="source-filter" value="mountain-huts.net" checked> <span class="legend-color" style="background: #dc2626;"></span> Mountain-huts.net</label>
+                    <label><input type="checkbox" class="source-filter" value="refuges.info" checked> <span class="legend-color" style="background: #ea580c;"></span> Refuges.info</label>
                 </div>
+            </div>
+            
+            <!-- Active Filters Summary -->
+            <div class="filter-section" id="active-filters-section" style="display: none;">
+                <h3>🎯 Active Filters</h3>
+                <div id="active-filters-list" style="font-size: 11px; color: rgba(255,255,255,0.8);"></div>
             </div>
             
             <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="btn btn-secondary" id="reset-filters">🔄 Reset All</button>
-                <button class="btn btn-primary" id="export-kmz">📥 Export to KMZ</button>
+                <button class="btn btn-primary" id="export-kmz">📥 Export KMZ</button>
             </div>
             
             <!-- Stats -->
@@ -640,9 +689,18 @@ def create_simple_map():
         
         L.control.layers(baseMaps).addTo(map);
         
-        // Huts data
-        var huts = {huts_json};
+        // Load huts data from external JSON file
+        fetch('huts_data.json')
+            .then(response => response.json())
+            .then(data => {{
+                initializeMap(data);
+            }})
+            .catch(error => {{
+                console.error('Error loading huts data:', error);
+                alert('Error loading map data. Please refresh the page.');
+            }});
         
+        function initializeMap(huts) {{
         console.log('Loading ' + huts.length + ' huts...');
         
         // Get unique countries
@@ -812,20 +870,20 @@ def create_simple_map():
             }}
             
             if (hut.phone && hut.phone !== 'N/A' && hut.phone !== '') {{
-                popupParts.push('<div>📞 Phone: ' + escapeHtml(hut.phone) + '</div>');
+                popupParts.push('<div style="margin-top: 6px;">📞 <a href="tel:' + escapeHtml(hut.phone) + '" style="color: #16a34a; text-decoration: none; font-weight: 500;">' + escapeHtml(hut.phone) + '</a></div>');
             }}
             
             if (hut.email && hut.email !== 'N/A' && hut.email !== '') {{
-                popupParts.push('<div>📧 Email: ' + escapeHtml(hut.email) + '</div>');
+                popupParts.push('<div style="margin-top: 6px;">📧 <a href="mailto:' + escapeHtml(hut.email) + '" style="color: #2563eb; text-decoration: none; font-weight: 500;">' + escapeHtml(hut.email) + '</a></div>');
             }}
             
             if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
                 var websiteUrl = hut.website.startsWith('http') ? hut.website : 'http://' + hut.website;
-                popupParts.push('<div>🌐 <a href="' + websiteUrl + '" target="_blank" rel="noopener">Website</a></div>');
+                popupParts.push('<div style="margin-top: 6px;">🌐 <a href="' + websiteUrl + '" target="_blank" rel="noopener" style="color: #2563eb; text-decoration: none; font-weight: 500;">Official Website ↗</a></div>');
             }}
             
             if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
-                popupParts.push('<div>🕐 Opening: ' + escapeHtml(hut.opening) + '</div>');
+                popupParts.push('<div style="margin-top: 8px; padding: 6px; background: #f0fdf4; border-radius: 4px; font-size: 0.9em;">🕐 ' + escapeHtml(hut.opening) + '</div>');
             }}
             
             // Comments
@@ -842,34 +900,43 @@ def create_simple_map():
                 popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">✍️ Posted by: ' + escapeHtml(hut.posted_by) + '</div>');
             }}
             
-            popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">📍 Source: ' + escapeHtml(hut.source) + '</div>');
+            // Source Link - PROMINENT BUTTON at bottom
+            popupParts.push('<div style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #e5e7eb; text-align: center;">');
+            if (hut.url && hut.url !== 'N/A' && hut.url !== '' && hut.url !== 'http://www.mountainhuts.info/map') {{
+                popupParts.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 18px; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9em; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform=\\'translateY(-2px)\\'; this.style.boxShadow=\\'0 4px 12px rgba(37, 99, 235, 0.4)\\';" onmouseout="this.style.transform=\\'translateY(0)\\'; this.style.boxShadow=\\'0 2px 8px rgba(37, 99, 235, 0.3)\\';">📍 View Full Details on ' + escapeHtml(hut.source) + ' ↗</a>');
+            }} else {{
+                popupParts.push('<div style="font-size: 0.8em; color: #94a3b8; padding: 6px;">Data from ' + escapeHtml(hut.source) + '</div>');
+            }}
+            popupParts.push('</div>');
             popupParts.push('</div>');
             
             var popup = popupParts.join('');
             
             var marker = L.circleMarker([hut.lat, hut.lon], {{
-                radius: 6,
+                radius: 4,
                 fillColor: hut.color,
-                color: '#fff',
-                weight: 2,
-                opacity: 1,
-                fillOpacity: 0.85
+                color: '#ffffff',
+                weight: 1,
+                opacity: 0.8,
+                fillOpacity: 0.9
             }});
             
-            // Add hover effects
+            // Minimal hover effects
             marker.on('mouseover', function(e) {{
                 this.setStyle({{
-                    radius: 9,
-                    weight: 3,
-                    fillOpacity: 1
+                    radius: 6,
+                    weight: 2,
+                    fillOpacity: 1,
+                    opacity: 1
                 }});
             }});
             
             marker.on('mouseout', function(e) {{
                 this.setStyle({{
-                    radius: 6,
-                    weight: 2,
-                    fillOpacity: 0.85
+                    radius: 4,
+                    weight: 1,
+                    fillOpacity: 0.9,
+                    opacity: 0.8
                 }});
             }});
             
@@ -891,6 +958,7 @@ def create_simple_map():
             var minAltitude = parseInt(document.getElementById('min-altitude').value) || 0;
             var maxAltitude = parseInt(document.getElementById('max-altitude').value) || 999999;
             var minCapacity = parseInt(document.getElementById('min-capacity').value) || 0;
+            var maxCapacity = parseInt(document.getElementById('max-capacity').value) || 999999;
             
             // Get checked countries
             var checkedCountries = [];
@@ -898,6 +966,15 @@ def create_simple_map():
             countryCheckboxes.forEach(function(cb) {{
                 if (cb.checked) {{
                     checkedCountries.push(cb.dataset.country);
+                }}
+            }});
+            
+            // Get checked hut types
+            var checkedTypes = [];
+            var typeCheckboxes = document.querySelectorAll('.type-filter');
+            typeCheckboxes.forEach(function(cb) {{
+                if (cb.checked) {{
+                    checkedTypes.push(cb.value);
                 }}
             }});
             
@@ -910,6 +987,20 @@ def create_simple_map():
                 }}
             }});
             
+            // Get contact/info filters
+            var filterHasPhone = document.getElementById('filter-has-phone').checked;
+            var filterHasEmail = document.getElementById('filter-has-email').checked;
+            var filterHasWebsite = document.getElementById('filter-has-website').checked;
+            var filterHasHours = document.getElementById('filter-has-hours').checked;
+            
+            // Get advanced filters
+            var filterHasManager = document.getElementById('filter-has-manager').checked;
+            var filterHasOwner = document.getElementById('filter-has-owner').checked;
+            var filterHasDescription = document.getElementById('filter-has-description').checked;
+            
+            // Build active filters list
+            var activeFilters = [];
+            
             // Filter markers
             markers.forEach(function(marker) {{
                 var hut = marker.hutData;
@@ -920,11 +1011,16 @@ def create_simple_map():
                     show = false;
                 }}
                 
-                // Country filter
-                if (checkedCountries.length > 0) {{
-                    if (hut.country === 'N/A' || checkedCountries.indexOf(hut.country) === -1) {{
+                // Country filter - only filter if country is known
+                if (checkedCountries.length > 0 && hut.country !== 'N/A') {{
+                    if (checkedCountries.indexOf(hut.country) === -1) {{
                         show = false;
                     }}
+                }}
+                
+                // Hut type filter
+                if (checkedTypes.length > 0 && checkedTypes.indexOf(hut.type) === -1) {{
+                    show = false;
                 }}
                 
                 // Source filter
@@ -940,9 +1036,36 @@ def create_simple_map():
                     }}
                 }}
                 
-                // Capacity filter
+                // Capacity filter (min and max)
                 var capacity = parseInt(hut.capacity);
-                if (!isNaN(capacity) && capacity < minCapacity) {{
+                if (!isNaN(capacity)) {{
+                    if (capacity < minCapacity || capacity > maxCapacity) {{
+                        show = false;
+                    }}
+                }}
+                
+                // Contact/Info filters
+                if (filterHasPhone && (!hut.phone || hut.phone === '' || hut.phone === 'N/A')) {{
+                    show = false;
+                }}
+                if (filterHasEmail && (!hut.email || hut.email === '' || hut.email === 'N/A')) {{
+                    show = false;
+                }}
+                if (filterHasWebsite && (!hut.website || hut.website === '' || hut.website === 'N/A')) {{
+                    show = false;
+                }}
+                if (filterHasHours && (!hut.opening || hut.opening === '' || hut.opening === 'N/A')) {{
+                    show = false;
+                }}
+                
+                // Advanced filters
+                if (filterHasManager && (!hut.manager || hut.manager === '' || hut.manager === 'N/A')) {{
+                    show = false;
+                }}
+                if (filterHasOwner && (!hut.owner || hut.owner === '' || hut.owner === 'N/A')) {{
+                    show = false;
+                }}
+                if (filterHasDescription && (!hut.description || hut.description === '' || hut.description === 'N/A')) {{
                     show = false;
                 }}
                 
@@ -967,25 +1090,80 @@ def create_simple_map():
             updateStats();
         }}
         
+        // Quick preset filters
+        function applyPreset(preset) {{
+            resetAllFilters();
+            
+            if (preset === 'high-altitude') {{
+                document.getElementById('min-altitude').value = 2000;
+                document.getElementById('altitude-range').textContent = '2000 - 4000 m';
+            }} else if (preset === 'large-capacity') {{
+                document.getElementById('min-capacity').value = 50;
+            }} else if (preset === 'with-contact') {{
+                document.getElementById('filter-has-phone').checked = true;
+                document.getElementById('filter-has-email').checked = true;
+            }} else if (preset === 'open-now') {{
+                document.getElementById('filter-has-hours').checked = true;
+            }}
+            
+            applyAllFilters();
+        }}
+        
         // Reset all filters
         function resetAllFilters() {{
             document.getElementById('search-input').value = '';
             document.getElementById('min-altitude').value = 0;
             document.getElementById('max-altitude').value = 4000;
-            document.getElementById('min-altitude-value').textContent = '0 m';
-            document.getElementById('max-altitude-value').textContent = '4000 m';
+            document.getElementById('altitude-range').textContent = '0 - 4000 m';
             document.getElementById('min-capacity').value = '';
+            document.getElementById('max-capacity').value = '';
             document.getElementById('filter-all').checked = true;
             
+            // Reset type filters
+            document.querySelectorAll('.type-filter').forEach(function(cb) {{
+                cb.checked = true;
+            }});
+            
+            // Reset country filters
             document.querySelectorAll('.country-filter').forEach(function(cb) {{
                 cb.checked = true;
             }});
             
+            // Reset source filters
             document.querySelectorAll('.source-filter').forEach(function(cb) {{
                 cb.checked = true;
             }});
             
+            // Reset contact/info filters
+            document.getElementById('filter-has-phone').checked = false;
+            document.getElementById('filter-has-email').checked = false;
+            document.getElementById('filter-has-website').checked = false;
+            document.getElementById('filter-has-hours').checked = false;
+            
+            // Reset advanced filters
+            document.getElementById('filter-has-manager').checked = false;
+            document.getElementById('filter-has-owner').checked = false;
+            document.getElementById('filter-has-description').checked = false;
+            
             applyAllFilters();
+        }}
+        
+        // Update altitude range display
+        function updateAltitudeRange() {{
+            var min = document.getElementById('min-altitude').value;
+            var max = document.getElementById('max-altitude').value;
+            document.getElementById('altitude-range').textContent = min + ' - ' + max + ' m';
+        }}
+        
+        // Update country count
+        function updateCountryCount() {{
+            var checked = document.querySelectorAll('.country-filter:checked').length;
+            var total = document.querySelectorAll('.country-filter').length;
+            if (checked === total) {{
+                document.getElementById('country-count').textContent = '';
+            }} else {{
+                document.getElementById('country-count').textContent = '(' + checked + '/' + total + ')';
+            }}
         }}
         
         // Event Listeners
@@ -1006,8 +1184,14 @@ def create_simple_map():
                     return c.checked;
                 }});
                 document.getElementById('filter-all').checked = allChecked;
+                updateCountryCount();
                 applyAllFilters();
             }});
+        }});
+        
+        // Hut type filter checkboxes
+        document.querySelectorAll('.type-filter').forEach(function(cb) {{
+            cb.addEventListener('change', applyAllFilters);
         }});
         
         // Source filter checkboxes
@@ -1015,19 +1199,35 @@ def create_simple_map():
             cb.addEventListener('change', applyAllFilters);
         }});
         
+        // Contact/Info filter checkboxes
+        document.getElementById('filter-has-phone').addEventListener('change', applyAllFilters);
+        document.getElementById('filter-has-email').addEventListener('change', applyAllFilters);
+        document.getElementById('filter-has-website').addEventListener('change', applyAllFilters);
+        document.getElementById('filter-has-hours').addEventListener('change', applyAllFilters);
+        
+        // Advanced filter checkboxes
+        document.getElementById('filter-has-manager').addEventListener('change', applyAllFilters);
+        document.getElementById('filter-has-owner').addEventListener('change', applyAllFilters);
+        document.getElementById('filter-has-description').addEventListener('change', applyAllFilters);
+        
         // Altitude sliders
         document.getElementById('min-altitude').addEventListener('input', function() {{
-            document.getElementById('min-altitude-value').textContent = this.value + ' m';
+            updateAltitudeRange();
             applyAllFilters();
         }});
         
         document.getElementById('max-altitude').addEventListener('input', function() {{
-            document.getElementById('max-altitude-value').textContent = this.value + ' m';
+            updateAltitudeRange();
             applyAllFilters();
         }});
         
-        // Capacity filter
+        // Capacity filters
         document.getElementById('min-capacity').addEventListener('input', function() {{
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(applyAllFilters, 300);
+        }});
+        
+        document.getElementById('max-capacity').addEventListener('input', function() {{
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(applyAllFilters, 300);
         }});
@@ -1048,6 +1248,7 @@ def create_simple_map():
         // Initial stats
         updateStats();
         console.log('Map ready with ' + markers.length + ' markers!');
+        }} // End of initializeMap function
     </script>
 </body>
 </html>"""

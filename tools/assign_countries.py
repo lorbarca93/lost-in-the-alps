@@ -97,7 +97,7 @@ def assign_countries():
         else:
             not_found += 1
             api_errors += 1
-            print(f"-> ⚠️ No country found at ({lat:.4f}, {lon:.4f})")
+            print(f"-> [!] No country found at ({lat:.4f}, {lon:.4f})")
         
         # Rate limiting: Reduced to 0.5 seconds for faster processing
         # Note: Nominatim recommends max 1 req/sec, but allows bursts
@@ -113,8 +113,8 @@ def assign_countries():
     print(f"No country found: {not_found}")
     
     if not_found > 0:
-        print(f"\n💡 Tip: Some huts may be outside the defined boundaries.")
-        print(f"   You can add more country boundaries to COUNTRY_BOUNDARIES in the script.")
+        print(f"\nTip: Some huts may be outside the defined boundaries.")
+        print(f"     You can add more country boundaries to COUNTRY_BOUNDARIES in the script.")
 
 
 def show_statistics():
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     force = '--force' in sys.argv
     
     if force:
-        print("⚠️  FORCE MODE: Will re-check ALL huts using Nominatim API")
+        print("[!] FORCE MODE: Will re-check ALL huts using Nominatim API")
         print("This will take approximately 40+ minutes for 2,221 huts!\n")
         response = input("Are you sure you want to continue? (yes/no): ")
         if response.lower() != 'yes':

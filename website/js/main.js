@@ -1,113 +1,196 @@
-// Main JavaScript for Lost in the Alps Website
+// Main JavaScript for Lost in the Alps website
 
-// Smooth scroll behavior for anchor links
+// Smooth scroll for in-page navigation
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+  anchor.addEventListener("click", (event) => {
+    const hash = anchor.getAttribute("href");
+    if (!hash || hash === "#") return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 
-// Add scroll effect to navbar
-let lastScroll = 0;
+// Elevate navbar on scroll
 const navbar = document.querySelector(".navbar");
-
 if (navbar) {
   window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll <= 0) {
-      navbar.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
-    } else {
-      navbar.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-    }
-
-    lastScroll = currentScroll;
+    const isElevated = window.scrollY > 24;
+    navbar.classList.toggle("is-elevated", isElevated);
   });
 }
 
-// Animate stats on scroll
-const animateStats = () => {
-  const statNumbers = document.querySelectorAll(".stat-number");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
+// Reveal-on-scroll animations
+const revealElements = document.querySelectorAll(".reveal-on-scroll");
+if (revealElements.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const target = entry.target;
-          const text = target.textContent;
+        if (!entry.isIntersecting) return;
 
-          // Only animate numbers
-          if (/^\d+/.test(text)) {
-            const finalNumber = parseInt(text.replace(/[^\d]/g, ""));
-            animateNumber(target, finalNumber, text);
-          }
-
-          observer.unobserve(target);
-        }
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.4, rootMargin: "0px 0px -10% 0px" }
   );
 
-  statNumbers.forEach((stat) => observer.observe(stat));
-};
-
-function animateNumber(element, target, originalText) {
-  const duration = 1500;
-  const start = 0;
-  const increment = target / (duration / 16);
-  let current = start;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = originalText;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(current).toLocaleString() + "+";
-    }
-  }, 16);
+  revealElements.forEach((element) => revealObserver.observe(element));
 }
 
-// Initialize animations when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  animateStats();
+// Load real statistics from API
+async function loadRealStats() {
+  try {
+    const response = await fetch('api/stats.json');
+    const stats = await response.json();
+    
+    // Update stat numbers with real data
+    const statElements = document.querySelectorAll('.stat-number');
+    if (statElements.length >= 4) {
+      statElements[0].dataset.value = stats.total_huts;
+      statElements[1].dataset.value = stats.countries_count;
+      statElements[2].dataset.value = stats.sources_count;
+      statElements[3].dataset.value = stats.with_details_percent;
+    }
+    
+    // Create country chart
+    if (stats.by_country) {
+      createCountryChart(stats.by_country);
+    }
+    
+    return stats;
+  } catch (error) {
+    console.error('Error loading statistics:', error);
+    return null;
+  }
+}
 
-  // Add loaded class for fade-in animations
+// Create a simple bar chart for countries
+function createCountryChart(countries) {
+  const chartContainer = document.getElementById('country-chart');
+  if (!chartContainer) return;
+  
+  // Take top 15 countries
+  const topCountries = countries.slice(0, 15);
+  if (topCountries.length === 0) {
+    chartContainer.innerHTML = '<p style="color: #64748b; text-align: center;">No data available</p>';
+    return;
+  }
+  
+  const maxCount = Math.max(...topCountries.map(c => c.count));
+  
+  chartContainer.innerHTML = topCountries.map(country => {
+    const percentage = (country.count / maxCount) * 100;
+    const escapedCountry = country.country.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return `
+      <div style="margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 14px;">
+          <span style="color: #1e293b; font-weight: 500;">${escapedCountry}</span>
+          <span style="color: #64748b;">${country.count} huts</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+          <div style="width: ${percentage}%; height: 100%; background: #2563eb; transition: width 0.6s ease;"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Stat counter animation
+const statNumbers = document.querySelectorAll(".stat-number");
+if (statNumbers.length) {
+  // Load real stats first
+  loadRealStats().then(() => {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          animateNumber(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    statNumbers.forEach((element) => counterObserver.observe(element));
+  });
+}
+
+function animateNumber(element) {
+  const targetValue = Number(element.dataset.value || 0);
+  const suffix = element.dataset.suffix || "";
+  const prefix = element.dataset.prefix || "";
+  const duration = Number(element.dataset.duration || 1400);
+
+  if (!Number.isFinite(targetValue) || targetValue <= 0) {
+    element.textContent = `${prefix}${targetValue}${suffix}`;
+    return;
+  }
+
+  const frameDuration = 1000 / 60;
+  const totalFrames = Math.round(duration / frameDuration);
+  let frame = 0;
+
+  const counter = () => {
+    frame += 1;
+    const progress = Math.min(frame / totalFrames, 1);
+    const easedProgress = easeOutCubic(progress);
+    const currentValue = Math.round(targetValue * easedProgress);
+
+    element.textContent = `${prefix}${currentValue.toLocaleString()}${suffix}`;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(counter);
+    }
+  };
+
+  window.requestAnimationFrame(counter);
+}
+
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+// Map loading indicator
+document.addEventListener("DOMContentLoaded", () => {
+  const mapFrame = document.querySelector(".map-wrapper iframe");
+  const mapLoading = document.getElementById("map-loading");
+
+  if (mapFrame && mapLoading) {
+    const hideLoader = () => mapLoading.classList.add("is-hidden");
+    const fallbackTimer = window.setTimeout(hideLoader, 4000);
+
+    mapFrame.addEventListener(
+      "load",
+      () => {
+        window.clearTimeout(fallbackTimer);
+        hideLoader();
+      },
+      { once: true }
+    );
+  }
+
   document.body.classList.add("loaded");
 });
 
-// Performance optimization: Lazy load images if any are added
+// Graceful lazy-loading support for future images
 if ("loading" in HTMLImageElement.prototype) {
-  const images = document.querySelectorAll('img[loading="lazy"]');
-  images.forEach((img) => {
-    img.src = img.dataset.src;
+  document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+    }
   });
 } else {
-  // Fallback for older browsers
   const script = document.createElement("script");
-  script.src =
-    "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js";
-  document.body.appendChild(script);
+  script.src = "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js";
+  script.defer = true;
+  document.head.appendChild(script);
 }
 
-// Console message for developers
-console.log(
-  "%c🏔️ Lost in the Alps",
-  "font-size: 20px; font-weight: bold; color: #2563eb;"
-);
-console.log(
-  "%cExplore mountain huts across the Alps!",
-  "font-size: 14px; color: #6b7280;"
-);
-console.log(
-  "%cData sources: mountainhuts.info, refuges.info, boudy.info",
-  "font-size: 12px; color: #9ca3af;"
-);
+// Console message for curious developers
+console.log("%cLost in the Alps", "font-size:18px;font-weight:600;color:#2563eb;");
+console.log("%cOpen data for mountain hut explorers.", "font-size:13px;color:#475569;");

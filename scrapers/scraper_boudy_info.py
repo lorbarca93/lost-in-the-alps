@@ -47,7 +47,7 @@ class BoudyInfoScraper(BaseScraper):
     def scrape_hut_details(self, hut_id: str) -> Dict:
         """
         Scrape detailed information from a hut's detail page
-        Returns dict with: altitude, capacity, water_source, best_time_to_visit, posted_by, comments
+        Returns dict with: altitude, capacity, phone, email, website, owner, manager, opening_hours, etc.
         """
         details = {}
         
@@ -85,6 +85,68 @@ class BoudyInfoScraper(BaseScraper):
                     details['capacity_max'] = int(max_capacity_text)
                 except:
                     pass
+            
+            # Extract contact information - look for links and text in info sections
+            # Phone numbers are often in format +420 xxx xxx xxx or tel: xxx
+            all_text = soup.get_text()
+            
+            # Phone number extraction
+            phone_patterns = [
+                r'\+\d{1,3}[\s\-]?\d{3}[\s\-]?\d{3}[\s\-]?\d{3}',  # +420 xxx xxx xxx
+                r'tel[:\.\s]+(\+?\d[\d\s\-]{8,})',  # tel: xxx
+                r'mobil[:\.\s]+(\+?\d[\d\s\-]{8,})',  # mobil: xxx
+            ]
+            for pattern in phone_patterns:
+                phone_match = re.search(pattern, all_text, re.I)
+                if phone_match:
+                    phone = phone_match.group(0) if '(' not in phone_match.group(0) else phone_match.group(1)
+                    phone = re.sub(r'\s+', ' ', phone).strip()
+                    if len(phone) > 8:
+                        details['phone'] = phone
+                        break
+            
+            # Email extraction
+            email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', all_text)
+            if email_match:
+                details['email'] = email_match.group(0)
+            
+            # Website extraction - look for external links
+            for link in soup.find_all('a', href=True):
+                href = link.get('href')
+                if href and not href.startswith('#') and 'boudy.info' not in href:
+                    # Check if it's an actual website (http/https)
+                    if href.startswith('http'):
+                        # Avoid email links
+                        if 'mailto:' not in href:
+                            details['website'] = href
+                            break
+            
+            # Extract owner/manager information from info sections
+            # Look for text containing "správce" (manager) or "majitel" (owner)
+            for div in soup.find_all('div', class_='info_txt'):
+                text = div.get_text(strip=True)
+                
+                # Manager (správce)
+                manager_match = re.search(r'[Ss]právce[:\s]+(.+?)(?:\||$)', text)
+                if manager_match:
+                    details['manager'] = manager_match.group(1).strip()
+                
+                # Owner (majitel)
+                owner_match = re.search(r'[Mm]ajitel[:\s]+(.+?)(?:\||$)', text)
+                if owner_match:
+                    details['owner'] = owner_match.group(1).strip()
+            
+            # Opening hours - look for opening times
+            # Common patterns: "otevřeno" (open), seasonal info
+            opening_keywords = ['otevřeno', 'opening', 'open', 'sezóna', 'season']
+            for div in soup.find_all(['div', 'p']):
+                text = div.get_text(strip=True).lower()
+                if any(keyword in text for keyword in opening_keywords):
+                    # Extract the full text which might contain opening info
+                    full_text = div.get_text(strip=True)
+                    if len(full_text) < 200 and len(full_text) > 10:
+                        details['opening_hours'] = full_text
+                        break
             
             # Extract posted by information (Vložil)
             info_txt = soup.find('div', class_='info_txt')
@@ -269,7 +331,10 @@ class BoudyInfoScraper(BaseScraper):
                         seen_ids.add(hut_id)
                         
                         # Scrape detailed information from the hut page
-                        print(f"  Scraping details for: {hut.get('name', 'Unknown')[:40]}")
+                        try:
+                            print(f"  Scraping details for: {hut.get('name', 'Unknown')[:40]}")
+                        except:
+                            print(f"  Scraping details for hut ID: {hut_id}")
                         details = self.scrape_hut_details(hut_id)
                         
                         # Merge details into hut data

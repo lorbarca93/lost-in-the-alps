@@ -167,32 +167,71 @@ class MountainHutsNetScraper(BaseScraper):
                         break
                     next_text = next_text.next_sibling
             
-            # Extract website URL
+            # Extract website URL - look for external links
             website = None
-            website_link = soup.find('a', string=re.compile(r'Mountain hut|website', re.I))
+            phone = None
+            email = None
+            capacity = None
+            opening_hours = None
+            
+            # Website link
+            website_link = soup.find('a', string=re.compile(r'Mountain hut|website|official', re.I))
             if website_link:
                 website = website_link.get('href')
             
+            # Alternative: look for any external http link
+            if not website:
+                for link in soup.find_all('a', href=True):
+                    href = link.get('href')
+                    if href and href.startswith('http') and 'mountain-huts.net' not in href:
+                        website = href
+                        break
+            
+            # Extract phone number from popup HTML
+            phone_match = re.search(r'\+\d{1,3}[\s\-]?\d{2,4}[\s\-]?\d{3,4}[\s\-]?\d{3,4}', popup_html)
+            if phone_match:
+                phone = phone_match.group(0)
+            
+            # Extract email from popup HTML
+            email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', popup_html)
+            if email_match:
+                email = email_match.group(0)
+            
+            # Extract capacity - look for numbers after words like "capacity", "beds", "places"
+            capacity_match = re.search(r'(?:capacity|beds|places|kapacitet)[:\s]+(\d+)', popup_html, re.I)
+            if capacity_match:
+                capacity = int(capacity_match.group(1))
+            
+            # Extract opening hours/season info
+            season_match = re.search(r'(?:open|season|opening)[:\s]+([^<]+)', popup_html, re.I)
+            if season_match:
+                opening_hours = season_match.group(1).strip()[:200]
+            
             # Determine hut type
             hut_type = None
-            if 'bivak' in name.lower() or 'bivouac' in name.lower():
-                hut_type = 'bivouac'
-            elif 'dom' in name.lower() or 'koča' in name.lower() or 'hut' in name.lower():
-                hut_type = 'mountain_hut'
+            if 'bivak' in name.lower() or 'bivouac' in name.lower() or 'bivak' in popup_html.lower():
+                hut_type = 'Bivouac'
+            elif 'dom' in name.lower() or 'koča' in name.lower() or 'hut' in name.lower() or 'chalet' in popup_html.lower():
+                hut_type = 'Mountain hut'
             elif 'zavetišče' in name.lower() or 'shelter' in name.lower():
-                hut_type = 'shelter'
+                hut_type = 'Shelter'
             
-            # Build hut data
+            # Build hut data with comprehensive fields
             hut_data = {
                 'name': name,
                 'latitude': lat,
                 'longitude': lon,
-                'altitude': elevation,  # Database expects 'altitude' not 'elevation'
-                'type': hut_type,
+                'altitude': elevation,
+                'hut_type': hut_type,
                 'country': country,
-                'website': website,
-                'source_id': f"{lat}_{lon}",  # Use coordinates as unique ID
+                'website': website if website else None,
+                'phone': phone if phone else None,
+                'email': email if email else None,
+                'capacity': capacity,
+                'opening_hours': opening_hours if opening_hours else None,
+                'source_id': f"{lat}_{lon}",
                 'description': organization,
+                'url': None,  # Mountain-huts.net doesn't have individual pages, but keep popup data
             }
             
             return hut_data

@@ -135,7 +135,7 @@ def harmonize_countries():
     
     conn.commit()
     
-    print(f"\n✅ Updated {updated_total} huts with harmonized country names")
+    print(f"\n[OK] Updated {updated_total} huts with harmonized country names")
     
     # Show final distribution
     print("\n" + "=" * 60)
@@ -169,4 +169,4 @@ if __name__ == "__main__":
     print("Mountain Huts Country Name Harmonization")
     print("=" * 60)
     harmonize_countries()
-    print("\n✅ Country harmonization complete!")
+    print("\n[OK] Country harmonization complete!")
