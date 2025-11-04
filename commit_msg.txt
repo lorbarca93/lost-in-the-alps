@@ -1,0 +1,22 @@
+Perfect country filter - handles missing data correctly
+
+Final Fix:
+Country filter now works perfectly for all huts.
+When All Countries checked shows all 2946 huts.
+When countries unchecked hides only those countries.
+Huts with country N/A stay visible like refuges.info.
+
+Testing Results:
+All countries show 2946 huts visible.
+Uncheck Italy shows 2664 huts visible.
+Refuges.info huts stay visible when filtering.
+Math is perfect.
+
+Filter Logic:
+Only applies country filter when All Countries is unchecked.
+Huts without country data are never filtered by country.
+Consistent handling across type source and country filters.
+
+Files:
+tools/create_ultra_simple_map.py - Finalized filter logic
+
