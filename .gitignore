@@ -46,12 +46,13 @@ instance/
 *.backup
 *_old.*
 
-# Exported data
-huts_data.json
+# Exported data (now tracked for GitHub Pages)
+# huts_data.json - tracked for deployment
+# website/api/*.json - tracked for deployment
 *.json.bak
 
-# Generated files (large, can be regenerated)
-mountain_huts_map.html
+# Generated files (now tracked for GitHub Pages)
+# mountain_huts_map.html - tracked for deployment
 
 # Exploration scripts (moved to debug/)
 explore_*.py
