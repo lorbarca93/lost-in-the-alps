@@ -1,6 +1,6 @@
 """
-Scraper for boudy.info
-Mountain huts database covering Czech Republic, Slovakia, Alps region
+Improved scraper for boudy.info
+Extracts comprehensive information from mountain huts database
 """
 
 from base_scraper import BaseScraper
@@ -11,8 +11,8 @@ import re
 from bs4 import BeautifulSoup
 
 
-class BoudyInfoScraper(BaseScraper):
-    """Scraper for boudy.info website"""
+class BoudyInfoScraperImproved(BaseScraper):
+    """Improved scraper for boudy.info website"""
     
     @property
     def source_name(self) -> str:
@@ -24,205 +24,230 @@ class BoudyInfoScraper(BaseScraper):
     
     @property
     def source_description(self) -> str:
-        return "Open database of mountain huts, bivouacs and bivouacs in Central Europe and Alps"
+        return "Open database of mountain huts, bivouacs and shelters in Central Europe and Alps"
     
     def get_hut_types(self) -> Dict[int, str]:
         """Map of hut type codes to descriptions"""
         return {
-            0: "Unidentified object",
-            1: "Bivouac/camping spot",
-            2: "Shelter/hut",
-            3: "Mountain hut/hotel"
+            0: "Unknown",
+            1: "Bivouac",
+            2: "Shelter",
+            3: "Mountain hut"
         }
     
     def get_status_types(self) -> Dict[int, str]:
         """Map of status codes to descriptions"""
         return {
-            0: "New object",
-            1: "Approved object",
-            2: "Deleted object",
-            3: "Secret object"
+            0: "New",
+            1: "Approved",
+            2: "Deleted",
+            3: "Secret"
         }
     
     def scrape_hut_details(self, hut_id: str) -> Dict:
         """
         Scrape detailed information from a hut's detail page
-        Returns dict with: altitude, capacity, phone, email, website, owner, manager, opening_hours, etc.
         """
         details = {}
         
         try:
             url = f"{self.source_url}/bouda.php?id={hut_id}"
-            response = self.session.get(url, timeout=10)
+            response = self.session.get(url, timeout=15)
             response.raise_for_status()
             
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Extract altitude from header subtitle (div.podnadpis)
-            # Format: "Česká republika, Podyjí, Šobes, pravý břeh Dyje | 250 m.n.m."
+            # Get full page text for pattern matching
+            page_text = soup.get_text()
+            
+            # Extract altitude from subtitle
             podnadpis = soup.find('div', class_='podnadpis')
             if podnadpis:
-                subtitle_text = podnadpis.get_text()
-                # Look for pattern like "250 m.n.m." (meters above sea level in Czech)
-                altitude_match = re.search(r'(\d+)\s*m\.n\.m\.', subtitle_text)
+                subtitle = podnadpis.get_text()
+                # Pattern: "... | 2 050 m.n.m." or "... | 2050 m.n.m."
+                altitude_match = re.search(r'(\d[\d\s]+)\s*m\.n\.m\.', subtitle)
                 if altitude_match:
-                    details['altitude'] = int(altitude_match.group(1))
+                    alt_str = altitude_match.group(1).replace(' ', '').replace(',', '')
+                    try:
+                        details['altitude'] = int(alt_str)
+                    except:
+                        pass
             
-            # Extract capacity (number of people)
-            # Look for div.info_pocet (regular capacity) and div.info_pocet_max (max capacity)
+            # Extract capacity
             info_pocet = soup.find('div', class_='info_pocet')
             if info_pocet:
-                capacity_text = info_pocet.get_text(strip=True)
                 try:
-                    details['capacity'] = int(capacity_text)
+                    capacity = int(re.sub(r'\D', '', info_pocet.get_text()))
+                    if capacity > 0:
+                        details['capacity'] = capacity
                 except:
                     pass
             
             info_pocet_max = soup.find('div', class_='info_pocet_max')
             if info_pocet_max:
-                max_capacity_text = info_pocet_max.get_text(strip=True)
                 try:
-                    details['capacity_max'] = int(max_capacity_text)
+                    max_cap = int(re.sub(r'\D', '', info_pocet_max.get_text()))
+                    if max_cap > 0:
+                        details['capacity_max'] = max_cap
                 except:
                     pass
             
-            # Extract contact information - look for links and text in info sections
-            # Phone numbers are often in format +420 xxx xxx xxx or tel: xxx
-            all_text = soup.get_text()
-            
-            # Phone number extraction
+            # Extract phone numbers - look in all text
             phone_patterns = [
-                r'\+\d{1,3}[\s\-]?\d{3}[\s\-]?\d{3}[\s\-]?\d{3}',  # +420 xxx xxx xxx
+                r'\+\d{1,3}[\s\-]?\d{3}[\s\-]?\d{3}[\s\-]?\d{3,4}',  # +420 xxx xxx xxx
+                r'\b\d{3}[\s\-]\d{3}[\s\-]\d{3}\b',  # xxx xxx xxx
                 r'tel[:\.\s]+(\+?\d[\d\s\-]{8,})',  # tel: xxx
-                r'mobil[:\.\s]+(\+?\d[\d\s\-]{8,})',  # mobil: xxx
             ]
+            
             for pattern in phone_patterns:
-                phone_match = re.search(pattern, all_text, re.I)
-                if phone_match:
-                    phone = phone_match.group(0) if '(' not in phone_match.group(0) else phone_match.group(1)
-                    phone = re.sub(r'\s+', ' ', phone).strip()
-                    if len(phone) > 8:
-                        details['phone'] = phone
-                        break
+                matches = re.findall(pattern, page_text, re.I)
+                for match in matches:
+                    phone = match if isinstance(match, str) else match[0] if match else None
+                    if phone and len(phone.replace(' ', '').replace('-', '')) >= 9:
+                        # Clean up
+                        phone = re.sub(r'\s+', ' ', phone).strip()
+                        if 'boudy.info' not in phone.lower() and 'upravit' not in phone.lower():
+                            details['phone'] = phone
+                            break
+                if 'phone' in details:
+                    break
             
-            # Email extraction
-            email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', all_text)
-            if email_match:
-                details['email'] = email_match.group(0)
+            # Extract email
+            email_matches = re.findall(r'[\w\.-]+@[\w\.-]+\.\w+', page_text)
+            for email in email_matches:
+                # Filter out obvious non-emails
+                if ('boudy.info' not in email.lower() and 
+                    'example' not in email.lower() and
+                    len(email) > 5):
+                    details['email'] = email
+                    break
             
-            # Website extraction - look for external links
+            # Extract website - look for external links
             for link in soup.find_all('a', href=True):
-                href = link.get('href')
-                if href and not href.startswith('#') and 'boudy.info' not in href:
-                    # Check if it's an actual website (http/https)
-                    if href.startswith('http'):
-                        # Avoid email links
-                        if 'mailto:' not in href:
-                            details['website'] = href
+                href = link.get('href', '')
+                if (href.startswith('http') and 
+                    'boudy.info' not in href and
+                    'mailto:' not in href and
+                    'javascript:' not in href and
+                    'facebook' not in href):
+                    details['website'] = href
+                    break
+            
+            # Extract descriptions from content sections
+            # Look for div elements with actual content (not just "Upravit")
+            content_divs = soup.find_all('div', class_='popis_text')
+            description_parts = []
+            
+            for div in content_divs:
+                text = div.get_text(strip=True)
+                # Skip edit links and very short text
+                if (text and 
+                    len(text) > 20 and 
+                    'Upravit' not in text and
+                    'upravit' not in text.lower()):
+                    description_parts.append(text)
+            
+            if description_parts:
+                details['description'] = ' '.join(description_parts[:3])[:500]
+            
+            # Look for description in any div/p with substantial text
+            if 'description' not in details or len(details.get('description', '')) < 50:
+                for elem in soup.find_all(['div', 'p']):
+                    text = elem.get_text(strip=True)
+                    if (len(text) > 50 and 
+                        len(text) < 800 and
+                        'Upravit' not in text and
+                        'Vložil' not in text and
+                        '@' not in text):  # Skip user info
+                        # Check if it's actual descriptive content
+                        if any(word in text.lower() for word in ['hut', 'bouda', 'refuge', 'bivak', 'chata', 'situated', 'located']):
+                            details['description'] = text[:500]
                             break
             
-            # Extract owner/manager information from info sections
-            # Look for text containing "správce" (manager) or "majitel" (owner)
-            for div in soup.find_all('div', class_='info_txt'):
-                text = div.get_text(strip=True)
-                
-                # Manager (správce)
-                manager_match = re.search(r'[Ss]právce[:\s]+(.+?)(?:\||$)', text)
-                if manager_match:
-                    details['manager'] = manager_match.group(1).strip()
-                
-                # Owner (majitel)
-                owner_match = re.search(r'[Mm]ajitel[:\s]+(.+?)(?:\||$)', text)
-                if owner_match:
-                    details['owner'] = owner_match.group(1).strip()
+            # Extract water source info
+            water_keywords = ['voda', 'water', 'zdroj', 'source', 'studna', 'well', 'potok', 'stream']
+            for elem in soup.find_all(['div', 'p', 'li']):
+                text = elem.get_text(strip=True)
+                if (len(text) > 10 and 
+                    len(text) < 300 and
+                    any(kw in text.lower() for kw in water_keywords) and
+                    'Upravit' not in text):
+                    details['water_source'] = text[:200]
+                    break
             
-            # Opening hours - look for opening times
-            # Common patterns: "otevřeno" (open), seasonal info
-            opening_keywords = ['otevřeno', 'opening', 'open', 'sezóna', 'season']
-            for div in soup.find_all(['div', 'p']):
-                text = div.get_text(strip=True).lower()
-                if any(keyword in text for keyword in opening_keywords):
-                    # Extract the full text which might contain opening info
-                    full_text = div.get_text(strip=True)
-                    if len(full_text) < 200 and len(full_text) > 10:
-                        details['opening_hours'] = full_text
+            # Extract access information
+            access_keywords = ['přístup', 'access', 'cesta', 'trail', 'path', 'route', 'approach']
+            for elem in soup.find_all(['div', 'p', 'li']):
+                text = elem.get_text(strip=True)
+                if (len(text) > 10 and 
+                    len(text) < 400 and
+                    any(kw in text.lower() for kw in access_keywords) and
+                    'Upravit' not in text):
+                    details['access'] = text[:300]
+                    break
+            
+            # Extract opening/season information  
+            season_keywords = ['otevřeno', 'opening', 'open', 'sezóna', 'season', 'celoročně', 'year-round']
+            for elem in soup.find_all(['div', 'p', 'li']):
+                text = elem.get_text(strip=True)
+                if (len(text) > 5 and 
+                    len(text) < 200 and
+                    any(kw in text.lower() for kw in season_keywords) and
+                    'Upravit' not in text):
+                    details['opening_hours'] = text[:150]
+                    break
+            
+            # Extract owner/manager from any text mentioning them
+            owner_patterns = [
+                r'[Mm]ajitel[:\s]+([^|]+)',
+                r'[Oo]wner[:\s]+([^|]+)',
+                r'[Vv]lastník[:\s]+([^|]+)'
+            ]
+            for pattern in owner_patterns:
+                match = re.search(pattern, page_text)
+                if match:
+                    owner = match.group(1).strip()
+                    if len(owner) > 2 and len(owner) < 100:
+                        details['owner'] = owner
                         break
             
-            # Extract posted by information (Vložil)
-            info_txt = soup.find('div', class_='info_txt')
-            if info_txt:
-                vlozil = info_txt.find('b', string=re.compile(r'Vložil', re.I))
-                if vlozil:
-                    # Get next text after the bold tag
-                    posted_text = vlozil.next_sibling
-                    if posted_text:
-                        posted_text = str(posted_text).strip()
-                        # Format: "Beránek a Mazda (08.06.2006)"
-                        match = re.search(r'(.+?)\s*\((\d{2}\.\d{2}\.\d{4})\)', posted_text)
-                        if match:
-                            details['posted_by'] = match.group(1).strip()
-                            details['posted_date'] = match.group(2)
+            manager_patterns = [
+                r'[Ss]právce[:\s]+([^|]+)',
+                r'[Mm]anager[:\s]+([^|]+)',
+                r'[Kk]ontakt[:\s]+([^|]+)'
+            ]
+            for pattern in manager_patterns:
+                match = re.search(pattern, page_text)
+                if match:
+                    manager = match.group(1).strip()
+                    if len(manager) > 2 and len(manager) < 100 and manager != details.get('owner'):
+                        details['manager'] = manager
+                        break
             
-            # Extract comments (Poznámky)
+            # Extract comments from comment section
             poz_section = soup.find('div', class_='sloupek_poz')
             if poz_section:
                 comments = []
+                # Look for comment text divs
                 poz_txts = poz_section.find_all('div', class_='poz_txt')
                 for poz in poz_txts[:3]:  # Get first 3 comments
-                    # Get date
-                    datum = poz.find('div', class_='poz_datum_cas')
-                    # Get comment text (everything after the date)
-                    comment_text = poz.get_text(strip=True)
-                    if datum:
-                        # Remove the date from comment text
-                        date_text = datum.get_text(strip=True)
-                        comment_text = comment_text.replace(date_text, '', 1).strip()
-                    # Also remove the author name if present
-                    vlozil = poz.find('div', class_='poz_vlozil')
-                    if vlozil:
-                        author = vlozil.get_text(strip=True)
-                        comment_text = comment_text.replace(author, '').strip()
+                    comment = poz.get_text(strip=True)
+                    # Remove date and author
+                    comment = re.sub(r'\d{2}\.\d{2}\.\d{4}.*?\d{2}:\d{2}', '', comment)
+                    comment = re.sub(r'Vložil.*?:', '', comment)
+                    comment = comment.strip()
                     
-                    if comment_text and len(comment_text) > 10:
-                        comments.append(comment_text[:300])  # Limit to 300 chars each
+                    if len(comment) > 15 and len(comment) < 500:
+                        comments.append(comment)
                 
                 if comments:
-                    details['comments'] = ' | '.join(comments)
+                    details['comments'] = ' | '.join(comments)[:600]
             
-            # Extract description sections (Popis)
-            # These are in sections with div.popis_nadpis as headers
-            popis_sections = soup.find_all('div', class_='popis_nadpis')
-            for section in popis_sections:
-                section_title = section.get_text(strip=True)
-                # Get the text content after this header (before the next section)
-                content_parts = []
-                for sibling in section.next_siblings:
-                    if sibling.name == 'div' and 'popis_nadpis' in sibling.get('class', []):
-                        break  # Stop at next section header
-                    if sibling.name == 'div' and 'popis_upravit' in sibling.get('class', []):
-                        continue  # Skip edit links
-                    if hasattr(sibling, 'get_text'):
-                        text = sibling.get_text(strip=True)
-                        if text and len(text) > 3:
-                            content_parts.append(text)
-                
-                content = ' '.join(content_parts)
-                
-                # Map Czech section names to English keys
-                if 'Zdroj vody' in section_title or 'Water' in section_title:
-                    if content:
-                        details['water_source'] = content[:200]
-                elif 'Nejvhodnější doba' in section_title or 'Best time' in section_title:
-                    if content:
-                        details['best_time_to_visit'] = content[:200]
-                elif 'Přístup' in section_title or 'Access' in section_title:
-                    if content:
-                        details['access'] = content[:300]
-                elif 'Popis' == section_title or 'Description' == section_title:
-                    if content:
-                        # This is the main description
-                        if 'description' not in details:
-                            details['description'] = content[:500]
+            # Extract posted by information
+            vlozil_match = re.search(r'Vložil[:\s]+([^\(]+)\s*\((\d{2}\.\d{2}\.\d{4})\)', page_text)
+            if vlozil_match:
+                details['posted_by'] = vlozil_match.group(1).strip()
+                details['posted_date'] = vlozil_match.group(2)
             
         except Exception as e:
             print(f"  Error scraping details for hut {hut_id}: {e}")
@@ -239,13 +264,12 @@ class BoudyInfoScraper(BaseScraper):
                     'lon1': lon1,
                     'lat2': lat2,
                     'lon2': lon2
-                }
+                },
+                timeout=15
             )
             response.raise_for_status()
             
             data = response.json()
-            
-            # The response should be GeoJSON format with features array
             features = data.get('features', [])
             
             huts = []
@@ -258,30 +282,26 @@ class BoudyInfoScraper(BaseScraper):
                     hut_data = {
                         'source_id': str(feature.get('id')),
                         'name': props.get('name', 'Unknown'),
-                        'description': props.get('popupContent', ''),
                         'icon': props.get('icon', '')
                     }
                     
-                    # Extract coordinates
-                    # NOTE: boudy.info uses [latitude, longitude] format (NOT standard GeoJSON!)
+                    # Extract coordinates (boudy.info uses [latitude, longitude])
                     if len(coords) >= 2:
-                        hut_data['latitude'] = float(coords[0])   # First value is latitude
-                        hut_data['longitude'] = float(coords[1])  # Second value is longitude
+                        hut_data['latitude'] = float(coords[0])
+                        hut_data['longitude'] = float(coords[1])
                     
                     # Parse icon to get type and status
-                    # Icon format: "2_4_1" means type_subtype_status
                     if hut_data['icon']:
                         icon_parts = hut_data['icon'].split('_')
                         if len(icon_parts) >= 3:
-                            hut_data['type'] = int(icon_parts[0])
-                            hut_data['subtype'] = int(icon_parts[1])
+                            type_code = int(icon_parts[0])
                             hut_data['status'] = int(icon_parts[2])
-                    
-                    # Add type and status descriptions
-                    type_map = self.get_hut_types()
-                    status_map = self.get_status_types()
-                    hut_data['type_description'] = type_map.get(hut_data.get('type', 0))
-                    hut_data['status_description'] = status_map.get(hut_data.get('status', 0))
+                            
+                            type_map = self.get_hut_types()
+                            hut_data['hut_type'] = type_map.get(type_code, 'Unknown')
+                            
+                            status_map = self.get_status_types()
+                            hut_data['status_description'] = status_map.get(hut_data['status'], '')
                     
                     # Build URL
                     if hut_data.get('source_id'):
@@ -300,62 +320,64 @@ class BoudyInfoScraper(BaseScraper):
     
     def scrape(self) -> List[Dict]:
         """Scrape all regions covering the entire Alps and Central Europe"""
-        print("Scraping all regions (Alps, Slovenia, Czech Republic, Slovakia)...")
+        print("Scraping boudy.info - Alps and Central Europe regions...")
+        print("This will take approximately 5-7 minutes to scrape ~889 huts with details.\n")
         
         all_huts = []
         seen_ids = set()
         
-        # Expanded grid covering entire Alps region and Central Europe
-        lat_min, lat_max = 43.5, 52.0  # From French Alps to Northern Czech Republic
-        lon_min, lon_max = 5.0, 20.0   # From France to Eastern Czech Republic/Slovakia
-        
-        # Grid size (degrees) - larger boxes to minimize requests
+        # Grid covering Alps and Central Europe
+        lat_min, lat_max = 43.5, 52.0
+        lon_min, lon_max = 5.0, 20.0
         grid_size = 2.0
         
         lat = lat_min
+        region_count = 0
+        total_regions = int(((lat_max - lat_min) / grid_size) * ((lon_max - lon_min) / grid_size))
+        
         while lat < lat_max:
             lon = lon_min
             while lon < lon_max:
+                region_count += 1
                 lat1, lon1 = lat, lon
                 lat2, lon2 = min(lat + grid_size, lat_max), min(lon + grid_size, lon_max)
                 
-                print(f"Fetching region: ({lat1:.2f}, {lon1:.2f}) to ({lat2:.2f}, {lon2:.2f})")
+                print(f"[{region_count}/{total_regions}] Region ({lat1:.1f}, {lon1:.1f}) to ({lat2:.1f}, {lon2:.1f})", end=' ')
                 
                 huts = self.scrape_ajax_data(lat1, lon1, lat2, lon2)
-                print(f"  Found {len(huts)} huts")
+                print(f"- Found {len(huts)} huts")
                 
-                # Deduplicate by ID
+                # Process each hut
                 for hut in huts:
                     hut_id = hut.get('source_id')
                     if hut_id and hut_id not in seen_ids:
                         seen_ids.add(hut_id)
                         
-                        # Scrape detailed information from the hut page
+                        # Scrape detailed information
                         try:
-                            print(f"  Scraping details for: {hut.get('name', 'Unknown')[:40]}")
+                            name = hut.get('name', 'Unknown')[:40]
+                            print(f"  Scraping: {name}")
                         except:
-                            print(f"  Scraping details for hut ID: {hut_id}")
-                        details = self.scrape_hut_details(hut_id)
+                            print(f"  Scraping hut ID: {hut_id}")
                         
-                        # Merge details into hut data
+                        details = self.scrape_hut_details(hut_id)
                         hut.update(details)
                         
-                        # Normalize the data
+                        # Normalize and add
                         normalized = self.normalize_hut_data(hut)
                         all_huts.append(normalized)
                         
-                        # Be polite - short delay between detail page requests
-                        time.sleep(0.3)
+                        time.sleep(0.2)  # Be polite
                 
-                time.sleep(0.5)  # Be polite to the server
-                
+                time.sleep(0.3)
                 lon += grid_size
             lat += grid_size
         
-        print(f"\nTotal unique huts found: {len(all_huts)}")
+        print(f"\n[OK] Scraping complete! Found {len(all_huts)} unique huts")
         return all_huts
 
 
 if __name__ == "__main__":
-    scraper = BoudyInfoScraper()
+    scraper = BoudyInfoScraperImproved()
     scraper.run()
+

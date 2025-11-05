@@ -1,49 +1,54 @@
 # Lost in the Alps - Project Status Report
-**Generated**: November 4, 2025  
-**Version**: 0.2.0  
-**Status**: ✅ Production Ready
+**Generated**: November 5, 2025  
+**Version**: 0.2.1  
+**Status**: ✅ Production Ready & Verified
 
 ---
 
 ## 🎯 Executive Summary
 
-**Lost in the Alps** is a comprehensive mountain huts database and interactive mapping application covering **8,166 mountain huts** across **19 European countries**. The application features a beautiful web interface, advanced filtering capabilities, and a robust multi-source scraping system.
+**Lost in the Alps** is a comprehensive mountain huts database and interactive mapping application covering **8,142 mountain huts** across **41 countries worldwide**. The application features a beautiful web interface, advanced filtering capabilities, and a robust multi-source scraping system.
 
 ### Key Achievements
-- ✅ **8,166 mountain huts** aggregated from 4 data sources
-- ✅ **64.6% growth** from refuges.info comprehensive scraping (5,274 huts)
-- ✅ **Interactive map** with 15+ advanced filters
-- ✅ **Clean database** with optimized schema
-- ✅ **Production-ready** web application
+- ✅ **8,142 mountain huts** aggregated from 4 data sources
+- ✅ **64.5% from refuges.info** comprehensive scraping (5,250 huts)
+- ✅ **Interactive map** with advanced filters for 41 countries
+- ✅ **Clean database** with normalized schema and hut types
+- ✅ **Production-ready** web application with real-time stats
 
 ---
 
 ## 📊 Current Database Statistics
 
 ### Overall Metrics
-- **Total Huts**: 8,166
-- **Countries**: 19
+- **Total Huts**: 8,142
+- **Countries**: 41
 - **Data Sources**: 4
-- **Coordinates Coverage**: 100% (8,166/8,166)
-- **Last Updated**: November 4, 2025 16:54
+- **Coordinates Coverage**: 100% (8,142/8,142)
+- **Last Updated**: November 5, 2025
 
 ### By Source
-1. **refuges.info**: 5,274 huts (64.6%)
-2. **mountainhuts.info**: 1,343 huts (16.4%)
+1. **refuges.info**: 5,250 huts (64.5%)
+2. **mountainhuts.info**: 1,343 huts (16.5%)
 3. **boudy.info**: 889 huts (10.9%)
 4. **mountain-huts.net**: 660 huts (8.1%)
 
-### Top 10 Countries
-1. Austria: 364 huts
-2. Italy: 282 huts
-3. Slovenia: 282 huts
-4. Croatia: 179 huts
-5. Bulgaria: 150 huts
-6. Poland: 148 huts
-7. Romania: 120 huts
-8. Slovakia: 86 huts
-9. Greece: 78 huts
-10. Bosnia and Herzegovina: 55 huts
+### Top 15 Countries
+1. France: 3,553 huts (43.6%)
+2. Italy: 978 huts (12.0%)
+3. Switzerland: 662 huts (8.1%)
+4. Czech Republic: 464 huts (5.7%)
+5. Austria: 404 huts (5.0%)
+6. Spain: 332 huts (4.1%)
+7. Slovenia: 318 huts (3.9%)
+8. Poland: 187 huts (2.3%)
+9. Slovakia: 176 huts (2.2%)
+10. Croatia: 159 huts (2.0%)
+11. Bulgaria: 152 huts (1.9%)
+12. Germany: 135 huts (1.7%)
+13. Romania: 122 huts (1.5%)
+14. Andorra: 84 huts (1.0%)
+15. Greece: 80 huts (1.0%)
 
 ### Geographic Coverage
 - **Alps**: Primary coverage (France, Switzerland, Italy, Austria, Germany, Liechtenstein)

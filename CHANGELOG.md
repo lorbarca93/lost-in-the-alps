@@ -1,5 +1,39 @@
 # Lost in the Alps - Changelog
 
+## [0.2.1] - November 5, 2025
+
+### 🔧 Bug Fixes & Data Quality Improvements
+
+#### Database Normalization ✅
+- Fixed duplicate hut_type values: normalized "Mountain Hut" → "Mountain hut"
+- Added validation script to prevent future inconsistencies
+- Consolidated 421 huts with proper "Unknown" hut_type designation
+- **Result**: Clean, consistent hut_type values across all 8,142 huts
+
+#### Website Updates ✅
+- Updated hardcoded statistics (2,892 → 8,142 huts)
+- Fixed meta description to reflect actual database size (8,000+)
+- Updated country filter count (19 → 41 countries)
+- Regenerated all JSON data files (stats.json, huts.json, huts_data.json)
+- Regenerated interactive map with current data
+
+#### Documentation Refresh ✅
+- Updated README.md with accurate statistics (8,142 huts, 41 countries)
+- Corrected source counts for all scrapers
+- Updated PROJECT_STATUS.md to reflect current state
+- Fixed date references to November 5, 2025
+
+#### Dependencies ✅
+- Added missing aiohttp>=3.9.0 for async scraping support
+
+#### Quality Assurance ✅
+- Verified 100% country coverage (8,142/8,142 huts)
+- Confirmed all scrapers set country to None (geolocation handles it)
+- Created validation tools: check_country_coverage.py, validate_hut_types.py, normalize_hut_types.py
+- Cleaned up temporary files (commit_msg.txt)
+
+---
+
 ## [0.2.0] - November 4, 2025
 
 ### 🎉 Major Update - Comprehensive Alpine Coverage
@@ -8,15 +42,15 @@
 
 ## 📊 Current Statistics
 
-- **Total Huts**: 8,166 mountain huts across Europe
-- **Countries**: 19 countries
+- **Total Huts**: 8,142 mountain huts worldwide
+- **Countries**: 41 countries (France, Italy, Switzerland, and 38 more)
 - **Data Sources**: 4 active sources
-  - refuges.info: 5,274 huts (64.6%)
-  - mountainhuts.info: 1,343 huts (16.4%)
+  - refuges.info: 5,250 huts (64.5%)
+  - mountainhuts.info: 1,343 huts (16.5%)
   - boudy.info: 889 huts (10.9%)
   - mountain-huts.net: 660 huts (8.1%)
-- **Coverage**: Alps, Apennines, Carpathians, and Balkans
-- **Last Updated**: November 4, 2025
+- **Coverage**: Alps, Apennines, Carpathians, Balkans, and worldwide
+- **Last Updated**: November 5, 2025
 
 ---
 
@@ -66,8 +100,8 @@
 - **Result**: Map now displays all 8,166 huts with full functionality
 
 #### Enhanced Features
-- **8,166 mountain huts** displayed with cluster markers
-- **19 country filters** with hut counts
+- **8,142 mountain huts** displayed with cluster markers
+- **41 country filters** with hut counts
 - **Advanced filtering** system with 9 categories:
   1. ⚡ Quick Presets (High Alt, Large, With Contact, Open)
   2. 🔍 Real-time name search

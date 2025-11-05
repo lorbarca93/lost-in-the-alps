@@ -140,7 +140,17 @@ class MountainHutsDatabase:
             existing = cursor.fetchone()
             
             if existing:
-                # Update existing hut
+                # Update existing hut - preserve country if scraper doesn't provide it
+                # Get existing country value
+                cursor.execute("SELECT country FROM mountain_huts WHERE source = ? AND source_id = ?",
+                             (source, hut.get('source_id')))
+                existing_country = cursor.fetchone()[0]
+                
+                # Use scraped country only if it's provided and not None/empty
+                country_to_save = hut.get('country')
+                if not country_to_save or country_to_save in ['', 'None']:
+                    country_to_save = existing_country  # Preserve existing
+                
                 cursor.execute("""
                     UPDATE mountain_huts 
                     SET name = ?, hut_type = ?, 
@@ -164,7 +174,7 @@ class MountainHutsDatabase:
                     hut.get('altitude'),
                     hut.get('description', ''),
                     hut.get('url', ''),
-                    hut.get('country', ''),
+                    country_to_save,  # Use preserved or new country
                     hut.get('region', ''),
                     hut.get('amenities', ''),
                     hut.get('capacity'),

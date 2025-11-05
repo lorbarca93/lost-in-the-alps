@@ -4,15 +4,15 @@ A modular scraper system to collect comprehensive mountain hut data from multipl
 
 ## 📊 Current Status
 
-- **Total Huts**: 8,166 🎉
+- **Total Huts**: 8,142 🎉
 - **Data Sources**: 4 active sources
-  - refuges.info: 5,274 huts (64.6%) - French Alpine refuges
-  - mountainhuts.info: 1,343 huts (16.4%) - Europe-wide
+  - refuges.info: 5,250 huts (64.5%) - French Alpine refuges
+  - mountainhuts.info: 1,343 huts (16.5%) - Europe-wide
   - boudy.info: 889 huts (10.9%) - Czech/Slovak Alps
   - mountain-huts.net: 660 huts (8.1%) - Balkans
-- **Countries Covered**: 19 (Austria, Italy, Slovenia, Croatia, Bulgaria, Poland, Romania, Slovakia, Greece, Bosnia, Serbia, Czech Republic, Hungary, France, Montenegro, Germany, Switzerland, Liechtenstein, North Macedonia)
-- **Coverage**: Alps, Apennines, Carpathians, and Balkans
-- **Last Updated**: November 4, 2025
+- **Countries Covered**: 41 (France, Italy, Switzerland, Czech Republic, Austria, Spain, Slovenia, Poland, Slovakia, Croatia, Bulgaria, Germany, Romania, Andorra, Greece, Bosnia & Herz., Serbia, Hungary, Montenegro, North Macedonia, and 21 others worldwide)
+- **Coverage**: Alps, Apennines, Carpathians, Balkans, and worldwide
+- **Last Updated**: November 5, 2025
 
 ## 🚀 Quick Start
 
@@ -48,7 +48,7 @@ python tools/query_database.py
 ```
 lostinthealps/
 ├── data/                           # Database storage
-│   ├── mountain_huts.db           # SQLite database (8,166 huts)
+│   ├── mountain_huts.db           # SQLite database (8,142 huts)
 │   └── mountain_huts_backup_*.db  # Automatic backups
 │
 ├── scrapers/                       # Web scraping modules
@@ -56,14 +56,14 @@ lostinthealps/
 │   ├── scraper_boudy_info.py      # Boudy.info scraper (889 huts, Alps)
 │   ├── scraper_mountain_huts_net.py # Mountain-huts.net scraper (660 huts, Balkans)
 │   ├── scraper_mountainhuts_info.py # Mountainhuts.info scraper (1,343 huts, Europe-wide)
-│   ├── scraper_refuges_info_pages.py # Refuges.info scraper (5,274 huts, Alpine refuges)
+│   ├── scraper_refuges_info_fast.py  # Refuges.info scraper (5,250 huts, Alpine refuges)
 │   └── scraper_template.py        # Template for new scrapers
 │
 ├── website/                        # Web interface
 │   ├── index.html                 # Main landing page with real-time stats
 │   ├── map.html                   # Full-screen interactive map
 │   ├── mountain_huts_map.html     # Embedded map with all features
-│   ├── huts_data.json             # Map data source (8,166 huts)
+│   ├── huts_data.json             # Map data source (8,142 huts)
 │   ├── js/main.js                 # Real-time data loading
 │   └── api/                       # Data export scripts
 │       ├── stats.py               # Export statistics to JSON
@@ -107,14 +107,14 @@ lostinthealps/
 ## 🎯 Features
 
 ### Data Collection
-- **Multi-source scraping**: Aggregates 8,166 huts from 4 different websites
-- **Comprehensive coverage**: Alps, Apennines, Carpathians, and Balkans
-- **Rich metadata**: 19 countries, multiple hut types, detailed information
+- **Multi-source scraping**: Aggregates 8,142 huts from 4 different websites
+- **Comprehensive coverage**: Alps, Apennines, Carpathians, Balkans, and worldwide
+- **Rich metadata**: 41 countries, multiple hut types, detailed information
 - **Time-limited scraping**: Safe long-running operations with automatic stopping
 
 ### Interactive Map
-- **8,166 mountain huts** with cluster markers
-- **15+ advanced filters**: Quick presets, search, country, type, altitude, capacity
+- **8,142 mountain huts** with cluster markers
+- **Advanced filters**: Quick presets, search by 41 countries, type, altitude, capacity
 - **Beautiful design**: Minimal 4px markers, smooth hover effects
 - **Detailed popups**: Full hut information with clickable contact links
 - **Export functionality**: Download filtered results as KMZ
@@ -124,7 +124,7 @@ lostinthealps/
 - **Modern light theme**: Professional, clean UI
 - **Real-time statistics**: Dynamic data loading from database
 - **Responsive design**: Works on mobile, tablet, and desktop
-- **Fast filtering**: Sub-second filtering of 8,166 records
+- **Fast filtering**: Sub-second filtering of 8,142 records
 - **Country distribution**: Animated visualizations
 
 ### Technical
@@ -151,7 +151,7 @@ python -m http.server 8080
 ```
 
 The website features:
-- **Real-time statistics** from the database (8,166 huts)
+- **Real-time statistics** from the database (8,142 huts)
 - **Interactive charts** showing hut distribution by country
 - **Full-screen interactive map** with 15+ advanced filters
 - **Beautiful light theme** with modern UI
@@ -269,7 +269,7 @@ See the `docs/` folder for detailed documentation:
 ### 4. refuges.info
 
 - **Coverage**: French Alps, Swiss Alps, Italian Alps
-- **Huts**: 5,274 🎉
+- **Huts**: 5,250 🎉
 - **Method**: Comprehensive API-based scraping of:
   - Cabanes non gardées (unmanned huts) - ~3,700
   - Refuges gardés (staffed refuges) - ~400
