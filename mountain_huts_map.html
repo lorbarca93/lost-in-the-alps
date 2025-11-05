@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <!-- Fuse.js for fuzzy search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -35,22 +37,172 @@
         }
         
         .sidebar-header {
-            padding: 30px 25px 20px;
+            padding: 20px 25px 16px;
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
         }
         
         .sidebar-header h1 {
-            font-size: 24px;
+            font-size: 22px;
             margin: 0 0 8px 0;
             font-weight: 700;
         }
         
         .sidebar-header p {
-            margin: 0;
-            font-size: 14px;
+            margin: 0 0 12px 0;
+            font-size: 13px;
             opacity: 0.9;
-            line-height: 1.6;
+            line-height: 1.5;
+        }
+        
+        /* Search Box */
+        .search-container {
+            position: relative;
+            margin-top: 12px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 40px 12px 40px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            background: rgba(255,255,255,0.95);
+            color: #1e293b;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.6);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .search-box::placeholder {
+            color: #94a3b8;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .search-clear {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #64748b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .search-clear:hover {
+            background: #475569;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .search-clear.visible {
+            display: flex;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-top: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .search-results.visible {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 14px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.2s;
+        }
+        
+        .search-result-item:hover {
+            background: #f8fafc;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-name {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        
+        .search-result-meta {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .search-no-results {
+            padding: 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+        
+        .stats-mini {
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stats-mini-item {
+            flex: 1;
+        }
+        
+        .stats-mini-value {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .stats-mini-label {
+            font-size: 10px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .sidebar-content {
@@ -566,6 +718,30 @@
         <div class="sidebar-header">
             <h1>🏔️ Mountain Huts Explorer</h1>
             <p>Discover and explore mountain huts across the Alps and beyond. Filter by location, capacity, and more.</p>
+            
+            <!-- Smart Search with Autocomplete -->
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-box" class="search-box" placeholder="Search huts by name, country, region..." autocomplete="off">
+                <button class="search-clear" id="search-clear" type="button">×</button>
+                <div class="search-results" id="search-results"></div>
+            </div>
+            
+            <!-- Live Stats Mini Dashboard -->
+            <div class="stats-mini">
+                <div class="stats-mini-item">
+                    <span class="stats-mini-value" id="stats-visible">0</span>
+                    <span class="stats-mini-label">Visible</span>
+                </div>
+                <div class="stats-mini-item">
+                    <span class="stats-mini-value" id="stats-avg-alt">0m</span>
+                    <span class="stats-mini-label">Avg Alt</span>
+                </div>
+                <div class="stats-mini-item">
+                    <span class="stats-mini-value" id="stats-countries">0</span>
+                    <span class="stats-mini-label">Countries</span>
+                </div>
+            </div>
         </div>
         <div class="sidebar-content">
             <!-- Map Layer Selector -->
@@ -704,10 +880,26 @@
                 <button class="btn btn-primary" id="export-kmz">📥 Export KMZ</button>
             </div>
             
-            <!-- Stats -->
-            <div class="stats-display">
-                <span class="number" id="visible-count">0</span>
-                <div>huts visible</div>
+            <!-- Detailed Stats Dashboard -->
+            <div class="filter-section">
+                <h3>📊 Statistics Dashboard</h3>
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 16px; border-radius: 10px; border: 1px solid #93c5fd;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                        <div style="background: white; padding: 10px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 24px; font-weight: 700; color: #2563eb;" id="stats-total-visible">0</div>
+                            <div style="font-size: 11px; color: #64748b; font-weight: 600;">HUTS VISIBLE</div>
+                        </div>
+                        <div style="background: white; padding: 10px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 24px; font-weight: 700; color: #16a34a;" id="stats-with-contact">0</div>
+                            <div style="font-size: 11px; color: #64748b; font-weight: 600;">WITH CONTACT</div>
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 12px; border-radius: 6px; font-size: 12px; color: #475569;">
+                        <div style="margin-bottom: 8px;"><strong>Altitude:</strong> <span id="stats-alt-range">N/A</span></div>
+                        <div style="margin-bottom: 8px;"><strong>Average:</strong> <span id="stats-avg-altitude">N/A</span></div>
+                        <div><strong>Capacity:</strong> <span id="stats-capacity-range">N/A</span></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -897,7 +1089,7 @@
             alert('Exported ' + visibleHuts.length + ' huts to KML file!\n\nNote: KML format is used (KMZ is KML + ZIP). You can convert to KMZ using Google Earth.');
         }
         
-        // Store markers and create marker cluster group
+        // Store markers and create marker cluster group with performance optimizations
         var markers = [];
         var markerCluster = L.markerClusterGroup({
             maxClusterRadius: 50,
@@ -906,8 +1098,12 @@
             zoomToBoundsOnClick: true,
             disableClusteringAtZoom: 13,
             chunkedLoading: true,
-            chunkInterval: 50,
-            chunkDelay: 50
+            chunkInterval: 200,  // Process 200 markers at a time
+            chunkDelay: 50,      // 50ms between chunks
+            removeOutsideVisibleBounds: true,  // Remove markers outside view for better performance
+            animate: true,
+            animateAddingMarkers: false,  // Disable animation for faster initial load
+            spiderfyDistanceMultiplier: 1.5
         });
         
         map.addLayer(markerCluster);
@@ -1020,14 +1216,26 @@
                 popupParts.push('<div style="margin: 12px 0; padding: 10px; background: #f0f9ff; border-radius: 6px; font-size: 13px; color: #0c4a6e; line-height: 1.5;"><strong>💬</strong> ' + escapeHtml(hut.comments) + '</div>');
             }
             
+            // Weather Widget (will be loaded dynamically)
+            popupParts.push('<div id="weather-' + hut.lat + '-' + hut.lon + '" style="margin: 12px 0; padding: 0;"></div>');
+            
+            // Nearby Huts Section (will be populated dynamically)
+            popupParts.push('<div id="nearby-' + hut.lat + '-' + hut.lon + '" style="margin: 12px 0;"></div>');
+            
             popupParts.push('</div>'); // End body
             
-            // Footer section with source link - PROMINENT
+            // Footer section with source link and last updated
             popupParts.push('<div style="background: #f8fafc; padding: 14px 20px; border-top: 1px solid #e2e8f0;">');
+            
+            // Last Updated Indicator
+            popupParts.push('<div style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 10px; font-size: 11px; color: #64748b;">');
+            popupParts.push('<span>🕐</span> <span>Data from <strong>' + escapeHtml(hut.source) + '</strong></span>');
+            popupParts.push('</div>');
+            
             if (hut.url && hut.url !== 'N/A' && hut.url !== '' && hut.url !== 'http://www.mountainhuts.info/map') {
-                popupParts.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.3s ease; text-align: center;" onmouseover="this.style.transform=\'translateY(-2px) scale(1.02)\'; this.style.boxShadow=\'0 6px 20px rgba(37, 99, 235, 0.4)\';" onmouseout="this.style.transform=\'translateY(0) scale(1)\'; this.style.boxShadow=\'0 4px 12px rgba(37, 99, 235, 0.3)\';">📍 View Full Details on ' + escapeHtml(hut.source) + ' <span style="font-size: 16px;">→</span></a>');
+                popupParts.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.3s ease; text-align: center;" onmouseover="this.style.transform=\'translateY(-2px) scale(1.02)\'; this.style.boxShadow=\'0 6px 20px rgba(37, 99, 235, 0.4)\';" onmouseout="this.style.transform=\'translateY(0) scale(1)\'; this.style.boxShadow=\'0 4px 12px rgba(37, 99, 235, 0.3)\';">📍 View Full Details <span style="font-size: 16px;">→</span></a>');
             } else {
-                popupParts.push('<div style="text-align: center; font-size: 12px; color: #94a3b8; padding: 4px;">Data from <strong>' + escapeHtml(hut.source) + '</strong></div>');
+                popupParts.push('<div style="text-align: center; font-size: 12px; color: #94a3b8; padding: 4px;">No source URL available</div>');
             }
             
             // Posted by (if available)
@@ -1068,21 +1276,216 @@
                 });
             });
             
-            marker.bindPopup(popup);
+            marker.bindPopup(popup, {
+                maxWidth: 350,
+                className: 'custom-popup'
+            });
+            
+            // When popup opens, load weather and nearby huts
+            marker.on('popupopen', function() {
+                loadWeather(hut.lat, hut.lon);
+                loadNearbyHuts(hut.lat, hut.lon, hut.name);
+            });
+            
             marker.hutData = hut;
             markerCluster.addLayer(marker);
             markers.push(marker);
         });
         
-        // Update stats
-        function updateStats() {
-            var visible = markers.filter(function(m) { return markerCluster.hasLayer(m); }).length;
-            document.getElementById('visible-count').textContent = visible;
+        // Calculate distance between two points using Haversine formula
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the Earth in km
+            var dLat = (lat2 - lat1) * Math.PI / 180;
+            var dLon = (lon2 - lon1) * Math.PI / 180;
+            var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon/2) * Math.sin(dLon/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            var distance = R * c;
+            return distance;
         }
+        
+        // Load weather data from OpenWeatherMap
+        function loadWeather(lat, lon) {
+            var weatherDiv = document.getElementById('weather-' + lat + '-' + lon);
+            if (!weatherDiv) return;
+            
+            // Replace with your OpenWeatherMap API key: https://openweathermap.org/api
+            var apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';  // REPLACE THIS
+            
+            if (apiKey === 'YOUR_OPENWEATHERMAP_API_KEY') {
+                weatherDiv.innerHTML = '<div style="padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 6px; font-size: 12px; color: #92400e;">🌤️ Weather: <a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=' + lat + '&lon=' + lon + '&zoom=10" target="_blank" style="color: #2563eb;">View Forecast →</a><br><small style="opacity: 0.7;">Add OpenWeatherMap API key for live weather</small></div>';
+                return;
+            }
+            
+            weatherDiv.innerHTML = '<div style="padding: 8px; text-align: center; font-size: 12px; color: #94a3b8;">Loading weather...</div>';
+            
+            fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=' + apiKey)
+                .then(response => response.json())
+                .then(data => {
+                    var temp = Math.round(data.main.temp);
+                    var description = data.weather[0].description;
+                    var icon = data.weather[0].icon;
+                    var iconUrl = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
+                    
+                    var weatherHtml = '<div style="padding: 12px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-radius: 8px; display: flex; align-items: center; gap: 10px; border: 1px solid #7dd3fc;">';
+                    weatherHtml += '<img src="' + iconUrl + '" style="width: 50px; height: 50px; margin: -8px 0;">';
+                    weatherHtml += '<div style="flex: 1;">';
+                    weatherHtml += '<div style="font-size: 24px; font-weight: 700; color: #0c4a6e;">' + temp + '°C</div>';
+                    weatherHtml += '<div style="font-size: 12px; color: #075985; text-transform: capitalize;">' + description + '</div>';
+                    weatherHtml += '</div>';
+                    weatherHtml += '<a href="https://openweathermap.org/city/' + data.id + '" target="_blank" style="font-size: 11px; color: #0284c7; text-decoration: none; font-weight: 600;">5-Day →</a>';
+                    weatherHtml += '</div>';
+                    
+                    weatherDiv.innerHTML = weatherHtml;
+                })
+                .catch(error => {
+                    console.log('Weather fetch error:', error);
+                    weatherDiv.innerHTML = '';
+                });
+        }
+        
+        // Load nearby huts
+        function loadNearbyHuts(lat, lon, currentHutName) {
+            var nearbyDiv = document.getElementById('nearby-' + lat + '-' + lon);
+            if (!nearbyDiv) return;
+            
+            // Find huts within 10km
+            var nearbyHuts = [];
+            huts.forEach(function(hut) {
+                if (hut.name === currentHutName) return; // Skip current hut
+                var distance = calculateDistance(lat, lon, hut.lat, hut.lon);
+                if (distance <= 10) {
+                    nearbyHuts.push({
+                        name: hut.name,
+                        distance: distance,
+                        altitude: hut.altitude,
+                        country: hut.country,
+                        lat: hut.lat,
+                        lon: hut.lon
+                    });
+                }
+            });
+            
+            // Sort by distance
+            nearbyHuts.sort(function(a, b) { return a.distance - b.distance; });
+            
+            if (nearbyHuts.length === 0) {
+                nearbyDiv.innerHTML = '';
+                return;
+            }
+            
+            // Show top 3 nearest
+            var nearbyHtml = '<div style="padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 6px; font-size: 12px;">';
+            nearbyHtml += '<div style="font-weight: 700; margin-bottom: 8px; color: #92400e;">📍 ' + Math.min(nearbyHuts.length, 3) + ' Nearby Hut' + (nearbyHuts.length === 1 ? '' : 's') + '</div>';
+            
+            nearbyHuts.slice(0, 3).forEach(function(nearby) {
+                nearbyHtml += '<div style="padding: 6px 0; border-top: 1px solid rgba(146, 64, 14, 0.2); color: #78350f; cursor: pointer;" onclick="map.setView([' + nearby.lat + ', ' + nearby.lon + '], 14); map.closePopup();">';
+                nearbyHtml += '<div style="font-weight: 600;">' + escapeHtml(nearby.name) + '</div>';
+                nearbyHtml += '<div style="font-size: 11px; opacity: 0.8;">' + nearby.distance.toFixed(1) + ' km away';
+                if (nearby.altitude && nearby.altitude !== 'N/A') {
+                    nearbyHtml += ' • ' + escapeHtml(String(nearby.altitude)) + 'm';
+                }
+                nearbyHtml += '</div>';
+                nearbyHtml += '</div>';
+            });
+            
+            if (nearbyHuts.length > 3) {
+                nearbyHtml += '<div style="margin-top: 6px; font-size: 11px; opacity: 0.7; color: #92400e;">+ ' + (nearbyHuts.length - 3) + ' more within 10km</div>';
+            }
+            
+            nearbyHtml += '</div>';
+            nearbyDiv.innerHTML = nearbyHtml;
+        }
+        
+        // Enhanced stats update with detailed dashboard
+        function updateStats() {
+            var visibleMarkers = markers.filter(function(m) { return markerCluster.hasLayer(m); });
+            var visible = visibleMarkers.length;
+            
+            // Update mini stats in header
+            document.getElementById('stats-visible').textContent = visible;
+            
+            // Calculate stats
+            var withContact = 0;
+            var altitudes = [];
+            var capacities = [];
+            var countries = {};
+            
+            visibleMarkers.forEach(function(m) {
+                var hut = m.hutData;
+                
+                // Count contact info
+                if ((hut.phone && hut.phone !== 'N/A' && hut.phone !== '') ||
+                    (hut.email && hut.email !== 'N/A' && hut.email !== '') ||
+                    (hut.website && hut.website !== 'N/A' && hut.website !== '')) {
+                    withContact++;
+                }
+                
+                // Collect altitudes
+                if (hut.altitude && hut.altitude !== 'N/A') {
+                    var alt = parseInt(hut.altitude);
+                    if (!isNaN(alt)) altitudes.push(alt);
+                }
+                
+                // Collect capacities
+                if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {
+                    var cap = parseInt(hut.capacity);
+                    if (!isNaN(cap)) capacities.push(cap);
+                }
+                
+                // Count countries
+                if (hut.country && hut.country !== 'N/A') {
+                    countries[hut.country] = (countries[hut.country] || 0) + 1;
+                }
+            });
+            
+            // Update header stats
+            if (altitudes.length > 0) {
+                var avgAlt = Math.round(altitudes.reduce((a,b) => a + b, 0) / altitudes.length);
+                document.getElementById('stats-avg-alt').textContent = avgAlt + 'm';
+            } else {
+                document.getElementById('stats-avg-alt').textContent = 'N/A';
+            }
+            
+            document.getElementById('stats-countries').textContent = Object.keys(countries).length;
+            
+            // Update detailed dashboard
+            document.getElementById('stats-total-visible').textContent = visible;
+            document.getElementById('stats-with-contact').textContent = withContact;
+            
+            if (altitudes.length > 0) {
+                var minAlt = Math.min(...altitudes);
+                var maxAlt = Math.max(...altitudes);
+                var avgAlt = Math.round(altitudes.reduce((a,b) => a + b, 0) / altitudes.length);
+                document.getElementById('stats-alt-range').textContent = minAlt + 'm - ' + maxAlt + 'm';
+                document.getElementById('stats-avg-altitude').textContent = avgAlt + 'm';
+            } else {
+                document.getElementById('stats-alt-range').textContent = 'N/A';
+                document.getElementById('stats-avg-altitude').textContent = 'N/A';
+            }
+            
+            if (capacities.length > 0) {
+                var minCap = Math.min(...capacities);
+                var maxCap = Math.max(...capacities);
+                document.getElementById('stats-capacity-range').textContent = minCap + ' - ' + maxCap + ' beds';
+            } else {
+                document.getElementById('stats-capacity-range').textContent = 'N/A';
+            }
+        }
+        
+        // Initialize Fuse.js for fuzzy search
+        var fuse = new Fuse(huts, {
+            keys: ['name', 'country', 'type', 'description', 'owner', 'manager'],
+            threshold: 0.3,
+            minMatchCharLength: 2
+        });
+        
+        var searchResults = [];
         
         // Apply all filters
         function applyAllFilters() {
-            var searchText = '';  // Search removed from UI
+            var searchText = document.getElementById('search-box').value.trim().toLowerCase();
             var minAltitude = parseInt(document.getElementById('min-altitude').value) || 0;
             var maxAltitude = parseInt(document.getElementById('max-altitude').value) || 999999;
             var minCapacity = parseInt(document.getElementById('min-capacity').value) || 0;
@@ -1130,13 +1533,24 @@
             var activeFilters = [];
             
             // Filter markers
+            var searchMatches = new Set();
+            if (searchText) {
+                // Use fuzzy search
+                var results = fuse.search(searchText);
+                results.forEach(function(result) {
+                    searchMatches.add(result.item.name);
+                });
+            }
+            
             markers.forEach(function(marker) {
                 var hut = marker.hutData;
                 var show = true;
                 
-                // Search filter
-                if (searchText && hut.name.toLowerCase().indexOf(searchText) === -1) {
-                    show = false;
+                // Search filter with fuzzy matching
+                if (searchText && searchMatches.size > 0) {
+                    if (!searchMatches.has(hut.name)) {
+                        show = false;
+                    }
                 }
                 
                 // Country filter
@@ -1256,7 +1670,9 @@
         
         // Reset all filters
         function resetAllFilters() {
-            // Search removed: document.getElementById('search-input').value = '';
+            document.getElementById('search-box').value = '';
+            document.getElementById('search-clear').classList.remove('visible');
+            document.getElementById('search-results').classList.remove('visible');
             document.getElementById('min-altitude').value = 0;
             document.getElementById('max-altitude').value = 4000;
             document.getElementById('altitude-range').textContent = '0 - 4000 m';
@@ -1383,7 +1799,93 @@
         // Export KMZ button
         document.getElementById('export-kmz').addEventListener('click', exportToKMZ);
         
-        // Search removed from UI - no event listener needed
+        // Smart Search with Autocomplete
+        var searchBox = document.getElementById('search-box');
+        var searchClear = document.getElementById('search-clear');
+        var searchResultsDiv = document.getElementById('search-results');
+        var searchTimeout;
+        
+        searchBox.addEventListener('input', function() {
+            var query = this.value.trim();
+            
+            // Show/hide clear button
+            if (query) {
+                searchClear.classList.add('visible');
+            } else {
+                searchClear.classList.remove('visible');
+                searchResultsDiv.classList.remove('visible');
+            }
+            
+            // Debounce search
+            clearTimeout(searchTimeout);
+            
+            if (query.length < 2) {
+                searchResultsDiv.classList.remove('visible');
+                applyAllFilters();
+                return;
+            }
+            
+            searchTimeout = setTimeout(function() {
+                // Show autocomplete results
+                var results = fuse.search(query).slice(0, 8);
+                
+                if (results.length === 0) {
+                    searchResultsDiv.innerHTML = '<div class="search-no-results">No huts found matching "' + escapeHtml(query) + '"</div>';
+                    searchResultsDiv.classList.add('visible');
+                } else {
+                    var html = '';
+                    results.forEach(function(result) {
+                        var hut = result.item;
+                        html += '<div class="search-result-item" data-lat="' + hut.lat + '" data-lon="' + hut.lon + '">';
+                        html += '<div class="search-result-name">' + escapeHtml(hut.name) + '</div>';
+                        html += '<div class="search-result-meta">';
+                        if (hut.country && hut.country !== 'N/A') html += '🌍 ' + escapeHtml(hut.country) + ' • ';
+                        if (hut.altitude && hut.altitude !== 'N/A') html += '🏔️ ' + escapeHtml(String(hut.altitude)) + 'm • ';
+                        html += escapeHtml(hut.source);
+                        html += '</div>';
+                        html += '</div>';
+                    });
+                    searchResultsDiv.innerHTML = html;
+                    searchResultsDiv.classList.add('visible');
+                    
+                    // Add click handlers to results
+                    document.querySelectorAll('.search-result-item').forEach(function(item) {
+                        item.addEventListener('click', function() {
+                            var lat = parseFloat(this.dataset.lat);
+                            var lon = parseFloat(this.dataset.lon);
+                            map.setView([lat, lon], 14);
+                            searchResultsDiv.classList.remove('visible');
+                            
+                            // Find and open the marker
+                            markers.forEach(function(marker) {
+                                if (marker.hutData.lat === lat && marker.hutData.lon === lon) {
+                                    marker.openPopup();
+                                }
+                            });
+                        });
+                    });
+                }
+                
+                // Apply filters
+                applyAllFilters();
+            }, 300);
+        });
+        
+        // Clear search button
+        searchClear.addEventListener('click', function() {
+            searchBox.value = '';
+            searchClear.classList.remove('visible');
+            searchResultsDiv.classList.remove('visible');
+            applyAllFilters();
+            searchBox.focus();
+        });
+        
+        // Close autocomplete when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchBox.contains(e.target) && !searchResultsDiv.contains(e.target)) {
+                searchResultsDiv.classList.remove('visible');
+            }
+        });
         
         // Initial stats
         updateStats();
