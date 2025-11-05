@@ -2034,7 +2034,7 @@ def create_simple_map():
     </script>
     
     <!-- Cookie Consent for GDPR Compliance -->
-    <script src="website/js/cookie-consent.js"></script>
+    <script src="js/cookie-consent.js"></script>
 </body>
 </html>"""
     
