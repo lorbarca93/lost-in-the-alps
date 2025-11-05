@@ -1503,6 +1503,9 @@ def create_simple_map():
         
         }} // End of initializeMap function
     </script>
+    
+    <!-- Cookie Consent for GDPR Compliance -->
+    <script src="website/js/cookie-consent.js"></script>
 </body>
 </html>"""
     

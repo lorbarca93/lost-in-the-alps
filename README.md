@@ -125,6 +125,8 @@ lostinthealps/
 - **Modern light theme**: Professional, clean UI
 - **Real-time statistics**: Dynamic data loading from database
 - **Responsive design**: Works on mobile, tablet, and desktop
+- **GDPR Compliant**: Full cookie consent system with privacy policy
+- **Optional Analytics**: Google Analytics with IP anonymization (opt-in only)
 - **Fast filtering**: Sub-second filtering of 8,142 records
 - **Country distribution**: Animated visualizations
 
@@ -158,6 +160,7 @@ The website features:
 - **Mobile-responsive**: Collapsible sidebar optimized for phones and tablets
 - **Modern design**: Clean white sidebar, sophisticated slate accents
 - **8,142 huts** across 41 countries with complete data
+- **Privacy-first**: GDPR-compliant cookie consent with optional analytics
 
 ### Updating Website Data
 
