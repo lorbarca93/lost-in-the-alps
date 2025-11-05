@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 # View the website (recommended)
 # Open website/index.html in your browser
-# Or open website/search.html to search all huts
+# (Automatically redirects to interactive map)
 
 # Generate website data (if database updated)
 python website/api/stats.py
@@ -114,11 +114,12 @@ lostinthealps/
 
 ### Interactive Map
 - **8,142 mountain huts** with cluster markers
-- **Advanced filters**: Quick presets, search by 41 countries, type, altitude, capacity
-- **Beautiful design**: Minimal 4px markers, smooth hover effects
+- **7 map layers**: Topographic, Outdoor, Humanitarian, Relief, Light, Satellite, OSM
+- **Advanced filters**: Hut type, altitude, capacity, contact info, 41 countries
+- **Mobile-responsive**: Collapsible sidebar for phones, full-featured on desktop
 - **Detailed popups**: Full hut information with clickable contact links
 - **Export functionality**: Download filtered results as KMZ
-- **Full-screen mode**: Dedicated map page for immersive experience
+- **Direct access**: Website loads directly to map (no landing page)
 
 ### Website
 - **Modern light theme**: Professional, clean UI
@@ -139,23 +140,24 @@ lostinthealps/
 ### Viewing the Website
 
 ```bash
-# Open the main website
-start website/index.html  # Windows
-open website/index.html   # Mac
-xdg-open website/index.html  # Linux
-
-# Or serve with Python HTTP server for full functionality
+# Serve with Python HTTP server (recommended)
 cd website
 python -m http.server 8080
 # Then open http://localhost:8080 in your browser
+
+# Or open directly (limited functionality)
+start website/index.html  # Windows
+open website/index.html   # Mac
+xdg-open website/index.html  # Linux
 ```
 
 The website features:
-- **Real-time statistics** from the database (8,142 huts)
-- **Interactive charts** showing hut distribution by country
-- **Full-screen interactive map** with 15+ advanced filters
-- **Beautiful light theme** with modern UI
-- **Responsive design** for all devices
+- **Direct to map**: No landing page, straight to the interactive experience
+- **7 map layers**: OpenStreetMap, Topographic, Outdoor, Humanitarian, Relief, Light, Satellite
+- **Advanced filters**: Hut type, contact info, altitude, capacity, countries, data sources
+- **Mobile-responsive**: Collapsible sidebar optimized for phones and tablets
+- **Modern design**: Clean white sidebar, sophisticated slate accents
+- **8,142 huts** across 41 countries with complete data
 
 ### Updating Website Data
 

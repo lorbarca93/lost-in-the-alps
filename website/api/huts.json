@@ -138,7 +138,7 @@
   {
     "id": 244,
     "name": "&quot;Černý kemp&quot; poblíž silnice na Missurino",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.617875,
@@ -291,7 +291,7 @@
   {
     "id": 126,
     "name": "A. Manzi - G. Pirotta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28948,
@@ -342,7 +342,7 @@
   {
     "id": 27,
     "name": "Aarbiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.56236667,
@@ -359,7 +359,7 @@
   {
     "id": 55,
     "name": "Aarbiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.56236667,
@@ -12599,7 +12599,7 @@
   {
     "id": 23,
     "name": "Alberico C. e Borgna L. alla Fourche",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.84894444,
@@ -12871,7 +12871,7 @@
   {
     "id": 70,
     "name": "Alpe Campo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.79552,
@@ -12888,7 +12888,7 @@
   {
     "id": 64,
     "name": "Alpe Cavaglione",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.86755,
@@ -12939,7 +12939,7 @@
   {
     "id": 86,
     "name": "Alpe In La Piana",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.06338889,
@@ -12973,7 +12973,7 @@
   {
     "id": 108,
     "name": "Alpe Manco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.22327778,
@@ -13007,7 +13007,7 @@
   {
     "id": 82,
     "name": "Alpe Pluni",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.10944444,
@@ -13024,7 +13024,7 @@
   {
     "id": 46,
     "name": "Alpe Sella Alta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.83705,
@@ -13058,7 +13058,7 @@
   {
     "id": 35,
     "name": "Alpe Toso",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.71619,
@@ -13075,7 +13075,7 @@
   {
     "id": 84,
     "name": "Alpe Uovo (Vou)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.10294444,
@@ -13177,7 +13177,7 @@
   {
     "id": 626,
     "name": "Altán",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8465483,
@@ -13194,7 +13194,7 @@
   {
     "id": 763,
     "name": "Altán - Palice rozc.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.9132511,
@@ -13211,7 +13211,7 @@
   {
     "id": 361,
     "name": "Altán Gloriet",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.157625,
@@ -13228,7 +13228,7 @@
   {
     "id": 702,
     "name": "Altán Ivanská skála",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.18938889,
@@ -13245,7 +13245,7 @@
   {
     "id": 571,
     "name": "Altán Kladská",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0256247,
@@ -13262,7 +13262,7 @@
   {
     "id": 391,
     "name": "Altán Lelkovadlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3099903,
@@ -13279,7 +13279,7 @@
   {
     "id": 755,
     "name": "Altán Liboháj",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.708524,
@@ -13296,7 +13296,7 @@
   {
     "id": 362,
     "name": "Altán Náměšť nad Oslavou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.20091667,
@@ -13313,7 +13313,7 @@
   {
     "id": 318,
     "name": "Altán Stateček",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.2083581,
@@ -13330,7 +13330,7 @@
   {
     "id": 356,
     "name": "Altán Zlatý potok",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.17428611,
@@ -13347,7 +13347,7 @@
   {
     "id": 791,
     "name": "Altán na kraji Rychnova",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.179999042992,
@@ -13364,7 +13364,7 @@
   {
     "id": 494,
     "name": "Altán na ostrůvku v rybníčku Obora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.270165872667,
@@ -13381,7 +13381,7 @@
   {
     "id": 737,
     "name": "Altán na vrcholu Skalky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.506389,
@@ -13398,7 +13398,7 @@
   {
     "id": 370,
     "name": "Altán nad Hořicemi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.36534167,
@@ -13415,7 +13415,7 @@
   {
     "id": 597,
     "name": "Altán nad otočkou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.795388408436,
@@ -13432,7 +13432,7 @@
   {
     "id": 458,
     "name": "Altán pod Brdem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.17544444,
@@ -13449,7 +13449,7 @@
   {
     "id": 487,
     "name": "Altán u Jezírka Lásky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.10062,
@@ -13466,7 +13466,7 @@
   {
     "id": 316,
     "name": "Altán u Staňkova",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.9966197,
@@ -13483,7 +13483,7 @@
   {
     "id": 294,
     "name": "Altán u lesní cesty Střelnice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.427057806686,
@@ -13500,7 +13500,7 @@
   {
     "id": 489,
     "name": "Altánek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.151889050538,
@@ -13517,7 +13517,7 @@
   {
     "id": 293,
     "name": "Altánek - Česká studánka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3733333,
@@ -13585,7 +13585,7 @@
   {
     "id": 56,
     "name": "Ammertenhütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.42880278,
@@ -13619,7 +13619,7 @@
   {
     "id": 418,
     "name": "Amonova lúka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.48044444,
@@ -14333,7 +14333,7 @@
   {
     "id": 7,
     "name": "Andreotti",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.68177778,
@@ -14350,7 +14350,7 @@
   {
     "id": 173,
     "name": "Angelini V.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.32466667,
@@ -14367,7 +14367,7 @@
   {
     "id": 111,
     "name": "Anghileri A. Rusconi B.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.33672222,
@@ -14418,7 +14418,7 @@
   {
     "id": 63,
     "name": "Antigine",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.00663,
@@ -14469,7 +14469,7 @@
   {
     "id": 61,
     "name": "Antoniotti",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.69394444,
@@ -14656,7 +14656,7 @@
   {
     "id": 243,
     "name": "Aschaffenburger Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.09288,
@@ -15183,7 +15183,7 @@
   {
     "id": 580,
     "name": "Autobusova zastavka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.501113548782,
@@ -15200,7 +15200,7 @@
   {
     "id": 305,
     "name": "Autobusova zastavka Brandlin",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.30724444,
@@ -15217,7 +15217,7 @@
   {
     "id": 714,
     "name": "Autobusová zastávka Koníkov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.59705278,
@@ -15234,7 +15234,7 @@
   {
     "id": 789,
     "name": "Autobusová zastávka Přím",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.174947943223,
@@ -15251,7 +15251,7 @@
   {
     "id": 767,
     "name": "Autobusová čekárna - Kozlov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8857161,
@@ -15268,7 +15268,7 @@
   {
     "id": 45,
     "name": "Axerio",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.90172222,
@@ -15336,7 +15336,7 @@
   {
     "id": 290,
     "name": "Babenstuber Hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.57944444,
@@ -15370,7 +15370,7 @@
   {
     "id": 884,
     "name": "Babohorský prístrešok",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.56821,
@@ -15727,7 +15727,7 @@
   {
     "id": 188,
     "name": "Bailoni R.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.03761111,
@@ -15778,7 +15778,7 @@
   {
     "id": 83,
     "name": "Baita Alpe Forná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.03333333,
@@ -15795,7 +15795,7 @@
   {
     "id": 88,
     "name": "Baita Alpe Ragozzale",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.06816667,
@@ -15812,7 +15812,7 @@
   {
     "id": 87,
     "name": "Baita Alpe Scaredi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.07922222,
@@ -15829,7 +15829,7 @@
   {
     "id": 181,
     "name": "Baita Belém",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.96183333,
@@ -15863,7 +15863,7 @@
   {
     "id": 34,
     "name": "Baita Cascinetta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.72,
@@ -15880,7 +15880,7 @@
   {
     "id": 232,
     "name": "Baita Dare Copada",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36266944,
@@ -15897,7 +15897,7 @@
   {
     "id": 186,
     "name": "Baita Lanzola - Don C. Refatti",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.02422222,
@@ -15914,7 +15914,7 @@
   {
     "id": 164,
     "name": "Baita Lomar",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.96334,
@@ -15948,7 +15948,7 @@
   {
     "id": 81,
     "name": "Baita del Lidesh",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.0865,
@@ -15965,7 +15965,7 @@
   {
     "id": 174,
     "name": "Baita di Follega",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.29288889,
@@ -15999,7 +15999,7 @@
   {
     "id": 158,
     "name": "Baitello dell´Amicizia",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.97974,
@@ -16016,7 +16016,7 @@
   {
     "id": 85,
     "name": "Baitin dul Purat",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.20922222,
@@ -16033,7 +16033,7 @@
   {
     "id": 525,
     "name": "Balcierovo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.93205556,
@@ -16050,7 +16050,7 @@
   {
     "id": 71,
     "name": "Balestreri U.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.94466944,
@@ -16084,7 +16084,7 @@
   {
     "id": 210,
     "name": "Baracca degli Alpini",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.55866667,
@@ -17070,7 +17070,7 @@
   {
     "id": 14,
     "name": "Barbero",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.22838889,
@@ -17087,7 +17087,7 @@
   {
     "id": 3,
     "name": "Barenghi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.52661111,
@@ -17138,7 +17138,7 @@
   {
     "id": 141,
     "name": "Baroni Cecco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.13827778,
@@ -17155,7 +17155,7 @@
   {
     "id": 220,
     "name": "Baroni S.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.32522222,
@@ -17325,7 +17325,7 @@
   {
     "id": 260,
     "name": "Battaglione Alpini Gemona",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.48305556,
@@ -17342,7 +17342,7 @@
   {
     "id": 122,
     "name": "Battaglione M. Ortles",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.35672222,
@@ -17427,7 +17427,7 @@
   {
     "id": 422,
     "name": "Bařiny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.456625,
@@ -17444,7 +17444,7 @@
   {
     "id": 201,
     "name": "Bedin M.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.31833333,
@@ -17512,7 +17512,7 @@
   {
     "id": 48,
     "name": "Belloni V.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.95622,
@@ -17529,7 +17529,7 @@
   {
     "id": 52,
     "name": "Benedetti N.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.98763611,
@@ -17546,7 +17546,7 @@
   {
     "id": 8,
     "name": "Berardo C. e R.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.65616667,
@@ -19076,7 +19076,7 @@
   {
     "id": 192,
     "name": "Bernardina",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.23994444,
@@ -19144,7 +19144,7 @@
   {
     "id": 251,
     "name": "Bertgen-Hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.43161111,
@@ -19161,7 +19161,7 @@
   {
     "id": 379,
     "name": "Besének",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.41302778,
@@ -19178,7 +19178,7 @@
   {
     "id": 819,
     "name": "Bezručova vyhlídka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8755,
@@ -19212,7 +19212,7 @@
   {
     "id": 234,
     "name": "Biasin",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.27407,
@@ -19246,7 +19246,7 @@
   {
     "id": 124,
     "name": "Bijelich Colombo A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36277778,
@@ -19314,7 +19314,7 @@
   {
     "id": 228,
     "name": "Birkkarhuette",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.42122222,
@@ -19348,7 +19348,7 @@
   {
     "id": 21,
     "name": "Biv. Crippa M.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.81538889,
@@ -19382,7 +19382,7 @@
   {
     "id": 159,
     "name": "Bivacco 89a Brigata",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.97386111,
@@ -19518,7 +19518,7 @@
   {
     "id": 284,
     "name": "Bivacco Carnizza di Riofredo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.4441,
@@ -19552,7 +19552,7 @@
   {
     "id": 282,
     "name": "Bivacco Coi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.355198,
@@ -19688,7 +19688,7 @@
   {
     "id": 39,
     "name": "Bivacco Federigo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.683528412041,
@@ -19705,7 +19705,7 @@
   {
     "id": 152,
     "name": "Bivacco Festa",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.19405556,
@@ -19722,7 +19722,7 @@
   {
     "id": 102,
     "name": "Bivacco Frattini",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.05166667,
@@ -19773,7 +19773,7 @@
   {
     "id": 20,
     "name": "Bivacco Hess A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "France",
     "region": "",
     "latitude": 45.78961111,
@@ -19824,7 +19824,7 @@
   {
     "id": 283,
     "name": "Bivacco Luca Vuerich Foronon del Buinz",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.4146,
@@ -19875,7 +19875,7 @@
   {
     "id": 5,
     "name": "Bivacco Molino B.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.33388889,
@@ -19909,7 +19909,7 @@
   {
     "id": 161,
     "name": "Bivacco Pedroni",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.299757,
@@ -19926,7 +19926,7 @@
   {
     "id": 37,
     "name": "Bivacco Revelli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.51127778,
@@ -20011,7 +20011,7 @@
   {
     "id": 10,
     "name": "Bivacco Varrone",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.19055556,
@@ -20045,7 +20045,7 @@
   {
     "id": 32,
     "name": "Bivacco de Zen Piero",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.19111111,
@@ -20062,7 +20062,7 @@
   {
     "id": 66,
     "name": "Bivacco della Sassa",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.93283333,
@@ -20113,7 +20113,7 @@
   {
     "id": 252,
     "name": "Bivak I v Veliki Dnini",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.4425,
@@ -20232,7 +20232,7 @@
   {
     "id": 534,
     "name": "Bivak Zbojská",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.73653056,
@@ -20249,7 +20249,7 @@
   {
     "id": 332,
     "name": "Bivak na Dobročkovské cestě",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.9199427,
@@ -20300,7 +20300,7 @@
   {
     "id": 408,
     "name": "Bivak na Malém Kriváni",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.18975833,
@@ -20334,7 +20334,7 @@
   {
     "id": 249,
     "name": "Bivak pod Grintovcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.347326027531,
@@ -20385,7 +20385,7 @@
   {
     "id": 247,
     "name": "Bivak pod Luknjou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.391,
@@ -20402,7 +20402,7 @@
   {
     "id": 286,
     "name": "Bivak pod Muzcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.294349942507,
@@ -20419,7 +20419,7 @@
   {
     "id": 254,
     "name": "Bivak pod Ojstrico",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.37044444,
@@ -20487,7 +20487,7 @@
   {
     "id": 529,
     "name": "Bivak pod podlahou bufetu Spálený žlab",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.23266667,
@@ -20504,7 +20504,7 @@
   {
     "id": 253,
     "name": "Bivak pod Špikom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.45838889,
@@ -20538,7 +20538,7 @@
   {
     "id": 17,
     "name": "Bivak u Forte dei Marmi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.00444444,
@@ -20572,7 +20572,7 @@
   {
     "id": 366,
     "name": "Bivak v nivě Dyje",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.773318865048,
@@ -20606,7 +20606,7 @@
   {
     "id": 765,
     "name": "Bivakovací jeskyně na Holubníku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.84083333,
@@ -20623,7 +20623,7 @@
   {
     "id": 564,
     "name": "Bivaque shelter near forge a la plez",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Belgium",
     "region": "",
     "latitude": 50.26229,
@@ -21830,7 +21830,7 @@
   {
     "id": 565,
     "name": "Bivouac des Blancs Bois",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Belgium",
     "region": "",
     "latitude": 50.11939,
@@ -21932,7 +21932,7 @@
   {
     "id": 165,
     "name": "Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.18213483561,
@@ -22136,7 +22136,7 @@
   {
     "id": 2,
     "name": "Bonelli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.42216667,
@@ -22187,7 +22187,7 @@
   {
     "id": 200,
     "name": "Bontadini E.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.46883333,
@@ -22255,7 +22255,7 @@
   {
     "id": 19,
     "name": "Borelli L. (Della Noire - Pivano)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.82338889,
@@ -22561,7 +22561,7 @@
   {
     "id": 739,
     "name": "Borůvková hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.38502778,
@@ -22578,7 +22578,7 @@
   {
     "id": 51,
     "name": "Bossi O.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 45.97938889,
@@ -22595,7 +22595,7 @@
   {
     "id": 136,
     "name": "Bottani - Cornaggia",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.20311111,
@@ -22612,7 +22612,7 @@
   {
     "id": 877,
     "name": "Bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.51620191844,
@@ -22697,7 +22697,7 @@
   {
     "id": 431,
     "name": "Bouda Lušovka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.37923333,
@@ -22714,7 +22714,7 @@
   {
     "id": 574,
     "name": "Bouda Uhlákovo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.395172149529,
@@ -22731,7 +22731,7 @@
   {
     "id": 516,
     "name": "Bouda na Stanišovském sedle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.01216667,
@@ -22748,7 +22748,7 @@
   {
     "id": 715,
     "name": "Bouda na rohu hranic",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.67647222,
@@ -22765,7 +22765,7 @@
   {
     "id": 684,
     "name": "Bouda pod Devíti skalami",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.67772222,
@@ -22782,7 +22782,7 @@
   {
     "id": 730,
     "name": "Bouda pod Klepým",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.74922222,
@@ -22799,7 +22799,7 @@
   {
     "id": 312,
     "name": "Bouda pod Knížecím stolcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.8507117,
@@ -22816,7 +22816,7 @@
   {
     "id": 888,
     "name": "Bouda pod Malou Babiou horou - Borsučie",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.57588333,
@@ -22833,7 +22833,7 @@
   {
     "id": 815,
     "name": "Bouda pod Smrčkem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.51653333,
@@ -22850,7 +22850,7 @@
   {
     "id": 388,
     "name": "Bouda u Junácké studánky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.31988333,
@@ -22867,7 +22867,7 @@
   {
     "id": 807,
     "name": "Bouda u hraničního přechodu Horní Albeřice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.694115711277,
@@ -22884,7 +22884,7 @@
   {
     "id": 752,
     "name": "Bouda u rozcestí U Šišky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.4294194,
@@ -22901,7 +22901,7 @@
   {
     "id": 345,
     "name": "Bouda u trati 250 a rybníka Loučka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.37061111,
@@ -22918,7 +22918,7 @@
   {
     "id": 343,
     "name": "Bouda u trati a rybníka Osovec",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.36454722,
@@ -22935,7 +22935,7 @@
   {
     "id": 546,
     "name": "Bouda v Dedošovej",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.9039,
@@ -22952,7 +22952,7 @@
   {
     "id": 770,
     "name": "Boudička na kopci s výhledem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.665562028039,
@@ -23020,7 +23020,7 @@
   {
     "id": 604,
     "name": "Braniborská jeskyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.59562,
@@ -23105,7 +23105,7 @@
   {
     "id": 227,
     "name": "Breitgriesskarbiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.41055556,
@@ -23224,7 +23224,7 @@
   {
     "id": 147,
     "name": "Brigata Orobica",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.18888889,
@@ -23326,7 +23326,7 @@
   {
     "id": 263,
     "name": "Brollo D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.33161111,
@@ -23394,7 +23394,7 @@
   {
     "id": 657,
     "name": "Brány Lidlu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.698389161312,
@@ -23462,7 +23462,7 @@
   {
     "id": 496,
     "name": "Budka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.499562434071,
@@ -23496,7 +23496,7 @@
   {
     "id": 850,
     "name": "Bukovka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0150258,
@@ -23955,7 +23955,7 @@
   {
     "id": 606,
     "name": "Buškova jeskyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.60516667,
@@ -24125,7 +24125,7 @@
   {
     "id": 508,
     "name": "Búda Suchý Hrádok",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.9133075,
@@ -24142,7 +24142,7 @@
   {
     "id": 540,
     "name": "Búda Zákluky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.70811111,
@@ -24159,7 +24159,7 @@
   {
     "id": 504,
     "name": "Búda nad Drobkovom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.90286111,
@@ -24176,7 +24176,7 @@
   {
     "id": 513,
     "name": "Búda nad Kráľovou studní",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.88311111,
@@ -24193,7 +24193,7 @@
   {
     "id": 528,
     "name": "Búda pod Grúňom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.18911111,
@@ -24210,7 +24210,7 @@
   {
     "id": 514,
     "name": "Búda v Lubochňanskom sedle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.11355556,
@@ -24227,7 +24227,7 @@
   {
     "id": 509,
     "name": "Búda v lese pod Kotlovou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.14931667,
@@ -24244,7 +24244,7 @@
   {
     "id": 520,
     "name": "Búdy na Pálenici",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.689668,
@@ -24312,7 +24312,7 @@
   {
     "id": 334,
     "name": "Bývalá bouda celnice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 48.7625353,
@@ -24329,7 +24329,7 @@
   {
     "id": 447,
     "name": "Bývalá salaš pod Čertoryjemi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.87096944,
@@ -24346,7 +24346,7 @@
   {
     "id": 637,
     "name": "Bývalé lesní koupaliště u Svoru",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8077903,
@@ -24363,7 +24363,7 @@
   {
     "id": 622,
     "name": "Bývalé vojenské byty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6479078,
@@ -24380,7 +24380,7 @@
   {
     "id": 748,
     "name": "Bývalý důl Josefka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.7827114,
@@ -24397,7 +24397,7 @@
   {
     "id": 621,
     "name": "Bývalý vojenský objekt",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6139225,
@@ -24414,7 +24414,7 @@
   {
     "id": 624,
     "name": "Bývalý vojenský objekt",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6472942,
@@ -24431,7 +24431,7 @@
   {
     "id": 625,
     "name": "Bývalý vojenský objekt",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6503933,
@@ -24482,7 +24482,7 @@
   {
     "id": 132,
     "name": "C. Odello - N. Grandori",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.29222222,
@@ -24499,7 +24499,7 @@
   {
     "id": 266,
     "name": "CAI Gorizia",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.41964,
@@ -24516,7 +24516,7 @@
   {
     "id": 138,
     "name": "CAI Macherio",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.05583333,
@@ -24533,7 +24533,7 @@
   {
     "id": 261,
     "name": "CAI Manzano",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.34077778,
@@ -24550,7 +24550,7 @@
   {
     "id": 265,
     "name": "CAI Tarvisio",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.4421989,
@@ -24618,7 +24618,7 @@
   {
     "id": 695,
     "name": "CHÝŽA",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.21800231203,
@@ -51937,7 +51937,7 @@
   {
     "id": 179,
     "name": "Caimi Giuseppe",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.545,
@@ -51971,7 +51971,7 @@
   {
     "id": 119,
     "name": "Caldarini Angelo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.40955556,
@@ -51988,7 +51988,7 @@
   {
     "id": 273,
     "name": "Calligaris",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.43772222,
@@ -52022,7 +52022,7 @@
   {
     "id": 62,
     "name": "Camposecco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.06666,
@@ -52107,7 +52107,7 @@
   {
     "id": 193,
     "name": "Cap. Medassa",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.20388889,
@@ -52158,7 +52158,7 @@
   {
     "id": 118,
     "name": "Capanna Dosdé",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.39444444,
@@ -52243,7 +52243,7 @@
   {
     "id": 268,
     "name": "Capanna Ponza",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.46383333,
@@ -52447,7 +52447,7 @@
   {
     "id": 197,
     "name": "Carnielli G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.321,
@@ -52668,7 +52668,7 @@
   {
     "id": 221,
     "name": "Casera Bregolina Piccola",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.33277778,
@@ -52685,7 +52685,7 @@
   {
     "id": 196,
     "name": "Casera Busnich",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.30127778,
@@ -52719,7 +52719,7 @@
   {
     "id": 218,
     "name": "Casera Galvana",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.30272222,
@@ -52753,7 +52753,7 @@
   {
     "id": 219,
     "name": "Casera Laghet de sora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.38055556,
@@ -52770,7 +52770,7 @@
   {
     "id": 217,
     "name": "Casera Lodina",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.32161111,
@@ -52787,7 +52787,7 @@
   {
     "id": 212,
     "name": "Casera Montanel",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.44311111,
@@ -52804,7 +52804,7 @@
   {
     "id": 279,
     "name": "Casera Rio Nero",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.356269,
@@ -52821,7 +52821,7 @@
   {
     "id": 271,
     "name": "Casera Vualt",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.47388889,
@@ -52838,7 +52838,7 @@
   {
     "id": 233,
     "name": "Casera de Camp",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.24034,
@@ -52855,7 +52855,7 @@
   {
     "id": 275,
     "name": "Casera di Val Dolce",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.57632,
@@ -52923,7 +52923,7 @@
   {
     "id": 134,
     "name": "Casorate Sempione",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.22405556,
@@ -52974,7 +52974,7 @@
   {
     "id": 13,
     "name": "Cavarero F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.16872222,
@@ -53144,7 +53144,7 @@
   {
     "id": 106,
     "name": "Cecchini Giovanni",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.478961,
@@ -53161,7 +53161,7 @@
   {
     "id": 559,
     "name": "Celta - smer Terchová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.2516,
@@ -53178,7 +53178,7 @@
   {
     "id": 560,
     "name": "Celta - smer Terchová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.22629,
@@ -53280,7 +53280,7 @@
   {
     "id": 734,
     "name": "Cestník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6988,
@@ -59740,7 +59740,7 @@
   {
     "id": 518,
     "name": "Chata M. R. Štefánika pod Ďumbierom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.93663333,
@@ -59995,7 +59995,7 @@
   {
     "id": 477,
     "name": "Chata Severák",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.12743,
@@ -60318,7 +60318,7 @@
   {
     "id": 511,
     "name": "Chata pod Chlebom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.18930556,
@@ -60573,7 +60573,7 @@
   {
     "id": 248,
     "name": "Chata pod Tržašskou kočou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.37305556,
@@ -60658,7 +60658,7 @@
   {
     "id": 694,
     "name": "Chata u pramene Moravy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.19568889,
@@ -60794,7 +60794,7 @@
   {
     "id": 721,
     "name": "Chatka Paseky u Proseče",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.77875278,
@@ -60845,7 +60845,7 @@
   {
     "id": 709,
     "name": "Chatka Třebovské stěny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.91361111,
@@ -60862,7 +60862,7 @@
   {
     "id": 475,
     "name": "Chatka pod kopcem Chladný Vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.0215339,
@@ -60879,7 +60879,7 @@
   {
     "id": 454,
     "name": "Chatky, Bílý Kříž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.49561111,
@@ -61321,7 +61321,7 @@
   {
     "id": 433,
     "name": "Chladná Studňa",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.18938889,
@@ -61372,7 +61372,7 @@
   {
     "id": 835,
     "name": "Chrám přátelství Templ",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.71713889,
@@ -61423,7 +61423,7 @@
   {
     "id": 242,
     "name": "Cimabanche",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.618671,
@@ -61457,7 +61457,7 @@
   {
     "id": 49,
     "name": "Cittá di Gallarate",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.95019,
@@ -61474,7 +61474,7 @@
   {
     "id": 96,
     "name": "Citté di Lecco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.86333333,
@@ -61491,7 +61491,7 @@
   {
     "id": 50,
     "name": "Citté di Luino",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.99483333,
@@ -61508,7 +61508,7 @@
   {
     "id": 79,
     "name": "Citté di Varese",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.07988889,
@@ -61525,7 +61525,7 @@
   {
     "id": 103,
     "name": "Cittŕ di Clusone",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.95283333,
@@ -61678,7 +61678,7 @@
   {
     "id": 1,
     "name": "Col Clapis",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.89488889,
@@ -62936,7 +62936,7 @@
   {
     "id": 80,
     "name": "Combi L. - Lanza P.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.3385,
@@ -62970,7 +62970,7 @@
   {
     "id": 208,
     "name": "Comici E.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.52637,
@@ -63123,7 +63123,7 @@
   {
     "id": 78,
     "name": "Conti E.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.34422222,
@@ -63242,7 +63242,7 @@
   {
     "id": 97,
     "name": "Corti A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.07827778,
@@ -63259,7 +63259,7 @@
   {
     "id": 209,
     "name": "Cosi P.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.45911111,
@@ -63276,7 +63276,7 @@
   {
     "id": 93,
     "name": "Costanzi C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28134,
@@ -63293,7 +63293,7 @@
   {
     "id": 15,
     "name": "Costi M. - Falchero M.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.21177778,
@@ -63480,7 +63480,7 @@
   {
     "id": 258,
     "name": "Crasso I.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.38877778,
@@ -63497,7 +63497,7 @@
   {
     "id": 22,
     "name": "Craveri P.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.82511111,
@@ -63514,7 +63514,7 @@
   {
     "id": 90,
     "name": "Cresta biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.0380343,
@@ -63854,7 +63854,7 @@
   {
     "id": 191,
     "name": "Dal Mas",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.24077778,
@@ -63922,7 +63922,7 @@
   {
     "id": 176,
     "name": "Damiana Del Gobbo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.56211111,
@@ -63956,7 +63956,7 @@
   {
     "id": 259,
     "name": "Davanzo Picciola Vianello",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.37216667,
@@ -64007,7 +64007,7 @@
   {
     "id": 199,
     "name": "Del Bianco M.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.43966667,
@@ -64024,7 +64024,7 @@
   {
     "id": 256,
     "name": "Del Torso S.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.41472222,
@@ -64041,7 +64041,7 @@
   {
     "id": 170,
     "name": "Della Chiesa G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.54216667,
@@ -64177,7 +64177,7 @@
   {
     "id": 707,
     "name": "Devět skal -  veranda chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.67734444,
@@ -64194,7 +64194,7 @@
   {
     "id": 368,
     "name": "Divoká růže",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.35912778,
@@ -65180,7 +65180,7 @@
   {
     "id": 693,
     "name": "Domek Myśliwski",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.21022222,
@@ -65197,7 +65197,7 @@
   {
     "id": 410,
     "name": "Domek na Jelenci",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.86325833,
@@ -65503,7 +65503,7 @@
   {
     "id": 717,
     "name": "Drábské světničky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.53181667,
@@ -65520,7 +65520,7 @@
   {
     "id": 463,
     "name": "Dubový díl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.13654,
@@ -65622,7 +65622,7 @@
   {
     "id": 344,
     "name": "Dívčí hrady",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.87000556,
@@ -65656,7 +65656,7 @@
   {
     "id": 360,
     "name": "Dřevěná bouda u Skryjí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.40233333,
@@ -65860,7 +65860,7 @@
   {
     "id": 646,
     "name": "Edmundshütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.8373939,
@@ -65894,7 +65894,7 @@
   {
     "id": 595,
     "name": "Egerberg",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.37410556,
@@ -65928,7 +65928,7 @@
   {
     "id": 28,
     "name": "Eigentlich",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.238422,
@@ -66183,7 +66183,7 @@
   {
     "id": 140,
     "name": "Eremo di S. Glisente",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.89038889,
@@ -66455,7 +66455,7 @@
   {
     "id": 204,
     "name": "Fanton F.lli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.51288889,
@@ -66472,7 +66472,7 @@
   {
     "id": 77,
     "name": "Farello B.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.26711111,
@@ -66489,7 +66489,7 @@
   {
     "id": 6,
     "name": "Fassero Soardi N.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.37255556,
@@ -66965,7 +66965,7 @@
   {
     "id": 99,
     "name": "Ferrario Bruno",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.92794444,
@@ -66982,7 +66982,7 @@
   {
     "id": 120,
     "name": "Ferrario Paolo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.41194444,
@@ -66999,7 +66999,7 @@
   {
     "id": 270,
     "name": "Ferruglio D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.45816667,
@@ -67084,7 +67084,7 @@
   {
     "id": 33,
     "name": "Fiorio C. (nouvo)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 45.91494444,
@@ -67135,7 +67135,7 @@
   {
     "id": 346,
     "name": "Fleischer Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.61355556,
@@ -67220,7 +67220,7 @@
   {
     "id": 72,
     "name": "Florio L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.92493611,
@@ -67628,7 +67628,7 @@
   {
     "id": 11,
     "name": "Franco - Lorenzo - Giorgio / Bau",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.18033333,
@@ -67832,7 +67832,7 @@
   {
     "id": 184,
     "name": "Frisacco E.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.175,
@@ -68002,7 +68002,7 @@
   {
     "id": 29,
     "name": "Fusshornbiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.42302778,
@@ -68274,7 +68274,7 @@
   {
     "id": 12,
     "name": "Gandolfo N.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.2145,
@@ -68291,7 +68291,7 @@
   {
     "id": 277,
     "name": "Garnitzenklammhütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.59935,
@@ -68427,7 +68427,7 @@
   {
     "id": 166,
     "name": "Gernot-Röhrl-Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.00130556,
@@ -68444,7 +68444,7 @@
   {
     "id": 213,
     "name": "Gervasutti G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.39861111,
@@ -68461,7 +68461,7 @@
   {
     "id": 194,
     "name": "Ghedini G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.33177778,
@@ -68478,7 +68478,7 @@
   {
     "id": 139,
     "name": "Giannantonj A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.13544444,
@@ -69277,7 +69277,7 @@
   {
     "id": 167,
     "name": "Glockner-Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.09194444,
@@ -69532,7 +69532,7 @@
   {
     "id": 183,
     "name": "Goitan A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.31716667,
@@ -70144,7 +70144,7 @@
   {
     "id": 214,
     "name": "Granzotto R. - Marchi A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.40222222,
@@ -70161,7 +70161,7 @@
   {
     "id": 40,
     "name": "Grauson - Tentori",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.66983333,
@@ -70246,7 +70246,7 @@
   {
     "id": 216,
     "name": "Greselin",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.35655556,
@@ -70348,7 +70348,7 @@
   {
     "id": 187,
     "name": "Groppa Pastour",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.19611111,
@@ -70433,7 +70433,7 @@
   {
     "id": 562,
     "name": "Grotte Sainte-Anne",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Belgium",
     "region": "",
     "latitude": 50.5543517,
@@ -72728,7 +72728,7 @@
   {
     "id": 230,
     "name": "Gössnitz Kopf Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.95866667,
@@ -73034,7 +73034,7 @@
   {
     "id": 384,
     "name": "Habsburghaus_winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.72121,
@@ -73289,7 +73289,7 @@
   {
     "id": 573,
     "name": "Havran",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.7382047,
@@ -73306,7 +73306,7 @@
   {
     "id": 659,
     "name": "Havraní skála / Generál",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.616704760958,
@@ -73323,7 +73323,7 @@
   {
     "id": 605,
     "name": "Havraní skály, Lužické hory",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.77689,
@@ -75397,7 +75397,7 @@
   {
     "id": 594,
     "name": "Hláska",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.62405556,
@@ -75448,7 +75448,7 @@
   {
     "id": 169,
     "name": "Hochferner biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.00377778,
@@ -75771,7 +75771,7 @@
   {
     "id": 483,
     "name": "Holubyho chata",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.8530624761,
@@ -75788,7 +75788,7 @@
   {
     "id": 512,
     "name": "Horná chatka vleku na Grúň",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.21619,
@@ -75805,7 +75805,7 @@
   {
     "id": 811,
     "name": "Horní stanice lanovky na Bukovou horu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0102731,
@@ -76111,7 +76111,7 @@
   {
     "id": 535,
     "name": "Hospoda u hotelu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.22194444,
@@ -76128,7 +76128,7 @@
   {
     "id": 816,
     "name": "Hospodářství Bílý Kříž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.50594167,
@@ -76247,7 +76247,7 @@
   {
     "id": 818,
     "name": "Hrad Fulštejn",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.23422222,
@@ -76264,7 +76264,7 @@
   {
     "id": 846,
     "name": "Hrad Hluboký",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.67788333,
@@ -76281,7 +76281,7 @@
   {
     "id": 465,
     "name": "Hrad Lukov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3,
@@ -76298,7 +76298,7 @@
   {
     "id": 413,
     "name": "Hrad Vršatec",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.057,
@@ -76315,7 +76315,7 @@
   {
     "id": 627,
     "name": "Hrad Šaunštejn",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8686911,
@@ -76332,7 +76332,7 @@
   {
     "id": 481,
     "name": "Hruška",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.235369478396,
@@ -76638,7 +76638,7 @@
   {
     "id": 327,
     "name": "Informační budka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.83043839481,
@@ -76893,7 +76893,7 @@
   {
     "id": 4,
     "name": "Ivrea",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.49977778,
@@ -76944,7 +76944,7 @@
   {
     "id": 146,
     "name": "Jack Canali",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.252,
@@ -77063,7 +77063,7 @@
   {
     "id": 723,
     "name": "Janovičky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.65488889,
@@ -77522,7 +77522,7 @@
   {
     "id": 272,
     "name": "Jerebikovec",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.44788889,
@@ -77539,7 +77539,7 @@
   {
     "id": 375,
     "name": "Jeskyně Jáchymka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.30633333,
@@ -77556,7 +77556,7 @@
   {
     "id": 583,
     "name": "Jeskyně Kamenný úl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.48422222,
@@ -77573,7 +77573,7 @@
   {
     "id": 582,
     "name": "Jeskyně Nedamy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.45416667,
@@ -77590,7 +77590,7 @@
   {
     "id": 374,
     "name": "Jeskyně Netopýrka, Pekárna, Švédův stůl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2502,
@@ -77607,7 +77607,7 @@
   {
     "id": 584,
     "name": "Jeskyně Obraznice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.46444444,
@@ -77624,7 +77624,7 @@
   {
     "id": 373,
     "name": "Jeskyně Pekárna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.25205,
@@ -77658,7 +77658,7 @@
   {
     "id": 297,
     "name": "Jezerní slať u Kvildy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.03416667,
@@ -77675,7 +77675,7 @@
   {
     "id": 705,
     "name": "Jeřábkův pramen",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.41279444,
@@ -77862,7 +77862,7 @@
   {
     "id": 800,
     "name": "K-S-26 &quot;Na Mýtině&quot;",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.081636507413,
@@ -78015,7 +78015,7 @@
   {
     "id": 519,
     "name": "Kamanná chata pod Chopkom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.94705556,
@@ -78066,7 +78066,7 @@
   {
     "id": 618,
     "name": "Kamenná bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8289828,
@@ -78117,7 +78117,7 @@
   {
     "id": 722,
     "name": "Kamenná studánka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.79311944,
@@ -78134,7 +78134,7 @@
   {
     "id": 478,
     "name": "Kamenný domek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.414716609587,
@@ -78151,7 +78151,7 @@
   {
     "id": 783,
     "name": "Kamenný přístřešek - garáž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.470093975225,
@@ -78168,7 +78168,7 @@
   {
     "id": 712,
     "name": "Kamenný vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.94516667,
@@ -78185,7 +78185,7 @@
   {
     "id": 600,
     "name": "Kameníkova jizba",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.52529722,
@@ -78270,7 +78270,7 @@
   {
     "id": 844,
     "name": "Kaple na Velkém Roudném",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8974939,
@@ -78287,7 +78287,7 @@
   {
     "id": 255,
     "name": "Kaponig biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.96855556,
@@ -78304,7 +78304,7 @@
   {
     "id": 390,
     "name": "Kaproun",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.08456,
@@ -78372,7 +78372,7 @@
   {
     "id": 383,
     "name": "Karl-Ludwig-Haus_winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.69771,
@@ -78542,7 +78542,7 @@
   {
     "id": 708,
     "name": "Kasárenská",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.83402778,
@@ -78610,7 +78610,7 @@
   {
     "id": 857,
     "name": "Kazatelna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.120916778231,
@@ -78763,7 +78763,7 @@
   {
     "id": 162,
     "name": "Kima",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.265146,
@@ -79205,7 +79205,7 @@
   {
     "id": 238,
     "name": "Klammscharte Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.327839,
@@ -79239,7 +79239,7 @@
   {
     "id": 239,
     "name": "Klingertörl Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.336543,
@@ -79256,7 +79256,7 @@
   {
     "id": 883,
     "name": "Klinská",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.501603309634,
@@ -79273,7 +79273,7 @@
   {
     "id": 652,
     "name": "Klondajk",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.856878822189,
@@ -79392,7 +79392,7 @@
   {
     "id": 357,
     "name": "Kocoury",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.13288889,
@@ -79443,7 +79443,7 @@
   {
     "id": 545,
     "name": "Koliba pod Klinovatým",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.13384,
@@ -79460,7 +79460,7 @@
   {
     "id": 505,
     "name": "Koliba pod Zámostskou Hoľou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.92260278,
@@ -79477,7 +79477,7 @@
   {
     "id": 502,
     "name": "Kolibka na Červenci",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.17874722,
@@ -79494,7 +79494,7 @@
   {
     "id": 507,
     "name": "Kolibka pod Ježovou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.15533333,
@@ -79511,7 +79511,7 @@
   {
     "id": 503,
     "name": "Kolibka pod Klinom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.19203056,
@@ -79528,7 +79528,7 @@
   {
     "id": 506,
     "name": "Kolibka pod Kotlovou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.16248333,
@@ -79545,7 +79545,7 @@
   {
     "id": 419,
     "name": "Kolovrátok",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.462,
@@ -79630,7 +79630,7 @@
   {
     "id": 472,
     "name": "Koryčanská cesta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.08233,
@@ -80888,7 +80888,7 @@
   {
     "id": 781,
     "name": "Krakonošova kazatelna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.502964097447,
@@ -80905,7 +80905,7 @@
   {
     "id": 690,
     "name": "Krakonošova snídaně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.773675,
@@ -81007,7 +81007,7 @@
   {
     "id": 347,
     "name": "Kraví hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.84716667,
@@ -81058,7 +81058,7 @@
   {
     "id": 658,
     "name": "Krkavčí skály - odpočinek u Vajoletek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.743606614019,
@@ -81075,7 +81075,7 @@
   {
     "id": 321,
     "name": "Krmelec / seník s prostorem pro dvě osoby",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3997625,
@@ -81092,7 +81092,7 @@
   {
     "id": 490,
     "name": "Krmelec Osvětimany",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.089402227506,
@@ -81109,7 +81109,7 @@
   {
     "id": 402,
     "name": "Krmelec u Dukovan",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.098,
@@ -81126,7 +81126,7 @@
   {
     "id": 359,
     "name": "Krmelec v Oboře",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.252,
@@ -81160,7 +81160,7 @@
   {
     "id": 333,
     "name": "Kryté posezení",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.7778156,
@@ -81177,7 +81177,7 @@
   {
     "id": 335,
     "name": "Krytý přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.955836636978,
@@ -81194,7 +81194,7 @@
   {
     "id": 336,
     "name": "Krytý přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.861869907841,
@@ -81211,7 +81211,7 @@
   {
     "id": 655,
     "name": "Krápník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.587857570492,
@@ -81228,7 +81228,7 @@
   {
     "id": 240,
     "name": "Kröndlhorn",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.295325,
@@ -81381,7 +81381,7 @@
   {
     "id": 526,
     "name": "Kvačany",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.17511111,
@@ -81398,7 +81398,7 @@
   {
     "id": 591,
     "name": "Kyjovský hrádek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.91927778,
@@ -83761,7 +83761,7 @@
   {
     "id": 733,
     "name": "Labská bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.777122,
@@ -83812,7 +83812,7 @@
   {
     "id": 30,
     "name": "Laggin-biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.16743889,
@@ -83829,7 +83829,7 @@
   {
     "id": 226,
     "name": "Lalidererspitzen biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.39211111,
@@ -83846,7 +83846,7 @@
   {
     "id": 24,
     "name": "Lampugnani",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "France",
     "region": "",
     "latitude": 45.81455556,
@@ -83897,7 +83897,7 @@
   {
     "id": 89,
     "name": "Lamé bivacco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.01641,
@@ -83948,7 +83948,7 @@
   {
     "id": 269,
     "name": "Lander",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.50711111,
@@ -85580,7 +85580,7 @@
   {
     "id": 104,
     "name": "Legui",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.07894444,
@@ -85631,7 +85631,7 @@
   {
     "id": 76,
     "name": "Leoni G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.26855556,
@@ -86243,7 +86243,7 @@
   {
     "id": 392,
     "name": "Lesní altán",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2833192,
@@ -86260,7 +86260,7 @@
   {
     "id": 292,
     "name": "Lesní chata Pod vodárnou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.38513333,
@@ -86277,7 +86277,7 @@
   {
     "id": 575,
     "name": "Lesný vrchol",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.039221836205,
@@ -86294,7 +86294,7 @@
   {
     "id": 799,
     "name": "Letiště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.392231949887,
@@ -86583,7 +86583,7 @@
   {
     "id": 837,
     "name": "Lom na Červenohorském sedle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.13244167,
@@ -86600,7 +86600,7 @@
   {
     "id": 278,
     "name": "Lomasti",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.56647,
@@ -86617,7 +86617,7 @@
   {
     "id": 65,
     "name": "Longa B.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.97863,
@@ -86685,7 +86685,7 @@
   {
     "id": 453,
     "name": "Louka nad Maršavou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.11127778,
@@ -86872,7 +86872,7 @@
   {
     "id": 620,
     "name": "Luxusni senik",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.6436164,
@@ -86940,7 +86940,7 @@
   {
     "id": 848,
     "name": "Lázeňský areál",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8401931,
@@ -86974,7 +86974,7 @@
   {
     "id": 882,
     "name": "Líheň",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.236537170701,
@@ -88096,7 +88096,7 @@
   {
     "id": 150,
     "name": "Malga Agusella",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.03211111,
@@ -88113,7 +88113,7 @@
   {
     "id": 91,
     "name": "Malga Baselga",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28029,
@@ -88164,7 +88164,7 @@
   {
     "id": 151,
     "name": "Malga Lavacchio",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.76616667,
@@ -88249,7 +88249,7 @@
   {
     "id": 190,
     "name": "Malga la Rova",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28372222,
@@ -88300,7 +88300,7 @@
   {
     "id": 633,
     "name": "Malá bouda u turistické značky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.71649825359,
@@ -88317,7 +88317,7 @@
   {
     "id": 73,
     "name": "Manenti D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.90186389,
@@ -88402,7 +88402,7 @@
   {
     "id": 401,
     "name": "Maria Laube",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.461875079017,
@@ -88436,7 +88436,7 @@
   {
     "id": 589,
     "name": "Mariina skála",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.85688889,
@@ -88453,7 +88453,7 @@
   {
     "id": 47,
     "name": "Marinelli D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.95288,
@@ -88470,7 +88470,7 @@
   {
     "id": 175,
     "name": "Marmol (Sandro Bocco)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.24066667,
@@ -88487,7 +88487,7 @@
   {
     "id": 178,
     "name": "Marta F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.53383333,
@@ -88742,7 +88742,7 @@
   {
     "id": 171,
     "name": "Mascabroni",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.631,
@@ -88895,7 +88895,7 @@
   {
     "id": 267,
     "name": "Mazzeni D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.42211111,
@@ -88912,7 +88912,7 @@
   {
     "id": 557,
     "name": "Medokýš",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.048890885515,
@@ -88963,7 +88963,7 @@
   {
     "id": 569,
     "name": "Medvědí pramen",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.966805,
@@ -89014,7 +89014,7 @@
   {
     "id": 38,
     "name": "Menabreaz E.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.69577778,
@@ -89031,7 +89031,7 @@
   {
     "id": 116,
     "name": "Meneghello F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.38455556,
@@ -89065,7 +89065,7 @@
   {
     "id": 675,
     "name": "Menhartická cosi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.516649841732,
@@ -89082,7 +89082,7 @@
   {
     "id": 98,
     "name": "Merlini Ugo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.95251,
@@ -89099,7 +89099,7 @@
   {
     "id": 92,
     "name": "Mezzol",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.32305556,
@@ -89269,7 +89269,7 @@
   {
     "id": 222,
     "name": "Milan G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36638889,
@@ -89337,7 +89337,7 @@
   {
     "id": 246,
     "name": "Mindener Hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.01677778,
@@ -89354,7 +89354,7 @@
   {
     "id": 424,
     "name": "Minibar Samčanky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.47611111,
@@ -89490,7 +89490,7 @@
   {
     "id": 397,
     "name": "Mlýn Papírna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.821539056813,
@@ -89507,7 +89507,7 @@
   {
     "id": 398,
     "name": "Mlýn Papírna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.827507266554,
@@ -89524,7 +89524,7 @@
   {
     "id": 264,
     "name": "Modonutti S. - Savoia L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.375,
@@ -89541,7 +89541,7 @@
   {
     "id": 131,
     "name": "Molteni M. - Valsecchi G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28567,
@@ -89558,7 +89558,7 @@
   {
     "id": 451,
     "name": "Mon Repos",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.49022222,
@@ -89779,7 +89779,7 @@
   {
     "id": 570,
     "name": "Mramorová jáma",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.9066997,
@@ -90204,7 +90204,7 @@
   {
     "id": 795,
     "name": "Mumlavska",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.778680097714,
@@ -90221,7 +90221,7 @@
   {
     "id": 202,
     "name": "Musatti A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.52288889,
@@ -90238,7 +90238,7 @@
   {
     "id": 74,
     "name": "Musso B.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.92844444,
@@ -90289,7 +90289,7 @@
   {
     "id": 307,
     "name": "Muzeum  Schwarzenberského  kanálu -  Jelení  Vrchy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.81406944,
@@ -90306,7 +90306,7 @@
   {
     "id": 867,
     "name": "Muřinkový vrch - kaple",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.5068517,
@@ -90527,7 +90527,7 @@
   {
     "id": 351,
     "name": "Na Keplech",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 48.86088611,
@@ -90561,7 +90561,7 @@
   {
     "id": 500,
     "name": "Na Velkém",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.472588073372,
@@ -90578,7 +90578,7 @@
   {
     "id": 576,
     "name": "Na havaji",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.400115002093,
@@ -90595,7 +90595,7 @@
   {
     "id": 703,
     "name": "Nad Dolním Bušínovem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.836,
@@ -90612,7 +90612,7 @@
   {
     "id": 701,
     "name": "Nad Krásnou plání",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.681,
@@ -90629,7 +90629,7 @@
   {
     "id": 716,
     "name": "Nad Národním domem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.30606944,
@@ -90646,7 +90646,7 @@
   {
     "id": 860,
     "name": "Nad Příčnou strání 2",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.997452349151,
@@ -90663,7 +90663,7 @@
   {
     "id": 792,
     "name": "Nad Svatým Matoušem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.296535040072,
@@ -90680,7 +90680,7 @@
   {
     "id": 731,
     "name": "Nad Vilemínkou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.18531,
@@ -90697,7 +90697,7 @@
   {
     "id": 729,
     "name": "Nad Čachnovem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.74988889,
@@ -90782,7 +90782,7 @@
   {
     "id": 69,
     "name": "Nebbia F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.84333333,
@@ -90799,7 +90799,7 @@
   {
     "id": 75,
     "name": "Nebbia F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.646,
@@ -90816,7 +90816,7 @@
   {
     "id": 101,
     "name": "Nembrini C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.86438889,
@@ -91105,7 +91105,7 @@
   {
     "id": 262,
     "name": "Nogara F.lli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.44305556,
@@ -91156,7 +91156,7 @@
   {
     "id": 747,
     "name": "Nouzová bouda Pod Voseckou boudou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.76832,
@@ -91173,7 +91173,7 @@
   {
     "id": 794,
     "name": "Nova boudicka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.738751972227,
@@ -91190,7 +91190,7 @@
   {
     "id": 310,
     "name": "Nové Údolí_nocoviště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.83254444,
@@ -91445,7 +91445,7 @@
   {
     "id": 110,
     "name": "Occhi S.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28966667,
@@ -91496,7 +91496,7 @@
   {
     "id": 340,
     "name": "Odpocivadlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.642315498568,
@@ -91513,7 +91513,7 @@
   {
     "id": 754,
     "name": "Odrodzenie",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7694053,
@@ -91530,7 +91530,7 @@
   {
     "id": 127,
     "name": "Oggioni A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.2835,
@@ -91564,7 +91564,7 @@
   {
     "id": 673,
     "name": "Ohniště s posezením a místem na bivak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.823064404109,
@@ -91581,7 +91581,7 @@
   {
     "id": 753,
     "name": "Ohrazený přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.3527283,
@@ -91683,7 +91683,7 @@
   {
     "id": 608,
     "name": "Opici hlava",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.582223,
@@ -91700,7 +91700,7 @@
   {
     "id": 300,
     "name": "Opuštěná bouda Policie ČR",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.85866667,
@@ -91717,7 +91717,7 @@
   {
     "id": 301,
     "name": "Opuštěná bouda Policie ČR",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.98438889,
@@ -91734,7 +91734,7 @@
   {
     "id": 288,
     "name": "Opuštěná bouda na nářadí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.16423206074,
@@ -91751,7 +91751,7 @@
   {
     "id": 287,
     "name": "Opuštěná bouda u jezera",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.28247766322,
@@ -91768,7 +91768,7 @@
   {
     "id": 616,
     "name": "Opuštěný dům u Klimětic",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.6956303,
@@ -91785,7 +91785,7 @@
   {
     "id": 676,
     "name": "Opuštěný penzion",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.433761262084,
@@ -92329,7 +92329,7 @@
   {
     "id": 367,
     "name": "Oslavička",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.31395,
@@ -92380,7 +92380,7 @@
   {
     "id": 542,
     "name": "Osnica",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.21233333,
@@ -92448,7 +92448,7 @@
   {
     "id": 382,
     "name": "Ottohaus_winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.71521,
@@ -92516,7 +92516,7 @@
   {
     "id": 686,
     "name": "Ozvěna u Teplic",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.60088889,
@@ -92618,7 +92618,7 @@
   {
     "id": 114,
     "name": "Padre Giancarlo Colombo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.40683333,
@@ -92652,7 +92652,7 @@
   {
     "id": 630,
     "name": "Panenský Týnec, budka u chrámu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.300895390061,
@@ -92669,7 +92669,7 @@
   {
     "id": 563,
     "name": "Panorama near Liege",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Belgium",
     "region": "",
     "latitude": 50.6067794,
@@ -92686,7 +92686,7 @@
   {
     "id": 112,
     "name": "Pansera",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.36527778,
@@ -92703,7 +92703,7 @@
   {
     "id": 113,
     "name": "Paravicini",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36538889,
@@ -92720,7 +92720,7 @@
   {
     "id": 387,
     "name": "Parkurová tribuna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.216335,
@@ -92771,7 +92771,7 @@
   {
     "id": 9,
     "name": "Parvo / Rosset D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 44.3875,
@@ -94318,7 +94318,7 @@
   {
     "id": 674,
     "name": "Pašerácká bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.529995660777,
@@ -94352,7 +94352,7 @@
   {
     "id": 156,
     "name": "Pedrinelli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.043,
@@ -94369,7 +94369,7 @@
   {
     "id": 133,
     "name": "Pedroni - Dal Pré",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.27533333,
@@ -94420,7 +94420,7 @@
   {
     "id": 129,
     "name": "Pellicioli L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.50394444,
@@ -94505,7 +94505,7 @@
   {
     "id": 54,
     "name": "Perelli Cippo P.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.971725,
@@ -94522,7 +94522,7 @@
   {
     "id": 215,
     "name": "Perugini G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.40234,
@@ -94539,7 +94539,7 @@
   {
     "id": 107,
     "name": "Petazzi Bruno",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.22677778,
@@ -94760,7 +94760,7 @@
   {
     "id": 168,
     "name": "Philipp Reuter Hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 47.04110833,
@@ -94777,7 +94777,7 @@
   {
     "id": 137,
     "name": "Pian del Nido",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.40466667,
@@ -94794,7 +94794,7 @@
   {
     "id": 105,
     "name": "Pian della Valle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.116,
@@ -94930,7 +94930,7 @@
   {
     "id": 94,
     "name": "Pinamonti G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.31691,
@@ -94964,7 +94964,7 @@
   {
     "id": 172,
     "name": "Piovan F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.60611111,
@@ -98007,7 +98007,7 @@
   {
     "id": 706,
     "name": "Pod Betlémem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.40941111,
@@ -98024,7 +98024,7 @@
   {
     "id": 590,
     "name": "Pod Jedlovou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.5435904,
@@ -98041,7 +98041,7 @@
   {
     "id": 435,
     "name": "Pod Klenčovem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.17499722,
@@ -98075,7 +98075,7 @@
   {
     "id": 567,
     "name": "Pod Kozími vrchy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.2015,
@@ -98092,7 +98092,7 @@
   {
     "id": 522,
     "name": "Pod Královou studňou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.89927778,
@@ -98109,7 +98109,7 @@
   {
     "id": 464,
     "name": "Pod Kuželkem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.32837,
@@ -98126,7 +98126,7 @@
   {
     "id": 434,
     "name": "Pod Křídlem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.35627778,
@@ -98143,7 +98143,7 @@
   {
     "id": 352,
     "name": "Pod Ledovými slujemi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 48.87916389,
@@ -98160,7 +98160,7 @@
   {
     "id": 437,
     "name": "Pod Lysinou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.34123611,
@@ -98177,7 +98177,7 @@
   {
     "id": 438,
     "name": "Pod Lysinou II",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.33912778,
@@ -98194,7 +98194,7 @@
   {
     "id": 443,
     "name": "Pod Lysinou III",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.34572222,
@@ -98211,7 +98211,7 @@
   {
     "id": 425,
     "name": "Pod Ocáskem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.10222222,
@@ -98228,7 +98228,7 @@
   {
     "id": 417,
     "name": "Pod Ostrým Kameňom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.52411111,
@@ -98245,7 +98245,7 @@
   {
     "id": 450,
     "name": "Pod Slavickým kopcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.16561111,
@@ -98262,7 +98262,7 @@
   {
     "id": 826,
     "name": "Pod Smrčníkem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.950375,
@@ -98296,7 +98296,7 @@
   {
     "id": 439,
     "name": "Pod Uhorskou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.48925,
@@ -98313,7 +98313,7 @@
   {
     "id": 445,
     "name": "Pod Zlatnicí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.371,
@@ -98432,7 +98432,7 @@
   {
     "id": 36,
     "name": "Pol C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.50694444,
@@ -98449,7 +98449,7 @@
   {
     "id": 666,
     "name": "Polevský vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.793392949858,
@@ -98653,7 +98653,7 @@
   {
     "id": 436,
     "name": "Poschlá",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.334,
@@ -98670,7 +98670,7 @@
   {
     "id": 858,
     "name": "Posed",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.119824900092,
@@ -98687,7 +98687,7 @@
   {
     "id": 423,
     "name": "Posed Kamenné Vrata",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.83572222,
@@ -98704,7 +98704,7 @@
   {
     "id": 407,
     "name": "Posed na Skalkách",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.98607222,
@@ -98721,7 +98721,7 @@
   {
     "id": 415,
     "name": "Posed nad Střelnou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.16838889,
@@ -98738,7 +98738,7 @@
   {
     "id": 406,
     "name": "Posed nad sedlom Rakytie",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.15688889,
@@ -98755,7 +98755,7 @@
   {
     "id": 736,
     "name": "Posed nad sv.Annou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0805,
@@ -98772,7 +98772,7 @@
   {
     "id": 411,
     "name": "Posed pod Baštou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.026175,
@@ -98789,7 +98789,7 @@
   {
     "id": 527,
     "name": "Posed pod Grúňom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.19111111,
@@ -98806,7 +98806,7 @@
   {
     "id": 237,
     "name": "Posed pod Hahnkopf",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.332141,
@@ -98823,7 +98823,7 @@
   {
     "id": 836,
     "name": "Posed pod Vřesníkem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.07477778,
@@ -98840,7 +98840,7 @@
   {
     "id": 586,
     "name": "Posed u Tubožského dvora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.48245,
@@ -98857,7 +98857,7 @@
   {
     "id": 638,
     "name": "Posed v údolí Kohoutího potoka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.799065,
@@ -98908,7 +98908,7 @@
   {
     "id": 598,
     "name": "Poustevnická jeskyně na Stohánku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.68144444,
@@ -99010,7 +99010,7 @@
   {
     "id": 399,
     "name": "Pramen Beran",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.125133619982,
@@ -99027,7 +99027,7 @@
   {
     "id": 291,
     "name": "Prax-biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.55411111,
@@ -99129,7 +99129,7 @@
   {
     "id": 148,
     "name": "Presanella - Roberti V.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.213,
@@ -99231,7 +99231,7 @@
   {
     "id": 880,
     "name": "Pristresek Bozi hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.301189890979,
@@ -99248,7 +99248,7 @@
   {
     "id": 486,
     "name": "Pristresek u Kozla",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.10672477905,
@@ -99265,7 +99265,7 @@
   {
     "id": 342,
     "name": "Prokopův kříž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 49.045634186639,
@@ -99299,7 +99299,7 @@
   {
     "id": 109,
     "name": "Provolino",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.78005556,
@@ -99367,7 +99367,7 @@
   {
     "id": 455,
     "name": "Prístrešok Záblatská kyselka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.91277778,
@@ -99384,7 +99384,7 @@
   {
     "id": 541,
     "name": "Prístrešok v sedle Ploskej",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.94035,
@@ -99401,7 +99401,7 @@
   {
     "id": 720,
     "name": "Průchozí jeskyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.63083333,
@@ -99418,7 +99418,7 @@
   {
     "id": 601,
     "name": "Psí kostely",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.63191944,
@@ -99554,7 +99554,7 @@
   {
     "id": 718,
     "name": "Pěchotní bunkr",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.27268333,
@@ -99571,7 +99571,7 @@
   {
     "id": 298,
     "name": "Převis Májovka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.31183333,
@@ -99588,7 +99588,7 @@
   {
     "id": 756,
     "name": "Převis Zahrádky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8134147,
@@ -99605,7 +99605,7 @@
   {
     "id": 639,
     "name": "Převis na Milštejně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8219056,
@@ -99622,7 +99622,7 @@
   {
     "id": 728,
     "name": "Převis na Pytláckých kamenech",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.85509444,
@@ -99639,7 +99639,7 @@
   {
     "id": 805,
     "name": "Převis Čáp",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.579129226539,
@@ -99656,7 +99656,7 @@
   {
     "id": 746,
     "name": "Přibylov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.72423889,
@@ -99673,7 +99673,7 @@
   {
     "id": 758,
     "name": "Přistřešek Velká Veranda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0018283,
@@ -99690,7 +99690,7 @@
   {
     "id": 395,
     "name": "Přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2293367,
@@ -99707,7 +99707,7 @@
   {
     "id": 498,
     "name": "Přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.348767722363,
@@ -99724,7 +99724,7 @@
   {
     "id": 679,
     "name": "Přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.5036249,
@@ -99741,7 +99741,7 @@
   {
     "id": 782,
     "name": "Přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.286074497955,
@@ -99758,7 +99758,7 @@
   {
     "id": 760,
     "name": "Přístřešek &quot;Homole&quot;",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0560897,
@@ -99775,7 +99775,7 @@
   {
     "id": 759,
     "name": "Přístřešek &quot;Kopanina&quot;",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0181983,
@@ -99792,7 +99792,7 @@
   {
     "id": 806,
     "name": "Přístřešek - Modlivý důl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.07731596484,
@@ -99809,7 +99809,7 @@
   {
     "id": 878,
     "name": "Přístřešek Albínovo náměstí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.565564745906,
@@ -99826,7 +99826,7 @@
   {
     "id": 879,
     "name": "Přístřešek Alfrédka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.022645640935,
@@ -99843,7 +99843,7 @@
   {
     "id": 462,
     "name": "Přístřešek Benešky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.39777778,
@@ -99860,7 +99860,7 @@
   {
     "id": 745,
     "name": "Přístřešek Bradlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.51093056,
@@ -99877,7 +99877,7 @@
   {
     "id": 656,
     "name": "Přístřešek Bradáčov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.695406113311,
@@ -99894,7 +99894,7 @@
   {
     "id": 651,
     "name": "Přístřešek Bukovina",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7634978,
@@ -99911,7 +99911,7 @@
   {
     "id": 727,
     "name": "Přístřešek Bílá Kuchyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.85738056,
@@ -99928,7 +99928,7 @@
   {
     "id": 796,
     "name": "Přístřešek Bílá Voda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.448362889918,
@@ -99945,7 +99945,7 @@
   {
     "id": 665,
     "name": "Přístřešek Bělá pod Bezdězem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.516365124351,
@@ -99962,7 +99962,7 @@
   {
     "id": 442,
     "name": "Přístřešek Husí stok (Majdán)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.47044444,
@@ -99979,7 +99979,7 @@
   {
     "id": 491,
     "name": "Přístřešek Hviezda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.19254,
@@ -99996,7 +99996,7 @@
   {
     "id": 634,
     "name": "Přístřešek Jehla",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8097822,
@@ -100013,7 +100013,7 @@
   {
     "id": 817,
     "name": "Přístřešek Kamzík",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.102981277872,
@@ -100030,7 +100030,7 @@
   {
     "id": 853,
     "name": "Přístřešek Klínovec",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.129277939598,
@@ -100047,7 +100047,7 @@
   {
     "id": 306,
     "name": "Přístřešek Kraví hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.72605556,
@@ -100064,7 +100064,7 @@
   {
     "id": 780,
     "name": "Přístřešek Lupěnské Hory",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.85802722128,
@@ -100081,7 +100081,7 @@
   {
     "id": 862,
     "name": "Přístřešek Lysý vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.139105128169,
@@ -100098,7 +100098,7 @@
   {
     "id": 872,
     "name": "Přístřešek Lysý vrch - rozc.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.147218578961,
@@ -100115,7 +100115,7 @@
   {
     "id": 323,
     "name": "Přístřešek Na Křížkách",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.9889047,
@@ -100132,7 +100132,7 @@
   {
     "id": 319,
     "name": "Přístřešek Nová Huť",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.919128,
@@ -100149,7 +100149,7 @@
   {
     "id": 311,
     "name": "Přístřešek Pod Homolkou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 49.0291236,
@@ -100166,7 +100166,7 @@
   {
     "id": 324,
     "name": "Přístřešek Pod Stožeckou kaplí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.8716347,
@@ -100183,7 +100183,7 @@
   {
     "id": 648,
     "name": "Přístřešek Polesí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8103419,
@@ -100200,7 +100200,7 @@
   {
     "id": 649,
     "name": "Přístřešek Polevsko",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7941111,
@@ -100217,7 +100217,7 @@
   {
     "id": 663,
     "name": "Přístřešek Preisselberg",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.70053817844,
@@ -100234,7 +100234,7 @@
   {
     "id": 430,
     "name": "Přístřešek Ptáčnice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.38502222,
@@ -100251,7 +100251,7 @@
   {
     "id": 861,
     "name": "Přístřešek Pásmo Orlíka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.164563137407,
@@ -100268,7 +100268,7 @@
   {
     "id": 871,
     "name": "Přístřešek Pásmo Orlíka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.164611245478,
@@ -100285,7 +100285,7 @@
   {
     "id": 833,
     "name": "Přístřešek Rešovské vodopády",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.88322222,
@@ -100302,7 +100302,7 @@
   {
     "id": 642,
     "name": "Přístřešek Stožecké Sedlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8421189,
@@ -100319,7 +100319,7 @@
   {
     "id": 317,
     "name": "Přístřešek Stříbrné hutě",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.6295467,
@@ -100336,7 +100336,7 @@
   {
     "id": 683,
     "name": "Přístřešek Těně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.704888075233,
@@ -100353,7 +100353,7 @@
   {
     "id": 868,
     "name": "Přístřešek Těšíkovská kyselka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.747851862545,
@@ -100370,7 +100370,7 @@
   {
     "id": 808,
     "name": "Přístřešek Tři Studně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.6115253,
@@ -100387,7 +100387,7 @@
   {
     "id": 640,
     "name": "Přístřešek U Jána",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8272139,
@@ -100404,7 +100404,7 @@
   {
     "id": 369,
     "name": "Přístřešek U křížku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.30531667,
@@ -100421,7 +100421,7 @@
   {
     "id": 809,
     "name": "Přístřešek Vrchmezí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.3434692,
@@ -100438,7 +100438,7 @@
   {
     "id": 547,
     "name": "Přístřešek Vyšný Tajch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.9612886,
@@ -100455,7 +100455,7 @@
   {
     "id": 400,
     "name": "Přístřešek Věžná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.45319560764,
@@ -100472,7 +100472,7 @@
   {
     "id": 295,
     "name": "Přístřešek dětského tábora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.687870241163,
@@ -100489,7 +100489,7 @@
   {
     "id": 841,
     "name": "Přístřešek lesů ČR u rozhledny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.54925556,
@@ -100506,7 +100506,7 @@
   {
     "id": 876,
     "name": "Přístřešek na Ondřejníku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.586410467071,
@@ -100523,7 +100523,7 @@
   {
     "id": 769,
     "name": "Přístřešek na Przelecz Marcowa",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.706480665914,
@@ -100540,7 +100540,7 @@
   {
     "id": 331,
     "name": "Přístřešek na Rýzmberku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.398773558528,
@@ -100557,7 +100557,7 @@
   {
     "id": 231,
     "name": "Přístřešek nad lanovkou S. Andrea - S´Stübele",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.68504167,
@@ -100574,7 +100574,7 @@
   {
     "id": 778,
     "name": "Přístřešek nad Ústím",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.959896162586,
@@ -100591,7 +100591,7 @@
   {
     "id": 680,
     "name": "Přístřešek pod Hrádkem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.558425850827,
@@ -100608,7 +100608,7 @@
   {
     "id": 549,
     "name": "Přístřešek pod Javorovým vrchom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.3571058,
@@ -100625,7 +100625,7 @@
   {
     "id": 643,
     "name": "Přístřešek pod Luží",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8513328,
@@ -100642,7 +100642,7 @@
   {
     "id": 538,
     "name": "Přístřešek pod Magurkou, Prehaliny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.38172222,
@@ -100659,7 +100659,7 @@
   {
     "id": 358,
     "name": "Přístřešek pod Trnůvkou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.27477778,
@@ -100676,7 +100676,7 @@
   {
     "id": 784,
     "name": "Přístřešek pod Špičákem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7454778,
@@ -100693,7 +100693,7 @@
   {
     "id": 743,
     "name": "Přístřešek pod Žaltmanem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.5584944,
@@ -100710,7 +100710,7 @@
   {
     "id": 874,
     "name": "Přístřešek pro turisty u Zvoničky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.595032752829,
@@ -100727,7 +100727,7 @@
   {
     "id": 777,
     "name": "Přístřešek u Horákovy kaple",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.98411596947,
@@ -100744,7 +100744,7 @@
   {
     "id": 476,
     "name": "Přístřešek u Hričovského hradu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.2168633,
@@ -100761,7 +100761,7 @@
   {
     "id": 790,
     "name": "Přístřešek u Ivanského jezera",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.183586206909,
@@ -100778,7 +100778,7 @@
   {
     "id": 761,
     "name": "Přístřešek u Kunštátské kaple",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.2567642,
@@ -100795,7 +100795,7 @@
   {
     "id": 322,
     "name": "Přístřešek u Sedýlka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.9752792,
@@ -100812,7 +100812,7 @@
   {
     "id": 776,
     "name": "Přístřešek u Stachelbergu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.631541600181,
@@ -100829,7 +100829,7 @@
   {
     "id": 497,
     "name": "Přístřešek u Velké Polany",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.4978,
@@ -100846,7 +100846,7 @@
   {
     "id": 764,
     "name": "Přístřešek u dělostřelecké tvrze Bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.0761494,
@@ -100863,7 +100863,7 @@
   {
     "id": 785,
     "name": "Přístřešek u pískoviště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0201586684,
@@ -100880,7 +100880,7 @@
   {
     "id": 798,
     "name": "Přístřešek u studánky u Libčan",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.191576656522,
@@ -100897,7 +100897,7 @@
   {
     "id": 847,
     "name": "Přístřešek u vyhlídky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8251922,
@@ -100914,7 +100914,7 @@
   {
     "id": 726,
     "name": "Přístřešek v Sedle Holubníku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.84451111,
@@ -100931,7 +100931,7 @@
   {
     "id": 537,
     "name": "Přístřešek v sedle Demänová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.39816667,
@@ -100948,7 +100948,7 @@
   {
     "id": 704,
     "name": "Přístřešek Černý důl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.20842222,
@@ -100965,7 +100965,7 @@
   {
     "id": 757,
     "name": "Přístřešek Čertův dub",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0104914,
@@ -100982,7 +100982,7 @@
   {
     "id": 578,
     "name": "Přístřešky na Ježískově cestě.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.405298566269,
@@ -100999,7 +100999,7 @@
   {
     "id": 350,
     "name": "Příčky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 48.85749167,
@@ -101016,7 +101016,7 @@
   {
     "id": 856,
     "name": "Půda Černé boudy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.153614544949,
@@ -101033,7 +101033,7 @@
   {
     "id": 353,
     "name": "Radostický seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.12208333,
@@ -101067,7 +101067,7 @@
   {
     "id": 830,
     "name": "Ramzová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.19192,
@@ -101135,7 +101135,7 @@
   {
     "id": 492,
     "name": "Ratajský les",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2694225,
@@ -101186,7 +101186,7 @@
   {
     "id": 372,
     "name": "Rauher Kamm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.87144444,
@@ -101203,7 +101203,7 @@
   {
     "id": 130,
     "name": "Rauzi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.25770833,
@@ -101220,7 +101220,7 @@
   {
     "id": 53,
     "name": "Ravelli L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.84478,
@@ -101339,7 +101339,7 @@
   {
     "id": 381,
     "name": "Raxgmoa-hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.7006,
@@ -101356,7 +101356,7 @@
   {
     "id": 235,
     "name": "Reali",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.2368,
@@ -101373,7 +101373,7 @@
   {
     "id": 60,
     "name": "Reboulaz L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.87322778,
@@ -101390,7 +101390,7 @@
   {
     "id": 26,
     "name": "Rechte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.249985,
@@ -101407,7 +101407,7 @@
   {
     "id": 229,
     "name": "Redolf Sandro bivacco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36633333,
@@ -103073,7 +103073,7 @@
   {
     "id": 42,
     "name": "Refuge Igloo des Pantalons Blancs",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.03339,
@@ -110604,7 +110604,7 @@
   {
     "id": 41,
     "name": "Refuge des Bouquetins",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.977875,
@@ -116129,7 +116129,7 @@
   {
     "id": 16,
     "name": "Refugio Monte dei Marmi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 43.99891667,
@@ -116435,7 +116435,7 @@
   {
     "id": 67,
     "name": "Regondi N. - Gavazzi P.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.91688889,
@@ -116452,7 +116452,7 @@
   {
     "id": 149,
     "name": "Regosa F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.20633333,
@@ -116622,7 +116622,7 @@
   {
     "id": 250,
     "name": "Reisskofelbiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.67505556,
@@ -116741,7 +116741,7 @@
   {
     "id": 43,
     "name": "Resegotti L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.92416667,
@@ -116843,7 +116843,7 @@
   {
     "id": 95,
     "name": "Rheinland Pfalz Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.97181667,
@@ -116962,7 +116962,7 @@
   {
     "id": 225,
     "name": "Richterhütte - winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 47.12788889,
@@ -117013,7 +117013,7 @@
   {
     "id": 274,
     "name": "Ricovero Bernardinis",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.47905556,
@@ -117030,7 +117030,7 @@
   {
     "id": 281,
     "name": "Ricovero E. Franz",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.368158,
@@ -117200,7 +117200,7 @@
   {
     "id": 163,
     "name": "Rif. Allievi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28573,
@@ -117217,7 +117217,7 @@
   {
     "id": 155,
     "name": "Rif. Marinelli-Bombardieri - winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.34588889,
@@ -117880,7 +117880,7 @@
   {
     "id": 18,
     "name": "Rifugio Bartolesse",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 43.69483333,
@@ -117897,7 +117897,7 @@
   {
     "id": 280,
     "name": "Rifugio Bellina, Ricovero Casera Cjariguart",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.361339,
@@ -118016,7 +118016,7 @@
   {
     "id": 154,
     "name": "Rifugio Bignami - winterraum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.32494444,
@@ -118135,7 +118135,7 @@
   {
     "id": 245,
     "name": "Rifugio Cantore",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.540856700243,
@@ -120940,7 +120940,7 @@
   {
     "id": 153,
     "name": "Rifugio Scerscen-Entova",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.34266667,
@@ -122147,7 +122147,7 @@
   {
     "id": 461,
     "name": "Roháčske sedlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.17723333,
@@ -122198,7 +122198,7 @@
   {
     "id": 613,
     "name": "Roklice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.5896847,
@@ -122215,7 +122215,7 @@
   {
     "id": 793,
     "name": "Rondo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.467646947585,
@@ -122232,7 +122232,7 @@
   {
     "id": 57,
     "name": "Rosenlauibiwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.66798333,
@@ -122300,7 +122300,7 @@
   {
     "id": 44,
     "name": "Rossi G. - Volante C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 45.93394444,
@@ -122453,7 +122453,7 @@
   {
     "id": 428,
     "name": "Rozhladňa pri Kaplnke",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.36727778,
@@ -122470,7 +122470,7 @@
   {
     "id": 325,
     "name": "Rozhledna &amp;quot;Soumarský most&amp;quot;",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.9035033,
@@ -122487,7 +122487,7 @@
   {
     "id": 762,
     "name": "Rozhledna Anenský vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.2251764,
@@ -122504,7 +122504,7 @@
   {
     "id": 740,
     "name": "Rozhledna Boika",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.856575802519,
@@ -122521,7 +122521,7 @@
   {
     "id": 303,
     "name": "Rozhledna Boubín",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.98911111,
@@ -122538,7 +122538,7 @@
   {
     "id": 460,
     "name": "Rozhledna Lopeník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.92036111,
@@ -122555,7 +122555,7 @@
   {
     "id": 364,
     "name": "Rozhledna Malý Chlum",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.44655556,
@@ -122572,7 +122572,7 @@
   {
     "id": 749,
     "name": "Rozhledna Mariánská Hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.9608072,
@@ -122589,7 +122589,7 @@
   {
     "id": 371,
     "name": "Rozhledna Mařenka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.1757531,
@@ -122606,7 +122606,7 @@
   {
     "id": 725,
     "name": "Rozhledna Na Čihadle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.830047165869,
@@ -122623,7 +122623,7 @@
   {
     "id": 829,
     "name": "Rozhledna Panorama, Chlebovice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.65496667,
@@ -122640,7 +122640,7 @@
   {
     "id": 354,
     "name": "Rozhledna na Babím Lomu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.32338889,
@@ -122657,7 +122657,7 @@
   {
     "id": 875,
     "name": "Rozhledna na Javorníku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.535545456154,
@@ -122674,7 +122674,7 @@
   {
     "id": 315,
     "name": "Rozhledna na Knížecím stolci",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.8422678,
@@ -122691,7 +122691,7 @@
   {
     "id": 566,
     "name": "Rozhledna na Tisovém vrchu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.35050556,
@@ -122708,7 +122708,7 @@
   {
     "id": 466,
     "name": "Rozhľadňa Púchovskej doliny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.1369406,
@@ -122725,7 +122725,7 @@
   {
     "id": 543,
     "name": "Rozhľadňa nad Slovenskou Ľupčou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.80144444,
@@ -122742,7 +122742,7 @@
   {
     "id": 484,
     "name": "Rozhľadňa Špicák",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.17383,
@@ -123184,7 +123184,7 @@
   {
     "id": 515,
     "name": "Salaš Sestričky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.93241389,
@@ -123201,7 +123201,7 @@
   {
     "id": 889,
     "name": "Salaš pod Beskydom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.57563333,
@@ -123218,7 +123218,7 @@
   {
     "id": 555,
     "name": "Salaš pod Malou Rycerzowou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.425396898765,
@@ -123235,7 +123235,7 @@
   {
     "id": 524,
     "name": "Salaš pod Ploskou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.94869444,
@@ -123252,7 +123252,7 @@
   {
     "id": 510,
     "name": "Salaš pod Smrekovom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.88086944,
@@ -123269,7 +123269,7 @@
   {
     "id": 501,
     "name": "Salaš pod Suchým vrchom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.914823,
@@ -123286,7 +123286,7 @@
   {
     "id": 236,
     "name": "Salersbachkopfl Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.343846,
@@ -123371,7 +123371,7 @@
   {
     "id": 241,
     "name": "Salzachjoch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.288764,
@@ -123422,7 +123422,7 @@
   {
     "id": 820,
     "name": "Samoška Bílý Kříž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.50027778,
@@ -123575,7 +123575,7 @@
   {
     "id": 68,
     "name": "Savoie",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.90905556,
@@ -123779,7 +123779,7 @@
   {
     "id": 58,
     "name": "Schmadrihütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.48895278,
@@ -126278,7 +126278,7 @@
   {
     "id": 223,
     "name": "Schüsselkar-Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.38722222,
@@ -126312,7 +126312,7 @@
   {
     "id": 814,
     "name": "Sedlo Holubníku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.837706725881,
@@ -126329,7 +126329,7 @@
   {
     "id": 689,
     "name": "Sedlo po Smělcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.79171111,
@@ -126346,7 +126346,7 @@
   {
     "id": 544,
     "name": "Sedlo pod Vtáčnikom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.045585,
@@ -126397,7 +126397,7 @@
   {
     "id": 766,
     "name": "Semanínská kaplička",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8700772,
@@ -126414,7 +126414,7 @@
   {
     "id": 488,
     "name": "Senník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.905026,
@@ -126431,7 +126431,7 @@
   {
     "id": 470,
     "name": "Senník Juriášovo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.90803,
@@ -126448,7 +126448,7 @@
   {
     "id": 480,
     "name": "Senník na Kovalovských lúkach",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.816695444115,
@@ -126465,7 +126465,7 @@
   {
     "id": 536,
     "name": "Senník na Príslope",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.07295,
@@ -126482,7 +126482,7 @@
   {
     "id": 471,
     "name": "Senník v Blatnickej doline",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.9352,
@@ -126499,7 +126499,7 @@
   {
     "id": 416,
     "name": "Senník v Sokolí dolině",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.89994444,
@@ -126635,7 +126635,7 @@
   {
     "id": 299,
     "name": "Seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.88394444,
@@ -126652,7 +126652,7 @@
   {
     "id": 771,
     "name": "Seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.644963160845,
@@ -126669,7 +126669,7 @@
   {
     "id": 864,
     "name": "Seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.091329456978,
@@ -126686,7 +126686,7 @@
   {
     "id": 869,
     "name": "Seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.81769,
@@ -126703,7 +126703,7 @@
   {
     "id": 452,
     "name": "Seník Brezinky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.52866667,
@@ -126720,7 +126720,7 @@
   {
     "id": 650,
     "name": "Seník Bukovina",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7628786,
@@ -126737,7 +126737,7 @@
   {
     "id": 677,
     "name": "Seník Chotýšany",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.750693100126,
@@ -126754,7 +126754,7 @@
   {
     "id": 568,
     "name": "Seník Diana",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.627,
@@ -126771,7 +126771,7 @@
   {
     "id": 459,
     "name": "Seník Kobylská - Skálí",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.38359444,
@@ -126788,7 +126788,7 @@
   {
     "id": 827,
     "name": "Seník Malínská rokle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.94427778,
@@ -126805,7 +126805,7 @@
   {
     "id": 873,
     "name": "Seník Morávka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.548072160921,
@@ -126822,7 +126822,7 @@
   {
     "id": 552,
     "name": "Seník Nadbánské",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.14560414832,
@@ -126839,7 +126839,7 @@
   {
     "id": 409,
     "name": "Seník Nová hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.89555556,
@@ -126856,7 +126856,7 @@
   {
     "id": 842,
     "name": "Seník Pod Suchou horou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.11016167,
@@ -126873,7 +126873,7 @@
   {
     "id": 432,
     "name": "Seník Raťkov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.37097222,
@@ -126890,7 +126890,7 @@
   {
     "id": 822,
     "name": "Seník Střední Opava Horní",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.112,
@@ -126907,7 +126907,7 @@
   {
     "id": 592,
     "name": "Seník Trnová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.805,
@@ -126924,7 +126924,7 @@
   {
     "id": 821,
     "name": "Seník U Kamenné chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.08094444,
@@ -126941,7 +126941,7 @@
   {
     "id": 750,
     "name": "Seník kousek od rozhledny Na Chlumu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.9031678,
@@ -126958,7 +126958,7 @@
   {
     "id": 427,
     "name": "Seník nad Lípou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2115,
@@ -126975,7 +126975,7 @@
   {
     "id": 662,
     "name": "Seník nad Velemínem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.565014795403,
@@ -126992,7 +126992,7 @@
   {
     "id": 532,
     "name": "Seník nad dolinou Čutkovo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.07957,
@@ -127009,7 +127009,7 @@
   {
     "id": 828,
     "name": "Seník nad přehradou Morávka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.56903333,
@@ -127026,7 +127026,7 @@
   {
     "id": 641,
     "name": "Seník pod Bouřným",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8341369,
@@ -127043,7 +127043,7 @@
   {
     "id": 444,
     "name": "Seník pod Křížovým",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.35624167,
@@ -127060,7 +127060,7 @@
   {
     "id": 699,
     "name": "Seník pod Melechovem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.63786111,
@@ -127077,7 +127077,7 @@
   {
     "id": 531,
     "name": "Seník pod Tlstou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.07251667,
@@ -127094,7 +127094,7 @@
   {
     "id": 636,
     "name": "Seník pod Zámeckým vrchem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7919936,
@@ -127111,7 +127111,7 @@
   {
     "id": 647,
     "name": "Seník pod Černým vrchem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8131936,
@@ -127128,7 +127128,7 @@
   {
     "id": 628,
     "name": "Seník pod Žebrákem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.7112578,
@@ -127145,7 +127145,7 @@
   {
     "id": 838,
     "name": "Seník pod Žárovcem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.08505556,
@@ -127162,7 +127162,7 @@
   {
     "id": 831,
     "name": "Seník u Bílého potoka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.13135,
@@ -127179,7 +127179,7 @@
   {
     "id": 866,
     "name": "Seník u Františkovy chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.134001295303,
@@ -127196,7 +127196,7 @@
   {
     "id": 779,
     "name": "Seník u Hynčiny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.838112271115,
@@ -127213,7 +127213,7 @@
   {
     "id": 479,
     "name": "Seník u Loukova",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.401585814191,
@@ -127230,7 +127230,7 @@
   {
     "id": 832,
     "name": "Seník u Opavské chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.19626389,
@@ -127247,7 +127247,7 @@
   {
     "id": 474,
     "name": "Seník u Pluskovce",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.35263333,
@@ -127264,7 +127264,7 @@
   {
     "id": 363,
     "name": "Seník u Senorad",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.138,
@@ -127281,7 +127281,7 @@
   {
     "id": 855,
     "name": "Seník u Spálené",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.152247000111,
@@ -127298,7 +127298,7 @@
   {
     "id": 585,
     "name": "Seník u Vyhlídek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.44527778,
@@ -127315,7 +127315,7 @@
   {
     "id": 681,
     "name": "Seník u Výřích skal",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.629549501368,
@@ -127332,7 +127332,7 @@
   {
     "id": 678,
     "name": "Seník u pramene Brdlavky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.805920900657,
@@ -127349,7 +127349,7 @@
   {
     "id": 863,
     "name": "Seník v Bělé",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.130659296454,
@@ -127366,7 +127366,7 @@
   {
     "id": 711,
     "name": "Seník v údolí Moravy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.14330556,
@@ -127383,7 +127383,7 @@
   {
     "id": 121,
     "name": "Seveso",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.37788889,
@@ -127604,7 +127604,7 @@
   {
     "id": 365,
     "name": "Sirotčí hrady",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.85140833,
@@ -127655,7 +127655,7 @@
   {
     "id": 881,
     "name": "Skalni převis - jeskyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.11288751186,
@@ -127672,7 +127672,7 @@
   {
     "id": 845,
     "name": "Skalní okno na Kovadlině",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.13518333,
@@ -127689,7 +127689,7 @@
   {
     "id": 851,
     "name": "Skalní převis",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.143551319551,
@@ -127706,7 +127706,7 @@
   {
     "id": 530,
     "name": "Skalní převis pod Rakytovom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.96636667,
@@ -127723,7 +127723,7 @@
   {
     "id": 700,
     "name": "Skautský domov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.62572222,
@@ -127774,7 +127774,7 @@
   {
     "id": 420,
     "name": "Sklená huta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.43116667,
@@ -127842,7 +127842,7 @@
   {
     "id": 521,
     "name": "Skorušiná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.31156,
@@ -127859,7 +127859,7 @@
   {
     "id": 207,
     "name": "Slataper G. e S.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.49733333,
@@ -127944,7 +127944,7 @@
   {
     "id": 355,
     "name": "Sloupečník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3960319,
@@ -127961,7 +127961,7 @@
   {
     "id": 587,
     "name": "Sluj Hadí královny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.82088889,
@@ -127995,7 +127995,7 @@
   {
     "id": 697,
     "name": "Smrčná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.67075833,
@@ -128012,7 +128012,7 @@
   {
     "id": 31,
     "name": "Solvayhütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 45.98360278,
@@ -128097,7 +128097,7 @@
   {
     "id": 688,
     "name": "Soví sedlo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.76776667,
@@ -128114,7 +128114,7 @@
   {
     "id": 177,
     "name": "Spagnolli G.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.51322222,
@@ -128131,7 +128131,7 @@
   {
     "id": 59,
     "name": "Spataro F.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.90438889,
@@ -128148,7 +128148,7 @@
   {
     "id": 144,
     "name": "Spera",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.51455556,
@@ -128199,7 +128199,7 @@
   {
     "id": 468,
     "name": "Srub pod Jelení skálou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.457292500415,
@@ -128216,7 +128216,7 @@
   {
     "id": 539,
     "name": "Srub pod Šiprúnským sedlem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.04225,
@@ -128318,7 +128318,7 @@
   {
     "id": 405,
     "name": "Starhrad",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.17444444,
@@ -128369,7 +128369,7 @@
   {
     "id": 788,
     "name": "Stará Hrada",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.541570725475,
@@ -128386,7 +128386,7 @@
   {
     "id": 631,
     "name": "Staré splavy, podium v parku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.591714709211,
@@ -128403,7 +128403,7 @@
   {
     "id": 558,
     "name": "Starý dom - smer Terchová",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.24121,
@@ -128760,7 +128760,7 @@
   {
     "id": 115,
     "name": "Strambini Duilio",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Switzerland",
     "region": "",
     "latitude": 46.36338889,
@@ -128777,7 +128777,7 @@
   {
     "id": 548,
     "name": "Strieborná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.47149,
@@ -128828,7 +128828,7 @@
   {
     "id": 341,
     "name": "Striska",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.608871428561,
@@ -128845,7 +128845,7 @@
   {
     "id": 581,
     "name": "Striska",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.554666359544,
@@ -128913,7 +128913,7 @@
   {
     "id": 696,
     "name": "Strzecha Akademicka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.73751389,
@@ -128930,7 +128930,7 @@
   {
     "id": 412,
     "name": "Strážní domek ve Vlár. průsmyku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.04234444,
@@ -128947,7 +128947,7 @@
   {
     "id": 698,
     "name": "Stvořidla",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.668425,
@@ -129185,7 +129185,7 @@
   {
     "id": 123,
     "name": "Suretta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.51566667,
@@ -129202,7 +129202,7 @@
   {
     "id": 257,
     "name": "Suringar A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.44138889,
@@ -129236,7 +129236,7 @@
   {
     "id": 735,
     "name": "Svatá trojice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.75788,
@@ -129253,7 +129253,7 @@
   {
     "id": 429,
     "name": "Svatý Kliment",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.07688889,
@@ -129270,7 +129270,7 @@
   {
     "id": 813,
     "name": "Svačinový turistický přístřešek na rozcestí Hvězda pod Suchým vrchem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0347503,
@@ -129389,7 +129389,7 @@
   {
     "id": 885,
     "name": "Szałas Jaworzyna",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.56722222,
@@ -129406,7 +129406,7 @@
   {
     "id": 886,
     "name": "Szałas na Hali Cudzichowej",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.54666667,
@@ -129423,7 +129423,7 @@
   {
     "id": 887,
     "name": "Szałas na Hali Malorka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.56211111,
@@ -129746,7 +129746,7 @@
   {
     "id": 125,
     "name": "Taveggia A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.28272222,
@@ -129831,7 +129831,7 @@
   {
     "id": 100,
     "name": "Testa D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 45.84066667,
@@ -129933,7 +129933,7 @@
   {
     "id": 653,
     "name": "Tisícový kámen",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.585390889068,
@@ -129967,7 +129967,7 @@
   {
     "id": 203,
     "name": "Tiziano",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.51838889,
@@ -129984,7 +129984,7 @@
   {
     "id": 206,
     "name": "Tiziano nuovo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.52005556,
@@ -130052,7 +130052,7 @@
   {
     "id": 182,
     "name": "Toffolon A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.14688889,
@@ -130086,7 +130086,7 @@
   {
     "id": 195,
     "name": "Tomč C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.36833333,
@@ -130273,7 +130273,7 @@
   {
     "id": 189,
     "name": "Tovanella O.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.30233333,
@@ -130749,7 +130749,7 @@
   {
     "id": 313,
     "name": "Turistické přístřešky v Píseckých horách + opuštěné garáže",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.2621833,
@@ -130766,7 +130766,7 @@
   {
     "id": 774,
     "name": "Turistický altán s topeništěm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.553076076255,
@@ -130783,7 +130783,7 @@
   {
     "id": 289,
     "name": "Turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.252878943291,
@@ -130800,7 +130800,7 @@
   {
     "id": 376,
     "name": "Turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.36565278,
@@ -130817,7 +130817,7 @@
   {
     "id": 378,
     "name": "Turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.87039444,
@@ -130834,7 +130834,7 @@
   {
     "id": 553,
     "name": "Turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.912357747198,
@@ -130851,7 +130851,7 @@
   {
     "id": 495,
     "name": "Turistický přístřešek Hluboké (Horní Bečva)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.425998559733,
@@ -130868,7 +130868,7 @@
   {
     "id": 572,
     "name": "Turistický přístřešek Rolava",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.3746847,
@@ -130885,7 +130885,7 @@
   {
     "id": 485,
     "name": "Turistický přístřešek pod Hradiskem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.238780800272,
@@ -130902,7 +130902,7 @@
   {
     "id": 713,
     "name": "Turistický přístřešek pod Ruprechtickým špičákem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.67466111,
@@ -130919,7 +130919,7 @@
   {
     "id": 812,
     "name": "Turistický přístřešek s ohništěm na Červenovodském sedle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0340419,
@@ -130936,7 +130936,7 @@
   {
     "id": 482,
     "name": "Turistický přístřešek sedlo tanečnice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.487301726936,
@@ -130953,7 +130953,7 @@
   {
     "id": 810,
     "name": "Turistický přístřešek stranou cesty pod Bukovou horou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.021946,
@@ -130970,7 +130970,7 @@
   {
     "id": 612,
     "name": "Turistický přístřešek u retenční nádrže třu smrky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.7065403,
@@ -130987,7 +130987,7 @@
   {
     "id": 337,
     "name": "Turistický příštřešek Obrovec",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.99486066804,
@@ -131055,7 +131055,7 @@
   {
     "id": 467,
     "name": "Tábor Jeleňovská",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.120927,
@@ -131072,7 +131072,7 @@
   {
     "id": 469,
     "name": "Táborisko pod Vapečom, Srvátkova lúka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.93939,
@@ -131089,7 +131089,7 @@
   {
     "id": 493,
     "name": "Tábořiště Pulčín",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.229813240996,
@@ -131106,7 +131106,7 @@
   {
     "id": 824,
     "name": "Tábořiště a přístřešek Drakov",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.19045,
@@ -131242,7 +131242,7 @@
   {
     "id": 596,
     "name": "Týřov zřícenina",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.97836111,
@@ -131259,7 +131259,7 @@
   {
     "id": 617,
     "name": "Těžební budova u Zlatého vrchu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.8308311,
@@ -131276,7 +131276,7 @@
   {
     "id": 603,
     "name": "Třemšínská bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.5650339,
@@ -131293,7 +131293,7 @@
   {
     "id": 441,
     "name": "U Chaty na Inovci",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.79047222,
@@ -131327,7 +131327,7 @@
   {
     "id": 865,
     "name": "U Jelení boudy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.158715766235,
@@ -131344,7 +131344,7 @@
   {
     "id": 339,
     "name": "U Modrého obrázku - turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.839004436813,
@@ -131361,7 +131361,7 @@
   {
     "id": 426,
     "name": "U Mísy",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.09436111,
@@ -131378,7 +131378,7 @@
   {
     "id": 440,
     "name": "U Pulčínských skal",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.22549444,
@@ -131395,7 +131395,7 @@
   {
     "id": 393,
     "name": "U Rásochů",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.400506743153,
@@ -131412,7 +131412,7 @@
   {
     "id": 610,
     "name": "U Tri smrku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.7076056,
@@ -131429,7 +131429,7 @@
   {
     "id": 682,
     "name": "U Vrabince",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.717664510885,
@@ -131446,7 +131446,7 @@
   {
     "id": 349,
     "name": "U milíře",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.83446389,
@@ -131463,7 +131463,7 @@
   {
     "id": 396,
     "name": "U tri smrku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.319191747804,
@@ -131480,7 +131480,7 @@
   {
     "id": 577,
     "name": "U štoly",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.400172945876,
@@ -131497,7 +131497,7 @@
   {
     "id": 142,
     "name": "Ugolini U.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.1465,
@@ -131565,7 +131565,7 @@
   {
     "id": 849,
     "name": "Umělá jeskyně",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.5566442,
@@ -131582,7 +131582,7 @@
   {
     "id": 276,
     "name": "Untere Garnitzenalm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.57499,
@@ -131786,7 +131786,7 @@
   {
     "id": 389,
     "name": "Unterstand Mitteralm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.60616,
@@ -131888,7 +131888,7 @@
   {
     "id": 224,
     "name": "Ursella - Zanondella bivacco",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.53955556,
@@ -131905,7 +131905,7 @@
   {
     "id": 296,
     "name": "Uwe Anderle Biwak (Hochsengs Biwak)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.799735,
@@ -132007,7 +132007,7 @@
   {
     "id": 211,
     "name": "Vaccari A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.45133333,
@@ -132058,7 +132058,7 @@
   {
     "id": 128,
     "name": "Val",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.4625,
@@ -132075,7 +132075,7 @@
   {
     "id": 185,
     "name": "Val Zea",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.21933333,
@@ -132092,7 +132092,7 @@
   {
     "id": 180,
     "name": "Valdo",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.21033333,
@@ -132109,7 +132109,7 @@
   {
     "id": 135,
     "name": "Valli C.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.24255556,
@@ -132211,7 +132211,7 @@
   {
     "id": 599,
     "name": "Velký pruský tábor",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.93333333,
@@ -132262,7 +132262,7 @@
   {
     "id": 309,
     "name": "Veranda  chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 48.77208333,
@@ -132279,7 +132279,7 @@
   {
     "id": 308,
     "name": "Veranda chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 48.786925,
@@ -132296,7 +132296,7 @@
   {
     "id": 403,
     "name": "Veranda chaty",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 49.000698075307,
@@ -132313,7 +132313,7 @@
   {
     "id": 302,
     "name": "Veranda kaple",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.88216667,
@@ -132330,7 +132330,7 @@
   {
     "id": 775,
     "name": "Veranda u chaty HZS",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.841046636132,
@@ -132415,7 +132415,7 @@
   {
     "id": 614,
     "name": "Veřejné tábořiště - převis Kanínský důl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.4503681,
@@ -132789,7 +132789,7 @@
   {
     "id": 768,
     "name": "Vodácké tábořiště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.089153787522,
@@ -132840,7 +132840,7 @@
   {
     "id": 205,
     "name": "Voltolina L.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.4845,
@@ -132942,7 +132942,7 @@
   {
     "id": 449,
     "name": "Vrzavé skály",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.32388889,
@@ -132976,7 +132976,7 @@
   {
     "id": 751,
     "name": "Vyhlídka Městské skály",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.0153133,
@@ -132993,7 +132993,7 @@
   {
     "id": 377,
     "name": "Vyhlídka U Obrázku",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.89838333,
@@ -133010,7 +133010,7 @@
   {
     "id": 314,
     "name": "Vyhlídka píseckých lesníků",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3178506,
@@ -133027,7 +133027,7 @@
   {
     "id": 421,
     "name": "Vysoká",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.40793889,
@@ -133044,7 +133044,7 @@
   {
     "id": 724,
     "name": "Vysoký les",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.75316667,
@@ -133061,7 +133061,7 @@
   {
     "id": 738,
     "name": "Vápenka Javorník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.38450556,
@@ -134693,7 +134693,7 @@
   {
     "id": 328,
     "name": "Wetterschutzhütte (Goldsteig / Böhmweg)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.076677245877,
@@ -134710,7 +134710,7 @@
   {
     "id": 330,
     "name": "Wetterschutzhütte (Tausenderkurve)",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.109862079935,
@@ -134880,7 +134880,7 @@
   {
     "id": 380,
     "name": "Wolfgang Dirnbacher-hütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.71161,
@@ -134914,7 +134914,7 @@
   {
     "id": 160,
     "name": "Wurmtaler Kopf Biwak",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 46.94205556,
@@ -135033,7 +135033,7 @@
   {
     "id": 157,
     "name": "Zamboni A.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.04766667,
@@ -135101,7 +135101,7 @@
   {
     "id": 143,
     "name": "Zanon Morelli",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.16822222,
@@ -135186,7 +135186,7 @@
   {
     "id": 304,
     "name": "Zastávka Horská Kvilda - prosím o smazání",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.04133333,
@@ -135203,7 +135203,7 @@
   {
     "id": 719,
     "name": "Zastřešený stůl",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.60833333,
@@ -135390,7 +135390,7 @@
   {
     "id": 632,
     "name": "Zbytek hradní místnosti na Zvířeticích",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.474049163463,
@@ -135407,7 +135407,7 @@
   {
     "id": 448,
     "name": "Zděný včelín na okraji Machové",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.84141944,
@@ -135424,7 +135424,7 @@
   {
     "id": 198,
     "name": "Zeni D.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.39688889,
@@ -135458,7 +135458,7 @@
   {
     "id": 385,
     "name": "Zimmermannhütte",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.70627778,
@@ -135543,7 +135543,7 @@
   {
     "id": 609,
     "name": "Zkamenělý zámek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.48957778,
@@ -135645,7 +135645,7 @@
   {
     "id": 517,
     "name": "Zrub Burda pod Fabovou hoľou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.76503,
@@ -135713,7 +135713,7 @@
   {
     "id": 414,
     "name": "Zázemí Vršateckého bazénu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.06,
@@ -135730,7 +135730,7 @@
   {
     "id": 692,
     "name": "Zřícenina Oheb",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.8375,
@@ -135747,7 +135747,7 @@
   {
     "id": 593,
     "name": "Zřícenina Oparno",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.54727778,
@@ -135764,7 +135764,7 @@
   {
     "id": 660,
     "name": "Zřícenina hradu Děvín",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.69561776386,
@@ -135781,7 +135781,7 @@
   {
     "id": 787,
     "name": "Zřícenina hradu Hynšta",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.521192546151,
@@ -135798,7 +135798,7 @@
   {
     "id": 635,
     "name": "Zřícenina hradu Kamenice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.7862944,
@@ -135815,7 +135815,7 @@
   {
     "id": 687,
     "name": "Zřícenina hradu Kavčiny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.57177778,
@@ -135832,7 +135832,7 @@
   {
     "id": 623,
     "name": "Zřícenina hradu Stohánek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6801097,
@@ -135849,7 +135849,7 @@
   {
     "id": 117,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.48027778,
@@ -135866,7 +135866,7 @@
   {
     "id": 145,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Italy",
     "region": "",
     "latitude": 46.24472222,
@@ -135883,7 +135883,7 @@
   {
     "id": 329,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 49.073013173181,
@@ -135900,7 +135900,7 @@
   {
     "id": 473,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.3531,
@@ -135917,7 +135917,7 @@
   {
     "id": 602,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.83616667,
@@ -135934,7 +135934,7 @@
   {
     "id": 644,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.8568464,
@@ -135951,7 +135951,7 @@
   {
     "id": 645,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Germany",
     "region": "",
     "latitude": 50.8404947,
@@ -135968,7 +135968,7 @@
   {
     "id": 664,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.868019054397,
@@ -135985,7 +135985,7 @@
   {
     "id": 710,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.646625,
@@ -136002,7 +136002,7 @@
   {
     "id": 772,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.295787859983,
@@ -136019,7 +136019,7 @@
   {
     "id": 773,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.281214100614,
@@ -136036,7 +136036,7 @@
   {
     "id": 834,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.24761667,
@@ -136053,7 +136053,7 @@
   {
     "id": 843,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.9814414,
@@ -136070,7 +136070,7 @@
   {
     "id": 854,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.221707432714,
@@ -136087,7 +136087,7 @@
   {
     "id": 859,
     "name": "aXcYTwHRCDeXDsm",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.124320469582,
@@ -136104,7 +136104,7 @@
   {
     "id": 802,
     "name": "altán u přírodního bludiště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.006426058015,
@@ -136121,7 +136121,7 @@
   {
     "id": 803,
     "name": "altánek u přírodního bludiště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.004936413481,
@@ -136138,7 +136138,7 @@
   {
     "id": 561,
     "name": "amfiteátri v Terchovej",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.26081,
@@ -136155,7 +136155,7 @@
   {
     "id": 732,
     "name": "autobusová zastávka Dolní Morava, konečná",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.144741027368,
@@ -136172,7 +136172,7 @@
   {
     "id": 285,
     "name": "bivak na Kotově sedle",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovenia",
     "region": "",
     "latitude": 46.426278,
@@ -136189,7 +136189,7 @@
   {
     "id": 619,
     "name": "bivak pod Trubadůrem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.51138,
@@ -136206,7 +136206,7 @@
   {
     "id": 668,
     "name": "borka 052",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.863073758291,
@@ -136223,7 +136223,7 @@
   {
     "id": 386,
     "name": "bouda Soutěska pod Děvínem - rozc.",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.8700478,
@@ -136240,7 +136240,7 @@
   {
     "id": 669,
     "name": "bunkr partyzansky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.847601255808,
@@ -136257,7 +136257,7 @@
   {
     "id": 839,
     "name": "chata přátel",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.889636,
@@ -136274,7 +136274,7 @@
   {
     "id": 25,
     "name": "della Brenva",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "France",
     "region": "",
     "latitude": 45.84772222,
@@ -136291,7 +136291,7 @@
   {
     "id": 825,
     "name": "dřevník u Františkovy myslivny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.06055,
@@ -136308,7 +136308,7 @@
   {
     "id": 499,
     "name": "dřevěná chata u Oščadnice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.471667237141,
@@ -136325,7 +136325,7 @@
   {
     "id": 741,
     "name": "hraniční přechod Petříkovice",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6139181,
@@ -136342,7 +136342,7 @@
   {
     "id": 588,
     "name": "jeskyně Klemperka",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.44927222,
@@ -136359,7 +136359,7 @@
   {
     "id": 671,
     "name": "krasna hora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.837363353353,
@@ -136376,7 +136376,7 @@
   {
     "id": 797,
     "name": "lesni bouda",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.951552615273,
@@ -136393,7 +136393,7 @@
   {
     "id": 404,
     "name": "myslivecký uzavřený posed",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Austria",
     "region": "",
     "latitude": 47.685555774535,
@@ -136427,7 +136427,7 @@
   {
     "id": 804,
     "name": "pod střechou budovy koupaliště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.003446748206,
@@ -136444,7 +136444,7 @@
   {
     "id": 629,
     "name": "pro 2 lidi",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.427088200083,
@@ -136461,7 +136461,7 @@
   {
     "id": 320,
     "name": "převis Choustník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.329341,
@@ -136478,7 +136478,7 @@
   {
     "id": 550,
     "name": "přístřešek na Liptovském hradě",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.143243366158,
@@ -136495,7 +136495,7 @@
   {
     "id": 551,
     "name": "přístřešek na Žimerovej",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 49.148603971125,
@@ -136512,7 +136512,7 @@
   {
     "id": 786,
     "name": "přístřešek u lesního kostela",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.348068838706,
@@ -136529,7 +136529,7 @@
   {
     "id": 852,
     "name": "přístřešek v údolí Jičinky",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.528682539663,
@@ -136546,7 +136546,7 @@
   {
     "id": 394,
     "name": "přístřešek,altán",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.253729469111,
@@ -136563,7 +136563,7 @@
   {
     "id": 533,
     "name": "rovné místo v sedle Príslop",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 49.40916667,
@@ -136580,7 +136580,7 @@
   {
     "id": 670,
     "name": "senik",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.765518282784,
@@ -136597,7 +136597,7 @@
   {
     "id": 607,
     "name": "seník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.59860833,
@@ -136614,7 +136614,7 @@
   {
     "id": 446,
     "name": "seník Na Písečném",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.30338889,
@@ -136631,7 +136631,7 @@
   {
     "id": 823,
     "name": "seník Střední Opava dolní",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.099,
@@ -136648,7 +136648,7 @@
   {
     "id": 744,
     "name": "srebrna gora",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Poland",
     "region": "",
     "latitude": 50.561877,
@@ -136665,7 +136665,7 @@
   {
     "id": 742,
     "name": "studánka pod Janským vrchem",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.6142997,
@@ -136682,7 +136682,7 @@
   {
     "id": 579,
     "name": "tur.přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.406963477942,
@@ -136699,7 +136699,7 @@
   {
     "id": 611,
     "name": "turistický přístřešek",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.2457689,
@@ -136716,7 +136716,7 @@
   {
     "id": 667,
     "name": "turistický přístřešek Soví hrad",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.4529301,
@@ -136733,7 +136733,7 @@
   {
     "id": 801,
     "name": "turistický přístřešek na naučné stezce",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.593162720244,
@@ -136750,7 +136750,7 @@
   {
     "id": 326,
     "name": "zastavka Choustník",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.427890977883,
@@ -136767,7 +136767,7 @@
   {
     "id": 672,
     "name": "zechov roz",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.598974531833,
@@ -136784,7 +136784,7 @@
   {
     "id": 691,
     "name": "zřícenina Skuhrov nad Bělou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.24838889,
@@ -137090,7 +137090,7 @@
   {
     "id": 615,
     "name": "Údolí bílých skal, převis a tábořiště",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.4782331,
@@ -137107,7 +137107,7 @@
   {
     "id": 556,
     "name": "Útulna Limba",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.966527649286,
@@ -137124,7 +137124,7 @@
   {
     "id": 456,
     "name": "Útulna pod Ostrým vrchom",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.87161111,
@@ -137141,7 +137141,7 @@
   {
     "id": 457,
     "name": "Útulňa na Žlabe",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.896088942197,
@@ -137158,7 +137158,7 @@
   {
     "id": 523,
     "name": "Útulňa pod sedlom Ďurková",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.92827778,
@@ -137260,7 +137260,7 @@
   {
     "id": 554,
     "name": "útuľňa MANDOLINA  , Koniarky , Veľká Fatra ,",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Slovakia",
     "region": "",
     "latitude": 48.915143495783,
@@ -137294,7 +137294,7 @@
   {
     "id": 654,
     "name": "Čap, zřícenina hradu",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.555718320628,
@@ -137311,7 +137311,7 @@
   {
     "id": 685,
     "name": "Čertovy kazatelny",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.35338889,
@@ -137328,7 +137328,7 @@
   {
     "id": 840,
     "name": "Červený kříž",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.87761111,
@@ -137413,7 +137413,7 @@
   {
     "id": 661,
     "name": "ŘOPík pod Velkou Tisovou",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.843756367507,
@@ -137481,7 +137481,7 @@
   {
     "id": 348,
     "name": "Šobes",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 48.81134444,
@@ -137532,7 +137532,7 @@
   {
     "id": 338,
     "name": "Švajglova lada",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 49.012210014937,
@@ -137651,7 +137651,7 @@
   {
     "id": 870,
     "name": "Žulový vrch",
-    "hut_type": null,
+    "hut_type": "Unknown",
     "country": "Czech Republic",
     "region": "",
     "latitude": 50.269669089923,

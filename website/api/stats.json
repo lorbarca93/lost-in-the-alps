@@ -186,7 +186,7 @@
     }
   ],
   "sources_count": 4,
-  "with_contact_info": 2502,
+  "with_contact_info": 2503,
   "with_details_percent": 30,
   "by_type": [
     {
@@ -198,12 +198,12 @@
       "count": 1963
     },
     {
-      "type": "Guesthouse",
-      "count": 777
+      "type": "Unknown",
+      "count": 1307
     },
     {
-      "type": "Unknown",
-      "count": 418
+      "type": "Guesthouse",
+      "count": 777
     },
     {
       "type": "Bivouac",
@@ -211,8 +211,8 @@
     }
   ],
   "altitude": {
-    "average": 1411,
+    "average": 1486,
     "min": 1,
-    "max": 4556
+    "max": 4882
   }
 }
