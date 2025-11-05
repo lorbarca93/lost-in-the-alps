@@ -514,41 +514,160 @@ def create_simple_map():
         /* Toggle Button for Mobile */
         .toggle-panel {{
             display: none;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 1001;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
             background: white;
             border: none;
-            padding: 12px 16px;
+            padding: 14px 18px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
             cursor: pointer;
-            font-size: 18px;
-            transition: transform 0.2s ease;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            color: #1e293b;
         }}
         
         .toggle-panel:hover {{
-            transform: scale(1.05);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }}
         
+        .toggle-panel:active {{
+            transform: scale(0.98);
+        }}
+        
+        /* Tablet Optimization */
         @media (max-width: 1024px) {{
             .sidebar {{
-                width: 300px;
+                width: 320px;
+            }}
+            .sidebar-header h1 {{
+                font-size: 20px;
+            }}
+            .sidebar-header p {{
+                font-size: 13px;
             }}
         }}
         
+        /* Mobile Optimization */
         @media (max-width: 768px) {{
             body {{
                 flex-direction: column;
+                overflow: auto;
             }}
+            
             .sidebar {{
+                position: fixed;
                 width: 100%;
                 height: auto;
-                max-height: 40vh;
+                max-height: 70vh;
+                bottom: 0;
+                top: auto;
+                left: 0;
+                right: 0;
+                transform: translateY(calc(100% - 60px));
+                transition: transform 0.3s ease;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+                border-right: none;
+                border-top: 3px solid #334155;
+                z-index: 9999;
             }}
+            
+            .sidebar.open {{
+                transform: translateY(0);
+            }}
+            
+            .sidebar-header {{
+                padding: 16px 20px;
+                cursor: pointer;
+                position: relative;
+            }}
+            
+            .sidebar-header::after {{
+                content: '▼';
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 20px;
+                transition: transform 0.3s ease;
+            }}
+            
+            .sidebar.open .sidebar-header::after {{
+                transform: translateY(-50%) rotate(180deg);
+            }}
+            
+            .sidebar-header h1 {{
+                font-size: 18px;
+            }}
+            
+            .sidebar-header p {{
+                display: none;
+            }}
+            
+            .sidebar-content {{
+                padding: 20px;
+                max-height: calc(70vh - 60px);
+                overflow-y: auto;
+            }}
+            
             #map {{
-                height: 60vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 1;
+            }}
+            
+            .toggle-panel {{
+                display: block;
+            }}
+            
+            .filter-section {{
+                margin-bottom: 20px;
+            }}
+            
+            .filter-section h3 {{
+                font-size: 14px;
+            }}
+            
+            .checkbox-list {{
+                max-height: 200px;
+            }}
+            
+            .action-buttons {{
+                position: sticky;
+                bottom: 0;
+                background: white;
+                padding: 15px 0 0;
+                margin-top: 20px;
+                border-top: 2px solid #e2e8f0;
+            }}
+        }}
+        
+        /* Small Mobile Phones */
+        @media (max-width: 480px) {{
+            .sidebar {{
+                max-height: 80vh;
+            }}
+            
+            .sidebar-header h1 {{
+                font-size: 16px;
+            }}
+            
+            .filter-section h3 {{
+                font-size: 13px;
+            }}
+            
+            .btn {{
+                padding: 10px 16px;
+                font-size: 13px;
             }}
         }}
     </style>
@@ -1353,6 +1472,35 @@ def create_simple_map():
         // Initial stats
         updateStats();
         console.log('Map ready with ' + markers.length + ' markers!');
+        
+        // Mobile sidebar toggle
+        var sidebar = document.querySelector('.sidebar');
+        var sidebarHeader = document.querySelector('.sidebar-header');
+        
+        // Toggle sidebar on header click (mobile only)
+        if (sidebarHeader) {{
+            sidebarHeader.addEventListener('click', function() {{
+                if (window.innerWidth <= 768) {{
+                    sidebar.classList.toggle('open');
+                }}
+            }});
+        }}
+        
+        // Close sidebar when clicking on map (mobile only)
+        map.on('click', function() {{
+            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {{
+                sidebar.classList.remove('open');
+            }}
+        }});
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {{
+            if (window.innerWidth > 768) {{
+                sidebar.classList.remove('open');
+                sidebar.style.transform = '';
+            }}
+        }});
+        
         }} // End of initializeMap function
     </script>
 </body>
