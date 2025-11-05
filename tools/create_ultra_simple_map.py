@@ -1032,95 +1032,122 @@ def create_simple_map():
         
         // Add markers
         huts.forEach(function(hut) {{
-            // Build popup content safely
+            // Build beautiful modern popup content
             var popupParts = [];
-            popupParts.push('<div style="max-width: 250px;">');
-            popupParts.push('<b>' + escapeHtml(hut.name) + '</b>');
             
+            // Modern card container with rounded corners and shadow
+            popupParts.push('<div style="font-family: -apple-system, BlinkMacSystemFont, \\'Segoe UI\\', Roboto, sans-serif; min-width: 280px; max-width: 320px; margin: -12px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">');
+            
+            // Header section with gradient background
+            popupParts.push('<div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 16px 20px; color: white;">');
+            popupParts.push('<h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; line-height: 1.3;">' + escapeHtml(hut.name) + '</h3>');
+            
+            // Key info badges in header
+            var headerBadges = [];
             if (hut.altitude && hut.altitude !== 'N/A') {{
-                popupParts.push('<div>🏔️ Altitude: ' + escapeHtml(String(hut.altitude)) + ' m</div>');
+                headerBadges.push('<span style="display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-right: 6px;">🏔️ ' + escapeHtml(String(hut.altitude)) + ' m</span>');
             }}
-            
             if (hut.country && hut.country !== 'N/A') {{
-                popupParts.push('<div>🌍 Country: ' + escapeHtml(hut.country) + '</div>');
+                headerBadges.push('<span style="display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;">🌍 ' + escapeHtml(hut.country) + '</span>');
             }}
+            if (headerBadges.length > 0) {{
+                popupParts.push('<div style="margin-top: 4px;">' + headerBadges.join('') + '</div>');
+            }}
+            popupParts.push('</div>');
             
+            // Body section with white background
+            popupParts.push('<div style="background: white; padding: 16px 20px;">');
+            
+            // Type and capacity in a nice grid
+            var infoItems = [];
             if (hut.type && hut.type !== 'N/A') {{
-                popupParts.push('<div>🏠 Type: ' + escapeHtml(hut.type) + '</div>');
+                infoItems.push('<div style="display: flex; align-items: center; padding: 8px 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 8px;"><span style="font-size: 20px; margin-right: 10px;">🏠</span><div style="flex: 1;"><div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Type</div><div style="font-size: 14px; color: #1e293b; font-weight: 600;">' + escapeHtml(hut.type) + '</div></div></div>');
             }}
             
-            // Capacity information
             if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {{
-                var capacityText = '🛏️ Capacity: ' + escapeHtml(String(hut.capacity));
+                var capacityText = escapeHtml(String(hut.capacity));
                 if (hut.capacity_max && hut.capacity_max !== 'N/A' && hut.capacity_max !== '') {{
                     capacityText += ' (max: ' + escapeHtml(String(hut.capacity_max)) + ')';
                 }}
-                popupParts.push('<div>' + capacityText + '</div>');
+                infoItems.push('<div style="display: flex; align-items: center; padding: 8px 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 8px;"><span style="font-size: 20px; margin-right: 10px;">🛏️</span><div style="flex: 1;"><div style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Capacity</div><div style="font-size: 14px; color: #1e293b; font-weight: 600;">' + capacityText + ' beds</div></div></div>');
             }}
             
-            // Water source
+            if (infoItems.length > 0) {{
+                popupParts.push(infoItems.join(''));
+            }}
+            
+            // Additional details section
+            var details = [];
             if (hut.water_source && hut.water_source !== 'N/A' && hut.water_source !== '') {{
-                popupParts.push('<div>💧 Water: ' + escapeHtml(hut.water_source) + '</div>');
+                details.push('<div style="display: flex; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px;"><span style="min-width: 24px; margin-right: 8px;">💧</span><span style="color: #475569;">' + escapeHtml(hut.water_source) + '</span></div>');
             }}
-            
-            // Best time to visit
-            if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {{
-                popupParts.push('<div>📅 Best time: ' + escapeHtml(hut.best_time) + '</div>');
-            }}
-            
-            // Access
             if (hut.access && hut.access !== 'N/A' && hut.access !== '') {{
-                popupParts.push('<div>🥾 Access: ' + escapeHtml(hut.access) + '</div>');
+                details.push('<div style="display: flex; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px;"><span style="min-width: 24px; margin-right: 8px;">🥾</span><span style="color: #475569;">' + escapeHtml(hut.access) + '</span></div>');
+            }}
+            if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {{
+                details.push('<div style="display: flex; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px;"><span style="min-width: 24px; margin-right: 8px;">📅</span><span style="color: #475569;">' + escapeHtml(hut.best_time) + '</span></div>');
+            }}
+            if (details.length > 0) {{
+                popupParts.push('<div style="margin: 12px 0; padding: 8px 0;">' + details.join('') + '</div>');
             }}
             
-            if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
-                popupParts.push('<div>👤 Owner: ' + escapeHtml(hut.owner) + '</div>');
+            // Management info
+            if ((hut.owner && hut.owner !== 'N/A' && hut.owner !== '') || (hut.manager && hut.manager !== 'N/A' && hut.manager !== '')) {{
+                popupParts.push('<div style="margin: 12px 0; padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 6px; font-size: 12px;">');
+                if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
+                    popupParts.push('<div style="margin-bottom: 4px; color: #92400e;"><strong>Owner:</strong> ' + escapeHtml(hut.owner) + '</div>');
+                }}
+                if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
+                    popupParts.push('<div style="color: #92400e;"><strong>Manager:</strong> ' + escapeHtml(hut.manager) + '</div>');
+                }}
+                popupParts.push('</div>');
             }}
             
-            if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
-                popupParts.push('<div>👔 Manager: ' + escapeHtml(hut.manager) + '</div>');
+            // Opening hours - prominent if available
+            if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
+                popupParts.push('<div style="margin: 12px 0; padding: 10px; background: #d1fae5; border-left: 3px solid #10b981; border-radius: 6px; font-size: 13px; color: #065f46; font-weight: 500;">🕐 ' + escapeHtml(hut.opening) + '</div>');
             }}
             
+            // Contact buttons - modern icon buttons
+            var contactButtons = [];
             if (hut.phone && hut.phone !== 'N/A' && hut.phone !== '') {{
-                popupParts.push('<div style="margin-top: 6px;">📞 <a href="tel:' + escapeHtml(hut.phone) + '" style="color: #16a34a; text-decoration: none; font-weight: 500;">' + escapeHtml(hut.phone) + '</a></div>');
+                contactButtons.push('<a href="tel:' + escapeHtml(hut.phone) + '" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: #10b981; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; transition: background 0.2s;" onmouseover="this.style.background=\\'#059669\\';" onmouseout="this.style.background=\\'#10b981\\';"><span style="font-size: 16px;">📞</span> Call</a>');
             }}
-            
             if (hut.email && hut.email !== 'N/A' && hut.email !== '') {{
-                popupParts.push('<div style="margin-top: 6px;">📧 <a href="mailto:' + escapeHtml(hut.email) + '" style="color: #2563eb; text-decoration: none; font-weight: 500;">' + escapeHtml(hut.email) + '</a></div>');
+                contactButtons.push('<a href="mailto:' + escapeHtml(hut.email) + '" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; transition: background 0.2s;" onmouseover="this.style.background=\\'#2563eb\\';" onmouseout="this.style.background=\\'#3b82f6\\';"><span style="font-size: 16px;">📧</span> Email</a>');
             }}
-            
             if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
                 var websiteUrl = hut.website.startsWith('http') ? hut.website : 'http://' + hut.website;
-                popupParts.push('<div style="margin-top: 6px;">🌐 <a href="' + websiteUrl + '" target="_blank" rel="noopener" style="color: #2563eb; text-decoration: none; font-weight: 500;">Official Website ↗</a></div>');
+                contactButtons.push('<a href="' + websiteUrl + '" target="_blank" rel="noopener" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; transition: background 0.2s;" onmouseover="this.style.background=\\'#7c3aed\\';" onmouseout="this.style.background=\\'#8b5cf6\\';"><span style="font-size: 16px;">🌐</span> Web</a>');
+            }}
+            if (contactButtons.length > 0) {{
+                popupParts.push('<div style="display: flex; gap: 8px; margin: 12px 0;">' + contactButtons.join('') + '</div>');
             }}
             
-            if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
-                popupParts.push('<div style="margin-top: 8px; padding: 6px; background: #f0fdf4; border-radius: 4px; font-size: 0.9em;">🕐 ' + escapeHtml(hut.opening) + '</div>');
-            }}
-            
-            // Comments
-            if (hut.comments && hut.comments !== 'N/A' && hut.comments !== '' && hut.comments.length < 250) {{
-                popupParts.push('<div style="margin-top: 8px; padding: 8px; background: #f0f9ff; border-left: 3px solid #3b82f6; font-size: 0.9em; color: #1e3a8a;">💬 ' + escapeHtml(hut.comments) + '</div>');
-            }}
-            
+            // Description or comments
             if (hut.description && hut.description !== 'N/A' && hut.description !== '' && hut.description.length < 200) {{
-                popupParts.push('<div style="margin-top: 8px; font-size: 0.9em; color: #666;">' + escapeHtml(hut.description) + '</div>');
+                popupParts.push('<div style="margin: 12px 0; padding: 10px; background: #f0f9ff; border-radius: 6px; font-size: 13px; color: #0c4a6e; line-height: 1.5;">' + escapeHtml(hut.description) + '</div>');
+            }} else if (hut.comments && hut.comments !== 'N/A' && hut.comments !== '' && hut.comments.length < 200) {{
+                popupParts.push('<div style="margin: 12px 0; padding: 10px; background: #f0f9ff; border-radius: 6px; font-size: 13px; color: #0c4a6e; line-height: 1.5;"><strong>💬</strong> ' + escapeHtml(hut.comments) + '</div>');
             }}
             
-            // Posted by
-            if (hut.posted_by && hut.posted_by !== 'N/A' && hut.posted_by !== '') {{
-                popupParts.push('<div style="margin-top: 8px; font-size: 0.85em; color: #999;">✍️ Posted by: ' + escapeHtml(hut.posted_by) + '</div>');
-            }}
+            popupParts.push('</div>'); // End body
             
-            // Source Link - PROMINENT BUTTON at bottom
-            popupParts.push('<div style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #e5e7eb; text-align: center;">');
+            // Footer section with source link - PROMINENT
+            popupParts.push('<div style="background: #f8fafc; padding: 14px 20px; border-top: 1px solid #e2e8f0;">');
             if (hut.url && hut.url !== 'N/A' && hut.url !== '' && hut.url !== 'http://www.mountainhuts.info/map') {{
-                popupParts.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 18px; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9em; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform=\\'translateY(-2px)\\'; this.style.boxShadow=\\'0 4px 12px rgba(37, 99, 235, 0.4)\\';" onmouseout="this.style.transform=\\'translateY(0)\\'; this.style.boxShadow=\\'0 2px 8px rgba(37, 99, 235, 0.3)\\';">📍 View Full Details on ' + escapeHtml(hut.source) + ' ↗</a>');
+                popupParts.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.3s ease; text-align: center;" onmouseover="this.style.transform=\\'translateY(-2px) scale(1.02)\\'; this.style.boxShadow=\\'0 6px 20px rgba(37, 99, 235, 0.4)\\';" onmouseout="this.style.transform=\\'translateY(0) scale(1)\\'; this.style.boxShadow=\\'0 4px 12px rgba(37, 99, 235, 0.3)\\';">📍 View Full Details on ' + escapeHtml(hut.source) + ' <span style="font-size: 16px;">→</span></a>');
             }} else {{
-                popupParts.push('<div style="font-size: 0.8em; color: #94a3b8; padding: 6px;">Data from ' + escapeHtml(hut.source) + '</div>');
+                popupParts.push('<div style="text-align: center; font-size: 12px; color: #94a3b8; padding: 4px;">Data from <strong>' + escapeHtml(hut.source) + '</strong></div>');
             }}
-            popupParts.push('</div>');
-            popupParts.push('</div>');
+            
+            // Posted by (if available)
+            if (hut.posted_by && hut.posted_by !== 'N/A' && hut.posted_by !== '') {{
+                popupParts.push('<div style="margin-top: 8px; text-align: center; font-size: 11px; color: #94a3b8;">Posted by ' + escapeHtml(hut.posted_by) + '</div>');
+            }}
+            popupParts.push('</div>'); // End footer
+            
+            popupParts.push('</div>'); // End container
             
             var popup = popupParts.join('');
             
