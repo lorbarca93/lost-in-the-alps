@@ -1,218 +1,56 @@
 {
-  "total_huts": 8142,
-  "by_country": [
-    {
-      "country": "France",
-      "count": 3553
-    },
-    {
-      "country": "Italy",
-      "count": 978
-    },
-    {
-      "country": "Switzerland",
-      "count": 662
-    },
-    {
-      "country": "Czech Republic",
-      "count": 464
-    },
-    {
-      "country": "Austria",
-      "count": 404
-    },
-    {
-      "country": "Spain",
-      "count": 332
-    },
-    {
-      "country": "Slovenia",
-      "count": 318
-    },
-    {
-      "country": "Poland",
-      "count": 187
-    },
-    {
-      "country": "Slovakia",
-      "count": 176
-    },
-    {
-      "country": "Croatia",
-      "count": 159
-    },
-    {
-      "country": "Bulgaria",
-      "count": 152
-    },
-    {
-      "country": "Germany",
-      "count": 135
-    },
-    {
-      "country": "Romania",
-      "count": 122
-    },
-    {
-      "country": "Andorra",
-      "count": 84
-    },
-    {
-      "country": "Greece",
-      "count": 80
-    },
-    {
-      "country": "Bosnia and Herzegovina",
-      "count": 63
-    },
-    {
-      "country": "Serbia",
-      "count": 45
-    },
-    {
-      "country": "Hungary",
-      "count": 42
-    },
-    {
-      "country": "Montenegro",
-      "count": 26
-    },
-    {
-      "country": "North Macedonia",
-      "count": 25
-    },
-    {
-      "country": "Belgium",
-      "count": 22
-    },
-    {
-      "country": "Iceland",
-      "count": 20
-    },
-    {
-      "country": "Réunion",
-      "count": 20
-    },
-    {
-      "country": "New Caledonia",
-      "count": 12
-    },
-    {
-      "country": "French Southern Territories",
-      "count": 11
-    },
-    {
-      "country": "Morocco",
-      "count": 9
-    },
-    {
-      "country": "Norway",
-      "count": 9
-    },
-    {
-      "country": "Guadeloupe",
-      "count": 8
-    },
-    {
-      "country": "Liechtenstein",
-      "count": 4
-    },
-    {
-      "country": "Albania",
-      "count": 3
-    },
-    {
-      "country": "Martinique",
-      "count": 3
-    },
-    {
-      "country": "Argentina",
-      "count": 2
-    },
-    {
-      "country": "Colombia",
-      "count": 2
-    },
-    {
-      "country": "Japan",
-      "count": 2
-    },
-    {
-      "country": "Kosovo",
-      "count": 2
-    },
-    {
-      "country": "Costa Rica",
-      "count": 1
-    },
-    {
-      "country": "Estonia",
-      "count": 1
-    },
-    {
-      "country": "Georgia",
-      "count": 1
-    },
-    {
-      "country": "Latvia",
-      "count": 1
-    },
-    {
-      "country": "United Kingdom",
-      "count": 1
-    },
-    {
-      "country": "United States",
-      "count": 1
-    }
-  ],
-  "countries_count": 41,
-  "by_source": [
-    {
-      "source": "refuges.info",
-      "count": 5250
-    },
-    {
-      "source": "mountainhuts.info",
-      "count": 1343
-    },
-    {
-      "source": "boudy.info",
-      "count": 889
-    },
-    {
-      "source": "mountain-huts.net",
-      "count": 660
-    }
-  ],
-  "sources_count": 4,
-  "with_contact_info": 2503,
-  "with_details_percent": 30,
-  "by_type": [
-    {
-      "type": "Unmanned cabin",
-      "count": 4067
-    },
-    {
-      "type": "Mountain hut",
-      "count": 1963
-    },
-    {
-      "type": "Unknown",
-      "count": 1307
-    },
-    {
-      "type": "Guesthouse",
-      "count": 777
-    },
-    {
-      "type": "Bivouac",
-      "count": 18
-    }
-  ],
-  "altitude": {
-    "average": 1486,
-    "min": 1,
-    "max": 4882
-  }
+  "total_huts": 7472,
+  "total_countries": 41,
+  "total_sources": 4,
+  "average_altitude": 1444,
+  "by_source": {
+    "boudy.info": 889,
+    "mountain-huts.net": 660,
+    "mountainhuts.info": 673,
+    "refuges.info": 5250
+  },
+  "by_country": {
+    "France": 3535,
+    "Italy": 826,
+    "Switzerland": 654,
+    "Czech Republic": 445,
+    "Spain": 332,
+    "Slovenia": 262,
+    "Austria": 232,
+    "Croatia": 151,
+    "Bulgaria": 136,
+    "Slovakia": 133,
+    "Germany": 129,
+    "Poland": 111,
+    "Andorra": 84,
+    "Greece": 75,
+    "Bosnia and Herzegovina": 63,
+    "Romania": 62,
+    "Serbia": 45,
+    "North Macedonia": 24,
+    "Belgium": 22,
+    "Hungary": 21,
+    "Iceland": 20,
+    "Réunion": 20,
+    "Montenegro": 19,
+    "New Caledonia": 12,
+    "French Southern Territories": 11,
+    "Morocco": 9,
+    "Norway": 9,
+    "Guadeloupe": 8,
+    "Albania": 3,
+    "Martinique": 3,
+    "Argentina": 2,
+    "Colombia": 2,
+    "Japan": 2,
+    "Kosovo": 2,
+    "Liechtenstein": 2,
+    "Costa Rica": 1,
+    "Estonia": 1,
+    "Georgia": 1,
+    "Latvia": 1,
+    "United Kingdom": 1,
+    "United States": 1
+  },
+  "last_updated": "2025-11-05"
 }
