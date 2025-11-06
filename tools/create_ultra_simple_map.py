@@ -1674,7 +1674,7 @@ def create_simple_map():
         }});
         
         // Load huts data from external JSON file
-        fetch('huts_data.json')
+        fetch('website/huts_data.json')
             .then(response => response.json())
             .then(data => {{
                 initializeMap(data);
