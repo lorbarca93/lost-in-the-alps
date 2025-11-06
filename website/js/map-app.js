@@ -890,11 +890,145 @@ function showAllHutsReset() {
 // WEATHER & NEARBY HUTS
 // ============================================================================
 
+// OpenWeatherMap API Configuration
+// Get your free API key at: https://openweathermap.org/api
+const OPENWEATHER_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your actual API key
+
 function loadWeather(lat, lon) {
-    // Placeholder - implement with OpenWeatherMap API key
     const weatherContainer = document.getElementById('weather-container');
-    if (weatherContainer) {
-        weatherContainer.innerHTML = '<div class="detail-section"><h3>🌤️ Weather</h3><p style="color: #64748b;">Add your OpenWeatherMap API key to enable weather data.</p></div>';
+    if (!weatherContainer) return;
+    
+    // Check if API key is configured
+    if (!OPENWEATHER_API_KEY || OPENWEATHER_API_KEY === 'YOUR_API_KEY_HERE') {
+        weatherContainer.innerHTML = `
+            <div class="detail-section">
+                <h3>🌤️ Weather</h3>
+                <div style="padding: 12px; background: rgba(59, 130, 246, 0.1); border-radius: 8px; border-left: 3px solid #3b82f6;">
+                    <p style="font-size: 12px; color: #1e40af; line-height: 1.6; margin-bottom: 8px;">
+                        <strong>⚙️ Setup Required:</strong>
+                    </p>
+                    <p style="font-size: 11px; color: #475569; line-height: 1.6; margin-bottom: 8px;">
+                        To enable live weather data, you need a free OpenWeatherMap API key.
+                    </p>
+                    <ol style="font-size: 11px; color: #475569; line-height: 1.6; margin-left: 20px; margin-bottom: 8px;">
+                        <li>Visit <a href="https://openweathermap.org/api" target="_blank" style="color: #3b82f6;">openweathermap.org/api</a></li>
+                        <li>Sign up for a free account</li>
+                        <li>Get your API key</li>
+                        <li>Add it to <code style="background: #f1f5f9; padding: 2px 4px; border-radius: 3px;">website/js/map-app.js</code></li>
+                    </ol>
+                </div>
+            </div>
+        `;
+        return;
+    }
+    
+    // Show loading state
+    weatherContainer.innerHTML = `
+        <div class="detail-section">
+            <h3>🌤️ Weather</h3>
+            <div style="text-align: center; padding: 20px; color: #64748b;">
+                <div style="font-size: 24px; margin-bottom: 8px;">⏳</div>
+                <div style="font-size: 12px;">Loading weather...</div>
+            </div>
+        </div>
+    `;
+    
+    // Fetch weather data
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${OPENWEATHER_API_KEY}`;
+    
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const temp = Math.round(data.main.temp);
+            const feelsLike = Math.round(data.main.feels_like);
+            const humidity = data.main.humidity;
+            const windSpeed = Math.round(data.wind.speed * 3.6); // Convert m/s to km/h
+            const description = data.weather[0].description;
+            const icon = data.weather[0].icon;
+            
+            // Get weather emoji based on condition
+            const weatherEmoji = getWeatherEmoji(data.weather[0].main, icon);
+            
+            weatherContainer.innerHTML = `
+                <div class="detail-section">
+                    <h3>🌤️ Current Weather</h3>
+                    <div style="display: flex; align-items: center; gap: 16px; padding: 12px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 10px; margin-bottom: 12px;">
+                        <div style="font-size: 48px; line-height: 1;">${weatherEmoji}</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 32px; font-weight: 700; color: #0369a1; line-height: 1;">${temp}°C</div>
+                            <div style="font-size: 12px; color: #475569; text-transform: capitalize; margin-top: 4px;">${description}</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px;">
+                        <div style="padding: 8px; background: #f8fafc; border-radius: 6px;">
+                            <div style="color: #64748b; margin-bottom: 2px;">Feels like</div>
+                            <div style="font-weight: 600; color: #1e293b;">${feelsLike}°C</div>
+                        </div>
+                        <div style="padding: 8px; background: #f8fafc; border-radius: 6px;">
+                            <div style="color: #64748b; margin-bottom: 2px;">Humidity</div>
+                            <div style="font-weight: 600; color: #1e293b;">${humidity}%</div>
+                        </div>
+                        <div style="padding: 8px; background: #f8fafc; border-radius: 6px;">
+                            <div style="color: #64748b; margin-bottom: 2px;">Wind</div>
+                            <div style="font-weight: 600; color: #1e293b;">${windSpeed} km/h</div>
+                        </div>
+                        <div style="padding: 8px; background: #f8fafc; border-radius: 6px;">
+                            <div style="color: #64748b; margin-bottom: 2px;">Pressure</div>
+                            <div style="font-weight: 600; color: #1e293b;">${data.main.pressure} hPa</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px; font-size: 10px; color: #94a3b8; text-align: center;">
+                        Data from OpenWeatherMap
+                    </div>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error('Weather fetch error:', error);
+            weatherContainer.innerHTML = `
+                <div class="detail-section">
+                    <h3>🌤️ Weather</h3>
+                    <div style="padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; border-left: 3px solid #ef4444;">
+                        <p style="font-size: 12px; color: #991b1b; line-height: 1.6;">
+                            <strong>⚠️ Error loading weather:</strong><br>
+                            ${error.message}
+                        </p>
+                        <p style="font-size: 11px; color: #64748b; margin-top: 8px; line-height: 1.6;">
+                            ${error.message.includes('401') ? 'Invalid API key. Please check your OpenWeatherMap API key.' : 
+                              error.message.includes('429') ? 'API rate limit exceeded. Try again later.' :
+                              'Could not connect to weather service.'}
+                        </p>
+                    </div>
+                </div>
+            `;
+        });
+}
+
+function getWeatherEmoji(condition, icon) {
+    const isNight = icon && icon.endsWith('n');
+    
+    switch(condition) {
+        case 'Clear':
+            return isNight ? '🌙' : '☀️';
+        case 'Clouds':
+            return isNight ? '☁️' : '⛅';
+        case 'Rain':
+        case 'Drizzle':
+            return '🌧️';
+        case 'Thunderstorm':
+            return '⛈️';
+        case 'Snow':
+            return '❄️';
+        case 'Mist':
+        case 'Fog':
+            return '🌫️';
+        default:
+            return '🌤️';
     }
 }
 
