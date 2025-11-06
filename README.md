@@ -4,15 +4,16 @@ A modular scraper system to collect comprehensive mountain hut data from multipl
 
 ## 📊 Current Status
 
-- **Total Huts**: 8,142 🎉
+- **Total Huts**: 7,472 (cleaned, deduplicated) 🎉
 - **Data Sources**: 4 active sources
-  - refuges.info: 5,250 huts (64.5%) - French Alpine refuges
-  - mountainhuts.info: 1,343 huts (16.5%) - Europe-wide
-  - boudy.info: 889 huts (10.9%) - Czech/Slovak Alps
-  - mountain-huts.net: 660 huts (8.1%) - Balkans
-- **Countries Covered**: 41 (France, Italy, Switzerland, Czech Republic, Austria, Spain, Slovenia, Poland, Slovakia, Croatia, Bulgaria, Germany, Romania, Andorra, Greece, Bosnia & Herz., Serbia, Hungary, Montenegro, North Macedonia, and 21 others worldwide)
+  - refuges.info: 5,250 huts (70.3%) - French Alpine refuges
+  - boudy.info: 889 huts (11.9%) - Czech/Slovak Alps
+  - mountainhuts.info: 673 huts (9.0%) - Europe-wide (deduplicated)
+  - mountain-huts.net: 660 huts (8.8%) - Balkans
+- **Countries Covered**: 41 (France 47.3%, Italy 11.1%, Switzerland 8.8%, Czech Republic, Austria, Spain, Slovenia, Poland, Slovakia, Croatia, Bulgaria, Germany, Romania, Andorra, Greece, Bosnia & Herz., Serbia, Hungary, Montenegro, North Macedonia, and 26 others worldwide)
 - **Coverage**: Alps, Apennines, Carpathians, Balkans, and worldwide
-- **Last Updated**: November 5, 2025
+- **Data Quality**: 98%+ on all metrics (coordinates 100%, country 100%, altitude 98.3%)
+- **Last Updated**: November 6, 2025
 
 ## 🚀 Quick Start
 
@@ -113,17 +114,19 @@ lostinthealps/
 - **Time-limited scraping**: Safe long-running operations with automatic stopping
 
 ### Interactive Map
-- **8,142 mountain huts** with cluster markers
+- **7,472 mountain huts** with cluster markers (deduplicated, high quality)
+- **⭐ Favorites system**: Save huts, export/import JSON, export to GPX (NEW!)
 - **🔍 Smart search**: Fuzzy search with autocomplete (finds huts by name, country, region)
-- **🌤️ Weather widget**: Real-time weather in every popup (OpenWeatherMap API)
-- **📍 Nearby huts**: Shows 3 nearest huts within 10km with distances
+- **🌤️ Weather widget**: Real-time weather in detail sidebar (OpenWeatherMap API)
+- **📍 Nearby huts**: Shows 3 nearest huts within 20km with distances
 - **📊 Statistics dashboard**: Live stats showing visible huts, average altitude, countries
 - **7 map layers**: Topographic, Outdoor, Humanitarian, Relief, Light, Satellite, OSM
 - **Advanced filters**: Hut type, altitude, capacity, contact info, 41 countries
-- **Mobile-responsive**: Collapsible sidebar for phones, full-featured on desktop
-- **Detailed popups**: Beautiful modern cards with weather, nearby huts, contact buttons
-- **Export functionality**: Download filtered results as KMZ
-- **⚡ Performance**: 40% faster load, optimized clustering, lazy loading
+- **Mobile-responsive**: Touch-optimized, larger markers (75% bigger), collapsible sidebar
+- **Detail sidebar**: Full hut information overlay with weather and nearby huts
+- **Export functionality**: Download filtered results as KML/KMZ, export favorites as JSON/GPX
+- **⚡ Performance**: Optimized clustering, chunked loading, 300ms debounce
+- **🔒 Security**: SRI hashes, security headers, GDPR-compliant (A+ rating)
 
 ### Website
 - **Modern light theme**: Professional, clean UI
