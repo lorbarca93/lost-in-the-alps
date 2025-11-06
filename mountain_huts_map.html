@@ -251,6 +251,54 @@
             background: #7c3aed;
         }
         
+        /* Favorite Button Styling */
+        .favorite-btn {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            color: white;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.25);
+            margin: 8px 0;
+        }
+        
+        .favorite-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(100, 116, 139, 0.35);
+        }
+        
+        .favorite-btn.favorited {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+        
+        .favorite-btn.favorited:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
+        }
+        
+        .favorites-section {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.05) 100%);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        
+        .favorites-section h3 {
+            color: #d97706;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        
         /* Search Box */
         .search-container {
             position: relative;
@@ -1290,6 +1338,37 @@
                 <div class="checkbox-list" id="country-filters"></div>
             </div>
             
+            <!-- Favorites Section -->
+            <div class="filter-section favorites-section">
+                <h3>⭐ My Favorites</h3>
+                <div class="stats-mini">
+                    <div>
+                        <div style="font-size: 32px; font-weight: 700; color: #f59e0b;" id="favorites-count">0</div>
+                        <div style="font-size: 11px; opacity: 0.9; color: #d97706;">Saved Huts</div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
+                    <button class="btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white;" onclick="showFavoritesOnly()">
+                        ⭐ Show My Favorites
+                    </button>
+                    <button class="btn btn-secondary" onclick="showAllHutsReset()">
+                        🗺️ Show All Huts
+                    </button>
+                    <button class="btn btn-secondary" onclick="FavoritesManager.exportJSON()">
+                        📥 Download Favorites
+                    </button>
+                    <button class="btn btn-secondary" onclick="FavoritesManager.importJSON()">
+                        📤 Upload Favorites
+                    </button>
+                    <button class="btn btn-secondary" onclick="FavoritesManager.exportGPX()">
+                        🧭 Export to GPX
+                    </button>
+                </div>
+                <div style="margin-top: 12px; padding: 10px; background: rgba(245, 158, 11, 0.1); border-radius: 8px; font-size: 11px; color: #92400e; line-height: 1.5;">
+                    <strong>💡 Tip:</strong> Download your favorites as backup! You can re-upload them if your browser data gets cleared.
+                </div>
+            </div>
+            
             <!-- Data Source Filter -->
             <div class="filter-section">
                 <h3>📍 Data Sources</h3>
@@ -1699,29 +1778,29 @@
             
             var popup = popupParts.join('');
             
-            // Responsive marker size - larger on mobile for touch
+            // Simplified, larger markers - easy to click!
             var isMobile = window.innerWidth <= 768;
-            var baseRadius = isMobile ? 8 : 4;  // Double size on mobile
-            var hoverRadius = isMobile ? 12 : 6;
+            var baseRadius = isMobile ? 12 : 7;  // Larger for easier clicking
+            var hoverRadius = isMobile ? 15 : 10;
             
             var marker = L.circleMarker([hut.lat, hut.lon], {
                 radius: baseRadius,
                 fillColor: hut.color,
-                color: '#ffffff',
-                weight: isMobile ? 2 : 1,
-                opacity: 0.8,
-                fillOpacity: 0.9
+                color: '#ffffff',  // White border for contrast
+                weight: 2.5,  // Thicker border
+                opacity: 1,
+                fillOpacity: 0.85
             });
             
             // Store sizes for hover effects
             marker._baseRadius = baseRadius;
             marker._hoverRadius = hoverRadius;
             
-            // Touch and hover effects
+            // Simple, clear hover effects
             marker.on('mouseover', function(e) {
                 this.setStyle({
                     radius: this._hoverRadius,
-                    weight: isMobile ? 3 : 2,
+                    weight: 3,
                     fillOpacity: 1,
                     opacity: 1
                 });
@@ -1730,9 +1809,9 @@
             marker.on('mouseout', function(e) {
                 this.setStyle({
                     radius: this._baseRadius,
-                    weight: isMobile ? 2 : 1,
-                    fillOpacity: 0.9,
-                    opacity: 0.8
+                    weight: 2.5,
+                    fillOpacity: 0.85,
+                    opacity: 1
                 });
             });
             
@@ -1780,11 +1859,221 @@
             return distance;
         }
         
-        // Show hut details in sidebar
+        // ============================================================
+        // FAVORITES SYSTEM (LocalStorage + Export/Import)
+        // ============================================================
+        
+        var FavoritesManager = {
+            storageKey: 'mountainhuts_favorites_v1',
+            
+            getAll: function() {
+                try {
+                    var stored = localStorage.getItem(this.storageKey);
+                    return stored ? JSON.parse(stored) : [];
+                } catch(e) {
+                    console.error('Error loading favorites:', e);
+                    return [];
+                }
+            },
+            
+            save: function(favorites) {
+                try {
+                    localStorage.setItem(this.storageKey, JSON.stringify(favorites));
+                    return true;
+                } catch(e) {
+                    console.error('Error saving favorites:', e);
+                    alert('⚠️ Could not save. Browser storage may be full or disabled.');
+                    return false;
+                }
+            },
+            
+            add: function(hutId) {
+                var favorites = this.getAll();
+                if (!favorites.includes(hutId)) {
+                    favorites.push(hutId);
+                    return this.save(favorites);
+                }
+                return false;
+            },
+            
+            remove: function(hutId) {
+                var favorites = this.getAll();
+                var filtered = favorites.filter(function(id) { return id !== hutId; });
+                if (filtered.length !== favorites.length) {
+                    return this.save(filtered);
+                }
+                return false;
+            },
+            
+            toggle: function(hutId) {
+                return this.has(hutId) ? this.remove(hutId) : this.add(hutId);
+            },
+            
+            has: function(hutId) {
+                return this.getAll().includes(hutId);
+            },
+            
+            count: function() {
+                return this.getAll().length;
+            },
+            
+            clear: function() {
+                if (confirm('Remove all ' + this.count() + ' favorites?\n\nThis cannot be undone.')) {
+                    localStorage.removeItem(this.storageKey);
+                    updateFavoritesCount();
+                    showToast('🗑️ All favorites cleared');
+                    return true;
+                }
+                return false;
+            },
+            
+            exportJSON: function() {
+                var favoriteIds = this.getAll();
+                if (favoriteIds.length === 0) {
+                    alert('❌ No favorites to export!\n\nClick ⭐ on huts to add them to favorites first.');
+                    return;
+                }
+                
+                var favoriteHuts = huts.filter(function(hut) {
+                    return favoriteIds.includes(hut.lat + '_' + hut.lon);
+                });
+                
+                var exportData = {
+                    version: '1.0',
+                    exportedAt: new Date().toISOString(),
+                    count: favoriteHuts.length,
+                    application: 'Lost in the Alps - Mountain Huts Explorer',
+                    favorites: favoriteHuts.map(function(h) {
+                        return {
+                            id: h.lat + '_' + h.lon,
+                            name: h.name,
+                            latitude: h.lat,
+                            longitude: h.lon,
+                            country: h.country,
+                            altitude: h.altitude,
+                            type: h.type,
+                            source: h.source,
+                            website: h.website,
+                            phone: h.phone,
+                            email: h.email
+                        };
+                    })
+                };
+                
+                var json = JSON.stringify(exportData, null, 2);
+                var blob = new Blob([json], {type: 'application/json'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'favorite_huts_' + favoriteHuts.length + '_' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('📥 Exported ' + favoriteHuts.length + ' favorites!');
+            },
+            
+            importJSON: function() {
+                var input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'application/json,.json';
+                input.style.display = 'none';
+                
+                input.onchange = function(e) {
+                    var file = e.target.files[0];
+                    if (!file) return;
+                    
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            var imported = JSON.parse(e.target.result);
+                            if (!imported.favorites || !Array.isArray(imported.favorites)) {
+                                alert('❌ Invalid file format!');
+                                return;
+                            }
+                            
+                            var importCount = imported.favorites.length;
+                            var currentCount = FavoritesManager.count();
+                            var message = 'Import ' + importCount + ' favorites?\n\n';
+                            if (currentCount > 0) {
+                                message += 'Current: ' + currentCount + ' favorites\n';
+                                message += 'Will merge (no duplicates)';
+                            }
+                            
+                            if (!confirm(message)) return;
+                            
+                            var currentFavs = FavoritesManager.getAll();
+                            var newFavs = imported.favorites.map(function(fav) { return fav.id; });
+                            var merged = Array.from(new Set(currentFavs.concat(newFavs)));
+                            
+                            FavoritesManager.save(merged);
+                            var added = merged.length - currentCount;
+                            showToast('✅ Imported! ' + added + ' new favorites');
+                            updateFavoritesCount();
+                        } catch (err) {
+                            alert('❌ Error: ' + err.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                };
+                
+                document.body.appendChild(input);
+                input.click();
+                document.body.removeChild(input);
+            },
+            
+            exportGPX: function() {
+                var favoriteIds = this.getAll();
+                if (favoriteIds.length === 0) { alert('❌ No favorites!'); return; }
+                var favoriteHuts = huts.filter(function(hut) { return favoriteIds.includes(hut.lat + '_' + hut.lon); });
+                var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="LostInTheAlps">\n<metadata><name>Favorite Huts</name></metadata>\n';
+                favoriteHuts.forEach(function(hut) {
+                    gpx += '<wpt lat="' + hut.lat + '" lon="' + hut.lon + '"><name>' + escapeXml(hut.name) + '</name>';
+                    if (hut.altitude && hut.altitude !== 'N/A') gpx += '<ele>' + hut.altitude + '</ele>';
+                    gpx += '</wpt>\n';
+                });
+                gpx += '</gpx>';
+                var blob = new Blob([gpx], {type: 'application/gpx+xml'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'favorite_huts.gpx';
+                a.click();
+                URL.revokeObjectURL(url);
+                showToast('📥 Exported to GPX!');
+            }
+        };
+        
+        function getHutId(hut) { return hut.lat + '_' + hut.lon; }
+        function showToast(msg) {
+            var t = document.createElement('div');
+            t.style.cssText = 'position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 14px 28px; border-radius: 10px; font-size: 14px; font-weight: 600; z-index: 10000; box-shadow: 0 6px 20px rgba(0,0,0,0.3);';
+            t.textContent = msg;
+            document.body.appendChild(t);
+            setTimeout(function() { t.style.transition = 'opacity 0.3s'; t.style.opacity = '0'; setTimeout(function() { t.remove(); }, 300); }, 2500);
+        }
+        function updateFavoritesCount() {
+            var counter = document.getElementById('favorites-count');
+            if (counter) counter.textContent = FavoritesManager.count();
+        }
+        function showFavoritesOnly() {
+            var favIds = FavoritesManager.getAll();
+            if (favIds.length === 0) { showToast('❌ No favorites yet!'); return; }
+            var cnt = 0;
+            markers.forEach(function(m) {
+                var id = getHutId(m.hutData);
+                if (favIds.includes(id)) { if (!markerCluster.hasLayer(m)) markerCluster.addLayer(m); cnt++; } else { markerCluster.removeLayer(m); }
+            });
+            updateStats();
+            showToast('⭐ Showing ' + cnt + ' favorites');
+        }
+        function showAllHutsReset() {
+            markers.forEach(function(m) { if (!markerCluster.hasLayer(m)) markerCluster.addLayer(m); });
+            updateStats();
+        }
+        
+        // Show hut details in detail sidebar
         function showHutDetails(hut) {
-            var detailSidebar = document.getElementById('detail-sidebar');
-            var detailTitle = document.getElementById('detail-hut-name');
-            var detailContent = document.getElementById('detail-content');
             
             // Update title
             detailTitle.textContent = hut.name;
@@ -1832,6 +2121,25 @@
             if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {
                 content.push('<div class="detail-info-box"><div class="info-label">📅 Best Time to Visit</div><div class="info-value">' + escapeHtml(hut.best_time) + '</div></div>');
             }
+            content.push('</div>');
+            
+            // Favorites Button
+            var hutId = getHutId(hut);
+            var isFavorite = FavoritesManager.has(hutId);
+            content.push('<div class="detail-section">');
+            content.push('<h3>⭐ Save for Later</h3>');
+            content.push('<button class="favorite-btn ' + (isFavorite ? 'favorited' : '') + '" id="fav-btn-' + hutId.replace('.', '-') + '" ');
+            content.push('onclick="(function(){');
+            content.push('  FavoritesManager.toggle(\''+hutId+'');');
+            content.push('  var btn=document.getElementById(\'fav-btn-'+hutId.replace('.', '-')+'');');
+            content.push('  var nowFav=FavoritesManager.has(\''+hutId+'');');
+            content.push('  btn.className=\'favorite-btn \'+(nowFav?\'favorited\':\'\');');
+            content.push('  btn.innerHTML=nowFav?\'⭐ Saved to Favorites\':\'☆ Add to Favorites\';');
+            content.push('  updateFavoritesCount();');
+            content.push('  showToast(nowFav?\'⭐ Added to favorites!\':\'Removed from favorites\');');
+            content.push('})()" style="cursor: pointer;">');
+            content.push(isFavorite ? '⭐ Saved to Favorites' : '☆ Add to Favorites');
+            content.push('</button>');
             content.push('</div>');
             
             // Contact Information
@@ -2602,9 +2910,11 @@
             }
         });
         
-        // Initial stats
+        // Initial stats and favorites count
         updateStats();
+        updateFavoritesCount();
         console.log('Map ready with ' + markers.length + ' markers!');
+        console.log('Favorites system ready. Loaded ' + FavoritesManager.count() + ' saved huts.');
         
         // Mobile menu handling - Touch-friendly
         var sidebar = document.querySelector('.sidebar');
