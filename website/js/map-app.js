@@ -144,19 +144,20 @@ function initializeSidebarToggle() {
     if (!toggleBtn) return;
     
     toggleBtn.addEventListener('click', function() {
-        const isHidden = filterSidebar.classList.contains('hidden') || 
-                        favoritesSidebar.classList.contains('hidden');
+        // Check if the currently visible sidebar is hidden
+        const isFilterVisible = filterSidebar.style.display !== 'none';
+        const isFavoritesVisible = favoritesSidebar.style.display !== 'none';
+        const currentSidebar = isFilterVisible ? filterSidebar : favoritesSidebar;
+        const isHidden = currentSidebar.classList.contains('hidden');
         
         if (isHidden) {
             // Show sidebar
-            filterSidebar.classList.remove('hidden');
-            favoritesSidebar.classList.remove('hidden');
+            currentSidebar.classList.remove('hidden');
             mapElement.classList.remove('sidebar-hidden');
             toggleBtn.classList.remove('sidebar-hidden');
         } else {
             // Hide sidebar
-            filterSidebar.classList.add('hidden');
-            favoritesSidebar.classList.add('hidden');
+            currentSidebar.classList.add('hidden');
             mapElement.classList.add('sidebar-hidden');
             toggleBtn.classList.add('sidebar-hidden');
         }
@@ -164,7 +165,7 @@ function initializeSidebarToggle() {
         // Invalidate map size after transition
         setTimeout(function() {
             map.invalidateSize();
-        }, 300);
+        }, 350);
     });
 }
 
