@@ -2,7 +2,24 @@
 
 ## [0.3.0] - November 6, 2025
 
-### 🎉 Major Feature Release - Favorites, Security & Performance
+### 🎉 Major Feature Release - Favorites, Philosophy Page, Security & Performance
+
+#### 🏔️ NEW: About & Philosophy Page ✅
+- **Beautiful dedicated page** explaining project vision and philosophy
+- **Project mission**: Making mountain huts accessible to everyone
+- **Bivouac philosophy**: Importance of raw mountain experiences, connecting with ancestors
+- **Nature message**: Respect, accessibility, and nurturing nature for all living beings
+- **6 core values** displayed in beautiful cards:
+  - 🌲 Respect Nature
+  - 🤝 Accessible to All
+  - 💚 Nurture & Protect
+  - 🌐 Open Source
+  - 🏔️ Authentic Experiences
+  - 🧭 Community Driven
+- **Footer bar updated** with "About & Philosophy" link
+- **Responsive design** for all devices
+- **Inspiring quotes** and call-to-action
+- URL: `website/about.html`
 
 #### ⭐ NEW: Favorites System ✅
 - **Save favorite huts** with one-click (⭐/☆ button in detail sidebar)
