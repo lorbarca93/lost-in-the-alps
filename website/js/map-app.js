@@ -128,7 +128,45 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMap();
     loadHutsData();
     updateAllFavoriteCounts();
+    initializeSidebarToggle();
 });
+
+// ============================================================================
+// SIDEBAR TOGGLE
+// ============================================================================
+
+function initializeSidebarToggle() {
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const filterSidebar = document.getElementById('filter-sidebar');
+    const favoritesSidebar = document.getElementById('favorites-sidebar');
+    const mapElement = document.getElementById('map');
+    
+    if (!toggleBtn) return;
+    
+    toggleBtn.addEventListener('click', function() {
+        const isHidden = filterSidebar.classList.contains('hidden') || 
+                        favoritesSidebar.classList.contains('hidden');
+        
+        if (isHidden) {
+            // Show sidebar
+            filterSidebar.classList.remove('hidden');
+            favoritesSidebar.classList.remove('hidden');
+            mapElement.classList.remove('sidebar-hidden');
+            toggleBtn.classList.remove('sidebar-hidden');
+        } else {
+            // Hide sidebar
+            filterSidebar.classList.add('hidden');
+            favoritesSidebar.classList.add('hidden');
+            mapElement.classList.add('sidebar-hidden');
+            toggleBtn.classList.add('sidebar-hidden');
+        }
+        
+        // Invalidate map size after transition
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 300);
+    });
+}
 
 function initializeMap() {
     // Create map centered on Alps

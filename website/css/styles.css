@@ -35,7 +35,53 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 1px solid #e2e8f0;
-    transition: opacity 0.2s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0);
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+/* Sidebar Toggle Button (Desktop) */
+.sidebar-toggle-btn {
+    position: fixed;
+    left: 350px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 80px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-toggle-btn:hover {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    width: 36px;
+    box-shadow: 3px 0 15px rgba(0,0,0,0.25);
+}
+
+.sidebar-toggle-btn.sidebar-hidden {
+    left: 0;
+}
+
+.sidebar-toggle-btn .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-toggle-btn.sidebar-hidden .toggle-icon {
+    transform: rotate(180deg);
 }
 
 /* Sidebar Navigation Tabs */
@@ -394,6 +440,13 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 3px;
+}
+
+/* Sidebar Toggle Button - Mobile Hidden */
+@media (max-width: 768px) {
+    .sidebar-toggle-btn {
+        display: none;
+    }
 }
 
 /* Footer Bar */
@@ -805,6 +858,11 @@ input[type="range"]::-moz-range-track {
     flex: 1;
     height: 100vh;
     position: relative;
+    transition: margin-left 0.3s ease;
+}
+
+#map.sidebar-hidden {
+    margin-left: -350px;
 }
 
 .stats-display {
