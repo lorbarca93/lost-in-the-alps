@@ -179,6 +179,179 @@ def create_simple_map():
             line-height: 1.5;
         }}
         
+        /* Detail Sidebar - Overlays filter sidebar */
+        .detail-sidebar {{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 350px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 1002;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }}
+        
+        .detail-sidebar.open {{
+            transform: translateX(0);
+        }}
+        
+        .detail-header {{
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 3px solid #475569;
+            flex-shrink: 0;
+        }}
+        
+        .back-button {{
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }}
+        
+        .back-button:hover {{
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-2px);
+        }}
+        
+        .back-button:active {{
+            transform: translateX(-1px) scale(0.95);
+        }}
+        
+        .detail-title {{
+            flex: 1;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+        }}
+        
+        .detail-content {{
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            -webkit-overflow-scrolling: touch;
+        }}
+        
+        .detail-section {{
+            margin-bottom: 20px;
+        }}
+        
+        .detail-section h3 {{
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }}
+        
+        .detail-badge {{
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: #f8fafc;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }}
+        
+        .detail-badge .badge-icon {{
+            font-size: 18px;
+        }}
+        
+        .detail-info-box {{
+            background: #f8fafc;
+            border-left: 3px solid #3b82f6;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+        }}
+        
+        .detail-info-box .info-label {{
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }}
+        
+        .detail-info-box .info-value {{
+            font-size: 14px;
+            color: #1e293b;
+            font-weight: 600;
+        }}
+        
+        .detail-button {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+        }}
+        
+        .detail-button.primary {{
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }}
+        
+        .detail-button.primary:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }}
+        
+        .detail-button.secondary {{
+            background: #10b981;
+            color: white;
+        }}
+        
+        .detail-button.secondary:hover {{
+            background: #059669;
+        }}
+        
+        .detail-button.tertiary {{
+            background: #8b5cf6;
+            color: white;
+        }}
+        
+        .detail-button.tertiary:hover {{
+            background: #7c3aed;
+        }}
+        
         /* Search Box */
         .search-container {{
             position: relative;
@@ -823,6 +996,47 @@ def create_simple_map():
                 z-index: 1;
             }}
             
+            /* Detail sidebar on mobile - full screen */
+            .detail-sidebar {{
+                width: 100%;
+                max-height: 100vh;
+                transform: translateY(100%);
+                bottom: 0;
+                top: auto;
+                left: 0;
+                z-index: 10001;
+                box-shadow: 0 -8px 32px rgba(0,0,0,0.4);
+            }}
+            
+            .detail-sidebar.open {{
+                transform: translateY(0);
+            }}
+            
+            .detail-header {{
+                padding: 18px 20px;
+                min-height: 60px;
+            }}
+            
+            .back-button {{
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+            }}
+            
+            .detail-title {{
+                font-size: 17px;
+            }}
+            
+            .detail-content {{
+                padding: 18px;
+                max-height: calc(100vh - 80px);
+            }}
+            
+            .detail-button {{
+                min-height: 48px;
+                font-size: 15px;
+            }}
+            
             /* Touch-friendly buttons - larger targets */
             .btn {{
                 min-height: 48px;
@@ -1223,6 +1437,24 @@ def create_simple_map():
             </div>
         </div>
     </div>
+    
+    <!-- Detail Sidebar - Shows selected hut details -->
+    <div class="detail-sidebar" id="detail-sidebar">
+        <div class="detail-header">
+            <button class="back-button" id="back-to-filters" aria-label="Back to filters">
+                ←
+            </button>
+            <div class="detail-title" id="detail-hut-name">Hut Details</div>
+        </div>
+        <div class="detail-content" id="detail-content">
+            <!-- Content will be dynamically populated -->
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8;">
+                <div style="font-size: 48px; margin-bottom: 16px;">🏔️</div>
+                <div style="font-size: 16px; font-weight: 600;">Select a hut to view details</div>
+            </div>
+        </div>
+    </div>
+    
     <div id="map"></div>
     <script>
         // Initialize map centered on Alps
@@ -1623,24 +1855,15 @@ def create_simple_map():
                 }});
             }}
             
-            // Responsive popup sizing
-            var popupOptions = {{
-                maxWidth: isMobile ? window.innerWidth - 40 : 400,
-                minWidth: isMobile ? Math.min(280, window.innerWidth - 40) : 260,
-                className: 'custom-popup',
-                autoPanPadding: isMobile ? [20, 100] : [5, 5],  // Extra padding on mobile for sidebar
-                keepInView: true
-            }};
-            
-            marker.bindPopup(popup, popupOptions);
-            
-            // When popup opens, load weather and nearby huts
-            marker.on('popupopen', function() {{
-                loadWeather(hut.lat, hut.lon);
-                loadNearbyHuts(hut.lat, hut.lon, hut.name);
-            }});
-            
+            // Store hut data in marker
             marker.hutData = hut;
+            
+            // On click, show detail sidebar instead of popup
+            marker.on('click', function(e) {{
+                showHutDetails(this.hutData);
+                // Prevent map click from closing detail sidebar
+                L.DomEvent.stopPropagation(e);
+            }});
             markerCluster.addLayer(marker);
             markers.push(marker);
         }});
@@ -1656,6 +1879,246 @@ def create_simple_map():
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
             var distance = R * c;
             return distance;
+        }}
+        
+        // Show hut details in sidebar
+        function showHutDetails(hut) {{
+            var detailSidebar = document.getElementById('detail-sidebar');
+            var detailTitle = document.getElementById('detail-hut-name');
+            var detailContent = document.getElementById('detail-content');
+            
+            // Update title
+            detailTitle.textContent = hut.name;
+            
+            // Build detail content
+            var content = [];
+            
+            // Header badges
+            content.push('<div style="margin-bottom: 20px;">');
+            if (hut.altitude && hut.altitude !== 'N/A') {{
+                content.push('<span class="detail-badge"><span class="badge-icon">🏔️</span>' + escapeHtml(String(hut.altitude)) + ' m</span>');
+            }}
+            if (hut.country && hut.country !== 'N/A') {{
+                content.push('<span class="detail-badge"><span class="badge-icon">🌍</span>' + escapeHtml(hut.country) + '</span>');
+            }}
+            if (hut.type && hut.type !== 'N/A') {{
+                content.push('<span class="detail-badge"><span class="badge-icon">🏠</span>' + escapeHtml(hut.type) + '</span>');
+            }}
+            content.push('</div>');
+            
+            // Main Information
+            content.push('<div class="detail-section">');
+            content.push('<h3>📋 Main Information</h3>');
+            
+            if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {{
+                var capacityText = escapeHtml(String(hut.capacity));
+                if (hut.capacity_max && hut.capacity_max !== 'N/A' && hut.capacity_max !== '') {{
+                    capacityText += ' - ' + escapeHtml(String(hut.capacity_max));
+                }}
+                content.push('<div class="detail-info-box"><div class="info-label">🛏️ Capacity</div><div class="info-value">' + capacityText + ' beds</div></div>');
+            }}
+            
+            if (hut.opening && hut.opening !== 'N/A' && hut.opening !== '') {{
+                content.push('<div class="detail-info-box" style="border-left-color: #10b981;"><div class="info-label">🕐 Opening Hours</div><div class="info-value">' + escapeHtml(hut.opening) + '</div></div>');
+            }}
+            
+            if (hut.water_source && hut.water_source !== 'N/A' && hut.water_source !== '') {{
+                content.push('<div class="detail-info-box"><div class="info-label">💧 Water Source</div><div class="info-value">' + escapeHtml(hut.water_source) + '</div></div>');
+            }}
+            
+            if (hut.access && hut.access !== 'N/A' && hut.access !== '') {{
+                content.push('<div class="detail-info-box"><div class="info-label">🥾 Access</div><div class="info-value">' + escapeHtml(hut.access) + '</div></div>');
+            }}
+            
+            if (hut.best_time && hut.best_time !== 'N/A' && hut.best_time !== '') {{
+                content.push('<div class="detail-info-box"><div class="info-label">📅 Best Time to Visit</div><div class="info-value">' + escapeHtml(hut.best_time) + '</div></div>');
+            }}
+            content.push('</div>');
+            
+            // Contact Information
+            if ((hut.phone && hut.phone !== 'N/A' && hut.phone !== '') || 
+                (hut.email && hut.email !== 'N/A' && hut.email !== '') || 
+                (hut.website && hut.website !== 'N/A' && hut.website !== '')) {{
+                content.push('<div class="detail-section">');
+                content.push('<h3>📞 Contact</h3>');
+                
+                if (hut.phone && hut.phone !== 'N/A' && hut.phone !== '') {{
+                    content.push('<a href="tel:' + escapeHtml(hut.phone) + '" class="detail-button secondary">📞 Call: ' + escapeHtml(hut.phone) + '</a>');
+                }}
+                if (hut.email && hut.email !== 'N/A' && hut.email !== '') {{
+                    content.push('<a href="mailto:' + escapeHtml(hut.email) + '" class="detail-button secondary">📧 Email: ' + escapeHtml(hut.email) + '</a>');
+                }}
+                if (hut.website && hut.website !== 'N/A' && hut.website !== '') {{
+                    var websiteUrl = hut.website.startsWith('http') ? hut.website : 'http://' + hut.website;
+                    content.push('<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="detail-button tertiary">🌐 Visit Website</a>');
+                }}
+                content.push('</div>');
+            }}
+            
+            // Management
+            if ((hut.owner && hut.owner !== 'N/A' && hut.owner !== '') || 
+                (hut.manager && hut.manager !== 'N/A' && hut.manager !== '')) {{
+                content.push('<div class="detail-section">');
+                content.push('<h3>👥 Management</h3>');
+                if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
+                    content.push('<div class="detail-info-box" style="border-left-color: #f59e0b;"><div class="info-label">Owner</div><div class="info-value">' + escapeHtml(hut.owner) + '</div></div>');
+                }}
+                if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
+                    content.push('<div class="detail-info-box" style="border-left-color: #f59e0b;"><div class="info-label">Manager</div><div class="info-value">' + escapeHtml(hut.manager) + '</div></div>');
+                }}
+                content.push('</div>');
+            }}
+            
+            // Description
+            if (hut.description && hut.description !== 'N/A' && hut.description !== '') {{
+                content.push('<div class="detail-section">');
+                content.push('<h3>💬 Description</h3>');
+                content.push('<div style="background: #f0f9ff; padding: 14px; border-radius: 8px; font-size: 14px; color: #0c4a6e; line-height: 1.6;">' + escapeHtml(hut.description) + '</div>');
+                content.push('</div>');
+            }} else if (hut.comments && hut.comments !== 'N/A' && hut.comments !== '') {{
+                content.push('<div class="detail-section">');
+                content.push('<h3>💬 Comments</h3>');
+                content.push('<div style="background: #f0f9ff; padding: 14px; border-radius: 8px; font-size: 14px; color: #0c4a6e; line-height: 1.6;">' + escapeHtml(hut.comments) + '</div>');
+                content.push('</div>');
+            }}
+            
+            // Weather Widget
+            content.push('<div class="detail-section">');
+            content.push('<h3>🌤️ Weather</h3>');
+            content.push('<div id="weather-detail-' + hut.lat + '-' + hut.lon + '"></div>');
+            content.push('</div>');
+            
+            // Nearby Huts
+            content.push('<div class="detail-section">');
+            content.push('<h3>📍 Nearby Huts</h3>');
+            content.push('<div id="nearby-detail-' + hut.lat + '-' + hut.lon + '"></div>');
+            content.push('</div>');
+            
+            // Source & Link
+            content.push('<div class="detail-section">');
+            content.push('<div style="text-align: center; font-size: 12px; color: #64748b; margin-bottom: 12px;">Data from <strong>' + escapeHtml(hut.source) + '</strong></div>');
+            if (hut.url && hut.url !== 'N/A' && hut.url !== '' && hut.url !== 'http://www.mountainhuts.info/map') {{
+                content.push('<a href="' + escapeHtml(hut.url) + '" target="_blank" rel="noopener" class="detail-button primary">📍 View Full Details on ' + escapeHtml(hut.source) + '</a>');
+            }}
+            if (hut.posted_by && hut.posted_by !== 'N/A' && hut.posted_by !== '') {{
+                content.push('<div style="text-align: center; font-size: 11px; color: #94a3b8; margin-top: 8px;">Posted by ' + escapeHtml(hut.posted_by) + '</div>');
+            }}
+            content.push('</div>');
+            
+            // Update content
+            detailContent.innerHTML = content.join('');
+            
+            // Open detail sidebar
+            detailSidebar.classList.add('open');
+            
+            // Load dynamic content
+            loadWeatherToDetail(hut.lat, hut.lon);
+            loadNearbyHutsToDetail(hut.lat, hut.lon, hut.name);
+            
+            // Center map on hut
+            map.setView([hut.lat, hut.lon], Math.max(map.getZoom(), 13));
+        }}
+        
+        // Load weather data from OpenWeatherMap (for detail sidebar)
+        function loadWeatherToDetail(lat, lon) {{
+            var weatherDiv = document.getElementById('weather-detail-' + lat + '-' + lon);
+            if (!weatherDiv) return;
+            
+            var apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+            
+            if (apiKey === 'YOUR_OPENWEATHERMAP_API_KEY') {{
+                weatherDiv.innerHTML = '<div style="padding: 12px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 6px; font-size: 13px; color: #92400e;">🌤️ <a href="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=' + lat + '&lon=' + lon + '&zoom=10" target="_blank" style="color: #2563eb; font-weight: 600;">View Weather Forecast →</a><br><small style="opacity: 0.8;">Add OpenWeatherMap API key for live weather data</small></div>');
+                return;
+            }}
+            
+            weatherDiv.innerHTML = '<div style="padding: 10px; text-align: center; font-size: 13px; color: #94a3b8;">Loading weather...</div>';
+            
+            fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=' + apiKey)
+                .then(response => response.json())
+                .then(data => {{
+                    var temp = Math.round(data.main.temp);
+                    var description = data.weather[0].description;
+                    var icon = data.weather[0].icon;
+                    var iconUrl = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
+                    var feelsLike = Math.round(data.main.feels_like);
+                    var humidity = data.main.humidity;
+                    var windSpeed = Math.round(data.wind.speed * 3.6); // m/s to km/h
+                    
+                    var weatherHtml = '<div style="padding: 16px; background: linear-gradient(135deg, #e0f2fe, #bae6fd); border-radius: 10px; border: 1px solid #7dd3fc;">';
+                    weatherHtml += '<div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">';
+                    weatherHtml += '<img src="' + iconUrl + '" style="width: 64px; height: 64px; margin: -8px 0;">';
+                    weatherHtml += '<div style="flex: 1;">';
+                    weatherHtml += '<div style="font-size: 32px; font-weight: 700; color: #0c4a6e;">' + temp + '°C</div>';
+                    weatherHtml += '<div style="font-size: 14px; color: #075985; text-transform: capitalize;">' + description + '</div>';
+                    weatherHtml += '</div>';
+                    weatherHtml += '</div>';
+                    weatherHtml += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; color: #0c4a6e;">';
+                    weatherHtml += '<div><strong>Feels like:</strong> ' + feelsLike + '°C</div>';
+                    weatherHtml += '<div><strong>Humidity:</strong> ' + humidity + '%</div>';
+                    weatherHtml += '<div><strong>Wind:</strong> ' + windSpeed + ' km/h</div>';
+                    weatherHtml += '<div><a href="https://openweathermap.org/city/' + data.id + '" target="_blank" style="color: #0284c7; text-decoration: none; font-weight: 600;">5-Day Forecast →</a></div>';
+                    weatherHtml += '</div>';
+                    weatherHtml += '</div>';
+                    
+                    weatherDiv.innerHTML = weatherHtml;
+                }})
+                .catch(error => {{
+                    console.log('Weather fetch error:', error);
+                    weatherDiv.innerHTML = '<div style="padding: 10px; text-align: center; font-size: 12px; color: #94a3b8;">Weather data unavailable</div>';
+                }});
+        }}
+        
+        // Load nearby huts for detail sidebar
+        function loadNearbyHutsToDetail(lat, lon, currentHutName) {{
+            var nearbyDiv = document.getElementById('nearby-detail-' + lat + '-' + lon);
+            if (!nearbyDiv) return;
+            
+            // Find huts within 10km
+            var nearbyHuts = [];
+            huts.forEach(function(hut) {{
+                if (hut.name === currentHutName) return;
+                var distance = calculateDistance(lat, lon, hut.lat, hut.lon);
+                if (distance <= 10) {{
+                    nearbyHuts.push({{
+                        name: hut.name,
+                        distance: distance,
+                        altitude: hut.altitude,
+                        country: hut.country,
+                        lat: hut.lat,
+                        lon: hut.lon
+                    }});
+                }}
+            }});
+            
+            nearbyHuts.sort(function(a, b) {{ return a.distance - b.distance; }});
+            
+            if (nearbyHuts.length === 0) {{
+                nearbyDiv.innerHTML = '<div style="padding: 14px; text-align: center; font-size: 13px; color: #94a3b8;">No huts within 10km</div>';
+                return;
+            }}
+            
+            var nearbyHtml = '<div style="display: flex; flex-direction: column; gap: 10px;">';
+            
+            nearbyHuts.slice(0, 5).forEach(function(nearby) {{
+                nearbyHtml += '<div style="padding: 12px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 6px; cursor: pointer; transition: all 0.2s;" onclick="showHutDetails(huts.find(h => h.lat === ' + nearby.lat + ' && h.lon === ' + nearby.lon + ')); map.setView([' + nearby.lat + ', ' + nearby.lon + '], 14);">';
+                nearbyHtml += '<div style="font-weight: 700; color: #92400e; margin-bottom: 4px;">' + escapeHtml(nearby.name) + '</div>';
+                nearbyHtml += '<div style="font-size: 12px; color: #78350f;"><strong>' + nearby.distance.toFixed(1) + ' km away</strong>';
+                if (nearby.altitude && nearby.altitude !== 'N/A') {{
+                    nearbyHtml += ' • ' + escapeHtml(String(nearby.altitude)) + 'm';
+                }}
+                if (nearby.country && nearby.country !== 'N/A') {{
+                    nearbyHtml += ' • ' + escapeHtml(nearby.country);
+                }}
+                nearbyHtml += '</div>';
+                nearbyHtml += '</div>';
+            }});
+            
+            if (nearbyHuts.length > 5) {{
+                nearbyHtml += '<div style="padding: 10px; text-align: center; font-size: 12px; color: #64748b;">+ ' + (nearbyHuts.length - 5) + ' more huts within 10km</div>';
+            }}
+            
+            nearbyHtml += '</div>';
+            nearbyDiv.innerHTML = nearbyHtml;
         }}
         
         // Load weather data from OpenWeatherMap
@@ -2209,10 +2672,10 @@ def create_simple_map():
                             map.setView([lat, lon], 14);
                             searchResultsDiv.classList.remove('visible');
                             
-                            // Find and open the marker
+                            // Find and show hut details in sidebar
                             markers.forEach(function(marker) {{
                                 if (marker.hutData.lat === lat && marker.hutData.lon === lon) {{
-                                    marker.openPopup();
+                                    showHutDetails(marker.hutData);
                                 }}
                             }});
                         }});
@@ -2248,6 +2711,23 @@ def create_simple_map():
         var sidebar = document.querySelector('.sidebar');
         var sidebarHeader = document.querySelector('.sidebar-header');
         var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var detailSidebar = document.getElementById('detail-sidebar');
+        var backButton = document.getElementById('back-to-filters');
+        
+        // Back button - Close detail sidebar
+        if (backButton) {{
+            backButton.addEventListener('click', function(e) {{
+                e.stopPropagation();
+                detailSidebar.classList.remove('open');
+            }});
+        }}
+        
+        // Keyboard shortcut - Escape closes detail sidebar
+        document.addEventListener('keydown', function(e) {{
+            if (e.key === 'Escape' && detailSidebar && detailSidebar.classList.contains('open')) {{
+                detailSidebar.classList.remove('open');
+            }}
+        }});
         
         // Mobile menu button click
         if (mobileMenuBtn) {{
@@ -2273,13 +2753,19 @@ def create_simple_map():
             }});
         }}
         
-        // Close sidebar when clicking on map (mobile only)
+        // Close sidebars when clicking on map (mobile only)
         map.on('click', function() {{
-            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {{
-                sidebar.classList.remove('open');
-                if (mobileMenuBtn) {{
-                    var menuText = mobileMenuBtn.querySelector('.menu-text');
-                    if (menuText) menuText.textContent = 'Filters';
+            if (window.innerWidth <= 768) {{
+                if (sidebar.classList.contains('open')) {{
+                    sidebar.classList.remove('open');
+                    if (mobileMenuBtn) {{
+                        var menuText = mobileMenuBtn.querySelector('.menu-text');
+                        if (menuText) menuText.textContent = 'Filters';
+                    }}
+                }}
+                // Also close detail sidebar on map click
+                if (detailSidebar.classList.contains('open')) {{
+                    detailSidebar.classList.remove('open');
                 }}
             }}
         }});
