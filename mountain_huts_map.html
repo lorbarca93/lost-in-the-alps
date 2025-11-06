@@ -27,10 +27,20 @@
     </button>
     
     <!-- Filter Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="filter-sidebar">
         <div class="sidebar-header">
             <h1>🏔️ Mountain Huts Explorer</h1>
             <p>Discover and explore mountain huts across the Alps and beyond. Filter by location, capacity, and more.</p>
+            
+            <!-- Sidebar Navigation -->
+            <div class="sidebar-nav">
+                <button class="sidebar-nav-btn active" id="nav-filters" onclick="switchSidebarView('filters')">
+                    <span>🗺️</span> Filters
+                </button>
+                <button class="sidebar-nav-btn" id="nav-favorites" onclick="switchSidebarView('favorites')">
+                    <span>⭐</span> Favorites <span class="badge" id="fav-badge">0</span>
+                </button>
+            </div>
             
             <!-- Smart Search -->
             <div class="search-container">
@@ -171,37 +181,6 @@
                 <div class="checkbox-list" id="country-filters"></div>
             </div>
             
-            <!-- Favorites Section -->
-            <div class="filter-section favorites-section">
-                <h3>⭐ My Favorites</h3>
-                <div class="stats-mini">
-                    <div>
-                        <div style="font-size: 32px; font-weight: 700; color: #f59e0b;" id="favorites-count">0</div>
-                        <div style="font-size: 11px; opacity: 0.9; color: #d97706;">Saved Huts</div>
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
-                    <button class="btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white;" onclick="showFavoritesOnly()">
-                        ⭐ Show My Favorites
-                    </button>
-                    <button class="btn btn-secondary" onclick="showAllHutsReset()">
-                        🗺️ Show All Huts
-                    </button>
-                    <button class="btn btn-secondary" onclick="FavoritesManager.exportJSON()">
-                        📥 Download Favorites
-                    </button>
-                    <button class="btn btn-secondary" onclick="FavoritesManager.importJSON()">
-                        📤 Upload Favorites
-                    </button>
-                    <button class="btn btn-secondary" onclick="FavoritesManager.exportGPX()">
-                        🧭 Export to GPX
-                    </button>
-                </div>
-                <div style="margin-top: 12px; padding: 10px; background: rgba(245, 158, 11, 0.1); border-radius: 8px; font-size: 11px; color: #92400e; line-height: 1.5;">
-                    <strong>💡 Tip:</strong> Download your favorites as backup! You can re-upload them if your browser data gets cleared.
-                </div>
-            </div>
-            
             <!-- Data Source Filter -->
             <div class="filter-section">
                 <h3>📍 Data Sources</h3>
@@ -238,6 +217,93 @@
                         <div style="margin-bottom: 8px;"><strong>Average:</strong> <span id="stats-avg-altitude">N/A</span></div>
                         <div><strong>Capacity:</strong> <span id="stats-capacity-range">N/A</span></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Favorites Sidebar -->
+    <div class="sidebar favorites-sidebar" id="favorites-sidebar" style="display: none;">
+        <div class="sidebar-header">
+            <h1>⭐ My Favorites</h1>
+            <p>Your saved mountain huts for quick access and trip planning.</p>
+            
+            <!-- Sidebar Navigation -->
+            <div class="sidebar-nav">
+                <button class="sidebar-nav-btn" id="nav-filters-fav" onclick="switchSidebarView('filters')">
+                    <span>🗺️</span> Filters
+                </button>
+                <button class="sidebar-nav-btn active" id="nav-favorites-fav" onclick="switchSidebarView('favorites')">
+                    <span>⭐</span> Favorites <span class="badge" id="fav-badge-2">0</span>
+                </button>
+            </div>
+            
+            <!-- Favorites Count Stats -->
+            <div class="stats-mini" style="margin-top: 20px;">
+                <div>
+                    <div style="font-size: 42px; font-weight: 700; color: #f59e0b;" id="favorites-count-main">0</div>
+                    <div style="font-size: 12px; opacity: 0.9; color: #d97706; font-weight: 600;">Saved Huts</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-content">
+            <!-- Favorites List -->
+            <div class="filter-section">
+                <h3>📋 Your Saved Huts</h3>
+                <div id="favorites-list" class="favorites-list">
+                    <div style="text-align: center; padding: 40px 20px; color: #64748b;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">⭐</div>
+                        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">No favorites yet!</div>
+                        <div style="font-size: 12px; line-height: 1.6;">Click the ⭐ button on any hut to add it to your favorites.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="filter-section">
+                <h3>🎯 Quick Actions</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="btn" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white;" onclick="showFavoritesOnly()">
+                        🗺️ Show on Map
+                    </button>
+                    <button class="btn btn-secondary" onclick="showAllHutsReset()">
+                        🌍 Show All Huts
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Export Options -->
+            <div class="filter-section">
+                <h3>📤 Export & Backup</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="FavoritesManager.exportJSON()">
+                        📥 Download as JSON
+                    </button>
+                    <button class="btn btn-secondary" onclick="FavoritesManager.importJSON()">
+                        📤 Upload JSON File
+                    </button>
+                    <button class="btn btn-secondary" onclick="FavoritesManager.exportGPX()">
+                        🧭 Export to GPX
+                    </button>
+                </div>
+                <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.1); border-radius: 8px; font-size: 11px; color: #92400e; line-height: 1.6;">
+                    <strong>💡 Backup Tip:</strong> Download your favorites as JSON to keep a permanent backup. You can re-upload it if your browser data gets cleared.
+                </div>
+            </div>
+            
+            <!-- Feature Info -->
+            <div class="filter-section">
+                <h3>ℹ️ About Favorites</h3>
+                <div style="font-size: 12px; line-height: 1.6; color: #475569;">
+                    <p style="margin-bottom: 10px;"><strong>How it works:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 12px;">
+                        <li>Favorites are saved in your browser's local storage</li>
+                        <li>They persist between sessions automatically</li>
+                        <li>Export to JSON or GPX for backup or sharing</li>
+                        <li>Compatible with GPS devices (GPX format)</li>
+                    </ul>
+                    <p><strong>Privacy:</strong> All data stays on your device. Nothing is sent to any server.</p>
                 </div>
             </div>
         </div>

@@ -6,6 +6,120 @@ let allHuts = [];
 let fuse = null;
 
 // ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
+
+function getHutId(hut) {
+    return `${hut.lat}_${hut.lon}`;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// ============================================================================
+// SIDEBAR VIEW MANAGEMENT
+// ============================================================================
+
+function switchSidebarView(view) {
+    const filterSidebar = document.getElementById('filter-sidebar');
+    const favoritesSidebar = document.getElementById('favorites-sidebar');
+    const detailSidebar = document.getElementById('detail-sidebar');
+    
+    // Close detail sidebar if open
+    detailSidebar.classList.remove('open');
+    
+    if (view === 'filters') {
+        filterSidebar.style.display = 'flex';
+        favoritesSidebar.style.display = 'none';
+        
+        // Update nav buttons
+        document.getElementById('nav-filters').classList.add('active');
+        document.getElementById('nav-favorites').classList.remove('active');
+    } else if (view === 'favorites') {
+        filterSidebar.style.display = 'none';
+        favoritesSidebar.style.display = 'flex';
+        
+        // Update nav buttons
+        document.getElementById('nav-filters-fav').classList.remove('active');
+        document.getElementById('nav-favorites-fav').classList.add('active');
+        
+        // Render favorites list
+        renderFavoritesList();
+    }
+}
+
+function renderFavoritesList() {
+    const favoritesList = document.getElementById('favorites-list');
+    const favorites = FavoritesManager.getAll();
+    
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: #64748b;">
+                <div style="font-size: 48px; margin-bottom: 16px;">⭐</div>
+                <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">No favorites yet!</div>
+                <div style="font-size: 12px; line-height: 1.6;">Click the ⭐ button on any hut to add it to your favorites.</div>
+            </div>
+        `;
+        return;
+    }
+    
+    // Get favorite huts data
+    const favoriteHuts = allHuts.filter(hut => {
+        const hutId = getHutId(hut);
+        return favorites.includes(hutId);
+    });
+    
+    // Sort by name
+    favoriteHuts.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    
+    // Render list
+    let html = '';
+    favoriteHuts.forEach(hut => {
+        const hutId = getHutId(hut);
+        const safeId = hutId.replace(/\./g, '-');
+        
+        html += `
+            <div class="favorite-item" onclick="showHutDetails(allHuts.find(h => getHutId(h) === '${hutId}'))">
+                <div class="favorite-item-header">
+                    <div class="favorite-item-name">${escapeHtml(hut.name || 'Unknown')}</div>
+                    <button class="favorite-item-remove" onclick="event.stopPropagation(); removeFavoriteAndUpdate('${hutId}')" title="Remove from favorites">
+                        ×
+                    </button>
+                </div>
+                <div class="favorite-item-meta">
+                    ${hut.country && hut.country !== 'N/A' ? `<span>🌍 ${escapeHtml(hut.country)}</span>` : ''}
+                    ${hut.altitude && hut.altitude !== 'N/A' ? `<span>🏔️ ${escapeHtml(String(hut.altitude))}m</span>` : ''}
+                    ${hut.type && hut.type !== 'N/A' ? `<span>🏠 ${escapeHtml(hut.type)}</span>` : ''}
+                </div>
+            </div>
+        `;
+    });
+    
+    favoritesList.innerHTML = html;
+}
+
+function removeFavoriteAndUpdate(hutId) {
+    FavoritesManager.remove(hutId);
+    updateAllFavoriteCounts();
+    renderFavoritesList();
+    showToast('Removed from favorites');
+}
+
+function updateAllFavoriteCounts() {
+    const count = FavoritesManager.count();
+    const badge1 = document.getElementById('fav-badge');
+    const badge2 = document.getElementById('fav-badge-2');
+    const mainCount = document.getElementById('favorites-count-main');
+    
+    if (badge1) badge1.textContent = count;
+    if (badge2) badge2.textContent = count;
+    if (mainCount) mainCount.textContent = count;
+}
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -13,6 +127,7 @@ let fuse = null;
 document.addEventListener('DOMContentLoaded', function() {
     initializeMap();
     loadHutsData();
+    updateAllFavoriteCounts();
 });
 
 function initializeMap() {
@@ -681,7 +796,8 @@ const FavoritesManager = {
                         FavoritesManager.save(merged);
                         const added = merged.length - FavoritesManager.count();
                         showToast(`✅ Imported! ${added} new favorites`);
-                        updateFavoritesCount();
+                        updateAllFavoriteCounts();
+                        renderFavoritesList();
                     }
                 } catch (err) {
                     alert(`❌ Error: ${err.message}`);
@@ -723,12 +839,8 @@ const FavoritesManager = {
 };
 
 function initializeFavorites() {
-    updateFavoritesCount();
-}
-
-function updateFavoritesCount() {
-    const count = FavoritesManager.count();
-    document.getElementById('favorites-count').textContent = count;
+    updateAllFavoriteCounts();
+    renderFavoritesList();
 }
 
 function toggleFavorite(hutId) {
@@ -740,7 +852,8 @@ function toggleFavorite(hutId) {
         btn.innerHTML = nowFavorite ? '⭐ Saved to Favorites' : '☆ Add to Favorites';
     }
     
-    updateFavoritesCount();
+    updateAllFavoriteCounts();
+    renderFavoritesList();
     showToast(nowFavorite ? '⭐ Added to favorites!' : 'Removed from favorites');
 }
 
