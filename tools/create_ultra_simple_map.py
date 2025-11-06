@@ -1561,12 +1561,12 @@ def create_simple_map():
                         <div style="background: white; padding: 10px; border-radius: 6px; text-align: center;">
                             <div style="font-size: 24px; font-weight: 700; color: #2563eb;" id="stats-total-visible">0</div>
                             <div style="font-size: 11px; color: #64748b; font-weight: 600;">HUTS VISIBLE</div>
-                        </div>
+            </div>
                         <div style="background: white; padding: 10px; border-radius: 6px; text-align: center;">
                             <div style="font-size: 24px; font-weight: 700; color: #16a34a;" id="stats-with-contact">0</div>
                             <div style="font-size: 11px; color: #64748b; font-weight: 600;">WITH CONTACT</div>
-                        </div>
-                    </div>
+        </div>
+    </div>
                     <div style="background: white; padding: 12px; border-radius: 6px; font-size: 12px; color: #475569;">
                         <div style="margin-bottom: 8px;"><strong>Altitude:</strong> <span id="stats-alt-range">N/A</span></div>
                         <div style="margin-bottom: 8px;"><strong>Average:</strong> <span id="stats-avg-altitude">N/A</span></div>
@@ -1611,7 +1611,7 @@ def create_simple_map():
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }}),
             'topo': L.tileLayer('https://{{s}}.tile.opentopomap.org/{{z}}/{{x}}/{{y}}.png', {{
-                maxZoom: 17,
+            maxZoom: 17,
                 attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
             }}),
             'cyclosm': L.tileLayer('https://{{s}}.tile-cyclosm.openstreetmap.fr/cyclosm/{{z}}/{{x}}/{{y}}.png', {{
@@ -1619,7 +1619,7 @@ def create_simple_map():
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Tiles style by <a href="https://www.cyclosm.org">CyclOSM</a>'
             }}),
             'humanitarian': L.tileLayer('https://{{s}}.tile.openstreetmap.fr/hot/{{z}}/{{x}}/{{y}}.png', {{
-                maxZoom: 19,
+            maxZoom: 19,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Tiles style by <a href="https://www.hotosm.org/">Humanitarian OpenStreetMap Team</a>'
             }}),
             'relief': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{{z}}/{{y}}/{{x}}', {{
@@ -1631,8 +1631,8 @@ def create_simple_map():
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             }}),
             'satellite': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{{z}}/{{y}}/{{x}}', {{
-                maxZoom: 19,
-                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
             }})
         }};
         
@@ -1823,10 +1823,10 @@ def create_simple_map():
             // Compact badges in one line
             var headerBadges = [];
             if (hut.altitude && hut.altitude !== 'N/A') {{
-                headerBadges.push('<span style="font-size: 11px; font-weight: 600;">🏔️ ' + escapeHtml(String(hut.altitude)) + 'm</span>');
+                headerBadges.push('<span style="font-size: 11px; font-weight: 600;">\\uD83C\\uDFD4\\uFE0F ' + escapeHtml(String(hut.altitude)) + 'm</span>');
             }}
             if (hut.country && hut.country !== 'N/A') {{
-                headerBadges.push('<span style="font-size: 11px; font-weight: 600;">🌍 ' + escapeHtml(hut.country) + '</span>');
+                headerBadges.push('<span style="font-size: 11px; font-weight: 600;">\\uD83C\\uDF0D ' + escapeHtml(hut.country) + '</span>');
             }}
             if (headerBadges.length > 0) {{
                 popupParts.push('<div style="opacity: 0.9; display: flex; gap: 10px;">' + headerBadges.join(' • ') + '</div>');
@@ -1839,7 +1839,7 @@ def create_simple_map():
             // Compact type and capacity
             var infoItems = [];
             if (hut.type && hut.type !== 'N/A') {{
-                infoItems.push('<div style="display: flex; align-items: center; padding: 6px 10px; background: #f8fafc; border-radius: 6px; margin-bottom: 6px;"><span style="font-size: 16px; margin-right: 8px;">🏠</span><div style="flex: 1;"><div style="font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 600;">Type</div><div style="font-size: 12px; color: #1e293b; font-weight: 600;">' + escapeHtml(hut.type) + '</div></div></div>');
+                infoItems.push('<div style="display: flex; align-items: center; padding: 6px 10px; background: #f8fafc; border-radius: 6px; margin-bottom: 6px;"><span style="font-size: 16px; margin-right: 8px;">\\uD83C\\uDFE0</span><div style="flex: 1;"><div style="font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 600;">Type</div><div style="font-size: 12px; color: #1e293b; font-weight: 600;">' + escapeHtml(hut.type) + '</div></div></div>');
             }}
             
             if (hut.capacity && hut.capacity !== 'N/A' && hut.capacity !== '') {{
@@ -1872,10 +1872,10 @@ def create_simple_map():
             // Compact management info
             if ((hut.owner && hut.owner !== 'N/A' && hut.owner !== '') || (hut.manager && hut.manager !== 'N/A' && hut.manager !== '')) {{
                 popupParts.push('<div style="margin: 8px 0; padding: 8px; background: #fef3c7; border-left: 2px solid #f59e0b; border-radius: 4px; font-size: 11px;">');
-                if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
+            if (hut.owner && hut.owner !== 'N/A' && hut.owner !== '') {{
                     popupParts.push('<div style="margin-bottom: 3px; color: #92400e;"><strong>Owner:</strong> ' + escapeHtml(hut.owner) + '</div>');
-                }}
-                if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
+            }}
+            if (hut.manager && hut.manager !== 'N/A' && hut.manager !== '') {{
                     popupParts.push('<div style="color: #92400e;"><strong>Manager:</strong> ' + escapeHtml(hut.manager) + '</div>');
                 }}
                 popupParts.push('</div>');
@@ -2043,7 +2043,7 @@ def create_simple_map():
                     return true;
                 }} catch(e) {{
                     console.error('Error saving favorites:', e);
-                    alert('⚠️ Could not save. Browser storage may be full or disabled.');
+                    alert('\\u26A0\\uFE0F Could not save. Browser storage may be full or disabled.');
                     return false;
                 }}
             }},
@@ -2082,7 +2082,7 @@ def create_simple_map():
                 if (confirm('Remove all ' + this.count() + ' favorites?\\n\\nThis cannot be undone.')) {{
                     localStorage.removeItem(this.storageKey);
                     updateFavoritesCount();
-                    showToast('🗑️ All favorites cleared');
+                    showToast('\\uD83D\\uDDD1\\uFE0F All favorites cleared');
                     return true;
                 }}
                 return false;
@@ -2091,7 +2091,7 @@ def create_simple_map():
             exportJSON: function() {{
                 var favoriteIds = this.getAll();
                 if (favoriteIds.length === 0) {{
-                    alert('❌ No favorites to export!\\n\\nClick ⭐ on huts to add them to favorites first.');
+                    alert('\\u274C No favorites to export!\\n\\nClick \\u2B50 on huts to add them to favorites first.');
                     return;
                 }}
                 
@@ -2131,7 +2131,7 @@ def create_simple_map():
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                showToast('📥 Exported ' + favoriteHuts.length + ' favorites!');
+                showToast('\\uD83D\\uDCE5 Exported ' + favoriteHuts.length + ' favorites!');
             }},
             
             importJSON: function() {{
@@ -2149,7 +2149,7 @@ def create_simple_map():
                         try {{
                             var imported = JSON.parse(e.target.result);
                             if (!imported.favorites || !Array.isArray(imported.favorites)) {{
-                                alert('❌ Invalid file format!');
+                                alert('\\u274C Invalid file format!');
                                 return;
                             }}
                             
@@ -2169,10 +2169,10 @@ def create_simple_map():
                             
                             FavoritesManager.save(merged);
                             var added = merged.length - currentCount;
-                            showToast('✅ Imported! ' + added + ' new favorites');
+                            showToast('\\u2705 Imported! ' + added + ' new favorites');
                             updateFavoritesCount();
                         }} catch (err) {{
-                            alert('❌ Error: ' + err.message);
+                            alert('\\u274C Error: ' + err.message);
                         }}
                     }};
                     reader.readAsText(file);
@@ -2185,7 +2185,7 @@ def create_simple_map():
             
             exportGPX: function() {{
                 var favoriteIds = this.getAll();
-                if (favoriteIds.length === 0) {{ alert('❌ No favorites!'); return; }}
+                if (favoriteIds.length === 0) {{ alert('\\u274C No favorites!'); return; }}
                 var favoriteHuts = huts.filter(function(hut) {{ return favoriteIds.includes(hut.lat + '_' + hut.lon); }});
                 var gpx = '<?xml version="1.0" encoding="UTF-8"?>\\n<gpx version="1.1" creator="LostInTheAlps">\\n<metadata><name>Favorite Huts</name></metadata>\\n';
                 favoriteHuts.forEach(function(hut) {{
@@ -2201,7 +2201,7 @@ def create_simple_map():
                 a.download = 'favorite_huts.gpx';
                 a.click();
                 URL.revokeObjectURL(url);
-                showToast('📥 Exported to GPX!');
+                showToast('\\uD83D\\uDCE5 Exported to GPX!');
             }}
         }};
         
@@ -2219,14 +2219,14 @@ def create_simple_map():
         }}
         function showFavoritesOnly() {{
             var favIds = FavoritesManager.getAll();
-            if (favIds.length === 0) {{ showToast('❌ No favorites yet!'); return; }}
+            if (favIds.length === 0) {{ showToast('\\u274C No favorites yet!'); return; }}
             var cnt = 0;
             markers.forEach(function(m) {{
                 var id = getHutId(m.hutData);
                 if (favIds.includes(id)) {{ if (!markerCluster.hasLayer(m)) markerCluster.addLayer(m); cnt++; }} else {{ markerCluster.removeLayer(m); }}
             }});
             updateStats();
-            showToast('⭐ Showing ' + cnt + ' favorites');
+            showToast('\\u2B50 Showing ' + cnt + ' favorites');
         }}
         function showAllHutsReset() {{
             markers.forEach(function(m) {{ if (!markerCluster.hasLayer(m)) markerCluster.addLayer(m); }});
@@ -2245,13 +2245,13 @@ def create_simple_map():
             // Header badges
             content.push('<div style="margin-bottom: 20px;">');
             if (hut.altitude && hut.altitude !== 'N/A') {{
-                content.push('<span class="detail-badge"><span class="badge-icon">🏔️</span>' + escapeHtml(String(hut.altitude)) + ' m</span>');
+                content.push('<span class="detail-badge"><span class="badge-icon">\\uD83C\\uDFD4\\uFE0F</span>' + escapeHtml(String(hut.altitude)) + ' m</span>');
             }}
             if (hut.country && hut.country !== 'N/A') {{
-                content.push('<span class="detail-badge"><span class="badge-icon">🌍</span>' + escapeHtml(hut.country) + '</span>');
+                content.push('<span class="detail-badge"><span class="badge-icon">\\uD83C\\uDF0D</span>' + escapeHtml(hut.country) + '</span>');
             }}
             if (hut.type && hut.type !== 'N/A') {{
-                content.push('<span class="detail-badge"><span class="badge-icon">🏠</span>' + escapeHtml(hut.type) + '</span>');
+                content.push('<span class="detail-badge"><span class="badge-icon">\\uD83C\\uDFE0</span>' + escapeHtml(hut.type) + '</span>');
             }}
             content.push('</div>');
             
@@ -2288,18 +2288,18 @@ def create_simple_map():
             var hutId = getHutId(hut);
             var isFavorite = FavoritesManager.has(hutId);
             content.push('<div class="detail-section">');
-            content.push('<h3>⭐ Save for Later</h3>');
+            content.push('<h3>\\u2B50 Save for Later</h3>');
             content.push('<button class="favorite-btn ' + (isFavorite ? 'favorited' : '') + '" id="fav-btn-' + hutId.replace('.', '-') + '" ');
             content.push('onclick="(function(){{');
             content.push('  FavoritesManager.toggle(\\''+hutId+'\');');
             content.push('  var btn=document.getElementById(\\'fav-btn-'+hutId.replace('.', '-')+'\');');
             content.push('  var nowFav=FavoritesManager.has(\\''+hutId+'\');');
             content.push('  btn.className=\\'favorite-btn \\'+(nowFav?\\'favorited\\':\\'\\');');
-            content.push('  btn.innerHTML=nowFav?\\'⭐ Saved to Favorites\\':\\'☆ Add to Favorites\\';');
+            content.push('  btn.innerHTML=nowFav?\\'\\\\u2B50 Saved to Favorites\\':\\'\\\\u2606 Add to Favorites\\';');
             content.push('  updateFavoritesCount();');
-            content.push('  showToast(nowFav?\\'⭐ Added to favorites!\\':\\'Removed from favorites\\');');
+            content.push('  showToast(nowFav?\\'\\\\u2B50 Added to favorites!\\':\\'Removed from favorites\\');');
             content.push('}})()" style="cursor: pointer;">');
-            content.push(isFavorite ? '⭐ Saved to Favorites' : '☆ Add to Favorites');
+            content.push(isFavorite ? '\\u2B50 Saved to Favorites' : '\\u2606 Add to Favorites');
             content.push('</button>');
             content.push('</div>');
             
@@ -2733,7 +2733,7 @@ def create_simple_map():
                 // Search filter with fuzzy matching
                 if (searchText && searchMatches.size > 0) {{
                     if (!searchMatches.has(hut.name)) {{
-                        show = false;
+                    show = false;
                     }}
                 }}
                 
@@ -3023,8 +3023,8 @@ def create_simple_map():
                         html += '<div class="search-result-item" data-lat="' + hut.lat + '" data-lon="' + hut.lon + '">';
                         html += '<div class="search-result-name">' + escapeHtml(hut.name) + '</div>';
                         html += '<div class="search-result-meta">';
-                        if (hut.country && hut.country !== 'N/A') html += '🌍 ' + escapeHtml(hut.country) + ' • ';
-                        if (hut.altitude && hut.altitude !== 'N/A') html += '🏔️ ' + escapeHtml(String(hut.altitude)) + 'm • ';
+                        if (hut.country && hut.country !== 'N/A') html += '\\uD83C\\uDF0D ' + escapeHtml(hut.country) + ' • ';
+                        if (hut.altitude && hut.altitude !== 'N/A') html += '\\uD83C\\uDFD4\\uFE0F ' + escapeHtml(String(hut.altitude)) + 'm • ';
                         html += escapeHtml(hut.source);
                         html += '</div>';
                         html += '</div>';
