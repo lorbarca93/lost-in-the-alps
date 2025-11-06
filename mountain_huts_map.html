@@ -12,7 +12,12 @@
     <!-- Fuse.js for fuzzy search -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body { 
             margin: 0; 
             padding: 0; 
@@ -20,6 +25,14 @@
             background: #f5f5f5;
             display: flex;
             overflow: hidden;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            -webkit-touch-callout: none;
+        }
+        
+        /* Allow text selection in important areas */
+        .sidebar-content, .leaflet-popup-content {
+            -webkit-user-select: text;
+            user-select: text;
         }
         
         /* Left Sidebar */
@@ -552,32 +565,44 @@
             font-size: 15px;
         }
         
-        /* Toggle Button for Mobile */
-        .toggle-panel {
+        /* Mobile Menu Button - Prominent and Always Visible */
+        .mobile-menu-btn {
             display: none;
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: white;
-            border: none;
-            padding: 14px 18px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            top: 16px;
+            left: 16px;
+            z-index: 10001;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 3px solid white;
+            padding: 12px 18px;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.4);
             cursor: pointer;
-            font-size: 20px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            color: #1e293b;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            min-width: 60px;
+            min-height: 52px;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
         
-        .toggle-panel:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
         }
         
-        .toggle-panel:active {
-            transform: scale(0.98);
+        .mobile-menu-btn .menu-icon {
+            font-size: 26px;
+            line-height: 1;
+        }
+        
+        .mobile-menu-btn .menu-text {
+            font-size: 13px;
+            font-weight: 700;
         }
         
         /* Tablet Optimization */
@@ -593,28 +618,33 @@
             }
         }
         
-        /* Mobile Optimization */
+        /* Mobile Optimization - Touch-Friendly */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
                 overflow: auto;
             }
             
+            /* Show prominent menu button */
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
             .sidebar {
                 position: fixed;
                 width: 100%;
                 height: auto;
-                max-height: 70vh;
+                max-height: 85vh;
                 bottom: 0;
                 top: auto;
                 left: 0;
                 right: 0;
-                transform: translateY(calc(100% - 60px));
-                transition: transform 0.3s ease;
-                box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+                transform: translateY(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 -8px 32px rgba(0,0,0,0.3);
                 border-right: none;
-                border-top: 3px solid #334155;
-                z-index: 9999;
+                border-top: 4px solid #334155;
+                z-index: 10000;
             }
             
             .sidebar.open {
@@ -622,27 +652,42 @@
             }
             
             .sidebar-header {
-                padding: 16px 20px;
+                padding: 20px;
                 cursor: pointer;
                 position: relative;
+                min-height: 56px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .sidebar-header::before {
+                content: '☰';
+                position: absolute;
+                left: 20px;
+                font-size: 28px;
+                font-weight: 700;
+                opacity: 0.9;
             }
             
             .sidebar-header::after {
-                content: '▼';
+                content: 'Tap to open filters';
                 position: absolute;
                 right: 20px;
                 top: 50%;
                 transform: translateY(-50%);
-                font-size: 20px;
-                transition: transform 0.3s ease;
+                font-size: 13px;
+                opacity: 0.8;
+                font-weight: 600;
+                transition: opacity 0.3s ease;
             }
             
             .sidebar.open .sidebar-header::after {
-                transform: translateY(-50%) rotate(180deg);
+                content: 'Tap to close';
             }
             
             .sidebar-header h1 {
-                font-size: 18px;
+                font-size: 20px;
+                margin-left: 40px;
             }
             
             .sidebar-header p {
@@ -651,8 +696,9 @@
             
             .sidebar-content {
                 padding: 20px;
-                max-height: calc(70vh - 60px);
+                max-height: calc(85vh - 100px);
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
             
             #map {
@@ -666,8 +712,33 @@
                 z-index: 1;
             }
             
-            .toggle-panel {
-                display: block;
+            /* Touch-friendly buttons - larger targets */
+            .btn {
+                min-height: 48px;
+                font-size: 15px;
+                padding: 14px 20px;
+            }
+            
+            .checkbox-list label {
+                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+            }
+            
+            /* Larger sliders for touch */
+            input[type="range"]::-webkit-slider-thumb {
+                width: 28px;
+                height: 28px;
+            }
+            
+            input[type="range"]::-moz-range-thumb {
+                width: 28px;
+                height: 28px;
             }
             
             .filter-section {
@@ -690,30 +761,168 @@
                 margin-top: 20px;
                 border-top: 2px solid #e2e8f0;
             }
-        }
-        
-        /* Small Mobile Phones */
-        @media (max-width: 480px) {
-            .sidebar {
-                max-height: 80vh;
+            
+            /* Touch-friendly search box */
+            .search-box {
+                font-size: 16px;
+                padding: 14px 42px;
+                min-height: 48px;
             }
             
-            .sidebar-header h1 {
+            .search-icon {
+                left: 16px;
+                font-size: 18px;
+            }
+            
+            .search-clear {
+                right: 14px;
+                width: 28px;
+                height: 28px;
                 font-size: 16px;
             }
             
-            .filter-section h3 {
+            .search-results {
+                max-height: 40vh;
+                font-size: 15px;
+            }
+            
+            .search-result-item {
+                padding: 14px 16px;
+                min-height: 56px;
+            }
+            
+            .search-result-name {
+                font-size: 15px;
+            }
+            
+            .search-result-meta {
                 font-size: 13px;
             }
             
+            /* Stats mini - more compact on mobile */
+            .stats-mini {
+                padding: 10px;
+                margin-top: 10px;
+            }
+            
+            .stats-mini-value {
+                font-size: 18px;
+            }
+            
+            .stats-mini-label {
+                font-size: 11px;
+            }
+            
+            /* Popup improvements for mobile */
+            .leaflet-popup-content-wrapper {
+                max-width: calc(100vw - 40px) !important;
+            }
+            
+            .custom-popup {
+                font-size: 13px !important;
+            }
+        }
+        
+        /* Small Mobile Phones - Extra Touch Optimization */
+        @media (max-width: 480px) {
+            .sidebar {
+                max-height: 90vh;
+            }
+            
+            .mobile-menu-btn {
+                top: 12px;
+                left: 12px;
+                padding: 10px 14px;
+                min-width: 54px;
+                min-height: 48px;
+            }
+            
+            .mobile-menu-btn .menu-icon {
+                font-size: 24px;
+            }
+            
+            .mobile-menu-btn .menu-text {
+                font-size: 12px;
+            }
+            
+            .sidebar-header {
+                padding: 16px 18px;
+                min-height: 52px;
+            }
+            
+            .sidebar-header h1 {
+                font-size: 18px;
+                margin-left: 36px;
+            }
+            
+            .sidebar-content {
+                padding: 16px;
+                max-height: calc(90vh - 90px);
+            }
+            
+            .filter-section h3 {
+                font-size: 14px;
+            }
+            
             .btn {
-                padding: 10px 16px;
-                font-size: 13px;
+                padding: 12px 16px;
+                font-size: 14px;
+                min-height: 48px;
+            }
+            
+            .search-box {
+                font-size: 16px;
+            }
+            
+            /* Larger cluster markers for touch */
+            .marker-cluster {
+                width: 48px !important;
+                height: 48px !important;
+                margin-left: -24px !important;
+                margin-top: -24px !important;
+            }
+            
+            .marker-cluster div {
+                width: 44px !important;
+                height: 44px !important;
+                margin-left: 2px !important;
+                margin-top: 2px !important;
+                font-size: 16px !important;
+            }
+            
+            .marker-cluster-small {
+                background-color: rgba(181, 226, 140, 0.7) !important;
+            }
+            
+            .marker-cluster-small div {
+                background-color: rgba(110, 204, 57, 0.7) !important;
+            }
+            
+            .marker-cluster-medium {
+                background-color: rgba(241, 211, 87, 0.7) !important;
+            }
+            
+            .marker-cluster-medium div {
+                background-color: rgba(240, 194, 12, 0.7) !important;
+            }
+            
+            .marker-cluster-large {
+                background-color: rgba(253, 156, 115, 0.7) !important;
+            }
+            
+            .marker-cluster-large div {
+                background-color: rgba(241, 128, 23, 0.7) !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Button - Visible on mobile only -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open filters menu">
+        <span class="menu-icon">☰</span>
+        <span class="menu-text">Filters</span>
+    </button>
+    
     <div class="sidebar">
         <div class="sidebar-header">
             <h1>🏔️ Mountain Huts Explorer</h1>
@@ -1089,21 +1298,23 @@
             alert('Exported ' + visibleHuts.length + ' huts to KML file!\n\nNote: KML format is used (KMZ is KML + ZIP). You can convert to KMZ using Google Earth.');
         }
         
-        // Store markers and create marker cluster group with performance optimizations
+        // Store markers and create marker cluster group with mobile-optimized settings
         var markers = [];
+        var isMobileDevice = window.innerWidth <= 768;
+        
         var markerCluster = L.markerClusterGroup({
-            maxClusterRadius: 50,
+            maxClusterRadius: isMobileDevice ? 70 : 50,  // Larger clusters on mobile
             spiderfyOnMaxZoom: true,
-            showCoverageOnHover: false,
+            showCoverageOnHover: !isMobileDevice,  // Disable hover on mobile
             zoomToBoundsOnClick: true,
-            disableClusteringAtZoom: 13,
+            disableClusteringAtZoom: isMobileDevice ? 14 : 13,  // Decluster earlier on mobile
             chunkedLoading: true,
-            chunkInterval: 200,  // Process 200 markers at a time
-            chunkDelay: 50,      // 50ms between chunks
-            removeOutsideVisibleBounds: true,  // Remove markers outside view for better performance
-            animate: true,
-            animateAddingMarkers: false,  // Disable animation for faster initial load
-            spiderfyDistanceMultiplier: 1.5
+            chunkInterval: 200,
+            chunkDelay: 50,
+            removeOutsideVisibleBounds: true,
+            animate: !isMobileDevice,  // Disable animations on mobile for performance
+            animateAddingMarkers: false,
+            spiderfyDistanceMultiplier: isMobileDevice ? 2.0 : 1.5  // More spacing on mobile
         });
         
         map.addLayer(markerCluster);
@@ -1246,20 +1457,29 @@
             
             var popup = popupParts.join('');
             
+            // Responsive marker size - larger on mobile for touch
+            var isMobile = window.innerWidth <= 768;
+            var baseRadius = isMobile ? 8 : 4;  // Double size on mobile
+            var hoverRadius = isMobile ? 12 : 6;
+            
             var marker = L.circleMarker([hut.lat, hut.lon], {
-                radius: 4,
+                radius: baseRadius,
                 fillColor: hut.color,
                 color: '#ffffff',
-                weight: 1,
+                weight: isMobile ? 2 : 1,
                 opacity: 0.8,
                 fillOpacity: 0.9
             });
             
-            // Minimal hover effects
+            // Store sizes for hover effects
+            marker._baseRadius = baseRadius;
+            marker._hoverRadius = hoverRadius;
+            
+            // Touch and hover effects
             marker.on('mouseover', function(e) {
                 this.setStyle({
-                    radius: 6,
-                    weight: 2,
+                    radius: this._hoverRadius,
+                    weight: isMobile ? 3 : 2,
                     fillOpacity: 1,
                     opacity: 1
                 });
@@ -1267,18 +1487,41 @@
             
             marker.on('mouseout', function(e) {
                 this.setStyle({
-                    radius: 4,
-                    weight: 1,
+                    radius: this._baseRadius,
+                    weight: isMobile ? 2 : 1,
                     fillOpacity: 0.9,
                     opacity: 0.8
                 });
             });
             
-            marker.bindPopup(popup, {
-                maxWidth: 400,  // Allows popup to breathe
-                minWidth: 260,
-                className: 'custom-popup'
-            });
+            // Mobile touch feedback
+            if (isMobile) {
+                marker.on('click', function(e) {
+                    // Provide visual feedback on tap
+                    this.setStyle({
+                        radius: this._hoverRadius + 2,
+                        weight: 3,
+                        fillOpacity: 1
+                    });
+                    setTimeout(() => {
+                        this.setStyle({
+                            radius: this._hoverRadius,
+                            weight: 3
+                        });
+                    }, 100);
+                });
+            }
+            
+            // Responsive popup sizing
+            var popupOptions = {
+                maxWidth: isMobile ? window.innerWidth - 40 : 400,
+                minWidth: isMobile ? Math.min(280, window.innerWidth - 40) : 260,
+                className: 'custom-popup',
+                autoPanPadding: isMobile ? [20, 100] : [5, 5],  // Extra padding on mobile for sidebar
+                keepInView: true
+            };
+            
+            marker.bindPopup(popup, popupOptions);
             
             // When popup opens, load weather and nearby huts
             marker.on('popupopen', function() {
@@ -1890,11 +2133,27 @@
         updateStats();
         console.log('Map ready with ' + markers.length + ' markers!');
         
-        // Mobile sidebar toggle
+        // Mobile menu handling - Touch-friendly
         var sidebar = document.querySelector('.sidebar');
         var sidebarHeader = document.querySelector('.sidebar-header');
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
         
-        // Toggle sidebar on header click (mobile only)
+        // Mobile menu button click
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('open');
+                // Update button text
+                var menuText = this.querySelector('.menu-text');
+                if (sidebar.classList.contains('open')) {
+                    menuText.textContent = 'Close';
+                } else {
+                    menuText.textContent = 'Filters';
+                }
+            });
+        }
+        
+        // Sidebar header click (additional way to toggle)
         if (sidebarHeader) {
             sidebarHeader.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
@@ -1907,15 +2166,62 @@
         map.on('click', function() {
             if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
                 sidebar.classList.remove('open');
+                if (mobileMenuBtn) {
+                    var menuText = mobileMenuBtn.querySelector('.menu-text');
+                    if (menuText) menuText.textContent = 'Filters';
+                }
             }
         });
         
-        // Handle window resize
+        // Handle window resize and orientation change
+        var resizeTimeout;
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                sidebar.classList.remove('open');
-                sidebar.style.transform = '';
-            }
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                var newIsMobile = window.innerWidth <= 768;
+                var oldIsMobile = isMobileDevice;
+                isMobileDevice = newIsMobile;
+                
+                // Close sidebar on desktop
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('open');
+                    if (mobileMenuBtn) {
+                        var menuText = mobileMenuBtn.querySelector('.menu-text');
+                        if (menuText) menuText.textContent = 'Filters';
+                    }
+                }
+                
+                // Update marker sizes if mobile state changed
+                if (newIsMobile !== oldIsMobile) {
+                    var newBaseRadius = newIsMobile ? 8 : 4;
+                    var newHoverRadius = newIsMobile ? 12 : 6;
+                    var newWeight = newIsMobile ? 2 : 1;
+                    
+                    markers.forEach(function(marker) {
+                        marker._baseRadius = newBaseRadius;
+                        marker._hoverRadius = newHoverRadius;
+                        marker.setStyle({
+                            radius: newBaseRadius,
+                            weight: newWeight
+                        });
+                    });
+                }
+                
+                // Invalidate map size
+                map.invalidateSize();
+            }, 250);
+        });
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                map.invalidateSize();
+                // Re-detect mobile after orientation change
+                var nowMobile = window.innerWidth <= 768;
+                if (nowMobile !== isMobileDevice) {
+                    location.reload();  // Reload to re-initialize markers with correct sizes
+                }
+            }, 100);
         });
         
         } // End of initializeMap function
