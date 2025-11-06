@@ -1143,25 +1143,4 @@ if (window.innerWidth <= 768) {
 // PRESET FILTERS
 // ============================================================================
 
-function applyPreset(preset) {
-    resetFilters();
-    
-    switch(preset) {
-        case 'high-altitude':
-            document.getElementById('min-altitude').value = 2000;
-            updateAltitudeRange();
-            break;
-        case 'large-capacity':
-            document.getElementById('min-capacity').value = 20;
-            break;
-        case 'with-contact':
-            document.getElementById('filter-has-website').checked = true;
-            break;
-        case 'open-now':
-            document.getElementById('filter-has-hours').checked = true;
-            break;
-    }
-    
-    applyFilters();
-}
 
