@@ -172,7 +172,7 @@ function initializeMap() {
     };
     
     // Add default layer
-    let currentLayer = layers['relief'];
+    let currentLayer = layers['topo'];
     currentLayer.addTo(map);
     
     // Layer switching
