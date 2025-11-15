@@ -169,25 +169,7 @@ function initializeSidebarToggle() {
     toggleSidebar();
   });
 
-  // Mobile hamburger menu button
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener("click", function () {
-      // Toggle sidebar visibility
-      const currentSidebar =
-        filterSidebar.style.display !== "none"
-          ? filterSidebar
-          : favoritesSidebar;
-      const isOpen = currentSidebar.classList.contains("open");
-
-      if (isOpen) {
-        currentSidebar.classList.remove("open");
-        mobileMenuBtn.classList.remove("active");
-      } else {
-        currentSidebar.classList.add("open");
-        mobileMenuBtn.classList.add("active");
-      }
-    });
-  }
+  // Mobile hamburger menu button - handled separately below to avoid conflicts
 
   // Mobile touch gestures for sidebar
   if (window.innerWidth <= 768) {
@@ -690,6 +672,11 @@ function initializeHuts(huts) {
   // Initialize filters
   initializeFilters();
   updateStats();
+
+  // Setup mobile map click handler after map is ready
+  if (typeof setupMobileMapClickHandler === 'function') {
+    setupMobileMapClickHandler();
+  }
 
   // Hide loading skeleton after markers are added
   const skeleton = document.getElementById("loading-skeleton");
@@ -1976,26 +1963,80 @@ function exportKML() {
 // MOBILE SUPPORT
 // ============================================================================
 
-// Mobile menu toggle
-document
-  .getElementById("mobile-menu-btn")
-  ?.addEventListener("click", function () {
-    const sidebar = document.querySelector(".sidebar");
-    sidebar.classList.toggle("open");
-    this.querySelector(".menu-text").textContent = sidebar.classList.contains(
-      "open"
-    )
-      ? "Close"
-      : "Filters";
-  });
+// Mobile menu toggle - initialize after DOM is ready
+function initializeMobileMenu() {
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  if (!mobileMenuBtn) {
+    console.warn("Mobile menu button not found");
+    return;
+  }
 
-// Close sidebar on map tap (mobile)
-if (window.innerWidth <= 768) {
-  map.on("click", function () {
-    document.querySelector(".sidebar")?.classList.remove("open");
-    document.getElementById("detail-sidebar")?.classList.remove("open");
+  mobileMenuBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent map click event
+    
+    try {
+      const sidebar = document.getElementById("filter-sidebar");
+      if (sidebar) {
+        const isOpen = sidebar.classList.contains("open");
+        if (isOpen) {
+          sidebar.classList.remove("open");
+          mobileMenuBtn.classList.remove("active");
+        } else {
+          sidebar.classList.add("open");
+          mobileMenuBtn.classList.add("active");
+        }
+      }
+    } catch (error) {
+      console.error("Error toggling mobile menu:", error);
+    }
   });
 }
+
+// Initialize mobile menu when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeMobileMenu);
+} else {
+  initializeMobileMenu();
+}
+
+// Close sidebar on map tap (mobile) - setup after map is initialized
+function setupMobileMapClickHandler() {
+  try {
+    if (typeof map !== 'undefined' && map) {
+      // Remove existing handler if any
+      map.off('click', closeSidebarsOnMapClick);
+      // Add new handler
+      map.on('click', closeSidebarsOnMapClick);
+    } else {
+      // Retry after a short delay if map isn't ready yet
+      setTimeout(setupMobileMapClickHandler, 500);
+    }
+  } catch (error) {
+    console.error("Error setting up mobile map click handler:", error);
+  }
+}
+
+function closeSidebarsOnMapClick() {
+  try {
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById("filter-sidebar");
+      const mobileBtn = document.getElementById("mobile-menu-btn");
+      if (sidebar && sidebar.classList.contains("open")) {
+        sidebar.classList.remove("open");
+        if (mobileBtn) mobileBtn.classList.remove("active");
+      }
+      const detailSidebar = document.getElementById("detail-sidebar");
+      if (detailSidebar && detailSidebar.classList.contains("open")) {
+        detailSidebar.classList.remove("open");
+      }
+    }
+  } catch (error) {
+    console.error("Error closing sidebars on map click:", error);
+  }
+}
+
+// setupMobileMapClickHandler is called from initializeHuts after map is ready
 
 // ============================================================================
 // PRESET FILTERS
