@@ -1,0 +1,26 @@
+# Web interface git repository
+# Only track files needed for the website
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.backup
+*~
+
+# Keep data files (they're generated but needed for the site)
+# data/*.json - tracked
+
+# Ignore old/backup files
+mountain_huts_map.html
+
