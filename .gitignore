@@ -1,0 +1,65 @@
+# Ignore everything in root except web/ folder
+# The web/ folder has its own git repository
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Database
+*.db
+data/*.db
+!data/.gitkeep
+
+# Source code (keep local only)
+src/
+scripts/
+tools/
+
+# Debug files
+debug/
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*_old.*
+
+# Documentation (keep local)
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+
+# Configuration (keep local)
+config/
+
+# Tests (keep local)
+tests/
+
+# Generated files (keep local)
+mountain_huts_map.html
+# huts_data.json - now part of web deployment
+
+# Web folder - NOW TRACKED for GitHub Pages deployment
+# /web/

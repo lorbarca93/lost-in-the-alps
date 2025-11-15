@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-11-06T09:59:52.460470",
+  "database_path": "data\\mountain_huts.db",
+  "statistics": {
+    "db_size_mb": 12.0,
+    "total_huts": 7472,
+    "huts_with_coords": 7472,
+    "completeness": {
+      "name": {
+        "count": 7472,
+        "percentage": 100.0
+      },
+      "country": {
+        "count": 7472,
+        "percentage": 100.0
+      },
+      "hut_type": {
+        "count": 7472,
+        "percentage": 100.0
+      },
+      "altitude": {
+        "count": 7344,
+        "percentage": 98.3
+      },
+      "phone": {
+        "count": 3,
+        "percentage": 0.0
+      },
+      "email": {
+        "count": 712,
+        "percentage": 9.5
+      },
+      "website": {
+        "count": 1600,
+        "percentage": 21.4
+      },
+      "opening_hours": {
+        "count": 92,
+        "percentage": 1.2
+      },
+      "capacity": {
+        "count": 846,
+        "percentage": 11.3
+      },
+      "description": {
+        "count": 890,
+        "percentage": 11.9
+      },
+      "owner": {
+        "count": 1,
+        "percentage": 0.0
+      },
+      "manager": {
+        "count": 1,
+        "percentage": 0.0
+      }
+    },
+    "sources": {
+      "refuges.info": {
+        "count": 5250,
+        "percentage": 70.3
+      },
+      "boudy.info": {
+        "count": 889,
+        "percentage": 11.9
+      },
+      "mountainhuts.info": {
+        "count": 673,
+        "percentage": 9.0
+      },
+      "mountain-huts.net": {
+        "count": 660,
+        "percentage": 8.8
+      }
+    },
+    "top_countries": {
+      "France": 3535,
+      "Italy": 826,
+      "Switzerland": 654,
+      "Czech Republic": 445,
+      "Spain": 332,
+      "Slovenia": 262,
+      "Austria": 232,
+      "Croatia": 151,
+      "Bulgaria": 136,
+      "Slovakia": 133,
+      "Germany": 129,
+      "Poland": 111,
+      "Andorra": 84,
+      "Greece": 75,
+      "Bosnia and Herzegovina": 63
+    },
+    "indexes": [
+      "idx_country",
+      "idx_hut_type",
+      "idx_location",
+      "idx_name",
+      "idx_source",
+      "idx_source_source_id_unique",
+      "sqlite_autoindex_mountain_huts_1"
+    ]
+  },
+  "issues": [
+    "35 potential name duplicates"
+  ],
+  "fixes": []
+}

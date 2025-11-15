@@ -1,0 +1,1784 @@
+{
+  "inspection_metadata": {
+    "timestamp": "2025-11-15T10:03:29.370551",
+    "entries_inspected": 50,
+    "entries_with_issues": 50,
+    "entries_clean": 0,
+    "total_issues_found": 100,
+    "avg_issues_per_entry": 2.0
+  },
+  "issue_summary": {
+    "Critical Data Missing": 100,
+    "Coordinate Problems": 0,
+    "URL Issues": 0,
+    "Formatting Issues": 0,
+    "Data Quality": 0,
+    "Potential Duplicates": 0
+  },
+  "top_problematic_entries": [
+    {
+      "id": 1036,
+      "name": "Fritz-Pflaum-Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Fritz-Pflaum-Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.564166666667, 12.337222222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1152,
+      "name": "Württemberger Haus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Württemberger Haus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.210277777778, 10.535555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1082,
+      "name": "Lamsenjochhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Lamsenjochhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.38, 11.603611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1115,
+      "name": "Potsdamer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Potsdamer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.143055555556, 11.208611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1027,
+      "name": "Falkenhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Falkenhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.399722222222, 11.498888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1040,
+      "name": "Gepatschhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Gepatschhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.901666666667, 10.737777777778)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1127,
+      "name": "Sillianer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Sillianer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.705974, 12.406408)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1143,
+      "name": "Verpeilhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Verpeilhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.021111111111, 10.779166666667)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1086,
+      "name": "Leutkircher Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Leutkircher Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.163055555556, 10.285555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1091,
+      "name": "Martin-Busch-Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Martin-Busch-Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.801111111111, 10.886944444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    }
+  ],
+  "all_issues": [
+    {
+      "entry_id": 1036,
+      "entry_name": "Fritz-Pflaum-Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1036,
+      "entry_name": "Fritz-Pflaum-Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1152,
+      "entry_name": "Württemberger Haus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1152,
+      "entry_name": "Württemberger Haus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1082,
+      "entry_name": "Lamsenjochhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1082,
+      "entry_name": "Lamsenjochhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1115,
+      "entry_name": "Potsdamer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1115,
+      "entry_name": "Potsdamer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1027,
+      "entry_name": "Falkenhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1027,
+      "entry_name": "Falkenhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1040,
+      "entry_name": "Gepatschhaus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1040,
+      "entry_name": "Gepatschhaus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1127,
+      "entry_name": "Sillianer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1127,
+      "entry_name": "Sillianer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1143,
+      "entry_name": "Verpeilhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1143,
+      "entry_name": "Verpeilhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1086,
+      "entry_name": "Leutkircher Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1086,
+      "entry_name": "Leutkircher Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1091,
+      "entry_name": "Martin-Busch-Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1091,
+      "entry_name": "Martin-Busch-Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1092,
+      "entry_name": "Meißner Haus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1092,
+      "entry_name": "Meißner Haus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1085,
+      "entry_name": "Langtalereckhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1085,
+      "entry_name": "Langtalereckhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1098,
+      "entry_name": "Neue Bamberger Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1098,
+      "entry_name": "Neue Bamberger Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1062,
+      "entry_name": "Hohenzollernhaus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1062,
+      "entry_name": "Hohenzollernhaus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1146,
+      "entry_name": "Weidener Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1146,
+      "entry_name": "Weidener Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 991,
+      "entry_name": "Ackerlhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 991,
+      "entry_name": "Ackerlhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1004,
+      "entry_name": "Badener Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1004,
+      "entry_name": "Badener Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1042,
+      "entry_name": "Gernot-Röhr-Biwak",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1042,
+      "entry_name": "Gernot-Röhr-Biwak",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1147,
+      "entry_name": "Westfalenhaus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1147,
+      "entry_name": "Westfalenhaus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1065,
+      "entry_name": "Jamtalhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1065,
+      "entry_name": "Jamtalhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1096,
+      "entry_name": "Nauderer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1096,
+      "entry_name": "Nauderer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1001,
+      "entry_name": "Augsburger Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1001,
+      "entry_name": "Augsburger Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1131,
+      "entry_name": "Steinseehütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1131,
+      "entry_name": "Steinseehütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1112,
+      "entry_name": "Pforzheimerhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1112,
+      "entry_name": "Pforzheimerhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 999,
+      "entry_name": "Ascher Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 999,
+      "entry_name": "Ascher Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1142,
+      "entry_name": "Vernagthütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1142,
+      "entry_name": "Vernagthütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1006,
+      "entry_name": "Barmer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1006,
+      "entry_name": "Barmer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1048,
+      "entry_name": "Gruttenhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1048,
+      "entry_name": "Gruttenhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1116,
+      "entry_name": "Ramolhaus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1116,
+      "entry_name": "Ramolhaus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1106,
+      "entry_name": "Nürnberger Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1106,
+      "entry_name": "Nürnberger Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1151,
+      "entry_name": "Wolfratshauser Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1151,
+      "entry_name": "Wolfratshauser Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1097,
+      "entry_name": "Neue Alplhütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1097,
+      "entry_name": "Neue Alplhütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1068,
+      "entry_name": "Kalser Tauernhaus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1068,
+      "entry_name": "Kalser Tauernhaus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1108,
+      "entry_name": "Obstansersee Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1108,
+      "entry_name": "Obstansersee Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1005,
+      "entry_name": "Barmer Haus",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1005,
+      "entry_name": "Barmer Haus",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1011,
+      "entry_name": "Bochumer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1011,
+      "entry_name": "Bochumer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1083,
+      "entry_name": "Landsberger Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1083,
+      "entry_name": "Landsberger Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1030,
+      "entry_name": "Forchheimer Biwak",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1030,
+      "entry_name": "Forchheimer Biwak",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1113,
+      "entry_name": "Plauener Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1113,
+      "entry_name": "Plauener Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1034,
+      "entry_name": "Friedrichshafener Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1034,
+      "entry_name": "Friedrichshafener Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1139,
+      "entry_name": "Tannheimer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1139,
+      "entry_name": "Tannheimer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1088,
+      "entry_name": "Lizumer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1088,
+      "entry_name": "Lizumer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1119,
+      "entry_name": "Reuttener Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1119,
+      "entry_name": "Reuttener Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1057,
+      "entry_name": "Hexenseehütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1057,
+      "entry_name": "Hexenseehütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1047,
+      "entry_name": "Grünseehütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1047,
+      "entry_name": "Grünseehütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1041,
+      "entry_name": "Geraer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1041,
+      "entry_name": "Geraer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1043,
+      "entry_name": "Glorer Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1043,
+      "entry_name": "Glorer Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1014,
+      "entry_name": "Braunschweiger Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1014,
+      "entry_name": "Braunschweiger Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 997,
+      "entry_name": "Anton-Renk-Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 997,
+      "entry_name": "Anton-Renk-Hütte",
+      "issue": "Missing fields: description"
+    },
+    {
+      "entry_id": 1071,
+      "entry_name": "Karlsbader Hütte",
+      "issue": "Missing altitude"
+    },
+    {
+      "entry_id": 1071,
+      "entry_name": "Karlsbader Hütte",
+      "issue": "Missing fields: description"
+    }
+  ],
+  "detailed_inspections": [
+    {
+      "id": 1036,
+      "name": "Fritz-Pflaum-Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Fritz-Pflaum-Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.564166666667, 12.337222222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1152,
+      "name": "Württemberger Haus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Württemberger Haus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.210277777778, 10.535555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1082,
+      "name": "Lamsenjochhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Lamsenjochhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.38, 11.603611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1115,
+      "name": "Potsdamer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Potsdamer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.143055555556, 11.208611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1027,
+      "name": "Falkenhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Falkenhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.399722222222, 11.498888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1040,
+      "name": "Gepatschhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Gepatschhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.901666666667, 10.737777777778)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1127,
+      "name": "Sillianer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Sillianer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.705974, 12.406408)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1143,
+      "name": "Verpeilhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Verpeilhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.021111111111, 10.779166666667)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1086,
+      "name": "Leutkircher Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Leutkircher Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.163055555556, 10.285555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1091,
+      "name": "Martin-Busch-Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Martin-Busch-Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.801111111111, 10.886944444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1092,
+      "name": "Meißner Haus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Meißner Haus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.208333333333, 11.488333333333)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1085,
+      "name": "Langtalereckhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Langtalereckhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.828611111111, 10.991944444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1098,
+      "name": "Neue Bamberger Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Neue Bamberger Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.308888888889, 12.150555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1062,
+      "name": "Hohenzollernhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Hohenzollernhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.901944444444, 10.634722222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1146,
+      "name": "Weidener Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Weidener Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.223611111111, 11.708611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 991,
+      "name": "Ackerlhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Ackerlhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.54953, 12.349443)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1004,
+      "name": "Badener Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Badener Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.081062, 12.4256)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1042,
+      "name": "Gernot-Röhr-Biwak",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Gernot-Röhr-Biwak",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.999301, 12.732375)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1147,
+      "name": "Westfalenhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Westfalenhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.107777777778, 11.1)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1065,
+      "name": "Jamtalhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Jamtalhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.886388888889, 10.176388888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1096,
+      "name": "Nauderer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Nauderer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.878055555556, 10.548333333333)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1001,
+      "name": "Augsburger Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Augsburger Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.166388888889, 10.493611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1131,
+      "name": "Steinseehütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Steinseehütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.226122, 10.587251)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1112,
+      "name": "Pforzheimerhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Pforzheimerhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.154722222222, 11.0725)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 999,
+      "name": "Ascher Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Ascher Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.065833333333, 10.504722222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1142,
+      "name": "Vernagthütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Vernagthütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.853611111111, 10.823888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1006,
+      "name": "Barmer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Barmer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.917222222222, 12.168888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1048,
+      "name": "Gruttenhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Gruttenhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.553333333333, 12.311111111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1116,
+      "name": "Ramolhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Ramolhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.829444444444, 10.969722222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1106,
+      "name": "Nürnberger Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Nürnberger Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.993611111111, 11.217777777778)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1151,
+      "name": "Wolfratshauser Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Wolfratshauser Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.391111111111, 10.848611111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1097,
+      "name": "Neue Alplhütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Neue Alplhütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.341944444444, 11.017222222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1068,
+      "name": "Kalser Tauernhaus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Kalser Tauernhaus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.070833333333, 12.623888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1108,
+      "name": "Obstansersee Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Obstansersee Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.684367, 12.493746)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1005,
+      "name": "Barmer Haus",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Barmer Haus",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.916388888889, 12.331388888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1011,
+      "name": "Bochumer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Bochumer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.386666666667, 12.464722222222)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1083,
+      "name": "Landsberger Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Landsberger Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.444166666667, 10.514444444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1030,
+      "name": "Forchheimer Biwak",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Forchheimer Biwak",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.17, 10.826944444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1113,
+      "name": "Plauener Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Plauener Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.118333333333, 12.096111111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1034,
+      "name": "Friedrichshafener Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Friedrichshafener Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.994722222222, 10.215833333333)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1139,
+      "name": "Tannheimer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Tannheimer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.495555555556, 10.619444444444)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1088,
+      "name": "Lizumer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Lizumer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.16673, 11.640654)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1119,
+      "name": "Reuttener Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Reuttener Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.404859, 10.691013)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1057,
+      "name": "Hexenseehütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Hexenseehütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.018888888889, 10.481111111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1047,
+      "name": "Grünseehütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Grünseehütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.129884, 12.515402)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1041,
+      "name": "Geraer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Geraer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.043333333333, 11.628055555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1043,
+      "name": "Glorer Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Glorer Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.031111111111, 12.715555555556)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1014,
+      "name": "Braunschweiger Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Braunschweiger Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.935277777778, 10.909166666667)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 997,
+      "name": "Anton-Renk-Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Anton-Renk-Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(47.011111111111, 10.698888888889)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    },
+    {
+      "id": 1071,
+      "name": "Karlsbader Hütte",
+      "source": "tyrol.com",
+      "issues": [
+        "Missing altitude",
+        "Missing fields: description"
+      ],
+      "issue_count": 2,
+      "summary": {
+        "name": "Karlsbader Hütte",
+        "type": "Mountain Hut",
+        "country": "Austria",
+        "altitude": null,
+        "coordinates": "(46.763055555556, 12.801111111111)",
+        "has_website": false,
+        "has_description": false,
+        "has_capacity": false,
+        "source": "tyrol.com"
+      }
+    }
+  ]
+}
