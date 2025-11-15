@@ -15,6 +15,30 @@ A comprehensive modular scraper system to collect mountain hut data from multipl
 - **Data Quality**: 98%+ on all metrics (coordinates 100%, country 100%, altitude 98.3%)
 - **Last Updated**: November 2025
 
+## 🌳 Branching Strategy
+
+This project uses a **simple two-branch strategy**:
+
+- **`main`** - Production branch, automatically deployed to GitHub Pages, Vercel, and Cloudflare Pages
+- **`develop`** - Development branch for risky changes and testing (NOT deployed)
+
+**For detailed branching workflow, see [BRANCHING_STRATEGY.md](BRANCHING_STRATEGY.md)**
+
+### Quick Branch Commands
+
+```bash
+# Switch to develop for risky changes
+git checkout develop
+
+# Switch back to main for deployment
+git checkout main
+
+# Merge develop to main (when ready to deploy)
+git checkout main
+git merge develop
+git push origin main
+```
+
 ## 🚀 Quick Start
 
 ### Setup
