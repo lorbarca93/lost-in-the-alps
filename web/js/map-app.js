@@ -21,6 +21,37 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+const ALLOWED_EXTERNAL_PROTOCOLS = new Set(["http:", "https:"]);
+
+function sanitizeHttpUrl(rawUrl) {
+  if (!rawUrl || rawUrl === "N/A") return null;
+
+  try {
+    const parsed = new URL(rawUrl, window.location.origin);
+    if (!ALLOWED_EXTERNAL_PROTOCOLS.has(parsed.protocol)) return null;
+
+    parsed.hash = "";
+    return parsed.href;
+  } catch (error) {
+    return null;
+  }
+}
+
+function sanitizeEmail(rawEmail) {
+  if (!rawEmail || rawEmail === "N/A") return null;
+
+  const trimmed = rawEmail.trim();
+  const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  return emailPattern.test(trimmed) ? trimmed : null;
+}
+
+function sanitizePhone(rawPhone) {
+  if (!rawPhone || rawPhone === "N/A") return null;
+
+  const cleaned = rawPhone.replace(/[^0-9+]/g, "");
+  return cleaned ? cleaned : null;
+}
+
 // ============================================================================
 // SIDEBAR VIEW MANAGEMENT
 // ============================================================================
@@ -1175,16 +1206,23 @@ function showHutDetails(hut) {
     (hut.website && hut.website !== "N/A")
   ) {
     content += '<div class="detail-section"><h3>📞 Contact</h3>';
-    if (hut.phone && hut.phone !== "N/A") {
-      content += `<a href="tel:${
-        hut.phone
-      }" class="detail-button primary">📱 Call: ${escapeHtml(hut.phone)}</a>`;
+    const sanitizedPhone = sanitizePhone(hut.phone);
+    if (sanitizedPhone) {
+      content += `<a href="tel:${encodeURIComponent(
+        sanitizedPhone
+      )}" class="detail-button primary">📱 Call: ${escapeHtml(
+        sanitizedPhone
+      )}</a>`;
     }
-    if (hut.email && hut.email !== "N/A") {
-      content += `<a href="mailto:${hut.email}" class="detail-button secondary">✉️ Email</a>`;
+    const sanitizedEmail = sanitizeEmail(hut.email);
+    if (sanitizedEmail) {
+      content += `<a href="mailto:${encodeURIComponent(
+        sanitizedEmail
+      )}" class="detail-button secondary">✉️ Email</a>`;
     }
-    if (hut.website && hut.website !== "N/A") {
-      content += `<a href="${hut.website}" target="_blank" class="detail-button tertiary">🌐 Website</a>`;
+    const sanitizedWebsite = sanitizeHttpUrl(hut.website);
+    if (sanitizedWebsite) {
+      content += `<a href="${sanitizedWebsite}" target="_blank" rel="noopener noreferrer" class="detail-button tertiary">🌐 Website</a>`;
     }
     content += "</div>";
   }
@@ -1798,10 +1836,10 @@ function displayWeather(data, container) {
                 `;
   }
 
-  html += `
+      html += `
                     </div>
                     <div style="margin-top: 12px; font-size: 10px; color: #94a3b8; text-align: center;">
-                        Data from <a href="https://open-meteo.com/" target="_blank" style="color: #3b82f6;">Open-Meteo.com</a>
+                        Data from <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: #3b82f6;">Open-Meteo.com</a>
                     </div>
                 </div>
             `;
