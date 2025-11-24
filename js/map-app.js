@@ -7,6 +7,13 @@ let map,
 let allHuts = [];
 let fuse = null;
 
+const markerIndex = new Map();
+const MOBILE_VIEWPORT_PADDING = 0.4;
+const MOBILE_INITIAL_MARKER_LIMIT = 350;
+const MOBILE_BATCH_SIZE = 175;
+let mobilePendingHuts = [];
+let mobileStagedMode = false;
+
 // ============================================================================
 // UTILITY FUNCTIONS
 // ============================================================================
@@ -19,6 +26,23 @@ function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
+}
+
+function isMobileClient() {
+  return (
+    window.matchMedia("(max-width: 820px)").matches ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  );
+}
+
+function debounce(fn, wait) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), wait);
+  };
 }
 
 // ============================================================================
@@ -279,14 +303,42 @@ function initializeMap() {
 // DATA LOADING
 // ============================================================================
 
-function loadHutsData() {
-  fetch("data/huts_data.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+function getDataSources() {
+  const sources = ["data/huts_data.json"];
+  if (isMobileClient()) {
+    // Try a trimmed dataset first on mobile. If it fails we'll fall back to full data.
+    sources.unshift("data/huts_data_mobile.json");
+  }
+  return sources;
+}
+
+function fetchFirstAvailable(sources) {
+  const [current, ...rest] = sources;
+  if (!current) {
+    return Promise.reject(new Error("No data sources available"));
+  }
+
+  return fetch(current).then((response) => {
+    if (response.ok) {
+      if (current !== "data/huts_data.json") {
+        console.log(`ℹ️ Loaded optimized dataset: ${current}`);
       }
       return response.json();
-    })
+    }
+
+    if (rest.length === 0) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    console.warn(
+      `⚠️ Failed to load ${current} (status ${response.status}). Trying next source...`
+    );
+    return fetchFirstAvailable(rest);
+  });
+}
+
+function loadHutsData() {
+  fetchFirstAvailable(getDataSources())
     .then((data) => {
       console.log(`✅ Loaded ${data.length} huts`);
       allHuts = data;
@@ -304,10 +356,7 @@ function loadHutsData() {
 // HUTS DISPLAY
 // ============================================================================
 
-function initializeHuts(huts) {
-  console.log(`Initializing ${huts.length} huts...`);
-
-  // Build country filters
+function buildCountryFilters(huts) {
   const countries = {};
   huts.forEach((hut) => {
     if (hut.country && hut.country !== "N/A") {
@@ -332,57 +381,128 @@ function initializeHuts(huts) {
     );
     filterDiv.appendChild(label);
   });
+}
 
-  // Check if mobile
-  const isMobile = window.innerWidth <= 768;
+function createMarkerForHut(hut, isMobile) {
+  const hutId = getHutId(hut);
+  if (markerIndex.has(hutId)) return markerIndex.get(hutId);
 
-  // Create markers
-  huts.forEach((hut) => {
-    const baseRadius = isMobile ? 12 : 7;
-    const hoverRadius = isMobile ? 15 : 10;
+  const baseRadius = isMobile ? 12 : 7;
+  const hoverRadius = isMobile ? 15 : 10;
 
-    const marker = L.circleMarker([hut.lat, hut.lon], {
-      radius: baseRadius,
-      fillColor: hut.color,
-      color: "#ffffff",
-      weight: 2.5,
-      opacity: 1,
-      fillOpacity: 0.85,
-    });
-
-    marker.hutData = hut;
-    marker._baseRadius = baseRadius;
-    marker._hoverRadius = hoverRadius;
-
-    // Hover effects
-    marker.on("mouseover", function () {
-      if (!isMobile) {
-        this.setRadius(this._hoverRadius);
-        this.setStyle({ weight: 3, fillOpacity: 1 });
-      }
-    });
-
-    marker.on("mouseout", function () {
-      if (!isMobile) {
-        this.setRadius(this._baseRadius);
-        this.setStyle({ weight: 2.5, fillOpacity: 0.85 });
-      }
-    });
-
-    // Click to show details
-    marker.on("click", function (e) {
-      showHutDetails(this.hutData);
-      L.DomEvent.stopPropagation(e);
-    });
-
-    markers.push(marker);
-    markerCluster.addLayer(marker);
+  const marker = L.circleMarker([hut.lat, hut.lon], {
+    radius: baseRadius,
+    fillColor: hut.color,
+    color: "#ffffff",
+    weight: 2.5,
+    opacity: 1,
+    fillOpacity: 0.85,
   });
 
-  console.log(`✅ Added ${markers.length} markers to map`);
+  marker.hutData = hut;
+  marker._baseRadius = baseRadius;
+  marker._hoverRadius = hoverRadius;
 
-  // Initialize filters
+  // Hover effects
+  marker.on("mouseover", function () {
+    if (!isMobile) {
+      this.setRadius(this._hoverRadius);
+      this.setStyle({ weight: 3, fillOpacity: 1 });
+    }
+  });
+
+  marker.on("mouseout", function () {
+    if (!isMobile) {
+      this.setRadius(this._baseRadius);
+      this.setStyle({ weight: 2.5, fillOpacity: 0.85 });
+    }
+  });
+
+  // Click to show details
+  marker.on("click", function (e) {
+    showHutDetails(this.hutData);
+    L.DomEvent.stopPropagation(e);
+  });
+
+  markers.push(marker);
+  markerIndex.set(hutId, marker);
+  return marker;
+}
+
+function insertMarkersForHuts(huts) {
+  if (!huts || huts.length === 0) return;
+
+  const isMobile = isMobileClient();
+  huts.forEach((hut) => {
+    const marker = createMarkerForHut(hut, isMobile);
+    if (!markerCluster.hasLayer(marker)) {
+      markerCluster.addLayer(marker);
+    }
+  });
+
+  if (mobileStagedMode && mobilePendingHuts.length > 0) {
+    const addedIds = new Set(huts.map((h) => getHutId(h)));
+    mobilePendingHuts = mobilePendingHuts.filter(
+      (hut) => !addedIds.has(getHutId(hut))
+    );
+  }
+
+  applyFilters();
+}
+
+function addMobileMarkersForViewport(limit) {
+  if (!mobileStagedMode || !map) return;
+
+  const bounds = map.getBounds().pad(MOBILE_VIEWPORT_PADDING);
+  const nextBatch = [];
+  const remaining = [];
+
+  mobilePendingHuts.forEach((hut) => {
+    const hutId = getHutId(hut);
+    if (markerIndex.has(hutId)) return;
+
+    const withinView = bounds.contains([hut.lat, hut.lon]);
+    if (withinView && nextBatch.length < limit) {
+      nextBatch.push(hut);
+    } else {
+      remaining.push(hut);
+    }
+  });
+
+  mobilePendingHuts = remaining;
+
+  if (nextBatch.length > 0) {
+    insertMarkersForHuts(nextBatch);
+    console.log(
+      `📱 Added ${nextBatch.length} staged huts (remaining ${mobilePendingHuts.length})`
+    );
+  }
+}
+
+function initializeHuts(huts) {
+  console.log(`Initializing ${huts.length} huts...`);
+
+  buildCountryFilters(huts);
   initializeFilters();
+
+  mobileStagedMode = isMobileClient();
+  if (mobileStagedMode) {
+    mobilePendingHuts = huts.slice();
+    const favoriteIds = FavoritesManager.getAll();
+    if (favoriteIds.length > 0) {
+      insertMarkersForHuts(
+        huts.filter((hut) => favoriteIds.includes(getHutId(hut)))
+      );
+    }
+    addMobileMarkersForViewport(MOBILE_INITIAL_MARKER_LIMIT);
+    map.on(
+      "moveend",
+      debounce(() => addMobileMarkersForViewport(MOBILE_BATCH_SIZE), 300)
+    );
+  } else {
+    insertMarkersForHuts(huts);
+  }
+
   updateStats();
 }
 
@@ -750,6 +870,10 @@ function initializeSearch(huts) {
 // ============================================================================
 
 function showHutDetails(hut) {
+  if (!markerIndex.has(getHutId(hut))) {
+    insertMarkersForHuts([hut]);
+  }
+
   const detailSidebar = document.getElementById("detail-sidebar");
   const detailTitle = document.getElementById("detail-hut-name");
   const detailContent = document.getElementById("detail-content");
