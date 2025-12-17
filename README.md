@@ -100,11 +100,11 @@ python tools/create_ultra_simple_map.py
 
 ### Data Pipeline (at a glance)
 
-1) Scrape: `python scripts/run_all_scrapers.py`  
-2) Clean & classify (auto via data_cleaner + reclassify script)  
-3) Country assign: `python tools/assign_countries_fast.py`  
-4) Export JSON for web: `python tools/generate_huts_json.py`  
-5) Serve web UI: `cd web && python -m http.server 8080`
+1. Scrape: `python scripts/run_all_scrapers.py`
+2. Clean & classify (auto via data_cleaner + reclassify script)
+3. Country assign: `python tools/assign_countries_fast.py`
+4. Export JSON for web: `python tools/generate_huts_json.py`
+5. Serve web UI: `cd web && python -m http.server 8080`
 
 ## 📁 Project Structure
 
@@ -178,6 +178,7 @@ lost-in-the-alps/
 - **External JSON loading**: Efficient map data handling
 
 ### Trust & Safety / Security Highlights
+
 - Mapbox token is **not bundled**; users set it in `localStorage` for Mapbox layers.
 - External links use `rel="noopener noreferrer"`; CSP/HSTS headers provided in `_headers` for static hosting.
 - See `docs/SECURITY.md` for CSP domains and hosting notes.
