@@ -4,16 +4,16 @@ A comprehensive modular scraper system to collect mountain hut data from multipl
 
 ## 📊 Current Status
 
-- **Total Huts**: 7,472 (cleaned, deduplicated)
+- **Total Huts**: 6,767 (cleaned, deduplicated)
 - **Data Sources**: 4 active sources
-  - refuges.info: 5,250 huts (70.3%) - French Alpine refuges
-  - boudy.info: 889 huts (11.9%) - Czech/Slovak Alps
-  - mountainhuts.info: 673 huts (9.0%) - Europe-wide (deduplicated)
-  - mountain-huts.net: 660 huts (8.8%) - Balkans
-- **Countries Covered**: 41 countries across Europe
+  - refuges.info: 5,274 huts
+  - mountainhuts.info: 671 huts
+  - mountain-huts.net: 664 huts
+  - tyrol.com: 162 huts
+- **Countries Covered**: 41
 - **Coverage**: Alps, Apennines, Carpathians, Balkans, and worldwide
-- **Data Quality**: 98%+ on all metrics (coordinates 100%, country 100%, altitude 98.3%)
-- **Last Updated**: November 2025
+- **Data Quality**: 100% coordinates, 100% countries assigned
+- **Last Updated**: December 2025
 
 ## 🌳 Branching Strategy
 
@@ -95,8 +95,16 @@ python tools/generate_huts_json.py  # Updates web/data/huts_data.json
 
 # Regenerate interactive map
 python tools/create_ultra_simple_map.py
-# Map is automatically generated to web/map.html
+# Map is automatically generated to web/index.html
 ```
+
+### Data Pipeline (at a glance)
+
+1. Scrape: `python scripts/run_all_scrapers.py`
+2. Clean & classify (auto via data_cleaner + reclassify script)
+3. Country assign: `python tools/assign_countries_fast.py`
+4. Export JSON for web: `python tools/generate_huts_json.py`
+5. Serve web UI: `cd web && python -m http.server 8080`
 
 ## 📁 Project Structure
 
@@ -114,8 +122,7 @@ lost-in-the-alps/
 │   └── check_scraper_progress.py
 │
 ├── web/                    # Web interface
-│   ├── index.html         # Landing page
-│   ├── map.html           # Interactive map
+│   ├── index.html         # Interactive map (main page)
 │   ├── about.html         # About page
 │   ├── data/              # Data files (JSON)
 │   ├── css/               # Stylesheets
@@ -169,6 +176,12 @@ lost-in-the-alps/
 - **Modular design**: Easy to add new scrapers following the base class
 - **SQLite database**: Portable, no server required
 - **External JSON loading**: Efficient map data handling
+
+### Trust & Safety / Security Highlights
+
+- Mapbox token is **not bundled**; users set it in `localStorage` for Mapbox layers.
+- External links use `rel="noopener noreferrer"`; CSP/HSTS headers provided in `_headers` for static hosting.
+- See `docs/SECURITY.md` for CSP domains and hosting notes.
 
 ## 📖 Usage
 

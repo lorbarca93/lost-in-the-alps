@@ -1,0 +1,19 @@
+Contact: mailto:security@example.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://lostinthealps.github.io/.well-known/security.txt
+
+# Security Policy
+# 
+# If you discover a security vulnerability, please email us at the address above.
+# We appreciate responsible disclosure and will respond within 48 hours.
+#
+# Please include:
+# - Description of the vulnerability
+# - Steps to reproduce
+# - Potential impact
+# - Suggested fix (if any)
+#
+# We will acknowledge receipt and work with you to address the issue.
+
+
