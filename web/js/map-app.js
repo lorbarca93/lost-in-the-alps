@@ -260,8 +260,40 @@ function initializeMap() {
     attributionControl: true,
   });
 
+  // Mapbox Access Token Configuration
+  const MAPBOX_TOKEN =
+    localStorage.getItem("mapbox_token") ||
+    "pk.eyJ1IjoibG9yYmFyY2E5MyIsImEiOiJjbWkwNHA5eGswZDRzMmtyNGtzcXRkcGYxIn0.VvSt_WtXE5OiChkp2II1Wg";
+
+  // Helper function to create Mapbox tile layer
+  function createMapboxLayer(styleId, styleName) {
+    if (!MAPBOX_TOKEN) {
+      console.warn(
+        `Mapbox ${styleName} layer requires an access token. Set it with: localStorage.setItem('mapbox_token', 'your_token_here')`
+      );
+      return L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: `Mapbox ${styleName} (token required) | &copy; OpenStreetMap`,
+      });
+    }
+
+    // Mapbox Styles API tile URL format with 512px tiles for better quality
+    return L.tileLayer(
+      `https://api.mapbox.com/styles/v1/mapbox/${styleId}/tiles/{z}/{x}/{y}@2x?access_token=${MAPBOX_TOKEN}`,
+      {
+        maxZoom: 22,
+        tileSize: 512,
+        zoomOffset: -1,
+        attribution: `&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`,
+      }
+    );
+  }
+
   // Define map layers
   const layers = {
+    mapbox: createMapboxLayer("outdoors-v12", "Outdoors"),
+    "mapbox-streets": createMapboxLayer("streets-v12", "Streets"),
+    "mapbox-satellite": createMapboxLayer("satellite-v9", "Satellite"),
     openstreetmap: L.tileLayer(
       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {
@@ -313,18 +345,41 @@ function initializeMap() {
   };
 
   // Add default layer
-  let currentLayer = layers["topo"];
+  let currentLayer = layers["mapbox"];
   currentLayer.addTo(map);
 
   // Layer switching (dropdown)
   const mapLayerSelect = document.getElementById("map-layer-select");
   if (mapLayerSelect) {
     mapLayerSelect.addEventListener("change", function (e) {
-      map.removeLayer(currentLayer);
-      currentLayer = layers[e.target.value];
-      currentLayer.addTo(map);
+      const layerValue = e.target.value;
+
+      // Check if it's a Mapbox layer and token is missing
+      if (layerValue.startsWith("mapbox") && !MAPBOX_TOKEN) {
+        showToast(
+          '⚠️ Mapbox requires an access token. Set it in browser console: localStorage.setItem("mapbox_token", "your_token")'
+        );
+        // Revert to previous selection
+        e.target.value = currentLayerName || "mapbox";
+        return;
+      }
+
+      if (currentLayer) {
+        map.removeLayer(currentLayer);
+      }
+      currentLayerName = layerValue;
+      currentLayer = layers[layerValue];
+      if (currentLayer) {
+        currentLayer.addTo(map);
+      } else {
+        console.error(`Layer "${layerValue}" not found`);
+        showToast(`⚠️ Map layer "${layerValue}" not available`);
+      }
     });
   }
+
+  // Track current layer name
+  let currentLayerName = "mapbox";
 
   // Initialize marker cluster
   markerCluster = L.markerClusterGroup({
@@ -335,6 +390,18 @@ function initializeMap() {
     chunkedLoading: true,
     chunkInterval: 200,
     chunkDelay: 50,
+    iconCreateFunction: function (cluster) {
+      const count = cluster.getChildCount();
+      let sizeClass = "small";
+      if (count > 100) sizeClass = "medium";
+      if (count > 1000) sizeClass = "large";
+
+      return L.divIcon({
+        html: `<div>${count}</div>`,
+        className: `custom-cluster cluster-${sizeClass}`,
+        iconSize: L.point(40, 40),
+      });
+    },
   });
 
   map.addLayer(markerCluster);
@@ -503,8 +570,15 @@ function loadHutsData() {
   // Show loading state
   if (progressBar) progressBar.style.width = "10%";
 
+  // Add timeout for slow connections
+  const timeoutId = setTimeout(() => {
+    if (progressBar) progressBar.style.width = "30%";
+    console.log("⏳ Data loading is taking longer than expected...");
+  }, 2000);
+
   fetch("data/huts_data.json")
     .then((response) => {
+      clearTimeout(timeoutId);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -522,19 +596,43 @@ function loadHutsData() {
         throw new Error("Invalid data format: expected an array");
       }
 
-      console.log(`✅ Loaded ${data.length} huts`);
+      // Validate data structure
+      const validHuts = data.filter(
+        (hut) =>
+          hut &&
+          typeof hut.lat === "number" &&
+          typeof hut.lon === "number" &&
+          !isNaN(hut.lat) &&
+          !isNaN(hut.lon) &&
+          hut.lat >= -90 &&
+          hut.lat <= 90 &&
+          hut.lon >= -180 &&
+          hut.lon <= 180
+      );
+
+      if (validHuts.length !== data.length) {
+        console.warn(
+          `⚠️ Filtered out ${
+            data.length - validHuts.length
+          } huts with invalid coordinates`
+        );
+      }
+
+      console.log(
+        `✅ Loaded ${validHuts.length} valid huts (${data.length} total)`
+      );
 
       // Update progress
       if (progressBar) progressBar.style.width = "95%";
 
-      allHuts = data;
+      allHuts = validHuts;
 
       // Initialize immediately
       console.log("About to initialize huts, search, and favorites...");
       try {
         if (typeof initializeHuts === "function") {
           console.log("Calling initializeHuts...");
-          initializeHuts(data);
+          initializeHuts(validHuts);
         } else {
           console.error(
             "initializeHuts is not a function!",
@@ -544,7 +642,7 @@ function loadHutsData() {
 
         if (typeof initializeSearch === "function") {
           console.log("Calling initializeSearch...");
-          initializeSearch(data);
+          initializeSearch(validHuts);
         } else {
           console.error(
             "initializeSearch is not a function!",
@@ -579,8 +677,9 @@ function loadHutsData() {
           progress.style.display = "none";
         }
 
-        if (typeof Toast !== "undefined" && Toast.error) {
-          Toast.error("Error initializing map. Please refresh.", 5000);
+        // Use showToast if available, otherwise alert
+        if (typeof showToast === "function") {
+          showToast("❌ Error initializing map. Please refresh the page.");
         } else {
           alert(
             "Error initializing map. Please refresh. Error: " + error.message
@@ -600,7 +699,12 @@ function loadHutsData() {
         progressBar.style.display = "none";
       }
 
-      if (typeof Toast !== "undefined" && Toast.error) {
+      // Use showToast if available, otherwise alert
+      if (typeof showToast === "function") {
+        showToast(
+          "❌ Error loading map data. Please check your connection and refresh."
+        );
+      } else if (typeof Toast !== "undefined" && Toast.error) {
         Toast.error("Error loading map data. Please refresh the page.", 5000);
       } else {
         alert("Error loading map data. Please refresh the page.");
@@ -674,7 +778,7 @@ function initializeHuts(huts) {
   updateStats();
 
   // Setup mobile map click handler after map is ready
-  if (typeof setupMobileMapClickHandler === 'function') {
+  if (typeof setupMobileMapClickHandler === "function") {
     setupMobileMapClickHandler();
   }
 
@@ -745,10 +849,12 @@ function applyFilters() {
     document.querySelectorAll(".country-filter:checked")
   ).map((cb) => cb.dataset.country);
 
-  const minAlt = parseInt(document.getElementById("min-altitude").value) || 0;
-  const maxAlt =
-    parseInt(document.getElementById("max-altitude").value) || 4000;
-  const allCountriesChecked = document.getElementById("filter-all").checked;
+  const minAltEl = document.getElementById("min-altitude");
+  const maxAltEl = document.getElementById("max-altitude");
+  const filterAllEl = document.getElementById("filter-all");
+  const minAlt = minAltEl ? parseInt(minAltEl.value) || 0 : 0;
+  const maxAlt = maxAltEl ? parseInt(maxAltEl.value) || 4000 : 4000;
+  const allCountriesChecked = filterAllEl ? filterAllEl.checked : true;
 
   markers.forEach((marker) => {
     const hut = marker.hutData;
@@ -758,8 +864,15 @@ function applyFilters() {
     if (!selectedTypes.includes(hut.type)) show = false;
 
     // Country filter
-    if (!allCountriesChecked && selectedCountries.length > 0) {
-      if (!selectedCountries.includes(hut.country)) show = false;
+    // If "All Countries" is unchecked, only show huts from selected countries
+    // If no countries are selected, show nothing
+    if (!allCountriesChecked) {
+      if (
+        selectedCountries.length === 0 ||
+        !selectedCountries.includes(hut.country)
+      ) {
+        show = false;
+      }
     }
 
     // Altitude filter
@@ -817,9 +930,12 @@ function applyFilters() {
 }
 
 function updateAltitudeRange() {
-  const min = document.getElementById("min-altitude").value;
-  const max = document.getElementById("max-altitude").value;
-  document.getElementById("altitude-range").textContent = `${min} - ${max} m`;
+  const minEl = document.getElementById("min-altitude");
+  const maxEl = document.getElementById("max-altitude");
+  const rangeEl = document.getElementById("altitude-range");
+  if (minEl && maxEl && rangeEl) {
+    rangeEl.textContent = `${minEl.value} - ${maxEl.value} m`;
+  }
 }
 
 function resetFilters() {
@@ -827,16 +943,21 @@ function resetFilters() {
   document
     .querySelectorAll(".type-filter, .country-filter")
     .forEach((cb) => (cb.checked = true));
-  document.getElementById("filter-all").checked = true;
+  const filterAllReset = document.getElementById("filter-all");
+  if (filterAllReset) filterAllReset.checked = true;
 
   // Reset sliders
-  document.getElementById("min-altitude").value = 0;
-  document.getElementById("max-altitude").value = 4000;
-  updateAltitudeRange();
+  const minAltitude = document.getElementById("min-altitude");
+  const maxAltitude = document.getElementById("max-altitude");
+  if (minAltitude) minAltitude.value = 0;
+  if (maxAltitude) maxAltitude.value = 4000;
+  if (typeof updateAltitudeRange === "function") updateAltitudeRange();
 
-  // Reset capacity
-  document.getElementById("min-capacity").value = "";
-  document.getElementById("max-capacity").value = "";
+  // Reset capacity (if elements exist)
+  const minCapacity = document.getElementById("min-capacity");
+  const maxCapacity = document.getElementById("max-capacity");
+  if (minCapacity) minCapacity.value = "";
+  if (maxCapacity) maxCapacity.value = "";
 
   // Reset contact filters
   [
@@ -879,20 +1000,26 @@ function applyFilterPreset(preset) {
       document.querySelectorAll(".country-filter").forEach((cb) => {
         cb.checked = alpsCountries.includes(cb.dataset.country);
       });
-      document.getElementById("filter-all").checked = false;
+      const filterAllEl = document.getElementById("filter-all");
+      if (filterAllEl) filterAllEl.checked = false;
       showMessage("Applied Alps filter");
       break;
 
     case "with-contact":
-      document.getElementById("filter-has-phone").checked = true;
-      document.getElementById("filter-has-email").checked = true;
-      document.getElementById("filter-has-website").checked = true;
+      const phoneEl = document.getElementById("filter-has-phone");
+      const emailEl = document.getElementById("filter-has-email");
+      const websiteEl = document.getElementById("filter-has-website");
+      if (phoneEl) phoneEl.checked = true;
+      if (emailEl) emailEl.checked = true;
+      if (websiteEl) websiteEl.checked = true;
       showMessage("Filtered to huts with contact info");
       break;
 
     case "high-altitude":
-      document.getElementById("min-altitude").value = 2000;
-      document.getElementById("max-altitude").value = 4000;
+      const minAltPreset = document.getElementById("min-altitude");
+      const maxAltPreset = document.getElementById("max-altitude");
+      if (minAltPreset) minAltPreset.value = 2000;
+      if (maxAltPreset) maxAltPreset.value = 4000;
       updateAltitudeRange();
       showMessage("Filtered to high altitude huts (2000m+)");
       break;
@@ -932,29 +1059,33 @@ function updateStats() {
   const visibleMarkers = markers.filter((m) => markerCluster.hasLayer(m));
   const visibleHuts = visibleMarkers.map((m) => m.hutData);
 
-  // Count by type
+  // Count by new type categories
   const typeCount = {
-    mountain_hut: 0,
-    bivouac: 0,
-    shelter: 0,
+    staffed: 0,      // Staffed hut - managed with services
+    unstaffed: 0,    // Unstaffed cabin - self-service
+    bivouac: 0,      // Bivouac - emergency shelter
+    shelter: 0,      // Shelter - basic weather shelter
+    guesthouse: 0,   // Guesthouse - valley accommodation
+    unknown: 0,      // Unknown type
   };
 
   visibleHuts.forEach((h) => {
     const type = (h.type || "unknown").toLowerCase();
-    if (type.includes("bivouac") || type.includes("bivvy")) {
+    if (type.includes("staffed hut") || type === "staffed hut") {
+      typeCount.staffed++;
+    } else if (type.includes("unstaffed") || type.includes("cabin")) {
+      typeCount.unstaffed++;
+    } else if (type.includes("bivouac") || type.includes("bivvy")) {
       typeCount.bivouac++;
     } else if (type.includes("shelter")) {
       typeCount.shelter++;
-    } else if (
-      type.includes("hut") ||
-      type.includes("refuge") ||
-      type.includes("hütte") ||
-      type.includes("rifugio")
-    ) {
-      typeCount.mountain_hut++;
+    } else if (type.includes("guesthouse") || type.includes("gîte")) {
+      typeCount.guesthouse++;
+    } else if (type.includes("unknown")) {
+      typeCount.unknown++;
     } else {
-      // Unknown types counted as huts
-      typeCount.mountain_hut++;
+      // Fallback for any other types
+      typeCount.unknown++;
     }
   });
 
@@ -963,10 +1094,14 @@ function updateStats() {
   document.getElementById("stats-total-visible").textContent =
     visibleHuts.length;
 
-  // Update type breakdown
-  document.getElementById("stats-huts").textContent = typeCount.mountain_hut;
-  document.getElementById("stats-bivouacs").textContent = typeCount.bivouac;
-  document.getElementById("stats-shelters").textContent = typeCount.shelter;
+  // Update type breakdown (showing main categories)
+  const hutsEl = document.getElementById("stats-huts");
+  const bivouacsEl = document.getElementById("stats-bivouacs");
+  const sheltersEl = document.getElementById("stats-shelters");
+  
+  if (hutsEl) hutsEl.textContent = typeCount.staffed + typeCount.unstaffed + typeCount.guesthouse;
+  if (bivouacsEl) bivouacsEl.textContent = typeCount.bivouac;
+  if (sheltersEl) sheltersEl.textContent = typeCount.shelter + typeCount.unknown;
 
   // Countries
   const uniqueCountries = new Set(
@@ -1169,10 +1304,13 @@ function showHutDetails(hut) {
   content += "</div>";
 
   // Contact
+  // Note: Exclude website button for mountainhuts.info as they don't have individual hut pages
+  const showWebsite =
+    hut.website && hut.website !== "N/A" && hut.source !== "mountainhuts.info";
   if (
     (hut.phone && hut.phone !== "N/A") ||
     (hut.email && hut.email !== "N/A") ||
-    (hut.website && hut.website !== "N/A")
+    showWebsite
   ) {
     content += '<div class="detail-section"><h3>📞 Contact</h3>';
     if (hut.phone && hut.phone !== "N/A") {
@@ -1183,7 +1321,7 @@ function showHutDetails(hut) {
     if (hut.email && hut.email !== "N/A") {
       content += `<a href="mailto:${hut.email}" class="detail-button secondary">✉️ Email</a>`;
     }
-    if (hut.website && hut.website !== "N/A") {
+    if (showWebsite) {
       content += `<a href="${hut.website}" target="_blank" class="detail-button tertiary">🌐 Website</a>`;
     }
     content += "</div>";
@@ -1974,7 +2112,7 @@ function initializeMobileMenu() {
   mobileMenuBtn.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation(); // Prevent map click event
-    
+
     try {
       const sidebar = document.getElementById("filter-sidebar");
       if (sidebar) {
@@ -1994,8 +2132,8 @@ function initializeMobileMenu() {
 }
 
 // Initialize mobile menu when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeMobileMenu);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeMobileMenu);
 } else {
   initializeMobileMenu();
 }
@@ -2003,11 +2141,11 @@ if (document.readyState === 'loading') {
 // Close sidebar on map tap (mobile) - setup after map is initialized
 function setupMobileMapClickHandler() {
   try {
-    if (typeof map !== 'undefined' && map) {
+    if (typeof map !== "undefined" && map) {
       // Remove existing handler if any
-      map.off('click', closeSidebarsOnMapClick);
+      map.off("click", closeSidebarsOnMapClick);
       // Add new handler
-      map.on('click', closeSidebarsOnMapClick);
+      map.on("click", closeSidebarsOnMapClick);
     } else {
       // Retry after a short delay if map isn't ready yet
       setTimeout(setupMobileMapClickHandler, 500);

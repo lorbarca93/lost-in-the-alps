@@ -1,65 +1,60 @@
-/* Enhanced Statistics Dashboard Styles */
+/* Statistics Dashboard - Minimal */
 
 .stats-dashboard {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid #e2e8f0;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .stat-card {
   background: white;
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 6px;
+  padding: 10px;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  transition: border-color 0.15s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
 }
 
 .stat-card.stat-primary {
   border-color: #3b82f6;
-  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
 }
 
 .stat-card.stat-success {
   border-color: #10b981;
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
 }
 
 .stat-card.stat-info {
   border-color: #6366f1;
-  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
 }
 
 .stat-card.stat-warning {
   border-color: #f59e0b;
-  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
 }
 
 .stat-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 4px;
   line-height: 1;
 }
 
 .stat-value {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
   line-height: 1.2;
+  color: #1e293b;
 }
 
 .stat-card.stat-primary .stat-value {
@@ -80,17 +75,17 @@
 
 .stat-label {
   font-size: 11px;
-  color: #64748b;
-  font-weight: 600;
+  color: #6b7280;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .stats-details {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
 }
 
 .stat-detail-item {
